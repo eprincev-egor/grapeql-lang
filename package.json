@@ -1,0 +1,28 @@
+{
+  "name": "grapeql-lang",
+  "version": "1.0.0",
+  "description": "GrapeQL parser",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha ./tests/**/*-spec.js",
+    "lint": "eslint ./lib/**/*.js && eslint ./tests/**/*.js"
+  },
+  "keywords": [
+    "grapeql",
+    "parser",
+    "syntax"
+  ],
+  "author": "Eprincev Egor",
+  "license": "ISC",
+  "dependencies": {
+    "lang-coach": "^1.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "mocha": "^5.2.0"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  }
+}
