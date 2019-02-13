@@ -15,7 +15,7 @@
   "author": "Eprincev Egor",
   "license": "ISC",
   "dependencies": {
-    "lang-coach": "^1.0.2"
+    "lang-coach": "^1.0.5"
   },
   "devDependencies": {
     "eslint": "^5.13.0",

@@ -166,6 +166,13 @@ describe("SingleQuotesString", () => {
             content: "data"
         }
     });
+
+    testSyntax(SingleQuotesString, {
+        str: "U&'d!0061t!+000061 '\n'd!0061t!+000061' UESCAPE '!'",
+        result: {
+            content: "data data"
+        }
+    });
     
     testSyntax(SingleQuotesString, {
         str: "U&'\\066'",
