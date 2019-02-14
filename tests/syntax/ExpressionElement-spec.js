@@ -69,6 +69,15 @@ describe("ExpressionElement", () => {
     });
 
     testSyntax(ExpressionElement, {
+        str: "numeric(14, 2)",
+        result: {
+            element: {
+                type: "numeric(14,2)"
+            }
+        }
+    });
+
+    testSyntax(ExpressionElement, {
         str: "public.table.column",
         result: {
             element: {
