@@ -14,6 +14,11 @@ describe("Operator", () => {
         str: "+-",
         result: {operator: "+"}
     });
+
+    testSyntax(Operator, {
+        str: "::",
+        result: {operator: "::"}
+    });
     
 
 
