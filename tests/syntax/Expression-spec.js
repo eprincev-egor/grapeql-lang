@@ -168,4 +168,9 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "1::::bigint",
+        error: /expected type/
+    });
+
 });
