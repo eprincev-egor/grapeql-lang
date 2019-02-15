@@ -169,6 +169,39 @@ describe("Expression", () => {
     });
 
     testSyntax(Expression, {
+        str: "cast(1 as numeric( 12, 12 )) * 2",
+        result: {
+            elements: [
+                {
+                    dataType: {
+                        type: "numeric(12,12)"
+                    },
+                    expression: {
+                        elements: [
+                            {
+                                number: "1"
+                            }
+                        ]
+                    }
+                },
+                {operator: "*"},
+                {number: "2"}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "array[1]",
+        result: {
+            elements: [{items: [
+                {elements: [
+                    {number: "1"}
+                ]}
+            ]}]
+        }
+    });
+
+    testSyntax(Expression, {
         str: "1::::bigint",
         error: /expected type/
     });

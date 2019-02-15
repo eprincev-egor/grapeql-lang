@@ -121,6 +121,35 @@ describe("ExpressionElement", () => {
     });
 
     testSyntax(ExpressionElement, {
+        str: "cast(1 as numeric( 12, 12 ))",
+        result: {
+            element: {
+                dataType: {
+                    type: "numeric(12,12)"
+                },
+                expression: {
+                    elements: [
+                        {
+                            number: "1"
+                        }
+                    ]
+                }
+            }
+        }
+    });
+
+    testSyntax(ExpressionElement, {
+        str: "array[1]",
+        result: {
+            element: {items: [
+                {elements: [
+                    {number: "1"}
+                ]}
+            ]}
+        }
+    });
+
+    testSyntax(ExpressionElement, {
         str: "public.table.*",
         error: /SyntaxError/
     });
