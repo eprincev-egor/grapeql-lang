@@ -1,5 +1,7 @@
 "use strict";
 
+const GrapeQLCoach = require("../../lib/GrapeQLCoach");
+const assert = require("assert");
 const ExpressionElement = require("../../lib/syntax/ExpressionElement");
 const testSyntax = require("../testSyntax");
 
@@ -152,6 +154,26 @@ describe("ExpressionElement", () => {
     testSyntax(ExpressionElement, {
         str: "public.table.*",
         error: /SyntaxError/
+    });
+
+    testSyntax(ExpressionElement, {
+        str: "bigint",
+        result: {
+            element: {
+                type: "bigint"
+            }
+        }
+    });
+
+    it("error on empty string", () => {
+        assert.throws(
+            () => {
+                let coach = new GrapeQLCoach("");
+                coach.parseExpressionElement();
+            },
+            err =>
+                /expected any expression element/.test( err.message )
+        );
     });
 
 });

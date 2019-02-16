@@ -502,4 +502,10 @@ describe("Operator", () => {
         result: {operator: "like"}
     });
 
+
+    testSyntax(Operator, {
+        str: "operator(  )",
+        error: /invalid operator/
+    });
+
 });

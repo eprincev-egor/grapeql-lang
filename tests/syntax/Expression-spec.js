@@ -17,6 +17,16 @@ describe("Expression", () => {
     });
 
     testSyntax(Expression, {
+        str: "-1",
+        result: {
+            elements: [
+                {operator: "-"},
+                {number: "1"}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
         str: "1 + 1",
         result: {
             elements: [

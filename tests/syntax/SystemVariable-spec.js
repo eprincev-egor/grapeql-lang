@@ -1,5 +1,7 @@
 "use strict";
 
+const GrapeQLCoach = require("../../lib/GrapeQLCoach");
+const assert = require("assert");
 const SystemVariable = require("../../lib/syntax/SystemVariable");
 const testSyntax = require("../testSyntax");
 
@@ -39,9 +41,17 @@ describe("SystemVariable", () => {
         str: "$$Any_Variable",
         error: /forbidden symbol \$ in variable name/
     });
+
     testSyntax(SystemVariable, {
         str: "$",
         error: /expect variable name/
+    });
+
+    it("toLowerCase()", () => {
+        let coach = new GrapeQLCoach("$HELLO");
+        let sysVar = coach.parseSystemVariable();
+
+        assert.equal( sysVar.toLowerCase(), "hello" );
     });
 
 });
