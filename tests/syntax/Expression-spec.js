@@ -630,4 +630,203 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "company.id between 1 and 2",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "company", content: null},
+                    {word: "id", content: null}
+                ]},
+                {
+                    symmetric: null,
+                    between: {elements: [
+                        {number: "1"}
+                    ]},
+                    and: {elements: [
+                        {number: "2"}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "company.id between 1 and 2 or company.id between 5 and 6",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "company", content: null},
+                    {word: "id", content: null}
+                ]},
+                {
+                    symmetric: null,
+                    between: {elements: [
+                        {number: "1"}
+                    ]},
+                    and: {elements: [
+                        {number: "2"}
+                    ]}
+                },
+                {operator: "or"},
+                {star: false, link: [
+                    {word: "company", content: null},
+                    {word: "id", content: null}
+                ]},
+                {
+                    symmetric: null,
+                    between: {elements: [
+                        {number: "5"}
+                    ]},
+                    and: {elements: [
+                        {number: "6"}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "company.id between 1 and 2 > true",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "company", content: null},
+                    {word: "id", content: null}
+                ]},
+                {
+                    symmetric: null,
+                    between: {elements: [
+                        {number: "1"}
+                    ]},
+                    and: {elements: [
+                        {number: "2"}
+                    ]}
+                },
+                {operator: ">"},
+                {boolean: true}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "company.id between 1 and 2 < true",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "company", content: null},
+                    {word: "id", content: null}
+                ]},
+                {
+                    symmetric: null,
+                    between: {elements: [
+                        {number: "1"}
+                    ]},
+                    and: {elements: [
+                        {number: "2"}
+                    ]}
+                },
+                {operator: "<"},
+                {boolean: true}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "company.id between 1 and 2 + 3 <= true",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "company", content: null},
+                    {word: "id", content: null}
+                ]},
+                {
+                    symmetric: null,
+                    between: {elements: [
+                        {number: "1"}
+                    ]},
+                    and: {elements: [
+                        {number: "2"},
+                        {operator: "+"},
+                        {number: "3"}
+                    ]}
+                },
+                {operator: "<="},
+                {boolean: true}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "company.id not between 1 and 2 + 3",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "company", content: null},
+                    {word: "id", content: null}
+                ]},
+                {operator: "not"},
+                {
+                    symmetric: null,
+                    between: {elements: [
+                        {number: "1"}
+                    ]},
+                    and: {elements: [
+                        {number: "2"},
+                        {operator: "+"},
+                        {number: "3"}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "test.id between 1 + 3 and 3 + 1 > test.id between ( 8 * test.id ) and 30 - 8",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "test", content: null},
+                    {word: "id", content: null}
+                ]},
+                {
+                    symmetric: null,
+                    between: {elements: [
+                        {number: "1"},
+                        {operator: "+"},
+                        {number: "3"}
+                    ]},
+                    and: {elements: [
+                        {number: "3"},
+                        {operator: "+"},
+                        {number: "1"}
+                    ]}
+                },
+    
+                {operator: ">"},
+    
+                {star: false, link: [
+                    {word: "test", content: null},
+                    {word: "id", content: null}
+                ]},
+                {
+                    symmetric: null,
+                    between: {elements: [
+                        {number: "8"},
+                        {operator: "*"},
+                        {star: false, link: [
+                            {word: "test", content: null},
+                            {word: "id", content: null}
+                        ]}
+                    ]},
+                    and: {elements: [
+                        {number: "30"},
+                        {operator: "-"},
+                        {number: "8"}
+                    ]}
+                }
+            ]
+        }
+    });
+
 });
