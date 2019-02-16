@@ -255,4 +255,43 @@ describe("Expression", () => {
             ]
         }
     });
+
+    testSyntax(Expression, {
+        str: "substring( country.id from 1 for 3 ) || ' ' || substring( company.name from 1 )",
+        result: {
+            elements: [
+                {
+                    str: {elements: [{
+                        star: false,
+                        link: [
+                            {word: "country", content: null},
+                            {word: "id", content: null}
+                        ]
+                    }]},
+                    from: {elements: [{
+                        number: "1"
+                    }]},
+                    for: {elements: [{
+                        number: "3"
+                    }]}
+                },
+                {operator: "||"},
+                {content: " "},
+                {operator: "||"},
+                {
+                    str: {elements: [{
+                        star: false,
+                        link: [
+                            {word: "company", content: null},
+                            {word: "name", content: null}
+                        ]
+                    }]},
+                    from: {elements: [{
+                        number: "1"
+                    }]},
+                    for: null
+                }
+            ]
+        }
+    });
 });

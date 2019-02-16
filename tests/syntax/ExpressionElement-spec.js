@@ -210,4 +210,25 @@ describe("ExpressionElement", () => {
         }
     });
 
+    testSyntax(ExpressionElement, {
+        str: "substring( company.name from 1 for 5)",
+        result: {
+            element: {
+                str: {elements: [{
+                    star: false,
+                    link: [
+                        {word: "company", content: null},
+                        {word: "name", content: null}
+                    ]
+                }]},
+                from: {elements: [{
+                    number: "1"
+                }]},
+                for: {elements: [{
+                    number: "5"
+                }]}
+            }
+        }
+    });
+
 });
