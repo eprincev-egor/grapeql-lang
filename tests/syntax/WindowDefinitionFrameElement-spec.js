@@ -65,4 +65,9 @@ describe("WindowDefinitionFrameElement", () => {
         }
     });
 
+    testSyntax(WindowDefinitionFrameElement, {
+        str: "1 wrong",
+        error: /expected preceding or following/
+    });
+
 });

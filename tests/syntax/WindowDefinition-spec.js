@@ -128,6 +128,7 @@ describe("WindowDefinition", () => {
             }
         }
     });
+
     testSyntax(WindowDefinition, {
         str: "parent_window partition by company.name, company.id order by company.name desc, company.id asc rows between current row and 100 following",
         result: {
@@ -187,6 +188,68 @@ describe("WindowDefinition", () => {
                     following: true
                 }
             }
+        }
+    });
+
+    testSyntax(WindowDefinition, {
+        str: "parent_window partition by company.name, company.id order by company.name desc, company.id asc range between current row and 100 following",
+        result: {
+            windowDefinition: {word: "parent_window", content: null},
+            partitionBy: [
+                {elements: [
+                    {star: false, link: [
+                        {word: "company", content: null},
+                        {word: "name", content: null}
+                    ]}
+                ]},
+                {elements: [
+                    {star: false, link: [
+                        {word: "company", content: null},
+                        {word: "id", content: null}
+                    ]}
+                ]}
+            ],
+            orderBy: [
+                {
+                    expression: {elements: [
+                        {star: false, link: [
+                            {word: "company", content: null},
+                            {word: "name", content: null}
+                        ]}
+                    ]},
+                    vector: "desc",
+                    using: null,
+                    nulls: null
+                },
+                {
+                    expression: {elements: [
+                        {star: false, link: [
+                            {word: "company", content: null},
+                            {word: "id", content: null}
+                        ]}
+                    ]},
+                    vector: "asc",
+                    using: null,
+                    nulls: null
+                }
+            ],
+            range: {
+                start: {
+                    value: null,
+                    currentRow: true,
+                    unbounded: null,
+                    preceding: null,
+                    following: null
+                },
+                end: {
+                    value: {number: "100"},
+                    currentRow: null,
+                    unbounded: null,
+                    preceding: null,
+                    following: true
+                }
+            },
+            rows: null
         }
     });
 
