@@ -8,7 +8,7 @@ describe("Cast", () => {
     testSyntax(Cast, {
         str: "cast(1 as numeric( 12, 12 ))",
         result: {
-            dataType: {
+            cast: {
                 type: "numeric(12,12)"
             },
             expression: {
@@ -24,7 +24,7 @@ describe("Cast", () => {
     testSyntax(Cast, {
         str: "cast('nice' as bigint[][])",
         result: {
-            dataType: {
+            cast: {
                 type: "bigint[][]"
             },
             expression: {
@@ -40,7 +40,7 @@ describe("Cast", () => {
     testSyntax(Cast, {
         str: "cast( $$nice$$  AS bigint[][])",
         result: {
-            dataType: {
+            cast: {
                 type: "bigint[][]"
             },
             expression: {
@@ -56,7 +56,7 @@ describe("Cast", () => {
     testSyntax(Cast, {
         str: "cast( 2 * 3 AS bigint[][])",
         result: {
-            dataType: {
+            cast: {
                 type: "bigint[][]"
             },
             expression: {

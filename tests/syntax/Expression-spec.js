@@ -195,7 +195,7 @@ describe("Expression", () => {
         result: {
             elements: [
                 {
-                    dataType: {
+                    cast: {
                         type: "numeric(12,12)"
                     },
                     expression: {
@@ -332,4 +332,302 @@ describe("Expression", () => {
             ]
         }
     });
+
+    testSyntax(Expression, {
+        str: "10 * (get_some_arr())[1]",
+        result: {
+            elements: [
+                {number: "10"},
+                {operator: "*"},
+                {elements: [
+                    {
+                        function: {
+                            star: false,
+                            link: [
+                                {word: "get_some_arr", content: null}
+                            ]
+                        },
+                        all: null,
+                        distinct: null,
+                        arguments: [],
+                        where: null,
+                        orderBy: null,
+                        within: null,
+                        over: null,
+                        emptyOver: null
+                    }
+                ]},
+                {
+                    content: {elements: [
+                        {number: "1"}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "id = 2 or id = -3",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "id", content: null}
+                ]},
+                {operator: "="},
+                {number: "2"},
+
+                {operator: "or"},
+
+                {star: false, link: [
+                    {word: "id", content: null}
+                ]},
+                {operator: "="},
+                {operator: "-"},
+                {number: "3"}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "id = 2 or - -+id = 3",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "id", content: null}
+                ]},
+                {operator: "="},
+                {number: "2"},
+
+                {operator: "or"},
+
+                {operator: "-"},
+                {operator: "-"},
+                {operator: "+"},
+
+                {star: false, link: [
+                    {word: "id", content: null}
+                ]},
+                {operator: "="},
+                {number: "3"}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "2::date::text || '120'::char(2) - -8",
+        result: {
+            elements: [
+                {number: "2"},
+                {operator: "::"},
+                {type: "date"},
+                {operator: "::"},
+                {type: "text"},
+
+                {operator: "||"},
+
+                {content: "120"},
+                {operator: "::"},
+                {type: "char(2)"},
+
+                {operator: "-"},
+
+                {operator: "-"},
+                {number: "8"}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "(-1 + 2.1) * '0'::numeric - ( ('-2')::bigint + 8)",
+        result: {
+            elements: [
+                {elements: [
+                    {operator: "-"},
+                    {number: "1"},
+                    {operator: "+"},
+                    {number: "2.1"}
+                ]},
+
+                {operator: "*"},
+
+                {content: "0"},
+                {operator: "::"},
+                {type: "numeric"},
+
+                {operator: "-"},
+
+                {elements: [
+                    {elements: [
+                        {content: "-2"}
+                    ]},
+
+
+                    {operator: "::"},
+                    {type: "bigint"},
+                    {operator: "+"},
+                    {number: "8"}
+                ]}
+            ]
+        }
+    });
+
+
+    testSyntax(Expression, {
+        str: "my_table.my_column_arr[1]",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "my_table", content: null},
+                    {word: "my_column_arr", content: null}
+                ]},
+                {content: {elements: [
+                    {number: "1"}
+                ]}}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "(array[100, 200])[1]",
+        result: {
+            elements: [
+                {elements: [
+                    {array: [
+                        {elements: [
+                            {number: "100"}
+                        ]},
+                        {elements: [
+                            {number: "200"}
+                        ]}
+                    ]}
+                ]},
+                {
+                    content: {elements: [
+                        {number: "1"}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "(array[100, 200]::bigint[])[1]",
+        result: {
+            elements: [
+                {elements: [
+                    {array: [
+                        {elements: [
+                            {number: "100"}
+                        ]},
+                        {elements: [
+                            {number: "200"}
+                        ]}
+                    ]},
+                    {operator: "::"},
+                    {type: "bigint[]"}
+                ]},
+                {
+                    content: {elements: [
+                        {number: "1"}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "array[]",
+        result: {
+            elements: [
+                {array: []}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "array[1]",
+        result: {
+            elements: [
+                {array: [
+                    {
+                        elements: [
+                            {number: "1"}
+                        ]
+                    }
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "array[true, false]",
+        result: {
+            elements: [
+                {array: [
+                    {
+                        elements: [
+                            {boolean: true}
+                        ]
+                    },
+                    {
+                        elements: [
+                            {boolean: false}
+                        ]
+                    }
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "array[1]::bigint[]",
+        result: {
+            elements: [
+                {array: [
+                    {
+                        elements: [
+                            {number: "1"}
+                        ]
+                    }
+                ]},
+                {operator: "::"},
+                {type: "bigint[]"}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "array[null]::bigint[]",
+        result: {
+            elements: [
+                {array: [
+                    {
+                        elements: [
+                            {null: true}
+                        ]
+                    }
+                ]},
+                {operator: "::"},
+                {type: "bigint[]"}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "array[null]::numeric(10, 2)[]",
+        result: {
+            elements: [
+                {array: [
+                    {
+                        elements: [
+                            {null: true}
+                        ]
+                    }
+                ]},
+                {operator: "::"},
+                {type: "numeric(10,2)[]"}
+            ]
+        }
+    });
+
 });
