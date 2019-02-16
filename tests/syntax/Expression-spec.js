@@ -829,4 +829,19 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "company.name not like '%x%'",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "company", content: null},
+                    {word: "name", content: null}
+                ]},
+                {operator: "not"},
+                {operator: "like"},
+                {content: "%x%"}
+            ]
+        }
+    });
+
 });
