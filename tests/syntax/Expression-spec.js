@@ -216,4 +216,29 @@ describe("Expression", () => {
         error: /expected type/
     });
 
+    testSyntax(Expression, {
+        str: "1 + case when true then 1 else 0 end",
+        result: {
+            elements: [
+                {number: "1"},
+                {operator: "+"},
+                {
+                    case: [
+                        {
+                            when: {elements: [
+                                {boolean: true}
+                            ]},
+                            then: {elements: [
+                                {number: "1"}
+                            ]}
+                        }
+                    ],
+                    else: {elements: [
+                        {number: "0"}
+                    ]}
+                }
+            ]
+        }
+    });
+
 });

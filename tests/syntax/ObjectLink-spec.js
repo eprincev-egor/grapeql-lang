@@ -7,7 +7,7 @@ const testSyntax = require("../testSyntax");
 const GrapeQLCoach = require("../../lib/GrapeQLCoach");
 const assert = require("assert");
 
-describe("ObjectName", () => {
+describe("ObjectLink", () => {
 
     testSyntax(ObjectLink, {
         str: "a.B.c",

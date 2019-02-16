@@ -176,4 +176,25 @@ describe("ExpressionElement", () => {
         );
     });
 
+    testSyntax(ExpressionElement, {
+        str: "case when true then 1 else 0 end",
+        result: {
+            element: {
+                case: [
+                    {
+                        when: {elements: [
+                            {boolean: true}
+                        ]},
+                        then: {elements: [
+                            {number: "1"}
+                        ]}
+                    }
+                ],
+                else: {elements: [
+                    {number: "0"}
+                ]}
+            }
+        }
+    });
+
 });
