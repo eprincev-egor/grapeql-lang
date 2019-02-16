@@ -197,4 +197,17 @@ describe("ExpressionElement", () => {
         }
     });
 
+    testSyntax(ExpressionElement, {
+        str: "extract(week FROM $$2000-12-16 12:21:13$$)",
+        result: {
+            element: {
+                field: "week",
+                type: null,
+                source: {elements: [
+                    {content: "2000-12-16 12:21:13"}
+                ]}
+            }
+        }
+    });
+
 });

@@ -241,4 +241,18 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "extract( day from timestamp '2000-12-16 12:21:13' )",
+        result: {
+            elements: [
+                {
+                    field: "day",
+                    type: {type: "timestamp"},
+                    source: {elements: [
+                        {content: "2000-12-16 12:21:13"}
+                    ]}
+                }
+            ]
+        }
+    });
 });
