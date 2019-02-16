@@ -123,6 +123,17 @@ describe("ExpressionElement", () => {
     });
 
     testSyntax(ExpressionElement, {
+        str: "*",
+        options: {availableStar: true},
+        result: {
+            element: {
+                star: true,
+                link: []
+            }
+        }
+    });
+
+    testSyntax(ExpressionElement, {
         str: "cast(1 as numeric( 12, 12 ))",
         result: {
             element: {
@@ -143,7 +154,7 @@ describe("ExpressionElement", () => {
     testSyntax(ExpressionElement, {
         str: "array[1]",
         result: {
-            element: {items: [
+            element: {array: [
                 {elements: [
                     {number: "1"}
                 ]}
@@ -227,6 +238,28 @@ describe("ExpressionElement", () => {
                 for: {elements: [{
                     number: "5"
                 }]}
+            }
+        }
+    });
+
+    testSyntax(ExpressionElement, {
+        str: "now()",
+        result: {
+            element: {
+                function: {
+                    star: false,
+                    link: [
+                        {word: "now", content: null}
+                    ]
+                },
+                all: null,
+                distinct: null,
+                arguments: [],
+                where: null,
+                orderBy: null,
+                within: null,
+                over: null,
+                emptyOver: null
             }
         }
     });

@@ -179,6 +179,18 @@ describe("Expression", () => {
     });
 
     testSyntax(Expression, {
+        str: "*",
+        options: {
+            availableStar: true
+        },
+        result: {
+            elements: [
+                {star: true, link: []}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
         str: "cast(1 as numeric( 12, 12 )) * 2",
         result: {
             elements: [
@@ -203,7 +215,7 @@ describe("Expression", () => {
     testSyntax(Expression, {
         str: "array[1]",
         result: {
-            elements: [{items: [
+            elements: [{array: [
                 {elements: [
                     {number: "1"}
                 ]}
@@ -290,6 +302,32 @@ describe("Expression", () => {
                         number: "1"
                     }]},
                     for: null
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "10 * default_pay()",
+        result: {
+            elements: [
+                {number: "10"},
+                {operator: "*"},
+                {
+                    function: {
+                        star: false,
+                        link: [
+                            {word: "default_pay", content: null}
+                        ]
+                    },
+                    all: null,
+                    distinct: null,
+                    arguments: [],
+                    where: null,
+                    orderBy: null,
+                    within: null,
+                    over: null,
+                    emptyOver: null
                 }
             ]
         }

@@ -7,17 +7,17 @@ describe("PgArray", () => {
 
     testSyntax(PgArray, {
         str: "ARRAY[]",
-        result: {items: []}
+        result: {array: []}
     });
 
     testSyntax(PgArray, {
         str: "arraY[]",
-        result: {items: []}
+        result: {array: []}
     });
 
     testSyntax(PgArray, {
         str: "array[1]",
-        result: {items: [
+        result: {array: [
             {elements: [
                 {number: "1"}
             ]}
@@ -26,7 +26,7 @@ describe("PgArray", () => {
 
     testSyntax(PgArray, {
         str: "array[ '' ]",
-        result: {items: [
+        result: {array: [
             {elements: [
                 {content: ""}
             ]}
