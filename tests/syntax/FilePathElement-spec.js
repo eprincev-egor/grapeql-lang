@@ -21,4 +21,9 @@ describe("FilePathElement", () => {
         }
     });
 
+    testSyntax(FilePathElement, {
+        str: ")",
+        error: /expected file path/
+    });
+
 });
