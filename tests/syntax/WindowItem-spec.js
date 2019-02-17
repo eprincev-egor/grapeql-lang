@@ -31,4 +31,9 @@ describe("WindowItem", () => {
         }
     });
 
+    testSyntax(WindowItem, {
+        str: "****",
+        error: /SyntaxError/
+    });
+
 });
