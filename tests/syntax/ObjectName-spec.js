@@ -1,5 +1,4 @@
 "use strict";
-"use strict";
 
 const ObjectName = require("../../lib/syntax/ObjectName");
 const GrapeQLCoach = require("../../lib/GrapeQLCoach");

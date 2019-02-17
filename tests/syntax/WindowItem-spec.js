@@ -1,7 +1,9 @@
 "use strict";
 
 const WindowItem = require("../../lib/syntax/WindowItem");
+const GrapeQLCoach = require("../../lib/GrapeQLCoach");
 const testSyntax = require("../testSyntax");
+const assert = require("assert");
 
 describe("WindowItem", () => {
 
@@ -34,6 +36,15 @@ describe("WindowItem", () => {
     testSyntax(WindowItem, {
         str: "****",
         error: /SyntaxError/
+    });
+
+    it("WindowItem.is(something wrong)", () => {
+        let coach = new GrapeQLCoach("**");
+
+        assert.strictEqual(
+            coach.isWindowItem(),
+            false
+        );
     });
 
 });
