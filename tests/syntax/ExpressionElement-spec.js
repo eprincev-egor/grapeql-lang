@@ -71,15 +71,6 @@ describe("ExpressionElement", () => {
     });
 
     testSyntax(ExpressionElement, {
-        str: "numeric(14, 2)",
-        result: {
-            element: {
-                type: "numeric(14,2)"
-            }
-        }
-    });
-
-    testSyntax(ExpressionElement, {
         str: "public.table.column",
         result: {
             element: {
@@ -165,15 +156,6 @@ describe("ExpressionElement", () => {
     testSyntax(ExpressionElement, {
         str: "public.table.*",
         error: /SyntaxError/
-    });
-
-    testSyntax(ExpressionElement, {
-        str: "bigint",
-        result: {
-            element: {
-                type: "bigint"
-            }
-        }
     });
 
     it("error on empty string", () => {
