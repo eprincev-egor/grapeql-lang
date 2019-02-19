@@ -1,5 +1,7 @@
 "use strict";
 
+const GrapeQLCoach = require("../../lib/GrapeQLCoach");
+const assert = require("assert");
 const Column = require("../../lib/syntax/Column");
 const testSyntax = require("../testSyntax");
 
@@ -17,6 +19,36 @@ describe("Column", () => {
                 ]
             },
             as: { word: "id", content: null }
+        }
+    });
+
+    testSyntax(Column, {
+        str: "company.id id",
+        result: {
+            expression: {
+                elements: [
+                    {star: false, link: [
+                        {word: "company", content: null},
+                        {word: "id", content: null}
+                    ]}
+                ]
+            },
+            as: { word: "id", content: null }
+        }
+    });
+
+    testSyntax(Column, {
+        str: "company.id \"id\"",
+        result: {
+            expression: {
+                elements: [
+                    {star: false, link: [
+                        {word: "company", content: null},
+                        {word: "id", content: null}
+                    ]}
+                ]
+            },
+            as: { word: null, content: "id" }
         }
     });
 
@@ -42,6 +74,53 @@ describe("Column", () => {
             },
             as: null
         }
+    });
+
+
+    // test keywords
+    
+    const keywords = [
+        "from",
+        "where",
+        "having",
+        "offset",
+        "limit",
+        "fetch",
+        "union",
+        "intersect",
+        "except",
+        "order",
+        "group",
+        // @see joins
+        "on",
+        "using",
+        "left",
+        "right",
+        "full",
+        "inner",
+        "cross",
+        "join"
+    ];
+
+    keywords.forEach(keyword => {
+
+        testSyntax(Column, {
+            str: "1 " + keyword,
+            result: {
+                expression: {elements: [
+                    {number: "1"}
+                ]},
+                as: null
+            }
+        });
+        
+        it(`select ${ keyword }  // select without columns`, () => {
+            let coach = new GrapeQLCoach( keyword );
+
+            assert.ok(
+                !coach.isColumn()
+            );
+        });
     });
 
 });

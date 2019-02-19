@@ -18,6 +18,7 @@ describe("Join", () => {
                 star: null,
                 as: null,
                 columns: null,
+                select: null,
                 joins: [],
     
                 table: {star: false, link: [
@@ -44,6 +45,7 @@ describe("Join", () => {
                 star: null,
                 as: null,
                 columns: null,
+                select: null,
                 joins: [],
     
                 table: {star: false, link: [
@@ -67,6 +69,7 @@ describe("Join", () => {
                 file: null,
                 withOrdinality: null,
                 functionCall: null,
+                select: null,
                 star: null,
                 as: null,
                 columns: null,
@@ -93,6 +96,7 @@ describe("Join", () => {
                 file: null,
                 withOrdinality: null,
                 functionCall: null,
+                select: null,
                 star: null,
                 as: null,
                 columns: null,
@@ -119,6 +123,7 @@ describe("Join", () => {
                 file: null,
                 withOrdinality: null,
                 functionCall: null,
+                select: null,
                 star: null,
                 as: null,
                 columns: null,
@@ -145,6 +150,7 @@ describe("Join", () => {
                 file: null,
                 withOrdinality: null,
                 functionCall: null,
+                select: null,
                 star: null,
                 as: null,
                 columns: null,
@@ -171,6 +177,7 @@ describe("Join", () => {
                 file: null,
                 withOrdinality: null,
                 functionCall: null,
+                select: null,
                 star: null,
                 as: null,
                 columns: null,
@@ -203,6 +210,7 @@ describe("Join", () => {
                 joins: [],
                 withOrdinality: null,
                 star: null,
+                select: null,
                 
                 lateral: true,
                 functionCall: {
@@ -251,6 +259,7 @@ describe("Join", () => {
                 joins: [],
                 withOrdinality: null,
                 star: null,
+                select: null,
                 
                 lateral: true,
                 functionCall: {
@@ -299,6 +308,7 @@ describe("Join", () => {
                 joins: [],
                 withOrdinality: null,
                 star: null,
+                select: null,
 
                 lateral: true,
                 functionCall: {
@@ -352,6 +362,7 @@ describe("Join", () => {
                 file: null,
                 withOrdinality: null,
                 functionCall: null,
+                select: null,
                 as: null,
                 columns: null,
                 joins: [],
@@ -378,6 +389,7 @@ describe("Join", () => {
                 file: null,
                 withOrdinality: null,
                 functionCall: null,
+                select: null,
                 as: null,
                 columns: null,
                 joins: [],

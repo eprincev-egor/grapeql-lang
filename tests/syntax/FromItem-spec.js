@@ -4,7 +4,7 @@ const FromItem = require("../../lib/syntax/FromItem");
 const testSyntax = require("../testSyntax");
 
 describe("FromItem", () => {
-
+/*
     testSyntax(FromItem, {
         str: "public.company",
         result: {
@@ -17,6 +17,7 @@ describe("FromItem", () => {
             columns: null,
             joins: [],
             star: null,
+            select: null,
 
             table: {star: false, link: [
                 {word: "public", content: null},
@@ -36,6 +37,7 @@ describe("FromItem", () => {
             columns: null,
             joins: [],
             star: null,
+            select: null,
             
             only: true,
             table: {star: false, link: [
@@ -54,6 +56,7 @@ describe("FromItem", () => {
             as: null,
             columns: null,
             joins: [],
+            select: null,
 
             star: true,
             
@@ -75,6 +78,7 @@ describe("FromItem", () => {
             columns: null,
             joins: [],
             star: null,
+            select: null,
             
             as: { word: "company", content: null },
             table: {star: false, link: [
@@ -94,6 +98,7 @@ describe("FromItem", () => {
             functionCall: null,
             joins: [],
             star: null,
+            select: null,
 
             as: { word: "company", content: null},
             table: {star: false, link: [
@@ -118,6 +123,7 @@ describe("FromItem", () => {
             columns: null,
             joins: [],
             star: null,
+            select: null,
             
             functionCall: {
                 distinct: null,
@@ -157,6 +163,7 @@ describe("FromItem", () => {
             columns: null,
             joins: [],
             star: null,
+            select: null,
             
             lateral: true,
             functionCall: {
@@ -197,6 +204,7 @@ describe("FromItem", () => {
             joins: [],
             lateral: null,
             star: null,
+            select: null,
             
             withOrdinality: true,
             functionCall: {
@@ -249,6 +257,7 @@ describe("FromItem", () => {
             star: null,
             columns: null,
             joins: [],
+            select: null,
 
             file: {
                 relative: true,
@@ -273,6 +282,7 @@ describe("FromItem", () => {
             withOrdinality: null,
             functionCall: null,
             star: null,
+            select: null,
             columns: null,
             joins: [],
 
@@ -300,6 +310,7 @@ describe("FromItem", () => {
             functionCall: null,
             star: null,
             columns: null,
+            select: null,
             joins: [],
 
             file: {
@@ -323,6 +334,7 @@ describe("FromItem", () => {
             functionCall: null,
             star: null,
             columns: null,
+            select: null,
             joins: [],
 
             file: {
@@ -347,6 +359,7 @@ describe("FromItem", () => {
             functionCall: null,
             star: null,
             columns: null,
+            select: null,
             joins: [
                 {
                     type: "join",
@@ -359,6 +372,7 @@ describe("FromItem", () => {
                         star: null,
                         as: null,
                         columns: null,
+                        select: null,
                         joins: [],
     
                         table: {star: false, link: [
@@ -394,6 +408,7 @@ describe("FromItem", () => {
             functionCall: null,
             star: null,
             columns: null,
+            select: null,
             joins: [
                 {
                     type: "join",
@@ -406,6 +421,7 @@ describe("FromItem", () => {
                         star: null,
                         as: null,
                         columns: null,
+                        select: null,
                         joins: [],
     
                         table: {star: false, link: [
@@ -425,6 +441,7 @@ describe("FromItem", () => {
                         file: null,
                         withOrdinality: null,
                         functionCall: null,
+                        select: null,
                         star: null,
                         as: null,
                         columns: null,
@@ -452,66 +469,118 @@ describe("FromItem", () => {
             as: null
         }
     });
-
-});
-
-/*
-
-
-module.exports = [
-    {
+*/
+    testSyntax(FromItem, {
         str: "( select * from public.order ) as Orders",
         result: {
+            lateral: null,
+            only: null,
+            file: null,
+            withOrdinality: null,
+            functionCall: null,
+            columns: null,
+            joins: [],
+            star: null,
+            table: null,
+            
+            as: {word: "orders", content: null},
             select: {
+                with: null,
                 columns: [
                     {
-                        as: null,
                         expression: {elements: [
-                            {link: [
-                                "*"
-                            ]}
-                        ]}
+                            {star: true, link: []}
+                        ]},
+                        as: null
                     }
                 ],
                 from: [{
-                    table: {link: [
-                        {word: "public"},
-                        {word: "order"}
-                    ]}
-                }]
-            },
-            as: { word: "Orders" }
-        }
-    },
-    {
-        str: "lateral (select * from company) as company (id, inn)",
-        result: {
-            lateral: true,
-            select: {
-                columns: [
-                    {
-                        as: null,
-                        expression: {elements: [
-                            {link: [
-                                "*"
-                            ]}
-                        ]}
-                    }
-                ],
-                from: [{
-                    table: {link: [
-                        {word: "company"}
-                    ]}
-                }]
-            },
-            as: { word: "company" },
-            columns: [
-                {word: "id"},
-                {word: "inn"}
-            ]
-        }
-    },
-    
-];
+                    lateral: null,
+                    only: null,
+                    file: null,
+                    withOrdinality: null,
+                    functionCall: null,
+                    select: null,
+                    as: null,
+                    columns: null,
+                    joins: [],
+                    star: null,
 
-*/
+                    table: {star: false, link: [
+                        {word: "public", content: null},
+                        {word: "order", content: null}
+                    ]}
+                }],
+                where: null,
+                groupBy: null,
+                having: null,
+                window: null,
+                orderBy: null,
+                union: null,
+                offset: null,
+                offsetRow: null,
+                offsetRows: null,
+                limit: null,
+                fetch: null
+            }
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "lateral ( select * from company ) as company (id, inn)",
+        result: {
+            only: null,
+            file: null,
+            withOrdinality: null,
+            functionCall: null,
+            joins: [],
+            star: null,
+            table: null,
+            
+            lateral: true,
+            columns: [
+                {word: "id", content: null},
+                {word: "inn", content: null}
+            ],
+            as: {word: "company", content: null},
+            select: {
+                with: null,
+                columns: [
+                    {
+                        expression: {elements: [
+                            {star: true, link: []}
+                        ]},
+                        as: null
+                    }
+                ],
+                from: [{
+                    lateral: null,
+                    only: null,
+                    file: null,
+                    withOrdinality: null,
+                    functionCall: null,
+                    select: null,
+                    as: null,
+                    columns: null,
+                    joins: [],
+                    star: null,
+
+                    table: {star: false, link: [
+                        {word: "company", content: null}
+                    ]}
+                }],
+                where: null,
+                groupBy: null,
+                having: null,
+                window: null,
+                orderBy: null,
+                union: null,
+                offset: null,
+                offsetRow: null,
+                offsetRows: null,
+                limit: null,
+                fetch: null
+            }
+        }
+    });
+});
