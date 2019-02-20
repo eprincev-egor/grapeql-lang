@@ -844,4 +844,34 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "now_utc() - interval '1 day'",
+        result: {
+            elements: [
+                {
+                    function: {
+                        star: false,
+                        link: [
+                            {word: "now_utc", content: null}
+                        ]
+                    },
+                    all: null,
+                    distinct: null,
+                    arguments: [],
+                    where: null,
+                    orderBy: null,
+                    within: null,
+                    over: null,
+                    emptyOver: null
+                },
+                {operator: "-"},
+                {
+                    interval: {
+                        content: "1 day"
+                    }
+                }
+            ]
+        }
+    });
+
 });

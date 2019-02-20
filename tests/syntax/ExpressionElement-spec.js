@@ -246,4 +246,15 @@ describe("ExpressionElement", () => {
         }
     });
 
+    testSyntax(ExpressionElement, {
+        str: "interval '2 years 13 months'",
+        result: {
+            element: {
+                interval: {
+                    content: "2 years 13 months"
+                }
+            }
+        }
+    });
+
 });
