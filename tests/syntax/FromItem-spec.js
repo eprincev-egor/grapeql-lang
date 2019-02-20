@@ -4,7 +4,7 @@ const FromItem = require("../../lib/syntax/FromItem");
 const testSyntax = require("../testSyntax");
 
 describe("FromItem", () => {
-/*
+
     testSyntax(FromItem, {
         str: "public.company",
         result: {
@@ -469,7 +469,7 @@ describe("FromItem", () => {
             as: null
         }
     });
-*/
+
     testSyntax(FromItem, {
         str: "( select * from public.order ) as Orders",
         result: {
