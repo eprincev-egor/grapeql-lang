@@ -77,5 +77,10 @@ describe("With", () => {
         error: /WITH query name "a" specified more than once/
     });
 
+    testSyntax(With, {
+        str: `with
+        `,
+        error: /expected: WithQuery/
+    });
     
 });
