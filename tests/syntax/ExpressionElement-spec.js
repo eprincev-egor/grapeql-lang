@@ -257,4 +257,69 @@ describe("ExpressionElement", () => {
         }
     });
 
+    testSyntax(ExpressionElement, {
+        str: "exists(select)",
+        result: {
+            element: {
+                exists: {
+                    with: null,
+                    columns: null,
+                    from: null,
+                    where: null,
+                    groupBy: null,
+                    having: null,
+                    window: null,
+                    orderBy: null,
+                    union: null,
+                    offset: null,
+                    offsetRow: null,
+                    offsetRows: null,
+                    limit: null,
+                    fetch: null
+                }
+            }
+        }
+    });
+
+    testSyntax(ExpressionElement, {
+        str: "any(select)",
+        result: {
+            element: {
+                type: "any",
+                array: null,
+                select: {
+                    with: null,
+                    columns: null,
+                    from: null,
+                    where: null,
+                    groupBy: null,
+                    having: null,
+                    window: null,
+                    orderBy: null,
+                    union: null,
+                    offset: null,
+                    offsetRow: null,
+                    offsetRows: null,
+                    limit: null,
+                    fetch: null
+                }
+            }
+        }
+    });
+
+    testSyntax(ExpressionElement, {
+        str: "in( 1 + 1 )",
+        result: {
+            element: {
+                inSelect: null,
+                inItems: [
+                    {elements: [
+                        {number: "1"},
+                        {operator: "+"},
+                        {number: "1"}
+                    ]}
+                ]
+            }
+        }
+    });
 });

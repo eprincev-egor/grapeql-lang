@@ -874,4 +874,182 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "exists(select) and not exists(select)",
+        result: {
+            elements: [
+                {
+                    exists: {
+                        with: null,
+                        columns: null,
+                        from: null,
+                        where: null,
+                        groupBy: null,
+                        having: null,
+                        window: null,
+                        orderBy: null,
+                        union: null,
+                        offset: null,
+                        offsetRow: null,
+                        offsetRows: null,
+                        limit: null,
+                        fetch: null
+                    }
+                },
+                {operator: "and"},
+                {operator: "not"},
+                {
+                    exists: {
+                        with: null,
+                        columns: null,
+                        from: null,
+                        where: null,
+                        groupBy: null,
+                        having: null,
+                        window: null,
+                        orderBy: null,
+                        union: null,
+                        offset: null,
+                        offsetRow: null,
+                        offsetRows: null,
+                        limit: null,
+                        fetch: null
+                    }
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "1 = any(select) or exists(select)",
+        result: {
+            elements: [
+                {number: "1"},
+                {operator: "="},
+                {
+                    type: "any",
+                    array: null,
+                    select: {
+                        with: null,
+                        columns: null,
+                        from: null,
+                        where: null,
+                        groupBy: null,
+                        having: null,
+                        window: null,
+                        orderBy: null,
+                        union: null,
+                        offset: null,
+                        offsetRow: null,
+                        offsetRows: null,
+                        limit: null,
+                        fetch: null
+                    }
+                },
+                {operator: "or"},
+                {
+                    exists: {
+                        with: null,
+                        columns: null,
+                        from: null,
+                        where: null,
+                        groupBy: null,
+                        having: null,
+                        window: null,
+                        orderBy: null,
+                        union: null,
+                        offset: null,
+                        offsetRow: null,
+                        offsetRows: null,
+                        limit: null,
+                        fetch: null
+                    }
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "id in( 1, 2 ) or id = any( ARRAY[ 1, 2 ] )",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "id", content: null}
+                ]},
+                {
+                    inSelect: null,
+                    inItems: [
+                        {elements: [
+                            {number: "1"}
+                        ]},
+                        {elements: [
+                            {number: "2"}
+                        ]}
+                    ]
+                },
+                {operator: "or"},
+                {star: false, link: [
+                    {word: "id", content: null}
+                ]},
+                {operator: "="},
+                {
+                    type: "any",
+                    array: {elements: [
+                        {array: [
+                            {elements: [
+                                {number: "1"}
+                            ]},
+                            {elements: [
+                                {number: "2"}
+                            ]}
+                        ]}
+                    ]},
+                    select: null
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "id not in( 1, 2 ) or id = any( ARRAY[ 1, 2 ] )",
+        result: {
+            elements: [
+                {star: false, link: [
+                    {word: "id", content: null}
+                ]},
+                {operator: "not"},
+                {
+                    inSelect: null,
+                    inItems: [
+                        {elements: [
+                            {number: "1"}
+                        ]},
+                        {elements: [
+                            {number: "2"}
+                        ]}
+                    ]
+                },
+                {operator: "or"},
+                {star: false, link: [
+                    {word: "id", content: null}
+                ]},
+                {operator: "="},
+                {
+                    type: "any",
+                    array: {elements: [
+                        {array: [
+                            {elements: [
+                                {number: "1"}
+                            ]},
+                            {elements: [
+                                {number: "2"}
+                            ]}
+                        ]}
+                    ]},
+                    select: null
+                }
+            ]
+        }
+    });
+
 });
