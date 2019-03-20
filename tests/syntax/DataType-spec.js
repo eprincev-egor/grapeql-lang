@@ -40,11 +40,6 @@ describe("DataType", () => {
     });
 
     testSyntax(DataType, {
-        str: "char",
-        error: /SyntaxError/
-    });
-
-    testSyntax(DataType, {
         str: "\"char\"",
         result: {
             type: "\"char\""
@@ -442,4 +437,47 @@ describe("DataType", () => {
             type: "date"
         }
     });
+
+    testSyntax(DataType, {
+        str: "trigger",
+        result: {
+            type: "trigger"
+        }
+    });
+
+    testSyntax(DataType, {
+        str: "void",
+        result: {
+            type: "void"
+        }
+    });
+
+    testSyntax(DataType, {
+        str: "public.company",
+        result: {
+            type: "public.company"
+        }
+    });
+
+    testSyntax(DataType, {
+        str: "company",
+        result: {
+            type: "public.company"
+        }
+    });
+
+    testSyntax(DataType, {
+        str: "public.company[]",
+        result: {
+            type: "public.company[]"
+        }
+    });
+
+    testSyntax(DataType, {
+        str: "character varying[]",
+        result: {
+            type: "character varying[]"
+        }
+    });
+
 });

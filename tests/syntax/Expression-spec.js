@@ -64,11 +64,6 @@ describe("Expression", () => {
     });
 
     testSyntax(Expression, {
-        str: "1::1",
-        error: /unknown data type/
-    });
-
-    testSyntax(Expression, {
         str: "(1)::bigint",
         result: {
             elements: [
