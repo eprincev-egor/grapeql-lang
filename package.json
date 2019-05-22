@@ -1,6 +1,6 @@
 {
   "name": "grapeql-lang",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "GrapeQL parser",
   "main": "lib/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   "author": "Eprincev Egor",
   "license": "ISC",
   "dependencies": {
-    "lang-coach": "^1.1.8"
+    "lang-coach": "^1.1.9"
   },
   "devDependencies": {
     "eslint": "^5.13.0",
