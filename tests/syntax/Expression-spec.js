@@ -1047,4 +1047,15 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "'' not null",
+        result: {
+            elements: [
+                {content: ""},
+                {operator: "not"},
+                {null: true}
+            ]
+        }
+    });
+
 });
