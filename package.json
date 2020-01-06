@@ -2,27 +2,49 @@
   "name": "grapeql-lang",
   "version": "1.0.4",
   "description": "GrapeQL parser",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "types": "lib/index.ts",
   "scripts": {
-    "test": "mocha ./tests/**/*-spec.js",
-    "lint": "eslint ./lib/**/*.js && eslint ./tests/**/*.js"
+    "build": "tsc",
+    "test": "nyc mocha",
+    "lint": "tslint -c tslint.json 'lib/**/*.ts' && tslint -c test/tslint.json 'test/**/*.ts'",
+    "prepublishOnly": "tsc"
   },
   "keywords": [
     "grapeql",
     "parser",
     "syntax"
   ],
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true,
+    "exclude": [
+      "dist",
+      "coverage"
+    ]
+  },
   "author": "Eprincev Egor",
   "license": "ISC",
   "dependencies": {
-    "lang-coach": "^1.1.9"
+    "lang-coach": "^2.1.1"
   },
   "devDependencies": {
-    "eslint": "^5.13.0",
-    "mocha": "^5.2.0"
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.12.18",
+    "mocha": "^5.2.0",
+    "source-map-support": "^0.5.16",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
   },
   "directories": {
     "lib": "lib",
-    "test": "tests"
+    "test": "test"
   }
 }
