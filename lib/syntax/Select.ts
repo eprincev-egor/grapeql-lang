@@ -1,6 +1,6 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import With from "./With";
 import Column from "./Column";
 import Expression from "./Expression";
@@ -54,18 +54,28 @@ export default class Select extends Syntax<Select> {
     structure() {
         return {
             with: With,
-            columns: [Column],
-            from: [FromItem],
+            columns: Types.Array({
+                element: Column
+            }),
+            from: Types.Array({
+                element: FromItem
+            }),
             where: Expression,
-            groupBy: [GroupByElement],
+            groupBy: Types.Array({
+                element: GroupByElement
+            }),
             having: Expression,
-            window: [WindowItem],
-            orderBy: [OrderByElement],
+            window: Types.Array({
+                element: WindowItem
+            }),
+            orderBy: Types.Array({
+                element: OrderByElement
+            }),
             union: Union,
-            offset: "string",
-            offsetRow: "boolean",
-            offsetRows: "boolean",
-            limit: "string",
+            offset: Types.String,
+            offsetRow: Types.Boolean,
+            offsetRows: Types.Boolean,
+            limit: Types.String,
             fetch: SelectFetch
         };
     }
@@ -73,7 +83,7 @@ export default class Select extends Syntax<Select> {
     parse(coach, data) {
         // options = options || {allowCustomReturning: false};
 
-        Select.parseWith(coach, data);
+        this.parseWith(coach, data);
 
         coach.expectWord("select");
         
@@ -94,7 +104,7 @@ export default class Select extends Syntax<Select> {
         //     }
         // }
         
-        Select.parseColumns(coach, data);
+        this.parseColumns(coach, data);
 
         // if ( this.returningValue ) {
         //     if( !this.columns.length ) {
@@ -114,14 +124,14 @@ export default class Select extends Syntax<Select> {
         //     }
         // }
 
-        Select.parseFrom(coach, data);
-        Select.parseWhere(coach, data);
-        Select.parseGroupBy(coach, data);
-        Select.parseHaving(coach, data);
-        Select.parseWindow(coach, data);
-        Select.parseOrderBy(coach, data);
-        Select.parseOffsets(coach, data);
-        Select.parseUnion(coach, data);
+        this.parseFrom(coach, data);
+        this.parseWhere(coach, data);
+        this.parseGroupBy(coach, data);
+        this.parseHaving(coach, data);
+        this.parseWindow(coach, data);
+        this.parseOrderBy(coach, data);
+        this.parseOffsets(coach, data);
+        this.parseUnion(coach, data);
 
         validate(data);
     }
@@ -215,17 +225,29 @@ export default class Select extends Syntax<Select> {
         let hasLimit; 
         let hasFetch;
 
-        hasOffset = Select.parseOffset(coach, data);
-        hasLimit = Select.parseLimit(coach, data);
-        hasFetch = Select.parseFetch(coach, data);
+        hasOffset = this.parseOffset(coach, data);
+        hasLimit = this.parseLimit(coach, data);
+        hasFetch = this.parseFetch(coach, data);
 
-        !hasOffset && Select.parseOffset(coach, data);
-        !hasLimit && Select.parseLimit(coach, data);
-        !hasFetch && Select.parseFetch(coach, data);
+        if ( !hasOffset ) { 
+            hasOffset = this.parseOffset(coach, data); 
+        }
+        if ( !hasLimit ) {
+            hasLimit = this.parseLimit(coach, data);
+        }
+        if ( !hasFetch ) {
+            hasFetch = this.parseFetch(coach, data);
+        }
 
-        !hasOffset && Select.parseOffset(coach, data);
-        !hasLimit && Select.parseLimit(coach, data);
-        !hasFetch && Select.parseFetch(coach, data);
+        if ( !hasOffset ) { 
+            hasOffset = this.parseOffset(coach, data); 
+        }
+        if ( !hasLimit ) {
+            hasLimit = this.parseLimit(coach, data);
+        }
+        if ( !hasFetch ) {
+            hasFetch = this.parseFetch(coach, data);
+        }
 
         coach.skipSpace();
     }
@@ -305,7 +327,7 @@ export default class Select extends Syntax<Select> {
     }
 
     toString() {
-        let data = this.data;
+        const data = this.data;
         // options = options || {pg: false};
         let out = "";
 
@@ -325,13 +347,13 @@ export default class Select extends Syntax<Select> {
         // }
         
         if ( data.columns ) {
-            out += data.columns.map(item => item.toString()).join(", ");
+            out += data.columns.map((item) => item.toString()).join(", ");
             out += " ";
         }
 
         if ( data.from ) {
             out += "from ";
-            out += data.from.map(item => item.toString()).join(", ");
+            out += data.from.map((item) => item.toString()).join(", ");
             out += " ";
         }
 
@@ -343,13 +365,13 @@ export default class Select extends Syntax<Select> {
 
         if ( data.window ) {
             out += "window ";
-            out += data.window.map(item => item.toString()).join(", ");
+            out += data.window.map((item) => item.toString()).join(", ");
             out += " ";
         }
 
         if ( data.groupBy ) {
             out += "group by ";
-            out += data.groupBy.map(item => item.toString()).join(", ");
+            out += data.groupBy.map((item) => item.toString()).join(", ");
             out += " ";
         }
 
@@ -361,7 +383,7 @@ export default class Select extends Syntax<Select> {
 
         if ( data.orderBy ) {
             out += "order by ";
-            out += data.orderBy.map(item => item.toString()).join(", ");
+            out += data.orderBy.map((item) => item.toString()).join(", ");
             out += " ";
         }
 
@@ -405,9 +427,9 @@ function validate(data) {
     }
 
     // validate from items
-    let fromMap = {};
+    const fromMap = {};
 
-    data.from.forEach(fromItem => {
+    data.from.forEach((fromItem) => {
         validateFromItem( fromMap, fromItem );
     });
 }
@@ -427,8 +449,8 @@ function validateFromItem(fromMap, fromItem) {
     } else {
         // from schema1.company, schema2.company
 
-        let tableLink = fromItem.get("table");
-        let link = tableLink.get("link");
+        const tableLink = fromItem.get("table");
+        const link = tableLink.get("link");
 
         name = tableLink.last();
         name = name.toLowerCase();
@@ -436,7 +458,7 @@ function validateFromItem(fromMap, fromItem) {
         if ( !(name in fromMap) ) {
             fromMap[ name ] = [fromItem];
         } else {
-            let items = fromMap[ name ];
+            const items = fromMap[ name ];
             if ( !Array.isArray(items) ) {
                 throwFromUniqError(name);
             }
@@ -447,14 +469,14 @@ function validateFromItem(fromMap, fromItem) {
                 schema = schema.toLowerCase();
             }
 
-            items.forEach(item => {
+            items.forEach((item) => {
                 let itemSchema = null;
                 if ( item.get("table").get("link").length > 1 ) {
                     itemSchema = item.get("table").first();
                     itemSchema = itemSchema.toLowerCase();
                 }
 
-                if ( itemSchema == schema ) {
+                if ( itemSchema === schema ) {
                     throwFromUniqError(name);
                 }
             });
@@ -470,7 +492,7 @@ function throwFromUniqError(name) {
 
 
 // stop keywords for alias
-Select.keywords = [
+(Select as any).keywords = [
     "from",
     "where",
     "select",

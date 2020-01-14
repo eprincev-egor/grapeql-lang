@@ -1,7 +1,7 @@
 "use strict";
 
-const GrapeQLCoach = require("./GrapeQLCoach");
+import GrapeQLCoach from "./GrapeQLCoach";
 
-module.exports = {
+export {
     GrapeQLCoach
 };
