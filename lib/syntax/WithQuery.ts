@@ -1,18 +1,23 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 import ValuesRow from "./ValuesRow";
+import ISyntaxes from "./ISyntaxes";
 
 export default class WithQuery extends Syntax<WithQuery> {
     structure() {
-        const Select = WithQuery.prototype.Coach.Select;
+        const Select = this.syntax.Select as any as ISyntaxes["Select"];
 
         return {
             name: ObjectName,
-            columns: [ObjectName],
+            columns: Types.Array({
+                element: ObjectName
+            }),
             select: Select,
-            values: [ValuesRow]
+            values: Types.Array({
+                element: ValuesRow
+            })
         };
     }
 

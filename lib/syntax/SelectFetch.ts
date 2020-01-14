@@ -1,15 +1,15 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
 export default class SelectFetch extends Syntax<SelectFetch> {
     structure() {
         return {
-            first: "boolean",
-            next: "boolean",
-            row: "boolean",
-            rows: "boolean",
-            count: "number"
+            first: Types.Boolean,
+            next: Types.Boolean,
+            row: Types.Boolean,
+            rows: Types.Boolean,
+            count: Types.Number
         };
     }
 
@@ -49,7 +49,7 @@ export default class SelectFetch extends Syntax<SelectFetch> {
     }
 
     toString() {
-        let data = this.data;
+        const data = this.data;
         let out = "";
 
         out += "fetch ";

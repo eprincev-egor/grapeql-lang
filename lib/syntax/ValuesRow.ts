@@ -1,12 +1,14 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import ValueItem from "./ValueItem";
 
 export default class ValuesRow extends Syntax<ValuesRow> {
     structure() {
         return {
-            values: [ValueItem]
+            values: Types.Array({
+                element: ValueItem
+            })
         };
     }
 
@@ -27,7 +29,7 @@ export default class ValuesRow extends Syntax<ValuesRow> {
     toString() {
         let out = "(";
 
-        out += this.data.values.map(valueItem => valueItem.toString()).join(", ");
+        out += this.data.values.map((valueItem) => valueItem.toString()).join(", ");
 
         out += ")";
         return out;

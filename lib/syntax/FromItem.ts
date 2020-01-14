@@ -10,7 +10,7 @@ import ISyntaxes from "./ISyntaxes";
 
 export default class FromItem extends Syntax<FromItem> {
     structure() {
-        const Select = this.syntax.Expression as any as ISyntaxes["Select"];
+        const Select = this.syntax.Select as any as ISyntaxes["Select"];
         
         return {
             only: Types.Boolean,

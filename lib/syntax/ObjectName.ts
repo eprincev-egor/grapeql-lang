@@ -1,12 +1,13 @@
 "use strict";
 
 import DoubleQuotes from "./DoubleQuotes";
+import { Types } from "lang-coach";
 
 export default class ObjectName extends DoubleQuotes {
     structure() {
         return {
-            content: "string",
-            word: "string"
+            content: Types.String,
+            word: Types.String
         };
     }
 

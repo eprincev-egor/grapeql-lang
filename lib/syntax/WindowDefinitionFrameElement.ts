@@ -1,6 +1,6 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import PgNumber from "./PgNumber";
 
 /*
@@ -15,10 +15,10 @@ export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitio
     structure() {
         return {
             value: PgNumber,
-            unbounded: "boolean",
-            currentRow: "boolean",
-            preceding: "boolean",
-            following: "boolean"
+            unbounded: Types.Boolean,
+            currentRow: Types.Boolean,
+            preceding: Types.Boolean,
+            following: Types.Boolean
         };
     }
 
@@ -29,12 +29,12 @@ export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitio
 
             data.unbounded = true;
 
-            let word = coach.readWord();
-            if ( word != "preceding" && word != "following" ) {
+            const word = coach.readWord();
+            if ( word !== "preceding" && word !== "following" ) {
                 coach.throwError("expected preceding or following");
             }
 
-            if ( word == "preceding" ) {
+            if ( word === "preceding" ) {
                 data.preceding = true;
             } else {
                 data.following = true;
@@ -50,12 +50,12 @@ export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitio
             data.value = coach.parsePgNumber();
             coach.skipSpace();
 
-            let word = coach.readWord();
-            if ( word != "preceding" && word != "following" ) {
+            const word = coach.readWord();
+            if ( word !== "preceding" && word !== "following" ) {
                 coach.throwError("expected preceding or following");
             }
 
-            if ( word == "preceding" ) {
+            if ( word === "preceding" ) {
                 data.preceding = true;
             } else {
                 data.following = true;

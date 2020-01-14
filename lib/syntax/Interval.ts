@@ -1,18 +1,18 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import SingleQuotesString from "./SingleQuotesString";
 import DollarString from "./DollarString";
 
 export default class Interval extends Syntax<Interval> {
     structure() {
         return {
-            interval: {
-                type: Syntax,
-                validate: value =>
-                    value instanceof SingleQuotesString ||
-                    value instanceof DollarString
-            }
+            interval: Types.Or({
+                or: [
+                    SingleQuotesString, 
+                    DollarString
+                ]
+            })
         };
     }
 

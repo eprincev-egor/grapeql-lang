@@ -1,13 +1,16 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
+import ISyntaxes from "./ISyntaxes";
 
 export default class PgArray extends Syntax<PgArray> {
     structure() {
-        const Expression = PgArray.prototype.Coach.Expression;
+        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
 
         return {
-            array: [Expression]
+            array: Types.Array({
+                element: Expression
+            })
         };
     }
 
@@ -33,7 +36,7 @@ export default class PgArray extends Syntax<PgArray> {
     toString() {
         let out = "array[";
         
-        out += this.data.array.map(item => item.toString()).join(", ");
+        out += this.data.array.map((item) => item.toString()).join(", ");
 
         out += "]";
         return out;

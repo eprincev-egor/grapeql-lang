@@ -1,17 +1,18 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
+import ISyntaxes from "./ISyntaxes";
 
 export default class Union extends Syntax<Union> {
     structure() {
-        const Select = Union.prototype.Coach.Select;
+        const Select = this.syntax.Select as any as ISyntaxes["Select"];
 
         return {
-            union: "boolean",
-            except: "boolean",
-            intersect: "boolean",
-            all: "boolean",
-            distinct: "boolean",
+            union: Types.Boolean,
+            except: Types.Boolean,
+            intersect: Types.Boolean,
+            all: Types.Boolean,
+            distinct: Types.Boolean,
             select: Select
         };
     }

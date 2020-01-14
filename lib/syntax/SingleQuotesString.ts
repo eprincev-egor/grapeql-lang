@@ -1,11 +1,11 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
 export default class SingleQuotesString extends Syntax<SingleQuotesString> {
     structure() {
         return {
-            content: "string"
+            content: Types.String
         };
     }
 

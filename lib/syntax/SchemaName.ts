@@ -1,12 +1,12 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
-export default class SchemaName extends Syntax<SchemaName> {
+export default class SchemaName<Child extends SchemaName = any> extends Syntax<SchemaName & Child> {
     structure() {
         return {
-            schema: "text",
-            name: "text"
+            schema: Types.String,
+            name: Types.String
         };
     }
 
@@ -17,13 +17,13 @@ export default class SchemaName extends Syntax<SchemaName> {
     parse(coach, data) {
         
         // name
-        let i = coach.i;
-        let objectLink = coach.parseObjectLink();
-        let link = objectLink.get("link");
+        const i = coach.i;
+        const objectLink = coach.parseObjectLink();
+        const link = objectLink.get("link");
 
         if ( 
-            link.length != 2 &&
-            link.length != 1
+            link.length !== 2 &&
+            link.length !== 1
         ) {
             coach.i = i;
             coach.throwError("invalid name " + objectLink.toString());
@@ -31,7 +31,7 @@ export default class SchemaName extends Syntax<SchemaName> {
 
         let schema = "public";
         let name = link[0].toLowerCase();
-        if ( link.length == 2 ) {
+        if ( link.length === 2 ) {
             schema = name;
             name = link[1].toLowerCase();
         }

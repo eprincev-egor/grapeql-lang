@@ -33,12 +33,12 @@ export default class WindowItem extends Syntax<WindowItem> {
             return false;
         }
 
-        let i = coach.i;
+        const i = coach.i;
 
         coach.parseObjectName();
         coach.skipSpace();
 
-        let isWindowItem = coach.is(/as\s*\(/i);
+        const isWindowItem = coach.is(/as\s*\(/i);
 
         coach.i = i;
         return isWindowItem;

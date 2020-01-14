@@ -11,24 +11,27 @@ where
         CROSS JOIN
  */
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
 import ObjectName from "./ObjectName";
+import ISyntaxes from "./ISyntaxes";
 
 export default class Join extends Syntax<Join> {
     structure() {
-        const FromItem = Join.prototype.Coach.FromItem;
+        const FromItem = this.syntax.Expression as any as ISyntaxes["FromItem"];
         
         return {
-            type: "string",
+            type: Types.String,
             from: FromItem,
             on: Expression,
-            using: [ObjectName]
+            using: Types.Array({
+                element: ObjectName
+            })
         };
     }
 
     parse(coach, data) {
-        let lateralErrorIndex = coach.i;
+        const lateralErrorIndex = coach.i;
 
         let type = coach.expect(/(((left|right|full)\s+(outer\s+)?)|(inner\s+)?|cross\s+)join\s+/i, "expected join keyword");
         type = type.toLowerCase()
@@ -43,7 +46,7 @@ export default class Join extends Syntax<Join> {
         coach.skipSpace();
 
         if ( data.from.get("lateral") ) {
-            if ( type != "join" && type != "left join" && type != "inner join" )  {
+            if ( type !== "join" && type !== "left join" && type !== "inner join" )  {
                 coach.i = lateralErrorIndex;
                 coach.throwError("The combining JOIN type must be INNER or LEFT for a LATERAL reference");
             }
@@ -83,7 +86,7 @@ export default class Join extends Syntax<Join> {
         if ( this.data.on ) {
             out += " on " + this.data.on.toString();
         } else {
-            out += " using (" + this.data.using.map(elem => elem.toString()).join(", ") + ")";
+            out += " using (" + this.data.using.map((elem) => elem.toString()).join(", ") + ")";
         }
 
         return out;

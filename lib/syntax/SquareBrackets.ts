@@ -1,10 +1,11 @@
 "use strict";
 
 import {Syntax} from "lang-coach";
+import ISyntaxes from "./ISyntaxes";
 
 export default class SquareBrackets extends Syntax<SquareBrackets> {
     structure() {
-        const Expression = SquareBrackets.prototype.Coach.Expression;
+        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
 
         return {
             content: Expression

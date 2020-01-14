@@ -1,6 +1,6 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import WithQuery from "./WithQuery";
 
 // WITH [ RECURSIVE ] with_query [, ...]
@@ -8,8 +8,10 @@ import WithQuery from "./WithQuery";
 export default class With extends Syntax<With> {
     structure() {
         return {
-            recursive: "boolean",
-            queries: [WithQuery]
+            recursive: Types.Boolean,
+            queries: Types.Array({
+                element: WithQuery
+            })
         };
     }
 
@@ -24,9 +26,9 @@ export default class With extends Syntax<With> {
         data.queries = coach.parseComma("WithQuery");
 
         // query name must be unique
-        let existsName = {};
-        data.queries.forEach(query => {
-            let name = query.get("name").toLowerCase();
+        const existsName = {};
+        data.queries.forEach((query) => {
+            const name = query.get("name").toLowerCase();
 
             if ( name in existsName ) {
                 throw new Error(`WITH query name "${ name }" specified more than once`);
@@ -47,7 +49,7 @@ export default class With extends Syntax<With> {
             sql += "recursive ";
         }
 
-        sql += this.data.queries.map(query =>
+        sql += this.data.queries.map((query) =>
             query.toString()
         ).join(", ");
 

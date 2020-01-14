@@ -1,14 +1,14 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
 const OPERATORS = [
-    "=","<>","!=","<",">","<=",">=","||","!","!!","%","@","-","<<","&<","&>",">>",
-    "<@","@>","~=","&&",">^","<^","@@","*","<->","/","+","#=","#<>","#<","#>",
-    "#<=","#>=","<?>","|/","||/","|","<#>","~","!~","#","?#","@-@","?-","?|","^",
-    "~~","!~~","~*","!~*","|>>","<<|","?||","?-|","##","&","<<=",">>=","~~*",
-    "!~~*","~<~","~<=~","~>=~","~>~","&<|","|&>","@@@","*=","*<>","*<","*>","*<=",
-    "*>=","-|-","->","->>","#>>","?","?&","#-", "::"
+    "=", "<>", "!=", "<", ">", "<=", ">=", "||", "!", "!!", "%", "@", "-", "<<", "&<", "&>", ">>",
+    "<@", "@>", "~=", "&&", ">^", "<^", "@@", "*", "<->", "/", "+", "#=", "#<>", "#<", "#>",
+    "#<=", "#>=", "<?>", "|/", "||/", "|", "<#>", "~", "!~", "#", "?#", "@-@", "?-", "?|", "^",
+    "~~", "!~~", "~*", "!~*", "|>>", "<<|", "?||", "?-|", "##", "&", "<<=", ">>=", "~~*",
+    "!~~*", "~<~", "~<=~", "~>=~", "~>~", "&<|", "|&>", "@@@", "*=", "*<>", "*<", "*>", "*<=",
+    "*>=", "-|-", "->", "->>", "#>>", "?", "?&", "#-", "::"
 ];
 const OPERATORS_SYMBOLS = (
     OPERATORS
@@ -25,9 +25,9 @@ const OPERATORS_SYMBOLS = (
 );
 
 const OPERATORS_MAP = {};
-OPERATORS.forEach(operator => {
+OPERATORS.forEach((operator) => {
     for (let i = 0, n = operator.length; i < n; i++) {
-        let sequence = operator.slice(0, i + 1);
+        const sequence = operator.slice(0, i + 1);
         OPERATORS_MAP[ sequence ] = true;
     }
 });
@@ -45,7 +45,7 @@ const CONDITION_OPERATORS = [
 export default class Operator extends Syntax<Operator> {
     structure() {
         return {
-            operator: "string"
+            operator: Types.String
         };
     }
 
@@ -71,7 +71,7 @@ export default class Operator extends Syntax<Operator> {
         
         // check condition operators
         coach.checkpoint();
-        let word = coach.readWord();
+        const word = coach.readWord();
         
         if ( CONDITION_OPERATORS.includes(word) ) {
             data.operator = word;
@@ -83,7 +83,7 @@ export default class Operator extends Syntax<Operator> {
         // is not unknown
         // is distinct from
         // is unknown
-        else if ( word == "is" ) {
+        else if ( word === "is" ) {
             data.operator = "is";
             
             if ( coach.isWord("not") ) {
@@ -107,7 +107,7 @@ export default class Operator extends Syntax<Operator> {
         }
         
         // similar to
-        else if ( word == "similar" ) {
+        else if ( word === "similar" ) {
             coach.expectWord("to");
             
             data.operator = "similar to";
@@ -120,10 +120,10 @@ export default class Operator extends Syntax<Operator> {
             data.operator = "";
 
             for (; coach.i < coach.n; coach.i++) {
-                let symbol = coach.str[ coach.i ];
+                const symbol = coach.str[ coach.i ];
                 
-                let sequence = data.operator + symbol;
-                let existsSimilarSequence = sequence in OPERATORS_MAP;
+                const sequence = data.operator + symbol;
+                const existsSimilarSequence = sequence in OPERATORS_MAP;
 
                 if ( existsSimilarSequence ) {
                     data.operator += symbol;
@@ -149,8 +149,8 @@ export default class Operator extends Syntax<Operator> {
                 coach.isWord("notnull") ||
                 coach.isWord("isnull") 
             ) && 
-            !(str[0] == "-" && str[1] == "-") && // -- comment
-            !(str[0] == "/" && str[1] == "*") // /* comment
+            !(str[0] === "-" && str[1] === "-") && // -- comment
+            !(str[0] === "/" && str[1] === "*") // /* comment
         ); 
     }
     

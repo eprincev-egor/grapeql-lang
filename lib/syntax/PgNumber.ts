@@ -1,6 +1,6 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
 // 42
 // 3.5
@@ -12,7 +12,7 @@ import {Syntax} from "lang-coach";
 export default class PgNumber extends Syntax<PgNumber> {
     structure() {
         return {
-            number: "string"
+            number: Types.String
         };
     }
 
@@ -21,10 +21,10 @@ export default class PgNumber extends Syntax<PgNumber> {
         let floatPart = "";
         let ePart = "";
         
-        intPart = PgNumber.readDigits( coach );
+        intPart = this.readDigits( coach );
         if ( coach.is(".") ) {
             coach.i++;
-            floatPart = PgNumber.readDigits( coach );
+            floatPart = this.readDigits( coach );
         }
         
         if ( coach.is("e") || coach.is("E") ) {
@@ -35,7 +35,7 @@ export default class PgNumber extends Syntax<PgNumber> {
                 coach.i++;
             }
             
-            ePart += PgNumber.readDigits( coach );
+            ePart += this.readDigits( coach );
         }
         
         
@@ -50,10 +50,10 @@ export default class PgNumber extends Syntax<PgNumber> {
         }
     }
     
-    static readDigits(coach) {
+    readDigits(coach) {
         let digits = "";
         for (; coach.i < coach.n; coach.i++) {
-            let symbol = coach.str[ coach.i ];
+            const symbol = coach.str[ coach.i ];
             
             if ( /\d/.test(symbol) ) {
                 digits += symbol;

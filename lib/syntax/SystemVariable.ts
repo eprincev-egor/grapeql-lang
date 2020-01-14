@@ -1,11 +1,11 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
 export default class SystemVariable extends Syntax<SystemVariable> {
     structure() {
         return {
-            name: "string"
+            name: Types.String
         };
     }
 
@@ -14,7 +14,7 @@ export default class SystemVariable extends Syntax<SystemVariable> {
 
         data.name = "";
         for (; coach.i < coach.n; coach.i++) {
-            let symbol = coach.str[ coach.i ];
+            const symbol = coach.str[ coach.i ];
 
             if ( !/[\wА-ЯЁа-яё\d_$]/i.test(symbol) ) {
                 break;

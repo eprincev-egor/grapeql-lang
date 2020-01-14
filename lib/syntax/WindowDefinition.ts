@@ -1,9 +1,10 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 import OrderByElement from "./OrderByElement";
 import WindowDefinitionFrame from "./WindowDefinitionFrame";
+import ISyntaxes from "./ISyntaxes";
 
 /*
 window_definition is
@@ -24,12 +25,16 @@ UNBOUNDED FOLLOWING
 
 export default class WindowDefinition extends Syntax<WindowDefinition> {
     structure() {
-        const Expression = WindowDefinition.prototype.Coach.Expression;
+        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
 
         return {
             windowDefinition: ObjectName,
-            partitionBy: [Expression],
-            orderBy: [OrderByElement],
+            partitionBy: Types.Array({
+                element: Expression
+            }),
+            orderBy: Types.Array({
+                element: OrderByElement
+            }),
             range: WindowDefinitionFrame,
             rows: WindowDefinitionFrame
         };
@@ -80,7 +85,7 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
     }
 
     toString() {
-        let data = this.data;
+        const data = this.data;
         let out = "";
 
         if ( data.windowDefinition ) {
@@ -91,14 +96,14 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
             if ( out ) { out += " "; }
 
             out += "partition by ";
-            out += data.partitionBy.map(item => item.toString()).join(", ");
+            out += data.partitionBy.map((item) => item.toString()).join(", ");
         }
 
         if ( data.orderBy ) {
             if ( out ) { out += " "; }
 
             out += "order by ";
-            out += data.orderBy.map(item => item.toString()).join(", ");
+            out += data.orderBy.map((item) => item.toString()).join(", ");
         }
 
         if ( data.range ) {

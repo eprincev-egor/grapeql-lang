@@ -1,14 +1,13 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
 export default class PgNull extends Syntax<PgNull> {
     structure() {
         return {
-            null: {
-                type: "boolean",
+            null: Types.Boolean({
                 default: true
-            }
+            })
         };
     }
 

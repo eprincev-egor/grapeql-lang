@@ -1,12 +1,12 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
 
 export default class ValueItem extends Syntax<ValueItem> {
     structure() {
         return {
-            default: "boolean",
+            default: Types.Boolean,
             expression: Expression
         };
     }

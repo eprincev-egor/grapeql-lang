@@ -1,16 +1,17 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 
 export default class ObjectLink extends Syntax<ObjectLink> {
     structure() {
         return {
-            star: {
-                type: "boolean",
+            star: Types.Boolean({
                 nullAsFalse: true
-            },
-            link: [ObjectName]
+            }),
+            link: Types.Array({
+                element: ObjectName
+            })
         };
     }
 
@@ -18,7 +19,7 @@ export default class ObjectLink extends Syntax<ObjectLink> {
         options = options || {availableStar: false};
         data.link = [];
 
-        ObjectLink.parseLink(coach, data, options);
+        this.parseLink(coach, data, options);
     }
 
     parseLink(coach, data, options) {
@@ -32,7 +33,7 @@ export default class ObjectLink extends Syntax<ObjectLink> {
         }
 
 
-        let elem = coach.parseObjectName();
+        const elem = coach.parseObjectName();
         data.link.push( elem );
 
         if ( coach.is(/\s*\./) ) {
@@ -40,7 +41,7 @@ export default class ObjectLink extends Syntax<ObjectLink> {
             coach.i++; // .
             coach.skipSpace();
 
-            ObjectLink.parseLink( coach, data, options );
+            this.parseLink( coach, data, options );
         }
     }
 
@@ -48,15 +49,15 @@ export default class ObjectLink extends Syntax<ObjectLink> {
         options = options || {availableStar: false};
 
         return (
-            ObjectName.is(coach, str) ||
+            ObjectName.prototype.is(coach) ||
             // select *
             options.availableStar &&
-            str[0] == "*"
+            str[0] === "*"
         );
     }
 
     toString() {
-        let elems = this.data.link.map(elem =>
+        const elems = this.data.link.map((elem) =>
             elem.toString()
         );
         let str = elems.join(".");
@@ -84,20 +85,24 @@ export default class ObjectLink extends Syntax<ObjectLink> {
     }
     
     clear() {
-        this.set("link", []);
+        this.set({
+            link: []
+        });
     }
 
     push(objectName) {
-        if ( typeof objectName == "string" ) {
+        if ( typeof objectName === "string" ) {
             objectName = new ObjectName({
                 word: objectName
             });
         }
 
-        let link = this.data.link.slice();
+        const link = this.data.link.slice();
         link.push( objectName );
 
-        this.set("link", link);
+        this.set({
+            link
+        });
     }
 }
 

@@ -1,15 +1,18 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
+import ISyntaxes from "./ISyntaxes";
 
 export default class In extends Syntax<In> {
     structure() {
-        const Expression = In.prototype.Coach.Expression;
-        const Select = In.prototype.Coach.Select;
+        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
+        const Select = this.syntax.Select as any as ISyntaxes["Select"];
 
         return {
             inSelect: Select,
-            inItems: [Expression]
+            inItems: Types.Array({
+                element: Expression
+            })
         };
     }
 

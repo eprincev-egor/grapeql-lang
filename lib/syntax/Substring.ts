@@ -1,10 +1,11 @@
 "use strict";
 
 import {Syntax} from "lang-coach";
+import ISyntaxes from "./ISyntaxes";
 
 export default class Substring extends Syntax<Substring> {
     structure() {
-        const Expression = Substring.prototype.Coach.Expression;
+        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
 
         return {
             str: Expression,

@@ -1,23 +1,22 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import Operator from "./Operator";
+import ISyntaxes from "./ISyntaxes";
 
 export default class OrderByElement extends Syntax<OrderByElement> {
     structure() {
-        const Expression = OrderByElement.prototype.Coach.Expression;
+        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
 
         return {
             expression: Expression,
-            vector: {
-                type: "string",
+            vector: Types.String({
                 enum: ["asc", "desc"]
-            },
+            }),
             using: Operator,
-            nulls: {
-                type: "string",
+            nulls: Types.String({
                 enum: ["first", "last"]
-            }
+            })
         };
     }
 
