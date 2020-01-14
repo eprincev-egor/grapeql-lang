@@ -1,18 +1,19 @@
 "use strict";
 
 import DoubleQuotes from "./DoubleQuotes";
+import { Types } from "lang-coach";
 
-export default class FilePathElement extends DoubleQuotes {
+export default class FilePathElement extends DoubleQuotes<FilePathElement> {
     structure() {
         return {
-            name: "string",
-            content: "string"
+            name: Types.String,
+            content: Types.String
         };
     }
 
-    parse(coach, data) {
+    parse(coach, data: this["TInputData"]) {
         if ( coach.isDoubleQuotes() ) {
-            let quotes = coach.parseDoubleQuotes();
+            const quotes = coach.parseDoubleQuotes();
             data.content = quotes.get("content");
         }
         else {

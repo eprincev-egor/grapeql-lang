@@ -1,6 +1,6 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
 // TODO: load types from db
 const types = [
@@ -81,8 +81,8 @@ const types = [
     "void"
 ];
 
-let firstWords = {};
-types.forEach(type => {
+const firstWords = {};
+types.forEach((type) => {
     let firstWord = type.split(" ")[0];
     firstWord = firstWord.split("(")[0];
     
@@ -92,8 +92,8 @@ types.forEach(type => {
     firstWords[ firstWord ].push( type );
 });
 
-let regExps = {};
-types.forEach(type => {
+const regExps = {};
+types.forEach((type) => {
     let regExp = type.replace(/ /g, "\\s+");
     regExp = regExp.replace("(n)", "\\s*\\(\\s*\\d+\\s*\\)");
     regExp = regExp.replace("(n,n)", "\\s*\\(\\s*\\d+\\s*,\\s*\\d+\\s*\\)");
@@ -104,7 +104,7 @@ types.forEach(type => {
 export default class DataType extends Syntax<DataType> {
     structure() {
         return {
-            type: "string"
+            type: Types.String
         };
     }
 
@@ -118,15 +118,15 @@ export default class DataType extends Syntax<DataType> {
         }
         
         coach.checkpoint();
-        let word = coach.readWord().toLowerCase();
-        let availableTypes = firstWords[ word ] || [];
+        const word = coach.readWord().toLowerCase();
+        const availableTypes = firstWords[ word ] || [];
         
         coach.rollback();
         
         
         for (let i = 0, n = availableTypes.length; i < n; i++) {
-            let availableType = availableTypes[ i ];
-            let regExp = regExps[ availableType ];
+            const availableType = availableTypes[ i ];
+            const regExp = regExps[ availableType ];
             
             if ( coach.is(regExp) ) {
                 data.type = regExp.exec( coach.str.slice(coach.i) )[0];
@@ -142,11 +142,11 @@ export default class DataType extends Syntax<DataType> {
         }
         
         if ( !data.type ) {
-            let schemaName = coach.parseSchemaName();
+            const schemaName = coach.parseSchemaName();
             data.type = schemaName.toString();
         }
         
-        DataType.parseArrayType(coach, data);
+        this.parseArrayType(coach, data);
     }
     
     parseArrayType(coach, data) {
@@ -159,7 +159,7 @@ export default class DataType extends Syntax<DataType> {
                 coach.i++;
                 data.type += "[]";
             } else {
-                let pgNumb = coach.parsePgNumber();
+                const pgNumb = coach.parsePgNumber();
                 coach.skipSpace();
                 coach.expect("]");
                 
@@ -168,7 +168,7 @@ export default class DataType extends Syntax<DataType> {
         }
         
         if ( coach.is(/\s*\[/) ) {
-            DataType.parseArrayType(coach, data);
+            this.parseArrayType(coach, data);
         }
     }
     

@@ -1,31 +1,34 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import File from "./File";
 import FunctionCall from "./FunctionCall";
 import TableLink from "./TableLink";
 import ObjectName from "./ObjectName";
 import Join from "./Join";
+import ISyntaxes from "./ISyntaxes";
 
 export default class FromItem extends Syntax<FromItem> {
     structure() {
-        const Select = FromItem.prototype.Coach.Select;
+        const Select = this.syntax.Expression as any as ISyntaxes["Select"];
         
         return {
-            only: "boolean",
+            only: Types.Boolean,
             table: TableLink,
-            star: "boolean",
+            star: Types.Boolean,
             file: File,
-            lateral: "boolean",
-            withOrdinality: "boolean",
+            lateral: Types.Boolean,
+            withOrdinality: Types.Boolean,
             functionCall: FunctionCall,
             as: ObjectName,
-            columns: [ObjectName],
+            columns: Types.Array({
+                element: ObjectName
+            }),
             select: Select,
-            joins: {
-                type: [Join],
+            joins: Types.Array({
+                element: Join,
                 nullAsEmpty: true
-            }
+            })
         };
     }
 
@@ -57,7 +60,7 @@ export default class FromItem extends Syntax<FromItem> {
         }
         // [ LATERAL ] function_name ( [ argument [, ...] ] )
         //            [ WITH ORDINALITY ] [ [ AS ] alias ]
-        else if ( FromItem.isFromFunctionCall(coach) ) {
+        else if ( this.isFromFunctionCall(coach) ) {
             
             if ( coach.isWord("lateral") ) {
                 coach.expectWord("lateral");
@@ -115,13 +118,13 @@ export default class FromItem extends Syntax<FromItem> {
     }
 
     isFromFunctionCall(coach) {
-        let i = coach.i;
+        const i = coach.i;
 
         if ( coach.isWord("lateral") ) {
             coach.readWord();
             coach.skipSpace();
         }
-        let isFunctionCall = coach.isFunctionCall();
+        const isFunctionCall = coach.isFunctionCall();
 
         coach.i = i;
         return isFunctionCall;
@@ -132,7 +135,7 @@ export default class FromItem extends Syntax<FromItem> {
     }
 
     toString() {
-        let data = this.data;
+        const data = this.data;
         let out = "";
 
         if ( data.file ) {
@@ -176,12 +179,12 @@ export default class FromItem extends Syntax<FromItem> {
 
         if ( data.columns ) {
             out += " (";
-            out += data.columns.map(name => name.toString()).join(", ");
+            out += data.columns.map((name) => name.toString()).join(", ");
             out += ")";
         }
 
         if ( data.joins.length ) {
-            data.joins.forEach(join => {
+            data.joins.forEach((join) => {
                 out += " ";
                 out += join.toString();
             });

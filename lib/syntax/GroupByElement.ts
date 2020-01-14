@@ -1,6 +1,6 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import GroupByElementContent from "./GroupByElementContent";
 import Expression from "./Expression";
 
@@ -14,10 +14,16 @@ import Expression from "./Expression";
 export default class GroupByElement extends Syntax<GroupByElement> {
     structure() {
         return {
-            isEmpty: "boolean",
-            rollup: [GroupByElementContent],
-            cube: [GroupByElementContent],
-            groupingSets: [GroupByElement],
+            isEmpty: Types.Boolean,
+            rollup: Types.Array({
+                element: GroupByElementContent
+            }),
+            cube: Types.Array({
+                element: GroupByElementContent
+            }),
+            groupingSets: Types.Array({
+                element: GroupByElement
+            }),
             expression: Expression
         };
     }
@@ -82,7 +88,7 @@ export default class GroupByElement extends Syntax<GroupByElement> {
     }
     
     toString() {
-        let data = this.data;
+        const data = this.data;
 
         if ( data.isEmpty ) {
             return "()";
@@ -90,14 +96,14 @@ export default class GroupByElement extends Syntax<GroupByElement> {
         
         let out = "";
         if ( data.rollup ) {
-            out += "rollup (" + data.rollup.map(item => item.toString()).join(", ") + ")";
+            out += "rollup (" + data.rollup.map((item) => item.toString()).join(", ") + ")";
         }
         else if ( data.cube ) {
-            out += "cube (" + data.cube.map(item => item.toString()).join(", ") + ")";
+            out += "cube (" + data.cube.map((item) => item.toString()).join(", ") + ")";
         }
         else if ( data.groupingSets ) {
             out += "grouping sets (";
-            out += data.groupingSets.map(set => set.toString()).join(", ");
+            out += data.groupingSets.map((set) => set.toString()).join(", ");
             out += ")";
         }
         else {

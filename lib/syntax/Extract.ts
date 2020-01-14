@@ -1,7 +1,8 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import DataType from "./DataType";
+import ISyntaxes from "./ISyntaxes";
 
 const extractFields = [
     "century",
@@ -27,13 +28,12 @@ const extractFields = [
 
 export default class Extract extends Syntax<Extract> {
     structure() {
-        const Expression = Extract.prototype.Coach.Expression;
+        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
         
         return {
-            field: {
-                type: "string",
+            field: Types.String({
                 enum: extractFields
-            },
+            }),
             type: DataType,
             source: Expression
         };

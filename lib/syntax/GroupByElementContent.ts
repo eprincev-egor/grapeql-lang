@@ -1,6 +1,6 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
 
 /*
@@ -9,8 +9,10 @@ import Expression from "./Expression";
 export default class GroupByElementContent extends Syntax<GroupByElementContent> {
     structure() {
         return {
-            single: "boolean",
-            expressions: [Expression]
+            single: Types.Boolean,
+            expressions: Types.Array({
+                element: Expression
+            })
         };
     }
 
@@ -39,13 +41,13 @@ export default class GroupByElementContent extends Syntax<GroupByElementContent>
     
     toString() {
         if ( this.data.single ) {
-            let expression = this.data.expressions[0];
+            const expression = this.data.expressions[0];
             return expression.toString();
         } 
         else {
             let out = "(";
 
-            out += this.data.expressions.map(expression => 
+            out += this.data.expressions.map((expression) => 
                 expression.toString()
             ).join(", ");
             

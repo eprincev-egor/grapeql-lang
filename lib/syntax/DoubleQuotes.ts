@@ -1,11 +1,11 @@
 "use strict";
  
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
-export default class DoubleQuotes extends Syntax<DoubleQuotes> {
+export default class DoubleQuotes<Child extends DoubleQuotes = any> extends Syntax<DoubleQuotes & Child> {
     structure() {
         return {
-            content: "string"
+            content: Types.String
         };
     }
 
@@ -22,10 +22,10 @@ export default class DoubleQuotes extends Syntax<DoubleQuotes> {
         }
 
         for (; coach.i < coach.n; coach.i++) {
-            let symbol = coach.str[coach.i];
+            const symbol = coach.str[coach.i];
 
-            if ( symbol == "\"" ) {
-                if ( coach.str[coach.i + 1] == "\"" ) {
+            if ( symbol === "\"" ) {
+                if ( coach.str[coach.i + 1] === "\"" ) {
                     coach.i++;
                     content += "\"";
                     continue;
@@ -58,12 +58,12 @@ export default class DoubleQuotes extends Syntax<DoubleQuotes> {
 
         if ( withUEscape ) {
             for (let i = 0, n = content.length; i < n; i++) {
-                let symbol = content[i];
+                const symbol = content[i];
                 let length;
 
-                if ( symbol == escape ) {
+                if ( symbol === escape ) {
                     let expr;
-                    if ( content[i + 1] == "+" ) {
+                    if ( content[i + 1] === "+" ) {
                         length = 8;
                         expr = content.slice(i + 2, i + length);
                     } else {
@@ -83,14 +83,14 @@ export default class DoubleQuotes extends Syntax<DoubleQuotes> {
 
     is(coach, str) {
         return (
-            str[0] == "\"" ||
+            str[0] === "\"" ||
 
             (
-                str[0] == "U" ||
-                str[0] == "u"
+                str[0] === "U" ||
+                str[0] === "u"
             ) &&
-            str[1] == "&" &&
-            str[2] == "\""
+            str[1] === "&" &&
+            str[2] === "\""
         );
     }
 

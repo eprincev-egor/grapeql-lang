@@ -6,7 +6,7 @@ export default class ExpressionElement extends Syntax<ExpressionElement> {
 
     structure() {
         return {
-            element: Syntax
+            element: Syntax as any as (new (...args: any) => Syntax<any>)
         };
     }
 

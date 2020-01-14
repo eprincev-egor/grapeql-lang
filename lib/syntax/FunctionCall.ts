@@ -1,26 +1,33 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import FunctionLink from "./FunctionLink";
 import OrderByElement from "./OrderByElement";
 import WindowDefinition from "./WindowDefinition";
+import ISyntaxes from "./ISyntaxes";
 
 // some(1,2)
 
 export default class FunctionCall extends Syntax<FunctionCall> {
     structure() {
-        const Expression = FunctionCall.prototype.Coach.Expression;
+        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
 
         return {
             function: FunctionLink,
-            all: "boolean",
-            distinct: "boolean",
-            arguments: [Expression],
+            all: Types.Boolean,
+            distinct: Types.Boolean,
+            arguments: Types.Array({
+                element: Expression
+            }),
             where: Expression,
-            orderBy: [OrderByElement],
-            within: [OrderByElement],
+            orderBy: Types.Array({
+                element: OrderByElement
+            }),
+            within: Types.Array({
+                element: OrderByElement
+            }),
             over: WindowDefinition,
-            emptyOver: "boolean"
+            emptyOver: Types.Boolean
         };
     }
 
@@ -56,7 +63,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
 
         // aggregate_name (expression [ , ... ] [ order_by_clause ] )
         if ( coach.isWord("order") ) {
-            data.orderBy = FunctionCall.parseOrderBy(coach, data);
+            data.orderBy = this.parseOrderBy(coach);
         }
 
         coach.skipSpace();
@@ -71,7 +78,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
             coach.expect("(");
             coach.skipSpace();
 
-            data.within = FunctionCall.parseOrderBy(coach, data);
+            data.within = this.parseOrderBy(coach);
 
             coach.skipSpace();
             coach.expect(")");
@@ -125,7 +132,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
             coach.parseFunctionLink();
             coach.skipSpace();
             result = coach.is("(");
-        } catch(err) {
+        } catch (err) {
             result = false;
         }
 
@@ -134,7 +141,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
     }
 
     toString() {
-        let data = this.data;
+        const data = this.data;
         let out = "";
 
         out += data.function.toString();
@@ -147,11 +154,11 @@ export default class FunctionCall extends Syntax<FunctionCall> {
             out += " distinct ";
         }
 
-        out += data.arguments.map(arg => arg.toString()).join(", ");
+        out += data.arguments.map((arg) => arg.toString()).join(", ");
 
         if ( data.orderBy ) {
             out += " order by ";
-            out += data.orderBy.map(item => item.toString()).join(", ");
+            out += data.orderBy.map((item) => item.toString()).join(", ");
             out += " ";
         }
 
@@ -159,7 +166,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
 
         if ( data.within ) {
             out += " within group ( order by ";
-            out += data.within.map(item => item.toString()).join(", ");
+            out += data.within.map((item) => item.toString()).join(", ");
             out += " ) ";
         }
 

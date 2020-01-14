@@ -1,13 +1,15 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 import FilePathElement from "./FilePathElement";
 
 export default class File extends Syntax<File> {
     structure() {
         return {
-            relative: "boolean",
-            path: [FilePathElement]
+            relative: Types.Boolean,
+            path: Types.Array({
+                element: FilePathElement
+            })
         };
     }
 
@@ -19,7 +21,7 @@ export default class File extends Syntax<File> {
         }
 
         if ( !coach.is("/") && !coach.is(".") ) {
-            let elem = new FilePathElement({
+            const elem = new FilePathElement({
                 name: "."
             });
 
@@ -30,20 +32,20 @@ export default class File extends Syntax<File> {
             coach.i++;
         }
 
-        File.parsePath(coach, data);
+        this.parsePath(coach, data);
 
         // ./relative  or  /root
         data.relative = isRelativePath( data.path );
     }
 
     parsePath(coach, data) {
-        let elem = coach.parseFilePathElement();
+        const elem = coach.parseFilePathElement();
         data.path.push(elem);
 
         if ( coach.is(/\s*\//) ) {
             coach.read(/\s*\/+\s*/);
 
-            File.parsePath(coach, data);
+            this.parsePath(coach, data);
         }
     }
 
@@ -55,7 +57,7 @@ export default class File extends Syntax<File> {
     }
 
     toString() {
-        let out = this.data.path.map(elem => elem.toString()).join("/");
+        let out = this.data.path.map((elem) => elem.toString()).join("/");
         
         if ( !this.data.relative ) {
             out = "/" + out;
@@ -66,8 +68,8 @@ export default class File extends Syntax<File> {
 }
 
 function isRelativePath(path) {
-    let firstPathElem = path[0];
-    let firstName = firstPathElem.get("name");
+    const firstPathElem = path[0];
+    const firstName = firstPathElem.get("name");
 
     // path is:  /root
     if ( firstName && !/^\.+$/.test(firstName) ) {

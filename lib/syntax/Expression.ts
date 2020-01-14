@@ -1,13 +1,31 @@
 "use strict";
 
-import {Syntax} from "lang-coach";
+import {Syntax, Types} from "lang-coach";
 
 // true or false
 
 export default class Expression extends Syntax<Expression> {
+
+    // ((( expression )))  strip unnecessary brackets
+    static extrude(elements) {
+        if ( elements.length === 1 ) {
+            const firstElement = elements[0];
+            const isExpression = firstElement instanceof Expression;
+
+            if ( isExpression ) {
+                return Expression.extrude(
+                    firstElement.get("elements")
+                );
+            }
+        }
+        
+        return elements;
+    }
     structure() {
         return {
-            elements: [Syntax]
+            elements: Types.Array({
+                element: Syntax as any as (new (...args: any) => Syntax<any>)
+            })
         };
     }
 
@@ -18,7 +36,7 @@ export default class Expression extends Syntax<Expression> {
         };
         data.elements = [];
 
-        Expression.parseElements(coach, data, options);
+        this.parseElements(coach, data, options);
 
         // (((elem))) => elem
         data.elements = Expression.extrude( data.elements );
@@ -30,17 +48,17 @@ export default class Expression extends Syntax<Expression> {
         // count(*)
         if ( options.availableStar ) {
             if ( coach.is("*") ) {
-                let elem = coach.parseColumnLink({
+                const elemStar = coach.parseColumnLink({
                     availableStar: options.availableStar
                 });
-                data.elements.push( elem );
+                data.elements.push( elemStar );
 
                 coach.skipSpace();
                 return;
             }
         }
 
-        let operators = Expression.parseOperators(coach, options.excludeOperators);
+        const operators = this.parseOperators(coach, options.excludeOperators);
         if ( operators === false ) {
             return;
         }
@@ -49,10 +67,10 @@ export default class Expression extends Syntax<Expression> {
 
 
         // 1::bigint
-        let lastOperator = operators.slice(-1)[0];
-        let isToType = (
+        const lastOperator = operators.slice(-1)[0];
+        const isToType = (
             lastOperator &&
-            lastOperator.get("operator") == "::"
+            lastOperator.get("operator") === "::"
         );
 
         if ( isToType ) {
@@ -88,7 +106,7 @@ export default class Expression extends Syntax<Expression> {
 
         // fix not between
         if ( coach.isWord("not") ) {
-            let i = coach.i;
+            const i = coach.i;
             coach.expectWord("not");
             coach.skipSpace();
 
@@ -96,10 +114,10 @@ export default class Expression extends Syntax<Expression> {
             if ( coach.isBetween() ) {
                 coach.i = i;
 
-                let elem = coach.parseOperator();
+                const operator = coach.parseOperator();
                 coach.skipSpace();
                 
-                data.elements.push( elem );
+                data.elements.push( operator );
             }
             else {
                 coach.i = i;
@@ -124,16 +142,15 @@ export default class Expression extends Syntax<Expression> {
 
         coach.skipSpace();
         if ( coach.isOperator() ) {
-            Expression.parseElements(coach, data, options);
+            this.parseElements(coach, data, options);
         }
     }
 
-    parseOperators(coach, excludeOperators, outOperators) {
-        outOperators = outOperators || [];
+    parseOperators(coach, excludeOperators, outOperators = []) {
 
         if ( coach.isOperator() ) {
-            let i = coach.i;
-            let operator = coach.parseOperator();
+            const i = coach.i;
+            const operator = coach.parseOperator();
 
             // fix for between: stop on operator AND
             if ( excludeOperators ) {
@@ -145,12 +162,12 @@ export default class Expression extends Syntax<Expression> {
             
             // throw error on operators sequence: 
             //    :: :: 
-            let isCastOperator = operator.get("operator") == "::";
+            const isCastOperator = operator.get("operator") === "::";
             if ( isCastOperator ) {
-                let prevOperator = outOperators.slice(-1)[0];
-                let isCastPrevOperator = (
+                const prevOperator = outOperators.slice(-1)[0];
+                const isCastPrevOperator = (
                     prevOperator && 
-                    prevOperator.get("operator") == "::"
+                    prevOperator.get("operator") === "::"
                 );
 
                 if ( isCastPrevOperator ) {
@@ -161,26 +178,10 @@ export default class Expression extends Syntax<Expression> {
             outOperators.push( operator );
 
             coach.skipSpace();
-            Expression.parseOperators(coach, excludeOperators, outOperators);
+            this.parseOperators(coach, excludeOperators, outOperators);
         }
 
         return outOperators;
-    }
-
-    // ((( expression )))  strip unnecessary brackets
-    static extrude(elements) {
-        if ( elements.length == 1 ) {
-            let firstElement = elements[0];
-            let isExpression = firstElement instanceof Expression;
-
-            if ( isExpression ) {
-                return Expression.extrude(
-                    firstElement.get("elements")
-                );
-            }
-        }
-        
-        return elements;
     }
     
     is(coach, str, options) {

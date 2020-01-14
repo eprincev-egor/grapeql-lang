@@ -1,10 +1,11 @@
 "use strict";
 
 import {Syntax} from "lang-coach";
+import ISyntaxes from "./ISyntaxes";
 
 export default class Exists extends Syntax<Exists> {
     structure() {
-        const Select = Exists.prototype.Coach.Select;
+        const Select = this.syntax.Select as any as ISyntaxes["Select"];
         
         return {
             exists: Select
