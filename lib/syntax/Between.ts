@@ -1,7 +1,6 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Between extends Syntax<Between> {
@@ -16,6 +15,8 @@ export default class Between extends Syntax<Between> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        
         coach.expectWord("between");
         
         if ( coach.isWord("symmetric") ) {
@@ -23,11 +24,11 @@ export default class Between extends Syntax<Between> {
             data.symmetric = true;
         }
 
-        data.between = coach.parseExpression({
+        data.between = coach.parse(Expression, {
             excludeOperators: ["and"]
         });
         coach.expectWord("and");
-        data.and = coach.parseExpression({
+        data.and = coach.parse(Expression, {
             excludeOperators: ["and", "or", ">", "<", ">=", "<=", "="]
         });
     }
