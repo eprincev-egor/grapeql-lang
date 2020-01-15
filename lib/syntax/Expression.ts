@@ -154,11 +154,11 @@ export default class Expression extends Syntax<Expression> {
         }
     }
 
-    parseOperators(coach, excludeOperators, outOperators = []) {
+    parseOperators(coach: GrapeQLCoach, excludeOperators: string[], outOperators = []) {
 
-        if ( coach.isOperator() ) {
+        if ( coach.is(Operator) ) {
             const i = coach.i;
-            const operator = coach.parseOperator();
+            const operator = coach.parse(Operator);
 
             // fix for between: stop on operator AND
             if ( excludeOperators ) {
