@@ -4,14 +4,13 @@ import {Syntax, Types} from "lang-coach";
 import FunctionLink from "./FunctionLink";
 import OrderByElement from "./OrderByElement";
 import WindowDefinition from "./WindowDefinition";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 // some(1,2)
 
 export default class FunctionCall extends Syntax<FunctionCall> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             function: FunctionLink,
@@ -33,7 +32,9 @@ export default class FunctionCall extends Syntax<FunctionCall> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        data.function = coach.parseFunctionLink();
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+
+        data.function = coach.parse(FunctionLink);
 
         coach.skipSpace();
         coach.expect("(");
@@ -51,8 +52,8 @@ export default class FunctionCall extends Syntax<FunctionCall> {
         }
 
         // count( company.* )
-        if ( coach.isExpression({ availableStar: true }) ) {
-            data.arguments = coach.parseComma("Expression", {
+        if ( coach.is(Expression, { availableStar: true }) ) {
+            data.arguments = coach.parseComma(Expression, {
                 availableStar: true
             });
         } else {
@@ -95,7 +96,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
 
             coach.expectWord("where");
 
-            data.where = coach.parseExpression();
+            data.where = coach.parse(Expression);
 
             coach.skipSpace();
             coach.expect(")");
@@ -110,7 +111,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
             if ( coach.is(")") ) {
                 data.emptyOver = true;
             } else {
-                data.over = coach.parseWindowDefinition();
+                data.over = coach.parse(WindowDefinition);
             }
 
             coach.skipSpace();
@@ -118,26 +119,26 @@ export default class FunctionCall extends Syntax<FunctionCall> {
         }
     }
 
-    parseOrderBy(coach) {
+    parseOrderBy(coach: GrapeQLCoach) {
         coach.expectWord("order");
         coach.expectWord("by");
 
-        return coach.parseComma("OrderByElement");
+        return coach.parseComma(OrderByElement);
     }
 
     is(coach: GrapeQLCoach) {
-        coach.checkpoint();
+        const i = coach.i;
         let result = false;
 
         try {
-            coach.parseFunctionLink();
+            coach.parse(FunctionLink);
             coach.skipSpace();
             result = coach.is("(");
         } catch (err) {
             result = false;
         }
 
-        coach.rollback();
+        coach.i = i;
         return result;
     }
 

@@ -1,12 +1,11 @@
 "use strict";
 
 import {Syntax} from "lang-coach";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class SquareBrackets extends Syntax<SquareBrackets> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             content: Expression
@@ -14,10 +13,12 @@ export default class SquareBrackets extends Syntax<SquareBrackets> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        
         coach.expect("[");
         coach.skipSpace();
         
-        data.content = coach.parseExpression();
+        data.content = coach.parse(Expression);
 
         coach.skipSpace();
         coach.expect("]");

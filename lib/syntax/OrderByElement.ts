@@ -2,12 +2,11 @@
 
 import {Syntax, Types} from "lang-coach";
 import Operator from "./Operator";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class OrderByElement extends Syntax<OrderByElement> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             expression: Expression,
@@ -22,7 +21,9 @@ export default class OrderByElement extends Syntax<OrderByElement> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        data.expression = coach.parseExpression();
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+
+        data.expression = coach.parse(Expression);
         
         data.vector = "asc";
         if ( coach.is(/asc|desc/i) ) {
@@ -31,7 +32,7 @@ export default class OrderByElement extends Syntax<OrderByElement> {
         else if ( coach.isWord("using") ) {
             coach.expectWord("using");
             
-            data.using = coach.parseOperator();
+            data.using = coach.parse(Operator);
             data.vector = null;
         }
         
@@ -50,7 +51,8 @@ export default class OrderByElement extends Syntax<OrderByElement> {
     }
     
     is(coach: GrapeQLCoach) {
-        return coach.isExpression();
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        return coach.is(Expression);
     }
     
     toString() {

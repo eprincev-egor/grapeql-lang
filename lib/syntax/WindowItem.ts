@@ -15,7 +15,7 @@ export default class WindowItem extends Syntax<WindowItem> {
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
 
-        data.as = coach.parseObjectName();
+        data.as = coach.parse(ObjectName);
         coach.skipSpace();
 
         coach.expectWord("as");
@@ -23,20 +23,20 @@ export default class WindowItem extends Syntax<WindowItem> {
         coach.expect("(");
         coach.skipSpace();
 
-        data.body = coach.parseWindowDefinition();
+        data.body = coach.parse(WindowDefinition);
 
         coach.skipSpace();
         coach.expect(")");
     }
 
     is(coach: GrapeQLCoach) {
-        if ( !coach.isObjectName() ) {
+        if ( !coach.is(ObjectName) ) {
             return false;
         }
 
         const i = coach.i;
 
-        coach.parseObjectName();
+        coach.parse(ObjectName);
         coach.skipSpace();
 
         const isWindowItem = coach.is(/as\s*\(/i);

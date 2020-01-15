@@ -39,8 +39,8 @@ export default class File extends Syntax<File> {
         data.relative = isRelativePath( data.path );
     }
 
-    parsePath(coach, data) {
-        const elem = coach.parseFilePathElement();
+    parsePath(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const elem = coach.parse(FilePathElement);
         data.path.push(elem);
 
         if ( coach.is(/\s*\//) ) {

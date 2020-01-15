@@ -5,7 +5,7 @@ import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class SingleQuotesString extends Syntax<SingleQuotesString> {
 
-    static readSingleQuotes(coach, withEscape = false) {
+    static readSingleQuotes(coach: GrapeQLCoach, withEscape = false) {
         coach.expect("'");
         let content = "";
 
@@ -40,7 +40,7 @@ export default class SingleQuotesString extends Syntax<SingleQuotesString> {
         return content;
     }
 
-    static readEscape(coach) {
+    static readEscape(coach: GrapeQLCoach) {
         coach.expect("\\");
         let symbol = coach.str[ coach.i ];
 
@@ -113,8 +113,8 @@ export default class SingleQuotesString extends Syntax<SingleQuotesString> {
             
             symbol = coach.expect(/[01234567]{3,3}/);
 
-            symbol = parseInt( symbol, 8 );
-            symbol = symbol.toString(16);
+            const symbolNumb = parseInt( symbol, 8 );
+            symbol = symbolNumb.toString(16);
             symbol = coach.parseUnicode(symbol);
 
             return symbol;

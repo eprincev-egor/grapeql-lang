@@ -24,11 +24,12 @@ export default class With extends Syntax<With> {
             data.recursive = true;
         }
 
-        data.queries = coach.parseComma("WithQuery");
+        const queries = coach.parseComma(WithQuery);
+        data.queries = queries;
 
         // query name must be unique
         const existsName = {};
-        data.queries.forEach((query) => {
+        queries.forEach((query) => {
             const name = query.get("name").toLowerCase();
 
             if ( name in existsName ) {

@@ -6,7 +6,7 @@ import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Between extends Syntax<Between> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             symmetric: Types.Boolean,

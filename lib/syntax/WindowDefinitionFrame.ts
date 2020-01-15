@@ -21,21 +21,21 @@ export default class WindowDefinitionFrame extends Syntax<WindowDefinitionFrame>
         if ( coach.isWord("between") ) {
             coach.expectWord("between");
 
-            data.start = coach.parseWindowDefinitionFrameElement(coach);
+            data.start = coach.parse(WindowDefinitionFrameElement);
 
             coach.expectWord("and");
 
-            data.end = coach.parseWindowDefinitionFrameElement(coach);
+            data.end = coach.parse(WindowDefinitionFrameElement);
         }
         else {
-            data.start = coach.parseWindowDefinitionFrameElement(coach);
+            data.start = coach.parse(WindowDefinitionFrameElement);
         }
     }
 
     is(coach: GrapeQLCoach) {
         return (
             coach.isWord("between") ||
-            coach.isWindowDefinitionFrameElement()
+            coach.is(WindowDefinitionFrameElement)
         );
     }
 

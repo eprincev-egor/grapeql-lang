@@ -4,7 +4,6 @@ import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 import OrderByElement from "./OrderByElement";
 import WindowDefinitionFrame from "./WindowDefinitionFrame";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 /*
@@ -26,7 +25,7 @@ UNBOUNDED FOLLOWING
 
 export default class WindowDefinition extends Syntax<WindowDefinition> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             windowDefinition: ObjectName,
@@ -42,9 +41,11 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+
         // [ existing_window_name ]
         if ( !coach.is(/(partition|order|range|rows)[^\w$]/i) ) {
-            data.windowDefinition = coach.parseObjectName();
+            data.windowDefinition = coach.parse(ObjectName);
             coach.skipSpace();
         }
 
@@ -54,7 +55,7 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
             coach.expectWord("by");
 
 
-            data.partitionBy = coach.parseComma("Expression");
+            data.partitionBy = coach.parseComma(Expression);
         }
 
         // [ ORDER BY expression [ ASC | DESC | USING operator ] [ NULLS { FIRST | LAST } ] [, ...] ]
@@ -62,7 +63,7 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
             coach.expectWord("order");
             coach.expectWord("by");
 
-            data.orderBy = coach.parseComma("OrderByElement");
+            data.orderBy = coach.parseComma(OrderByElement);
             coach.skipSpace();
         }
 
@@ -71,12 +72,12 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
         if ( coach.isWord("range") ) {
             coach.expectWord("range");
 
-            data.range = coach.parseWindowDefinitionFrame();
+            data.range = coach.parse(WindowDefinitionFrame);
         }
         else if ( coach.isWord("rows") ) {
             coach.expectWord("rows");
 
-            data.rows = coach.parseWindowDefinitionFrame();
+            data.rows = coach.parse(WindowDefinitionFrame);
         }
     }
 

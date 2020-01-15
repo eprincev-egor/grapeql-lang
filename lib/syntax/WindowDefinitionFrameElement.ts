@@ -48,7 +48,7 @@ export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitio
             data.currentRow = true;
         }
         else {
-            data.value = coach.parsePgNumber();
+            data.value = coach.parse(PgNumber);
             coach.skipSpace();
 
             const word = coach.readWord();
@@ -68,7 +68,7 @@ export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitio
         return (
             coach.isWord("unbounded") || 
             coach.isWord("current") ||
-            coach.isPgNumber()
+            coach.is(PgNumber)
         );
     }
     

@@ -1,13 +1,12 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class In extends Syntax<In> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
-        const Select = this.syntax.Select as any as ISyntaxes["Select"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         return {
             inSelect: Select,
@@ -18,15 +17,18 @@ export default class In extends Syntax<In> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+
         coach.expectWord("in");
         
         coach.expect("(");
         coach.skipSpace();
         
-        if ( coach.isSelect() ) {
-            data.inSelect = coach.parseSelect();
+        if ( coach.is(Select) ) {
+            data.inSelect = coach.parse(Select);
         } else {
-            data.inItems = coach.parseComma("Expression");
+            data.inItems = coach.parseComma(Expression);
         }
         
         

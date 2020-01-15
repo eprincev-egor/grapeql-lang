@@ -35,25 +35,25 @@ export default class CacheFor extends Syntax<CacheFor> {
         coach.expectWord("cache");
         coach.expectWord("for");
 
-        data.for = coach.parseTableLink();
+        data.for = coach.parse(TableLink);
         coach.skipSpace();
 
         if ( coach.isWord("as") ) {
             coach.expectWord("as");
 
-            data.as = coach.parseObjectName();
+            data.as = coach.parse(ObjectName);
             coach.skipSpace();
         }
 
         coach.expect("(");
         coach.skipSpace();
 
-        data.cache = coach.parseSelect();
+        data.cache = coach.parse(Select);
 
         coach.skipSpace();
         coach.expect(")");
 
-        data.reverse = coach.parseChain("CacheReverseExpression");
+        data.reverse = coach.parseChain(CacheReverseExpression);
     }
 
     is(coach: GrapeQLCoach) {

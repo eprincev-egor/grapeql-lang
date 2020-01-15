@@ -6,12 +6,12 @@ import FunctionCall from "./FunctionCall";
 import TableLink from "./TableLink";
 import ObjectName from "./ObjectName";
 import Join from "./Join";
-import ISyntaxes from "./ISyntaxes";
+import DoubleQuotes from "./DoubleQuotes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class FromItem extends Syntax<FromItem> {
     structure() {
-        const Select = this.syntax.Select as any as ISyntaxes["Select"];
+        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
         
         return {
             only: Types.Boolean,
@@ -33,12 +33,14 @@ export default class FromItem extends Syntax<FromItem> {
         };
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+    parse(coach: GrapeQLCoach, data) {
+        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+
         let needAs = false;
 
         // file Order.sql
-        if ( coach.isFile() ) {
-            data.file = coach.parseFile();
+        if ( coach.is(File) ) {
+            data.file = coach.parse(File);
         }
         // [ LATERAL ] ( select ) [ AS ] alias
         else if ( coach.is("(") || coach.is(/lateral\s*\(/i) ) {
@@ -51,7 +53,7 @@ export default class FromItem extends Syntax<FromItem> {
             coach.expect("(");
             coach.skipSpace();
 
-            data.select = coach.parseSelect();
+            data.select = coach.parse(Select);
 
             coach.skipSpace();
             coach.expect(")");
@@ -68,7 +70,7 @@ export default class FromItem extends Syntax<FromItem> {
                 data.lateral = true;
             }
 
-            data.functionCall = coach.parseFunctionCall();
+            data.functionCall = coach.parse(FunctionCall);
 
             if ( coach.isWord("with") ) {
                 coach.expectWord("with");
@@ -86,7 +88,7 @@ export default class FromItem extends Syntax<FromItem> {
                 data.only = true;
             }
 
-            data.table =  coach.parseTableLink();
+            data.table =  coach.parse(TableLink);
 
             
             coach.skipSpace();
@@ -99,7 +101,7 @@ export default class FromItem extends Syntax<FromItem> {
         if ( needAs || coach.isWord("as") ) {
             coach.expectWord("as");
 
-            data.as = coach.parseObjectName();
+            data.as = coach.parse(ObjectName);
         }
         
         coach.skipSpace();
@@ -109,30 +111,35 @@ export default class FromItem extends Syntax<FromItem> {
             coach.expect("(");
             coach.skipSpace();
 
-            data.columns = coach.parseComma("ObjectName");
+            data.columns = coach.parseComma(ObjectName);
             
             coach.skipSpace();
             coach.expect(")");
         }
 
-        data.joins = coach.parseChain("Join");
+        data.joins = coach.parseChain(Join);
     }
 
-    isFromFunctionCall(coach) {
+    isFromFunctionCall(coach: GrapeQLCoach) {
         const i = coach.i;
 
         if ( coach.isWord("lateral") ) {
             coach.readWord();
             coach.skipSpace();
         }
-        const isFunctionCall = coach.isFunctionCall();
+        const isFunctionCall = coach.is(FunctionCall);
 
         coach.i = i;
         return isFunctionCall;
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.is(/only|lateral|\(/) || coach.isWord() || coach.isDoubleQuotes() || coach.isFile();
+        return (
+            coach.is(/only|lateral|\(/) || 
+            coach.isWord() || 
+            coach.is(DoubleQuotes) || 
+            coach.is(File)
+        );
     }
 
     toString() {

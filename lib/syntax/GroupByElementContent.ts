@@ -24,20 +24,20 @@ export default class GroupByElementContent extends Syntax<GroupByElementContent>
             coach.expect("(");
             coach.skipSpace();
             
-            data.expressions = coach.parseComma("Expression");
+            data.expressions = coach.parseComma(Expression);
             
             coach.skipSpace();
             coach.expect(")");
         } else {
             data.single = true;
             data.expressions = [
-                coach.parseExpression()
+                coach.parse(Expression)
             ];
         }
     }
     
     is(coach: GrapeQLCoach) {
-        return coach.isExpression();
+        return coach.is(Expression);
     }
     
     toString() {

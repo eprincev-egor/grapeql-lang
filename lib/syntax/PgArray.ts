@@ -1,12 +1,11 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class PgArray extends Syntax<PgArray> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             array: Types.Array({
@@ -16,6 +15,8 @@ export default class PgArray extends Syntax<PgArray> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+
         data.array = [];
         coach.expectWord("array");
         
@@ -23,7 +24,7 @@ export default class PgArray extends Syntax<PgArray> {
         coach.skipSpace();
 
         if ( !coach.is("]") ) {
-            data.array = coach.parseComma("Expression");
+            data.array = coach.parseComma(Expression);
         }
 
         coach.skipSpace();

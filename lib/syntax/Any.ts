@@ -1,13 +1,12 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Any extends Syntax<Any> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
-        const Select = this.syntax.Select as any as ISyntaxes["Select"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         return {
             type: Types.String({
@@ -19,6 +18,9 @@ export default class Any extends Syntax<Any> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        
         if ( coach.isWord("any") ) {
             coach.expectWord("any");
             data.type = "any";
@@ -35,10 +37,10 @@ export default class Any extends Syntax<Any> {
         coach.expect("(");
         coach.skipSpace();
         
-        if ( coach.isSelect() ) {
-            data.select = coach.parseSelect();
+        if ( coach.is(Select) ) {
+            data.select = coach.parse(Select);
         } else {
-            data.array = coach.parseExpression();
+            data.array = coach.parse(Expression);
         }
         
         coach.skipSpace();

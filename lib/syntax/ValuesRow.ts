@@ -17,7 +17,7 @@ export default class ValuesRow extends Syntax<ValuesRow> {
         coach.expect("(");
         coach.skipSpace();
 
-        data.values = coach.parseComma("ValueItem");
+        data.values = coach.parseComma(ValueItem);
 
         coach.skipSpace();
         coach.expect(")");

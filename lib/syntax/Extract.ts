@@ -2,7 +2,6 @@
 
 import {Syntax, Types} from "lang-coach";
 import DataType from "./DataType";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 const extractFields = [
@@ -29,7 +28,7 @@ const extractFields = [
 
 export default class Extract extends Syntax<Extract> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
         
         return {
             field: Types.String({
@@ -41,6 +40,8 @@ export default class Extract extends Syntax<Extract> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        
         coach.expectWord("extract");
         coach.expect("(");
         coach.skipSpace();
@@ -53,12 +54,12 @@ export default class Extract extends Syntax<Extract> {
 
         coach.expectWord("from");
         
-        if ( coach.isDataType() ) {
-            data.type = coach.parseDataType();
+        if ( coach.is(DataType) ) {
+            data.type = coach.parse(DataType);
             coach.skipSpace();
         }
 
-        data.source = coach.parseExpression();
+        data.source = coach.parse(Expression);
         
         coach.expect(")");
     }

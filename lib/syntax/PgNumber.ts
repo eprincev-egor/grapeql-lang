@@ -51,7 +51,7 @@ export default class PgNumber extends Syntax<PgNumber> {
         }
     }
     
-    readDigits(coach) {
+    readDigits(coach: GrapeQLCoach) {
         let digits = "";
         for (; coach.i < coach.n; coach.i++) {
             const symbol = coach.str[ coach.i ];

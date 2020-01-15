@@ -17,14 +17,14 @@ export default class ValueItem extends Syntax<ValueItem> {
             coach.expectWord("default");
             data.default = true;
         } else {
-            data.expression = coach.parseExpression();
+            data.expression = coach.parse(Expression);
         }
     }
 
     is(coach: GrapeQLCoach) {
         return (
             coach.isWord("default") || 
-            coach.isExpression()
+            coach.is(Expression)
         );
     }
 

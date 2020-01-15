@@ -13,8 +13,8 @@ export default class FilePathElement extends DoubleQuotes<FilePathElement> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( coach.isDoubleQuotes() ) {
-            const quotes = coach.parseDoubleQuotes();
+        if ( coach.is(DoubleQuotes) ) {
+            const quotes = coach.parse(DoubleQuotes);
             data.content = quotes.get("content");
         }
         else {

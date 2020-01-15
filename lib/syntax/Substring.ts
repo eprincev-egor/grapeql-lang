@@ -1,12 +1,11 @@
 "use strict";
 
 import {Syntax} from "lang-coach";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Substring extends Syntax<Substring> {
     structure() {
-        const Expression = this.syntax.Expression as any as ISyntaxes["Expression"];
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             str: Expression,
@@ -16,23 +15,25 @@ export default class Substring extends Syntax<Substring> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+
         coach.expectWord("substring");
         
         coach.expect("(");
         coach.skipSpace();
 
-        data.str = coach.parseExpression();
+        data.str = coach.parse(Expression);
         
         if ( coach.isWord("from") ) {
             coach.expectWord("from");
             
-            data.from = coach.parseExpression();
+            data.from = coach.parse(Expression);
         }
 
         if ( coach.isWord("for") ) {
             coach.expectWord("for");
             
-            data.for = coach.parseExpression();
+            data.for = coach.parse(Expression);
         }
 
         coach.expect(")");

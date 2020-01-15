@@ -3,12 +3,11 @@
 import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 import ValuesRow from "./ValuesRow";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class WithQuery extends Syntax<WithQuery> {
     structure() {
-        const Select = this.syntax.Select as any as ISyntaxes["Select"];
+        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         return {
             name: ObjectName,

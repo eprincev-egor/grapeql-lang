@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
+import ObjectLink from "./ObjectLink";
 
 export default class SchemaName<Child extends SchemaName = any> extends Syntax<SchemaName & Child> {
     structure() {
@@ -12,14 +13,14 @@ export default class SchemaName<Child extends SchemaName = any> extends Syntax<S
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.isObjectLink();
+        return coach.is(ObjectLink);
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         
         // name
         const i = coach.i;
-        const objectLink = coach.parseObjectLink();
+        const objectLink = coach.parse(ObjectLink);
         const link = objectLink.get("link");
 
         if ( 

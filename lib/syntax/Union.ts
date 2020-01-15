@@ -1,12 +1,11 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
-import ISyntaxes from "./ISyntaxes";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Union extends Syntax<Union> {
     structure() {
-        const Select = this.syntax.Select as any as ISyntaxes["Select"];
+        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         return {
             union: Types.Boolean,
@@ -19,6 +18,7 @@ export default class Union extends Syntax<Union> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         // { UNION | INTERSECT | EXCEPT }
         if ( coach.isWord("intersect") ) {
@@ -45,7 +45,7 @@ export default class Union extends Syntax<Union> {
             data.distinct = true;
         }
 
-        data.select = coach.parseSelect();
+        data.select = coach.parse(Select);
     }
 
     is(coach: GrapeQLCoach) {

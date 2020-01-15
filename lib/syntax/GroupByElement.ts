@@ -29,7 +29,7 @@ export default class GroupByElement extends Syntax<GroupByElement> {
         };
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+    parse(coach: GrapeQLCoach, data) {
         
         if ( coach.is(/\(\s*\)/) ) {
             coach.expect(/\(\s*\)/);
@@ -42,7 +42,7 @@ export default class GroupByElement extends Syntax<GroupByElement> {
             coach.expect("(");
             coach.skipSpace();
             
-            data.rollup = coach.parseComma("GroupByElementContent");
+            data.rollup = coach.parseComma(GroupByElementContent);
             
             coach.skipSpace();
             coach.expect(")");
@@ -54,7 +54,7 @@ export default class GroupByElement extends Syntax<GroupByElement> {
             coach.expect("(");
             coach.skipSpace();
             
-            data.cube = coach.parseComma("GroupByElementContent");
+            data.cube = coach.parseComma(GroupByElementContent);
             
             coach.skipSpace();
             coach.expect(")");
@@ -68,14 +68,14 @@ export default class GroupByElement extends Syntax<GroupByElement> {
             coach.expect("(");
             coach.skipSpace();
             
-            data.groupingSets = coach.parseComma("GroupByElement");
+            data.groupingSets = coach.parseComma(GroupByElement);
             
             coach.skipSpace();
             coach.expect(")");
         } 
         
         else {
-            data.expression = coach.parseExpression();
+            data.expression = coach.parse(Expression);
         }
     }
     
@@ -84,7 +84,7 @@ export default class GroupByElement extends Syntax<GroupByElement> {
             coach.isWord("rollup") ||
             coach.isWord("cube") ||
             coach.isWord("grouping") ||
-            coach.isExpression()
+            coach.is(Expression)
         );
     }
     

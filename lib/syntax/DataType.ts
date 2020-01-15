@@ -2,6 +2,9 @@
 
 import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
+import SchemaName from "./SchemaName";
+import PgNumber from "./PgNumber";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 // TODO: load types from db
 const types = [
@@ -118,11 +121,11 @@ export default class DataType extends Syntax<DataType> {
             return;
         }
         
-        coach.checkpoint();
+        const position = coach.i;
         const word = coach.readWord().toLowerCase();
         const availableTypes = firstWords[ word ] || [];
         
-        coach.rollback();
+        coach.i = position;
         
         
         for (let i = 0, n = availableTypes.length; i < n; i++) {
@@ -143,14 +146,14 @@ export default class DataType extends Syntax<DataType> {
         }
         
         if ( !data.type ) {
-            const schemaName = coach.parseSchemaName();
+            const schemaName = coach.parse(SchemaName);
             data.type = schemaName.toString();
         }
         
         this.parseArrayType(coach, data);
     }
     
-    parseArrayType(coach, data) {
+    parseArrayType(coach: GrapeQLCoach, data) {
         if ( coach.is(/\s*\[/) ) {
             coach.skipSpace();
             coach.i++;
@@ -160,7 +163,7 @@ export default class DataType extends Syntax<DataType> {
                 coach.i++;
                 data.type += "[]";
             } else {
-                const pgNumb = coach.parsePgNumber();
+                const pgNumb = coach.parse(PgNumber);
                 coach.skipSpace();
                 coach.expect("]");
                 

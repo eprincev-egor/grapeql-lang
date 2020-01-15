@@ -34,7 +34,7 @@ export default class ObjectLink extends Syntax<ObjectLink> {
         }
 
 
-        const elem = coach.parseObjectName();
+        const elem = coach.parse(ObjectName);
         data.link.push( elem );
 
         if ( coach.is(/\s*\./) ) {

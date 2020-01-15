@@ -24,11 +24,11 @@ export default class Interval extends Syntax<Interval> {
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("interval");
 
-        if ( coach.isSingleQuotesString() ) {
-            data.interval = coach.parseSingleQuotesString();
+        if ( coach.is(SingleQuotesString) ) {
+            data.interval = coach.parse(SingleQuotesString);
         }
         else {
-            data.interval = coach.parseDollarString();
+            data.interval = coach.parse(DollarString);
         }
     }
 

@@ -25,20 +25,20 @@ export default class CacheReverseExpression extends Syntax<CacheReverseExpressio
         coach.expectWord("change");
 
 
-        data.table = coach.parseTableLink();
+        data.table = coach.parse(TableLink);
         coach.skipSpace();
 
         if ( coach.isWord("as") ) {
             coach.expectWord("as");
 
-            data.as = coach.parseObjectName();
+            data.as = coach.parse(ObjectName);
             coach.skipSpace();
         }
 
         coach.expectWord("set");
         coach.expectWord("where");
 
-        data.where = coach.parseExpression();
+        data.where = coach.parse(Expression);
     }
 
     is(coach: GrapeQLCoach) {

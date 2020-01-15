@@ -137,49 +137,49 @@ export default class Select extends Syntax<Select> {
         validate(data);
     }
 
-    parseColumns(coach, data) {
-        if ( !coach.isColumn() ) {
+    parseColumns(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.is(Column) ) {
             return;
         }
 
-        data.columns = coach.parseComma("Column");
+        data.columns = coach.parseComma(Column);
         coach.skipSpace();
     }
 
-    parseWith(coach, data) {
-        if ( !coach.isWith() ) {
+    parseWith(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.is(With) ) {
             return;
         }
-        data.with = coach.parseWith();
+        data.with = coach.parse(With);
 
         coach.skipSpace();
     }
 
-    parseFrom(coach, data) {
+    parseFrom(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( !coach.isWord("from") ) {
             return;
         }
 
         coach.expectWord("from");
 
-        data.from = coach.parseComma("FromItem");
+        data.from = coach.parseComma(FromItem);
 
         coach.skipSpace();
     }
 
-    parseWhere(coach, data) {
+    parseWhere(coach: GrapeQLCoach, data: this["TInputData"]) {
         data.where = null;
 
         if ( coach.isWord("where") ) {
             coach.expectWord("where");
 
-            data.where = coach.parseExpression();
+            data.where = coach.parse(Expression);
 
             coach.skipSpace();
         }
     }
 
-    parseGroupBy(coach, data) {
+    parseGroupBy(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( !coach.isWord("group") ) {
             return;
         }
@@ -187,30 +187,30 @@ export default class Select extends Syntax<Select> {
         coach.expectWord("group");
         coach.expectWord("by");
 
-        data.groupBy = coach.parseComma("GroupByElement");
+        data.groupBy = coach.parseComma(GroupByElement);
 
         coach.skipSpace();
     }
 
-    parseHaving(coach, data) {
+    parseHaving(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( !coach.isWord("having") ) {
             return;
         }
         coach.expectWord("having");
 
-        data.having = coach.parseExpression();
+        data.having = coach.parse(Expression);
 
         coach.skipSpace();
     }
 
-    parseWindow(coach, data) {
+    parseWindow(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( !coach.isWord("window") ) {
             return;
         }
 
         coach.expectWord("window");
 
-        data.window = coach.parseComma("WindowItem");
+        data.window = coach.parseComma(WindowItem);
 
         coach.skipSpace();
     }
@@ -220,7 +220,7 @@ export default class Select extends Syntax<Select> {
         [ OFFSET start [ ROW | ROWS ] ]
         [ FETCH { FIRST | NEXT } [ count ] { ROW | ROWS } ONLY ]
      */
-    parseOffsets(coach, data) {
+    parseOffsets(coach: GrapeQLCoach, data: this["TInputData"]) {
 
         let hasOffset; 
         let hasLimit; 
@@ -254,13 +254,13 @@ export default class Select extends Syntax<Select> {
     }
 
     // [ OFFSET start [ ROW | ROWS ] ]
-    parseOffset(coach, data) {
+    parseOffset(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( !coach.isWord("offset") ) {
             return;
         }
         coach.expectWord("offset");
 
-        data.offset = +coach.expect(/\d+/);
+        data.offset = +coach.expect(/\d+/) + "";
         coach.skipSpace();
 
         if ( coach.isWord("rows") ) {
@@ -277,7 +277,7 @@ export default class Select extends Syntax<Select> {
     }
 
     // [ LIMIT { count | ALL } ]
-    parseLimit(coach, data) {
+    parseLimit(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( !coach.isWord("limit") ) {
             return;
         }
@@ -291,17 +291,17 @@ export default class Select extends Syntax<Select> {
     }
 
     // [ FETCH { FIRST | NEXT } [ count ] { ROW | ROWS } ONLY ]
-    parseFetch(coach, data) {
-        if ( !coach.isSelectFetch() ) {
+    parseFetch(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.is(SelectFetch) ) {
             return;
         }
 
-        data.fetch = coach.parseSelectFetch();
+        data.fetch = coach.parse(SelectFetch);
         return true;
     }
 
     // [ ORDER BY expression [ ASC | DESC | USING operator ] [ NULLS { FIRST | LAST } ] [, ...] ]
-    parseOrderBy(coach, data) {
+    parseOrderBy(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( !coach.isWord("order") ) {
             return;
         }
@@ -309,22 +309,22 @@ export default class Select extends Syntax<Select> {
         coach.expectWord("order");
         coach.expectWord("by");
 
-        data.orderBy = coach.parseComma("OrderByElement");
+        data.orderBy = coach.parseComma(OrderByElement);
 
         coach.skipSpace();
     }
 
     // [ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT ] select ]
-    parseUnion(coach, data) {
-        if ( !coach.isUnion() ) {
+    parseUnion(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.is(Union) ) {
             return;
         }
 
-        data.union = coach.parseUnion();
+        data.union = coach.parse(Union);
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.isWord("select") || coach.isWith();
+        return coach.isWord("select") || coach.is(With);
     }
 
     toString() {
@@ -422,7 +422,7 @@ export default class Select extends Syntax<Select> {
 }
 
 
-function validate(data) {
+function validate(data: Select["TInputData"]) {
     if ( !data.from ) {
         return;
     }
@@ -435,7 +435,7 @@ function validate(data) {
     });
 }
 
-function validateFromItem(fromMap, fromItem) {
+function validateFromItem(fromMap, fromItem: FromItem) {
     let name;
 
     if ( fromItem.get("as") ) {

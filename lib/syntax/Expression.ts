@@ -1,6 +1,13 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import ColumnLink from "./ColumnLink";
+import DataType from "./DataType";
+import ExpressionElement from "./ExpressionElement";
+import Operator from "./Operator";
+import In from "./In";
+import SquareBrackets from "./SquareBrackets";
+import Between from "./Between";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 // true or false
@@ -43,13 +50,13 @@ export default class Expression extends Syntax<Expression> {
         data.elements = Expression.extrude( data.elements );
     }
     
-    parseElements(coach, data, options) {
+    parseElements(coach: GrapeQLCoach, data: this["TInputData"], options) {
         let elem;
 
         // count(*)
         if ( options.availableStar ) {
             if ( coach.is("*") ) {
-                const elemStar = coach.parseColumnLink({
+                const elemStar = coach.parse(ColumnLink, {
                     availableStar: options.availableStar
                 });
                 data.elements.push( elemStar );
@@ -75,7 +82,7 @@ export default class Expression extends Syntax<Expression> {
         );
 
         if ( isToType ) {
-            elem = coach.parseDataType();
+            elem = coach.parse(DataType);
         }
 
         // sub expression
@@ -83,14 +90,14 @@ export default class Expression extends Syntax<Expression> {
             coach.expect("(");
             coach.skipSpace();
 
-            elem = coach.parseExpression(options);
+            elem = coach.parse(Expression, options);
 
             coach.skipSpace();
             coach.expect(")");
         }
 
         else {
-            elem = coach.parseExpressionElement(options);
+            elem = coach.parse(ExpressionElement, options);
             elem = elem.get("element");
         }
 
@@ -98,8 +105,8 @@ export default class Expression extends Syntax<Expression> {
         data.elements.push( elem );
 
         coach.skipSpace();
-        if ( coach.isSquareBrackets() ) {
-            elem = coach.parseSquareBrackets();
+        if ( coach.is(SquareBrackets) ) {
+            elem = coach.parse(SquareBrackets);
             data.elements.push( elem );
 
             coach.skipSpace();
@@ -112,10 +119,10 @@ export default class Expression extends Syntax<Expression> {
             coach.skipSpace();
 
             
-            if ( coach.isBetween() ) {
+            if ( coach.is(Between) ) {
                 coach.i = i;
 
-                const operator = coach.parseOperator();
+                const operator = coach.parse(Operator);
                 coach.skipSpace();
                 
                 data.elements.push( operator );
@@ -126,23 +133,23 @@ export default class Expression extends Syntax<Expression> {
         }
 
         // between
-        if ( coach.isBetween() ) {
-            elem = coach.parseBetween();
+        if ( coach.is(Between) ) {
+            elem = coach.parse(Between);
             data.elements.push( elem );
 
             coach.skipSpace();
         }
 
         // in
-        if ( coach.isIn() ) {
-            elem = coach.parseIn();
+        if ( coach.is(In) ) {
+            elem = coach.parse(In);
             data.elements.push( elem );
 
             coach.skipSpace();
         }
 
         coach.skipSpace();
-        if ( coach.isOperator() ) {
+        if ( coach.is(Operator) ) {
             this.parseElements(coach, data, options);
         }
     }
@@ -191,8 +198,8 @@ export default class Expression extends Syntax<Expression> {
             !coach.isEnd() &&
 
             coach.is("(") ||
-            coach.isExpressionElement( options ) ||
-            coach.isOperator()
+            coach.is( ExpressionElement, options ) ||
+            coach.is(Operator)
         );
     }
     
