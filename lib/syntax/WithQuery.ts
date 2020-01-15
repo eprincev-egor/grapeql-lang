@@ -4,6 +4,7 @@ import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 import ValuesRow from "./ValuesRow";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class WithQuery extends Syntax<WithQuery> {
     structure() {
@@ -21,8 +22,10 @@ export default class WithQuery extends Syntax<WithQuery> {
         };
     }
 
-    parse(coach, data) {
-        data.name = coach.parseObjectName();
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const Select = this.syntax.Select as any as GrapeQLCoach["syntax"]["Select"];
+
+        data.name = coach.parse(ObjectName);
         coach.skipSpace();
 
         // [ ( column_name [, ...] ) ]
@@ -30,7 +33,7 @@ export default class WithQuery extends Syntax<WithQuery> {
             coach.expect("(");
             coach.skipSpace();
 
-            data.columns = coach.parseComma("ObjectName");
+            data.columns = coach.parseComma(ObjectName);
 
             coach.skipSpace();
             coach.expect(")");
@@ -44,14 +47,15 @@ export default class WithQuery extends Syntax<WithQuery> {
         if ( coach.isWord("values") ) {
             coach.expectWord("values");
 
-            data.values = coach.parseComma("ValuesRow");
+            const values = coach.parseComma(ValuesRow);
+            data.values = values;
 
-            const firstRow = data.values[0];
+            const firstRow = values[0];
             const firstRowValues = firstRow.get("values");
             const columnsLength = firstRowValues.length;
 
-            for (let i = 0, n = data.values.length; i < n; i++) {
-                const valuesRow = data.values[ i ];
+            for (let i = 0, n = values.length; i < n; i++) {
+                const valuesRow = values[ i ];
                 const rowValues = valuesRow.get("values");
                 
                 if ( rowValues.length !== columnsLength ) {
@@ -78,7 +82,7 @@ export default class WithQuery extends Syntax<WithQuery> {
         //     this.addChild(this.delete);
         // }
         else {
-            data.select = coach.parseSelect();
+            data.select = coach.parse(Select);
         }
 
         coach.skipSpace();
