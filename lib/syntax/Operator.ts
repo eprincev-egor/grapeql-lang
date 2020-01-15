@@ -71,7 +71,7 @@ export default class Operator extends Syntax<Operator> {
         }
         
         // check condition operators
-        coach.checkpoint();
+        const position = coach.i;
         const word = coach.readWord();
         
         if ( CONDITION_OPERATORS.includes(word) ) {
@@ -116,7 +116,7 @@ export default class Operator extends Syntax<Operator> {
         
         // another
         else {
-            coach.rollback();
+            coach.i = position;
             
             data.operator = "";
 
