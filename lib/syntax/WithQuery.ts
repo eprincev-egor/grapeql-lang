@@ -46,19 +46,19 @@ export default class WithQuery extends Syntax<WithQuery> {
 
             data.values = coach.parseComma("ValuesRow");
 
-            let firstRow = data.values[0];
-            let firstRowValues = firstRow.get("values");
-            let columnsLength = firstRowValues.length;
+            const firstRow = data.values[0];
+            const firstRowValues = firstRow.get("values");
+            const columnsLength = firstRowValues.length;
 
             for (let i = 0, n = data.values.length; i < n; i++) {
-                let valuesRow = data.values[ i ];
-                let rowValues = valuesRow.get("values");
+                const valuesRow = data.values[ i ];
+                const rowValues = valuesRow.get("values");
                 
-                if ( rowValues.length != columnsLength ) {
+                if ( rowValues.length !== columnsLength ) {
                     coach.throwError("VALUES lists must all be the same length");
                 }
                 
-                valuesRow.walk(valueItem => {
+                valuesRow.walk((valueItem) => {
                     if ( valueItem.get("default") ) {
                         coach.throwError("DEFAULT is not allowed in this context");
                     }
@@ -90,20 +90,20 @@ export default class WithQuery extends Syntax<WithQuery> {
     }
 
     toString() {
-        let data = this.data;
+        const data = this.data;
         let out = "";
 
         out += data.name.toString() + " ";
 
         if ( data.columns ) {
             out += "(";
-            out += data.columns.map(column => column.toString()).join(", ");
+            out += data.columns.map((column) => column.toString()).join(", ");
             out += ") ";
         }
 
         out += "as (";
         if ( data.values ) {
-            out += " values " + data.values.map(valueRow => valueRow.toString()).join(", ");
+            out += " values " + data.values.map((valueRow) => valueRow.toString()).join(", ");
         }
         // else if ( this.insert ) {
         //     out += this.insert.toString();
