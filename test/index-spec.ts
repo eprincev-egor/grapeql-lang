@@ -1,5 +1,6 @@
 
 import * as index from "../lib/index";
+import PgNull from "../lib/syntax/PgNull";
 import assert from "assert";
 import testSyntax from "./testSyntax";
 
@@ -12,7 +13,7 @@ describe("index tests", () => {
     it("testSyntax without str", () => {
         assert.throws(
             () => {
-                testSyntax(index.GrapeQLCoach.prototype.syntax.PgNull, {
+                testSyntax(index.GrapeQLCoach, {
                     
                 });
             },
@@ -24,7 +25,7 @@ describe("index tests", () => {
     it("testSyntax without result", () => {
         assert.throws(
             () => {
-                testSyntax(index.GrapeQLCoach.prototype.syntax.PgNull, {
+                testSyntax(PgNull, {
                     str: "null"
                 });
             },
