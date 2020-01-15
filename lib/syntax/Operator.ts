@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 const OPERATORS = [
     "=", "<>", "!=", "<", ">", "<=", ">=", "||", "!", "!!", "%", "@", "-", "<<", "&<", "&>", ">>",
@@ -49,7 +50,7 @@ export default class Operator extends Syntax<Operator> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         
         if ( coach.isWord("operator") ) {
             coach.readWord();
@@ -134,7 +135,7 @@ export default class Operator extends Syntax<Operator> {
         }
     }
     
-    is(coach, str) {
+    is(coach: GrapeQLCoach, str: string) {
         return (
             (
                 OPERATORS_SYMBOLS.includes( str[0] ) ||

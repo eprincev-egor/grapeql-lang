@@ -2,6 +2,7 @@
 
 import {Syntax} from "lang-coach";
 import WindowDefinitionFrameElement from "./WindowDefinitionFrameElement";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 /*
 frame_start
@@ -16,7 +17,7 @@ export default class WindowDefinitionFrame extends Syntax<WindowDefinitionFrame>
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( coach.isWord("between") ) {
             coach.expectWord("between");
 
@@ -31,7 +32,7 @@ export default class WindowDefinitionFrame extends Syntax<WindowDefinitionFrame>
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return (
             coach.isWord("between") ||
             coach.isWindowDefinitionFrameElement()

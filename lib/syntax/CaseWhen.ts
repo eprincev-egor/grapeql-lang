@@ -3,6 +3,7 @@
 import {Syntax, Types} from "lang-coach";
 import CaseWhenElement from "./CaseWhenElement";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class CaseWhen extends Syntax<CaseWhen> {
     structure() {
@@ -16,7 +17,7 @@ export default class CaseWhen extends Syntax<CaseWhen> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         
         coach.expectWord("case");
         
@@ -45,7 +46,7 @@ export default class CaseWhen extends Syntax<CaseWhen> {
         }
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("case");
     }
     

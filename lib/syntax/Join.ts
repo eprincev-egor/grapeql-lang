@@ -15,6 +15,7 @@ import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
 import ObjectName from "./ObjectName";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Join extends Syntax<Join> {
     structure() {
@@ -30,7 +31,7 @@ export default class Join extends Syntax<Join> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         const lateralErrorIndex = coach.i;
 
         let type = coach.expect(/(((left|right|full)\s+(outer\s+)?)|(inner\s+)?|cross\s+)join\s+/i, "expected join keyword");
@@ -73,7 +74,7 @@ export default class Join extends Syntax<Join> {
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(/(left|right|inner|join|full|cross)\s/i);
     }
 

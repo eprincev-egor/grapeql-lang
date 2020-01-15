@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class ValueItem extends Syntax<ValueItem> {
     structure() {
@@ -11,7 +12,7 @@ export default class ValueItem extends Syntax<ValueItem> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( coach.isWord("default") ) {
             coach.expectWord("default");
             data.default = true;
@@ -20,7 +21,7 @@ export default class ValueItem extends Syntax<ValueItem> {
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return (
             coach.isWord("default") || 
             coach.isExpression()

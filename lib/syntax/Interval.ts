@@ -3,6 +3,7 @@
 import {Syntax, Types} from "lang-coach";
 import SingleQuotesString from "./SingleQuotesString";
 import DollarString from "./DollarString";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Interval extends Syntax<Interval> {
     structure() {
@@ -16,11 +17,11 @@ export default class Interval extends Syntax<Interval> {
         };
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("interval");
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("interval");
 
         if ( coach.isSingleQuotesString() ) {

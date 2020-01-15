@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 // 42
 // 3.5
@@ -16,7 +17,7 @@ export default class PgNumber extends Syntax<PgNumber> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         let intPart = "";
         let floatPart = "";
         let ePart = "";
@@ -64,7 +65,7 @@ export default class PgNumber extends Syntax<PgNumber> {
         return digits;
     }
     
-    is(coach, str) {
+    is(coach: GrapeQLCoach, str: string) {
         return str.search(/[\d.]/) === 0;
     }
     

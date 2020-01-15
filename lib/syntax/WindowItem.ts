@@ -3,6 +3,7 @@
 import {Syntax} from "lang-coach";
 import ObjectName from "./ObjectName";
 import WindowDefinition from "./WindowDefinition";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class WindowItem extends Syntax<WindowItem> {
     structure() {
@@ -12,7 +13,7 @@ export default class WindowItem extends Syntax<WindowItem> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
 
         data.as = coach.parseObjectName();
         coach.skipSpace();
@@ -28,7 +29,7 @@ export default class WindowItem extends Syntax<WindowItem> {
         coach.expect(")");
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         if ( !coach.isObjectName() ) {
             return false;
         }

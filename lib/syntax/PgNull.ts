@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class PgNull extends Syntax<PgNull> {
     structure() {
@@ -11,11 +12,11 @@ export default class PgNull extends Syntax<PgNull> {
         };
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("null");
     }
 
-    parse(coach) {
+    parse(coach: GrapeQLCoach) {
         coach.expectWord("null");
     }
 

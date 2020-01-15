@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import FilePathElement from "./FilePathElement";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class File extends Syntax<File> {
     structure() {
@@ -13,7 +14,7 @@ export default class File extends Syntax<File> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         data.path = [];
 
         if ( !coach.is(/\.*\//) ) {
@@ -49,7 +50,7 @@ export default class File extends Syntax<File> {
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return (
             coach.is(/\.*\//) || 
             coach.isWord("file")

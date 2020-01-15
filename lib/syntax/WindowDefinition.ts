@@ -5,6 +5,7 @@ import ObjectName from "./ObjectName";
 import OrderByElement from "./OrderByElement";
 import WindowDefinitionFrame from "./WindowDefinitionFrame";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 /*
 window_definition is
@@ -40,7 +41,7 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         // [ existing_window_name ]
         if ( !coach.is(/(partition|order|range|rows)[^\w$]/i) ) {
             data.windowDefinition = coach.parseObjectName();
@@ -79,9 +80,9 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         // quotes or word
-        return coach.isObjectName();
+        return coach.is(ObjectName);
     }
 
     toString() {

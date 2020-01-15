@@ -2,6 +2,7 @@
 
 import {Syntax} from "lang-coach";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class SquareBrackets extends Syntax<SquareBrackets> {
     structure() {
@@ -12,7 +13,7 @@ export default class SquareBrackets extends Syntax<SquareBrackets> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expect("[");
         coach.skipSpace();
         
@@ -22,7 +23,7 @@ export default class SquareBrackets extends Syntax<SquareBrackets> {
         coach.expect("]");
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is("[");
     }
     

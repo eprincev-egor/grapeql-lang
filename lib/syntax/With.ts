@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import WithQuery from "./WithQuery";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 // WITH [ RECURSIVE ] with_query [, ...]
 
@@ -15,7 +16,7 @@ export default class With extends Syntax<With> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("with");
 
         if ( coach.isWord("recursive") ) {
@@ -38,7 +39,7 @@ export default class With extends Syntax<With> {
         });
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("with");
     }
 

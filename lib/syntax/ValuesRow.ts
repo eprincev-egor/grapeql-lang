@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import ValueItem from "./ValueItem";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class ValuesRow extends Syntax<ValuesRow> {
     structure() {
@@ -12,7 +13,7 @@ export default class ValuesRow extends Syntax<ValuesRow> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expect("(");
         coach.skipSpace();
 
@@ -22,7 +23,7 @@ export default class ValuesRow extends Syntax<ValuesRow> {
         coach.expect(")");
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is("(");
     }
 

@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Between extends Syntax<Between> {
     structure() {
@@ -14,7 +15,7 @@ export default class Between extends Syntax<Between> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("between");
         
         if ( coach.isWord("symmetric") ) {
@@ -31,7 +32,7 @@ export default class Between extends Syntax<Between> {
         });
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("between");
     }
     

@@ -3,6 +3,8 @@
 import {Syntax} from "lang-coach";
 import Expression from "./Expression";
 import ObjectName from "./ObjectName";
+import DoubleQuotes from "./DoubleQuotes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 const keywords = [
     "from",
@@ -35,8 +37,8 @@ export default class Column extends Syntax<Column> {
         };
     }
 
-    parse(coach, data) {
-        data.expression = coach.parseExpression({ 
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        data.expression = coach.parse(Expression, { 
             availableStar: true 
         });
 
@@ -44,26 +46,26 @@ export default class Column extends Syntax<Column> {
         if ( coach.isWord("as") ) {
             coach.expectWord("as");
 
-            data.as = coach.parseObjectName();
+            data.as = coach.parse(ObjectName);
         }
         // select 1 "id"
-        else if ( coach.isDoubleQuotes() ) {
-            data.as = coach.parseObjectName();
+        else if ( coach.is(DoubleQuotes) ) {
+            data.as = coach.parse(ObjectName);
         }
         // select 1 id
-        else if ( coach.isObjectName() ) {
+        else if ( coach.is(ObjectName) ) {
             const i = coach.i;
             const word = coach.readWord();
             coach.i = i;
 
             // select 1 from table
             if ( !keywords.includes(word) ) {
-                data.as = coach.parseObjectName();
+                data.as = coach.parse(ObjectName);
             }
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         if ( coach.isWord() ) {
             const i = coach.i;
             const word = coach.readWord();
@@ -72,7 +74,7 @@ export default class Column extends Syntax<Column> {
             return !keywords.includes(word);
         }
 
-        return coach.isExpression({ availableStar: true });
+        return coach.is(Expression, { availableStar: true });
     }
 
     toString() {

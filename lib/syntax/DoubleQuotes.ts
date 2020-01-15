@@ -1,6 +1,7 @@
 "use strict";
  
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class DoubleQuotes<Child extends DoubleQuotes = any> extends Syntax<DoubleQuotes & Child> {
     structure() {
@@ -9,7 +10,7 @@ export default class DoubleQuotes<Child extends DoubleQuotes = any> extends Synt
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         let content = "";
         let withUEscape = false;
 
@@ -81,7 +82,7 @@ export default class DoubleQuotes<Child extends DoubleQuotes = any> extends Synt
         data.content = content;
     }
 
-    is(coach, str) {
+    is(coach: GrapeQLCoach, str: string) {
         return (
             str[0] === "\"" ||
 

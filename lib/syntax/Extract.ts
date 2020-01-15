@@ -3,6 +3,7 @@
 import {Syntax, Types} from "lang-coach";
 import DataType from "./DataType";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 const extractFields = [
     "century",
@@ -39,7 +40,7 @@ export default class Extract extends Syntax<Extract> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("extract");
         coach.expect("(");
         coach.skipSpace();
@@ -62,7 +63,7 @@ export default class Extract extends Syntax<Extract> {
         coach.expect(")");
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("extract");
     }
     

@@ -3,6 +3,7 @@
 import {Syntax, Types} from "lang-coach";
 import GroupByElementContent from "./GroupByElementContent";
 import Expression from "./Expression";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 /*
     ()
@@ -28,7 +29,7 @@ export default class GroupByElement extends Syntax<GroupByElement> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         
         if ( coach.is(/\(\s*\)/) ) {
             coach.expect(/\(\s*\)/);
@@ -78,7 +79,7 @@ export default class GroupByElement extends Syntax<GroupByElement> {
         }
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return (
             coach.isWord("rollup") ||
             coach.isWord("cube") ||

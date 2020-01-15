@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class PgArray extends Syntax<PgArray> {
     structure() {
@@ -14,7 +15,7 @@ export default class PgArray extends Syntax<PgArray> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         data.array = [];
         coach.expectWord("array");
         
@@ -29,7 +30,7 @@ export default class PgArray extends Syntax<PgArray> {
         coach.expect("]");
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("array");
     }
     

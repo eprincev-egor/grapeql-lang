@@ -2,6 +2,7 @@
 
 import {Syntax} from "lang-coach";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Exists extends Syntax<Exists> {
     structure() {
@@ -12,7 +13,7 @@ export default class Exists extends Syntax<Exists> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("exists");
         
         coach.expect("(");
@@ -24,7 +25,7 @@ export default class Exists extends Syntax<Exists> {
         coach.expect(")");
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("exists");
     }
     

@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class SingleQuotesString extends Syntax<SingleQuotesString> {
 
@@ -131,7 +132,7 @@ export default class SingleQuotesString extends Syntax<SingleQuotesString> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         
         let withEscape = false;
         let withUEscape = false;
@@ -191,7 +192,7 @@ export default class SingleQuotesString extends Syntax<SingleQuotesString> {
         data.content = content;
     }
 
-    is(coach, str) {
+    is(coach: GrapeQLCoach, str: string) {
         return (
             str[0] === "'" ||
 

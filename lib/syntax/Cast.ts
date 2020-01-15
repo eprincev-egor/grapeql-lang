@@ -2,6 +2,7 @@
 
 import {Syntax} from "lang-coach";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Cast extends Syntax<Cast> {
     structure() {
@@ -14,7 +15,7 @@ export default class Cast extends Syntax<Cast> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("cast");
 
         coach.expect("(");
@@ -30,7 +31,7 @@ export default class Cast extends Syntax<Cast> {
         coach.expect(")");
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("cast");
     }
     

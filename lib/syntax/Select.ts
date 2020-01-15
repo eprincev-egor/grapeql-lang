@@ -10,6 +10,7 @@ import WindowItem from "./WindowItem";
 import OrderByElement from "./OrderByElement";
 import Union from "./Union";
 import SelectFetch from "./SelectFetch";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 // https://www.postgresql.org/docs/9.5/static/sql-select.html
 /*
@@ -80,7 +81,7 @@ export default class Select extends Syntax<Select> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         // options = options || {allowCustomReturning: false};
 
         this.parseWith(coach, data);
@@ -322,7 +323,7 @@ export default class Select extends Syntax<Select> {
         data.union = coach.parseUnion();
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("select") || coach.isWith();
     }
 

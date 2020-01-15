@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import PgNumber from "./PgNumber";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 /*
 UNBOUNDED PRECEDING
@@ -22,7 +23,7 @@ export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitio
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
 
         if ( coach.isWord("unbounded") ) {
             coach.expectWord("unbounded");
@@ -63,7 +64,7 @@ export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitio
         }
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return (
             coach.isWord("unbounded") || 
             coach.isWord("current") ||

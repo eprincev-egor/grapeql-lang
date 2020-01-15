@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import ObjectName from "./ObjectName";
 
 // TODO: load types from db
 const types = [
@@ -108,7 +109,7 @@ export default class DataType extends Syntax<DataType> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( coach.is("\"") ) {
             coach.i++;
             coach.expectWord("char");
@@ -172,8 +173,8 @@ export default class DataType extends Syntax<DataType> {
         }
     }
     
-    is(coach) {
-        return coach.isObjectName();
+    is(coach: GrapeQLCoach) {
+        return coach.is(ObjectName);
     }
     
     toString() {

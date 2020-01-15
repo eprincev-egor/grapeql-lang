@@ -5,6 +5,7 @@ import TableLink from "./TableLink";
 import ObjectName from "./ObjectName";
 import Select from "./Select";
 import CacheReverseExpression from "./CacheReverseExpression";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 /*
 cache totals for company (
@@ -30,7 +31,7 @@ export default class CacheFor extends Syntax<CacheFor> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("cache");
         coach.expectWord("for");
 
@@ -55,7 +56,7 @@ export default class CacheFor extends Syntax<CacheFor> {
         data.reverse = coach.parseChain("CacheReverseExpression");
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(/cache\s+for/i);
     }
 

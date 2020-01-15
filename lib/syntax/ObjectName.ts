@@ -2,6 +2,7 @@
 
 import DoubleQuotes from "./DoubleQuotes";
 import { Types } from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class ObjectName extends DoubleQuotes {
     structure() {
@@ -11,7 +12,7 @@ export default class ObjectName extends DoubleQuotes {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( coach.is(DoubleQuotes) ) {
             super.parse(coach, data);
         }
@@ -20,7 +21,7 @@ export default class ObjectName extends DoubleQuotes {
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(DoubleQuotes) || coach.isWord();
     }
 

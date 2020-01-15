@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class SystemVariable extends Syntax<SystemVariable> {
     structure() {
@@ -9,7 +10,7 @@ export default class SystemVariable extends Syntax<SystemVariable> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expect("$");
 
         data.name = "";
@@ -32,7 +33,7 @@ export default class SystemVariable extends Syntax<SystemVariable> {
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is("$");
     }
 

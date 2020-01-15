@@ -4,6 +4,7 @@ import {Syntax} from "lang-coach";
 import TableLink from "./TableLink";
 import ObjectName from "./ObjectName";
 import Expression from "./Expression";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 /*
 after change orders set where
@@ -19,7 +20,7 @@ export default class CacheReverseExpression extends Syntax<CacheReverseExpressio
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("after");
         coach.expectWord("change");
 
@@ -40,7 +41,7 @@ export default class CacheReverseExpression extends Syntax<CacheReverseExpressio
         data.where = coach.parseExpression();
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("after");
     }
 

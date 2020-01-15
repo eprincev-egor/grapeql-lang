@@ -2,6 +2,7 @@
 
 import {Syntax} from "lang-coach";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Substring extends Syntax<Substring> {
     structure() {
@@ -14,7 +15,7 @@ export default class Substring extends Syntax<Substring> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("substring");
         
         coach.expect("(");
@@ -37,7 +38,7 @@ export default class Substring extends Syntax<Substring> {
         coach.expect(")");
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(/^substring\s*\(/i);
     }
     

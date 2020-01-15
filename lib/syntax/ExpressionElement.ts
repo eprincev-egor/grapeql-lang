@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class ExpressionElement extends Syntax<ExpressionElement> {
 
@@ -10,7 +11,7 @@ export default class ExpressionElement extends Syntax<ExpressionElement> {
         };
     }
 
-    parse(coach, data, options) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"], options) {
         options = options || {availableStar: false};
 
         if ( coach.isPgNull() ) {
@@ -94,7 +95,7 @@ export default class ExpressionElement extends Syntax<ExpressionElement> {
         }
     }
 
-    is(coach, str, options) {
+    is(coach: GrapeQLCoach, str: string, options) {
         return (
             coach.isPgNull() ||
             coach.isBoolean() ||

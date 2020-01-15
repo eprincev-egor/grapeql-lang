@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Any extends Syntax<Any> {
     structure() {
@@ -17,7 +18,7 @@ export default class Any extends Syntax<Any> {
         };
     }
 
-    parse(coach, data: this["TInputData"]) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( coach.isWord("any") ) {
             coach.expectWord("any");
             data.type = "any";
@@ -44,7 +45,7 @@ export default class Any extends Syntax<Any> {
         coach.expect(")");
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         const isKeyword = (
             coach.isWord("any") ||
             coach.isWord("all") ||

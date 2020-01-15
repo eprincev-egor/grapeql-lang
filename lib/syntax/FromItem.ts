@@ -7,6 +7,7 @@ import TableLink from "./TableLink";
 import ObjectName from "./ObjectName";
 import Join from "./Join";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class FromItem extends Syntax<FromItem> {
     structure() {
@@ -32,7 +33,7 @@ export default class FromItem extends Syntax<FromItem> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         let needAs = false;
 
         // file Order.sql
@@ -130,7 +131,7 @@ export default class FromItem extends Syntax<FromItem> {
         return isFunctionCall;
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(/only|lateral|\(/) || coach.isWord() || coach.isDoubleQuotes() || coach.isFile();
     }
 

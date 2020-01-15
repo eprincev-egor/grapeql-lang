@@ -3,6 +3,7 @@
 import {Syntax, Types} from "lang-coach";
 import Operator from "./Operator";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class OrderByElement extends Syntax<OrderByElement> {
     structure() {
@@ -20,7 +21,7 @@ export default class OrderByElement extends Syntax<OrderByElement> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         data.expression = coach.parseExpression();
         
         data.vector = "asc";
@@ -48,7 +49,7 @@ export default class OrderByElement extends Syntax<OrderByElement> {
         }
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isExpression();
     }
     

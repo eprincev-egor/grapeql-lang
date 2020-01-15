@@ -89,8 +89,8 @@ export default class WithQuery extends Syntax<WithQuery> {
         coach.expect(")");
     }
 
-    is(coach) {
-        return !coach.isWord("select") && coach.isObjectName();
+    is(coach: GrapeQLCoach) {
+        return !coach.isWord("select") && coach.is(ObjectName);
     }
 
     toString() {

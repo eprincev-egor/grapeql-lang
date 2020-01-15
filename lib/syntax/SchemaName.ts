@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class SchemaName<Child extends SchemaName = any> extends Syntax<SchemaName & Child> {
     structure() {
@@ -10,11 +11,11 @@ export default class SchemaName<Child extends SchemaName = any> extends Syntax<S
         };
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isObjectLink();
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         
         // name
         const i = coach.i;

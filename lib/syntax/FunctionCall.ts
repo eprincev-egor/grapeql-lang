@@ -5,6 +5,7 @@ import FunctionLink from "./FunctionLink";
 import OrderByElement from "./OrderByElement";
 import WindowDefinition from "./WindowDefinition";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 // some(1,2)
 
@@ -31,7 +32,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         data.function = coach.parseFunctionLink();
 
         coach.skipSpace();
@@ -124,7 +125,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
         return coach.parseComma("OrderByElement");
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         coach.checkpoint();
         let result = false;
 

@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import ISyntaxes from "./ISyntaxes";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Union extends Syntax<Union> {
     structure() {
@@ -17,7 +18,7 @@ export default class Union extends Syntax<Union> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
 
         // { UNION | INTERSECT | EXCEPT }
         if ( coach.isWord("intersect") ) {
@@ -47,7 +48,7 @@ export default class Union extends Syntax<Union> {
         data.select = coach.parseSelect();
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(/(union|intersect|except)\s+/i);
     }
 

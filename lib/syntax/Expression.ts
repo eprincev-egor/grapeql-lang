@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 // true or false
 
@@ -29,7 +30,7 @@ export default class Expression extends Syntax<Expression> {
         };
     }
 
-    parse(coach, data, options) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"], options) {
         options = options || {
             // @see Between
             excludeOperators: false
@@ -184,7 +185,7 @@ export default class Expression extends Syntax<Expression> {
         return outOperators;
     }
     
-    is(coach, str, options) {
+    is(coach: GrapeQLCoach, str: string, options) {
         return (
             // for stopping parseComma
             !coach.isEnd() &&

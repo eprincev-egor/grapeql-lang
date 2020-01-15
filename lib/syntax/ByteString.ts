@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import SingleQuotesString from "./SingleQuotesString";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class ByteString extends Syntax<ByteString> {
     structure() {
@@ -10,7 +11,7 @@ export default class ByteString extends Syntax<ByteString> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( coach.isWord("b") ) {
             coach.expectWord("b");
 
@@ -48,7 +49,7 @@ export default class ByteString extends Syntax<ByteString> {
         }
     }
 
-    is(coach, str) {
+    is(coach: GrapeQLCoach, str: string) {
         return (
             str[1] === "'" && (
                 str[0] === "b" ||

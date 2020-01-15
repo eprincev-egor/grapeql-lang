@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class ObjectLink extends Syntax<ObjectLink> {
     structure() {
@@ -15,14 +16,14 @@ export default class ObjectLink extends Syntax<ObjectLink> {
         };
     }
 
-    parse(coach, data, options) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"], options) {
         options = options || {availableStar: false};
         data.link = [];
 
         this.parseLink(coach, data, options);
     }
 
-    parseLink(coach, data, options) {
+    parseLink(coach: GrapeQLCoach, data: this["TInputData"], options) {
 
         if ( options.availableStar && coach.is(/\s*\*/) ) {
             coach.skipSpace();
@@ -45,7 +46,7 @@ export default class ObjectLink extends Syntax<ObjectLink> {
         }
     }
 
-    is(coach, str, options) {
+    is(coach: GrapeQLCoach, str: string, options) {
         options = options || {availableStar: false};
 
         return (

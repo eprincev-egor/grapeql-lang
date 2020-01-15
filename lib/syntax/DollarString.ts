@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class DollarString extends Syntax<DollarString> {
     structure() {
@@ -9,7 +10,7 @@ export default class DollarString extends Syntax<DollarString> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         let tag = "";
 
         coach.expect("$");
@@ -37,7 +38,7 @@ export default class DollarString extends Syntax<DollarString> {
         data.content = content;
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(/\$\w*\$/);
     }
 

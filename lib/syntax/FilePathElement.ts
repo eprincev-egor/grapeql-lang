@@ -2,6 +2,7 @@
 
 import DoubleQuotes from "./DoubleQuotes";
 import { Types } from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class FilePathElement extends DoubleQuotes<FilePathElement> {
     structure() {
@@ -11,7 +12,7 @@ export default class FilePathElement extends DoubleQuotes<FilePathElement> {
         };
     }
 
-    parse(coach, data: this["TInputData"]) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( coach.isDoubleQuotes() ) {
             const quotes = coach.parseDoubleQuotes();
             data.content = quotes.get("content");
@@ -25,7 +26,7 @@ export default class FilePathElement extends DoubleQuotes<FilePathElement> {
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(/[^\s)/]/);
     }
 

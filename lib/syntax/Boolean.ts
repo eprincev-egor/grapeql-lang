@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 // true or false
 
@@ -14,7 +15,7 @@ export default class Boolean extends Syntax<Boolean> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
 
         if ( coach.isWord("true") ) {
             coach.expectWord("true");
@@ -25,7 +26,7 @@ export default class Boolean extends Syntax<Boolean> {
         }
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("true") || coach.isWord("false");
     }
     

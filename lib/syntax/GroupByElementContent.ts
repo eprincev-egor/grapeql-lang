@@ -2,6 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 /*
     { expression | ( expression [, ...] ) }
@@ -16,7 +17,7 @@ export default class GroupByElementContent extends Syntax<GroupByElementContent>
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( coach.is("(") ) {
             data.single = false;
 
@@ -35,7 +36,7 @@ export default class GroupByElementContent extends Syntax<GroupByElementContent>
         }
     }
     
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isExpression();
     }
     

@@ -1,6 +1,7 @@
 "use strict";
 
 import {Syntax, Types} from "lang-coach";
+import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class SelectFetch extends Syntax<SelectFetch> {
     structure() {
@@ -13,7 +14,7 @@ export default class SelectFetch extends Syntax<SelectFetch> {
         };
     }
 
-    parse(coach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("fetch");
 
         if ( coach.isWord("first") ) {
@@ -44,7 +45,7 @@ export default class SelectFetch extends Syntax<SelectFetch> {
         coach.expectWord("only");
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("fetch");
     }
 
