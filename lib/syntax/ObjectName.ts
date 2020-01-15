@@ -12,7 +12,7 @@ export default class ObjectName extends DoubleQuotes {
     }
 
     parse(coach, data) {
-        if ( coach.isDoubleQuotes() ) {
+        if ( coach.is(DoubleQuotes) ) {
             super.parse(coach, data);
         }
         else {
@@ -21,7 +21,7 @@ export default class ObjectName extends DoubleQuotes {
     }
 
     is(coach) {
-        return coach.isDoubleQuotes() || coach.isWord();
+        return coach.is(DoubleQuotes) || coach.isWord();
     }
 
     toString() {
