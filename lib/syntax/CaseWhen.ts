@@ -36,12 +36,12 @@ export default class CaseWhen extends Syntax<CaseWhen> {
         coach.expectWord("end");
     }
     
-    parseElement(coach, data) {
-        const elem = coach.parseCaseWhenElement();
+    parseElement(coach: GrapeQLCoach, data: this["TInputData"]) {
+        const elem = coach.parse(CaseWhenElement);
         data.case.push(elem);
         
         coach.skipSpace();
-        if ( coach.isCaseWhenElement() ) {
+        if ( coach.is(CaseWhenElement) ) {
             this.parseElement(coach, data);
         }
     }
