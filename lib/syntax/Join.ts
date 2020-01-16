@@ -18,7 +18,7 @@ import GrapeQLCoach from "../GrapeQLCoach";
 
 export default class Join extends Syntax<Join> {
     structure() {
-        const FromItem = this.syntax.Expression as GrapeQLCoach["syntax"]["FromItem"];
+        const FromItem = this.syntax.FromItem as GrapeQLCoach["syntax"]["FromItem"];
         
         return {
             type: Types.String,
@@ -31,7 +31,7 @@ export default class Join extends Syntax<Join> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const FromItem = this.syntax.Expression as GrapeQLCoach["syntax"]["FromItem"];
+        const FromItem = this.syntax.FromItem as GrapeQLCoach["syntax"]["FromItem"];
 
         const lateralErrorIndex = coach.i;
 
