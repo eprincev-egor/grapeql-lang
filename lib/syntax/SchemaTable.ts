@@ -1,19 +1,18 @@
 "use strict";
 
-import SchemaName from "./SchemaName";
+import SchemaParse from "./SchemaParse";
 import { Types } from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
 
-export default class SchemaTable extends SchemaName<SchemaTable> {
+export default class SchemaTable extends SchemaParse<SchemaTable> {
     structure() {
         return {
             schema: Types.String,
-            name: Types.String,
             table: Types.String
         };
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+    parse(coach: GrapeQLCoach, data) {
         super.parse(coach, data);
         
         data.table = data.name;
