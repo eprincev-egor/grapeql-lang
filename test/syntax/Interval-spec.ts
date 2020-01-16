@@ -35,7 +35,7 @@ describe("Interval", () => {
                 });
             },
             (err) =>
-                /invalid interval/.test(err.message)
+                /invalid model or model for interval/.test(err.message)
         );
     });
 
