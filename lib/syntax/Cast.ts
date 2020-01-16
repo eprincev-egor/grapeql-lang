@@ -6,7 +6,7 @@ import GrapeQLCoach from "../GrapeQLCoach";
 export default class Cast extends Syntax<Cast> {
     structure() {
         const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
-        const DataType = this.syntax.Expression as GrapeQLCoach["syntax"]["DataType"];
+        const DataType = this.syntax.DataType as GrapeQLCoach["syntax"]["DataType"];
 
         return {
             expression: Expression,
@@ -16,7 +16,7 @@ export default class Cast extends Syntax<Cast> {
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
-        const DataType = this.syntax.Expression as GrapeQLCoach["syntax"]["DataType"];
+        const DataType = this.syntax.DataType as GrapeQLCoach["syntax"]["DataType"];
         
         coach.expectWord("cast");
 
