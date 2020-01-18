@@ -2,18 +2,34 @@
 import GrapeQLCoach from "../lib/GrapeQLCoach";
 import assert from "assert";
 
-export default function testSyntax(SomeSyntax, test) {
-    if ( !test.str ) {
+interface ITestResult {
+    str: string;
+    options?: {[key: string]: any};
+    result: {[key: string]: any};
+}
+interface ITestError {
+    str: string;
+    error: RegExp;
+}
+
+export default function testSyntax<K extends keyof GrapeQLCoach["syntax"], T extends GrapeQLCoach["syntax"][K]>(
+    SomeSyntax: T, 
+    inputTest: ITestResult | ITestError
+) {
+    const testAny = inputTest as any;
+
+    if ( !testAny.str ) {
         throw new Error("test.str required");
     }
 
-    if ( !test.result && !test.error ) {
+    if ( !testAny.result && !testAny.error ) {
         throw new Error("test.result or test.error required");
     }
 
-    const str = test.str;
+    const str = testAny.str;
 
-    if ( test.error ) {
+    if ( testAny.error ) {
+        const test = testAny as ITestError;
         const regExp = test.error;
 
         it(`expected error:\n ${regExp}\nstring:\n${str}`, () => {
@@ -29,6 +45,7 @@ export default function testSyntax(SomeSyntax, test) {
         });
     }
     else {
+        const test = testAny as ITestResult;
 
         it(`testing method coach.is(${ SomeSyntax.name })\n string:\n${str}`, () => {
 
