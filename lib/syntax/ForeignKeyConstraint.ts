@@ -10,6 +10,7 @@ export default class ForeignKeyConstraint extends Constraint<ForeignKeyConstrain
     structure() {
         return {
             ...super.structure(),
+            column: ObjectName,
 
             columns: Types.Array({
                 element: ObjectName
@@ -53,20 +54,30 @@ export default class ForeignKeyConstraint extends Constraint<ForeignKeyConstrain
         );
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        super.parseName(coach, data);
+    parse(
+        coach: GrapeQLCoach, 
+        data: this["TInputData"], 
+        options: this["IOptions"] = {column: null}
+    ) {
+        if ( options.column ) {
+            data.column = options.column;
+            data.columns = [options.column];
+        }
+        else {
+            super.parseName(coach, data);
 
-        coach.expectWord("foreign");
-        coach.expectWord("key");
-        coach.expect("(");
-        coach.skipSpace();
+            coach.expectWord("foreign");
+            coach.expectWord("key");
+            coach.expect("(");
+            coach.skipSpace();
+    
+            data.columns = coach.parseComma(ObjectName);
+    
+            coach.skipSpace();
+            coach.expect(")");
+            coach.skipSpace();
+        }
 
-        data.columns = coach.parseComma(ObjectName);
-
-        coach.skipSpace();
-        coach.expect(")");
-        coach.skipSpace();
-        
         coach.expectWord("references");
 
         data.referenceTable = coach.parse(ObjectLink);
@@ -161,17 +172,20 @@ export default class ForeignKeyConstraint extends Constraint<ForeignKeyConstrain
             referenceColumns,
             match,
             onDelete,
-            onUpdate
+            onUpdate,
+            column
         } = this.data;
 
         let out = "";
 
-        out += super.toString();
+        if ( !column ) {
+            out += super.toString();
 
-        out += " foreign key ( ";
-        out += columns.map((name) => name.toString()).join(", ");
-        out += " ) ";
-
+            out += " foreign key ( ";
+            out += columns.map((name) => name.toString()).join(", ");
+            out += " ) ";
+        }
+        
         out += "references ";
         out += referenceTable.toString();
 

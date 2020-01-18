@@ -1,6 +1,5 @@
 
 import ForeignKeyConstraint from "../../lib/syntax/ForeignKeyConstraint";
-import ObjectName from "../../lib/syntax/ObjectName";
 import testSyntax from "../testSyntax";
 
 describe("ForeignKeyConstraint", () => {
@@ -12,6 +11,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -32,6 +32,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -50,6 +51,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -68,6 +70,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -86,6 +89,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -104,6 +108,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -122,6 +127,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -140,6 +146,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -158,6 +165,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -176,6 +184,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -194,6 +203,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -212,6 +222,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -230,6 +241,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -248,6 +260,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -266,6 +279,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [{word: "id_client", content: null}],
             referenceTable: {star: false, link: [
                 {word: "company", content: null}
@@ -287,6 +301,7 @@ describe("ForeignKeyConstraint", () => {
         `,
         result: {
             name: {word: "client", content: null},
+            column: null,
             columns: [
                 {word: "id_client", content: null},
                 {word: "x", content: null}
@@ -298,6 +313,90 @@ describe("ForeignKeyConstraint", () => {
                 {word: "id", content: null},
                 {word: "y", content: null}
             ],
+            match: "full",
+            onDelete: "set default",
+            onUpdate: "set default"
+        }
+    });
+
+    testSyntax(ForeignKeyConstraint, {
+        str: `references company`,
+        options: {
+            column: {
+                word: "id_company",
+                content: null
+            }
+        },
+        result: {
+            name: null,
+            column: {
+                word: "id_company",
+                content: null
+            },
+            columns: [{word: "id_company", content: null}],
+            referenceTable: {star: false, link: [
+                {word: "company", content: null}
+            ]},
+            referenceColumns: null,
+            match: null,
+            onDelete: null,
+            onUpdate: null
+        }
+    });
+
+    testSyntax(ForeignKeyConstraint, {
+        str: `references company (id)`,
+        options: {
+            column: {
+                word: "id_company",
+                content: null
+            }
+        },
+        result: {
+            name: null,
+            column: {
+                word: "id_company",
+                content: null
+            },
+            columns: [{word: "id_company", content: null}],
+            referenceTable: {star: false, link: [
+                {word: "company", content: null}
+            ]},
+            referenceColumns: [{
+                word: "id",
+                content: null
+            }],
+            match: null,
+            onDelete: null,
+            onUpdate: null
+        }
+    });
+
+    testSyntax(ForeignKeyConstraint, {
+        str: `references company (id)
+            match full
+            on delete set default 
+            on update set default `,
+        options: {
+            column: {
+                word: "id_company",
+                content: null
+            }
+        },
+        result: {
+            name: null,
+            column: {
+                word: "id_company",
+                content: null
+            },
+            columns: [{word: "id_company", content: null}],
+            referenceTable: {star: false, link: [
+                {word: "company", content: null}
+            ]},
+            referenceColumns: [{
+                word: "id",
+                content: null
+            }],
             match: "full",
             onDelete: "set default",
             onUpdate: "set default"

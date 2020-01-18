@@ -216,6 +216,11 @@ describe("ColumnDefinition", () => {
     });
 
     testSyntax(ColumnDefinition, {
+        str: "id_company integer references company references company",
+        error: /duplicate foreign key/
+    });
+
+    testSyntax(ColumnDefinition, {
         str: "name text unique",
         result: {
             name: {
@@ -297,6 +302,81 @@ describe("ColumnDefinition", () => {
                 }]
             },
             foreignKey: null,
+            check: null,
+            default: null
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "id_company integer references company",
+        result: {
+            name: {
+                word: "id_company",
+                content: null
+            },
+            type: {
+                type: "integer"
+            },
+            nulls: true,
+            primaryKey: null,
+            unique: null,
+            foreignKey: {
+                name: null,
+                column: {
+                    word: "id_company",
+                    content: null
+                },
+                columns: [{
+                    word: "id_company", 
+                    content: null
+                }],
+                referenceTable: {star: false, link: [
+                    {word: "company", content: null}
+                ]},
+                referenceColumns: null,
+                match: null,
+                onDelete: null,
+                onUpdate: null
+            },
+            check: null,
+            default: null
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "id_company integer references company (id)",
+        result: {
+            name: {
+                word: "id_company",
+                content: null
+            },
+            type: {
+                type: "integer"
+            },
+            nulls: true,
+            primaryKey: null,
+            unique: null,
+            foreignKey: {
+                name: null,
+                column: {
+                    word: "id_company",
+                    content: null
+                },
+                columns: [{
+                    word: "id_company", 
+                    content: null
+                }],
+                referenceTable: {star: false, link: [
+                    {word: "company", content: null}
+                ]},
+                referenceColumns: [{
+                    word: "id",
+                    content: null
+                }],
+                match: null,
+                onDelete: null,
+                onUpdate: null
+            },
             check: null,
             default: null
         }

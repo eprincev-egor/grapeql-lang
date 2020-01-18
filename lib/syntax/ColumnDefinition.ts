@@ -64,6 +64,10 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
         this.parseConstraint(coach, data);
         // primary key
         this.parseConstraint(coach, data);
+        // unique
+        this.parseConstraint(coach, data);
+        // foreign key
+        this.parseConstraint(coach, data);
     }
 
     parseConstraint(coach: GrapeQLCoach, data: this["TInputData"]) {
@@ -72,6 +76,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
         this.parsePrimaryKey(coach, data);
         this.parseUnique(coach, data);
         this.parseCheck(coach, data);
+        this.parseForeignKey(coach, data);
 
     }
 
@@ -140,6 +145,20 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
         });
     }
 
+    parseForeignKey(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.is(ForeignKeyConstraint) ) {
+            return;
+        }
+
+        if ( data.foreignKey ) {
+            coach.throwError("duplicate foreign key");
+        }
+
+        data.foreignKey = coach.parse(ForeignKeyConstraint, {
+            column: data.name
+        });
+    }
+
     toString() {
         const data = this.data;
         let out = "";
@@ -164,6 +183,11 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
         if ( data.check ) {
             out += " ";
             out += data.check.toString();
+        }
+
+        if ( data.foreignKey ) {
+            out += " ";
+            out += data.foreignKey.toString();
         }
 
         return out;
