@@ -1,11 +1,12 @@
 
+import {Syntax} from "lang-coach";
 import GrapeQLCoach from "../lib/GrapeQLCoach";
 import assert from "assert";
 
-interface ITestResult {
+interface ITestResult<SomeSyntax extends Syntax<any>> {
     str: string;
     options?: {[key: string]: any};
-    result: {[key: string]: any};
+    result: SomeSyntax["TInputData"]
 }
 interface ITestError {
     str: string;
@@ -14,7 +15,7 @@ interface ITestError {
 
 export default function testSyntax<K extends keyof GrapeQLCoach["syntax"], T extends GrapeQLCoach["syntax"][K]>(
     SomeSyntax: T, 
-    inputTest: ITestResult | ITestError
+    inputTest: ITestResult<InstanceType<T>> | ITestError
 ) {
     const testAny = inputTest as any;
 
@@ -45,7 +46,7 @@ export default function testSyntax<K extends keyof GrapeQLCoach["syntax"], T ext
         });
     }
     else {
-        const test = testAny as ITestResult;
+        const test = testAny as ITestResult<InstanceType<T>>;
 
         it(`testing method coach.is(${ SomeSyntax.name })\n string:\n${str}`, () => {
 
