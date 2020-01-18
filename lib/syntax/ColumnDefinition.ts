@@ -53,28 +53,91 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
         data.type = coach.parse(DataType);
         coach.skipSpace();
 
+        // not null, unique, primary key, ...
         this.parseConstraints(coach, data);
     }
 
     parseConstraints(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( coach.is(PrimaryKeyConstraint) ) {
-            data.nulls = false;
-            data.primaryKey = coach.parse(PrimaryKeyConstraint, {
-                column: data.name
-            });
+        // not null
+        this.parseConstraint(coach, data);
+        // check
+        this.parseConstraint(coach, data);
+        // primary key
+        this.parseConstraint(coach, data);
+    }
+
+    parseConstraint(coach: GrapeQLCoach, data: this["TInputData"]) {
+        
+        this.parseNotNull(coach, data);
+        this.parsePrimaryKey(coach, data);
+        this.parseUnique(coach, data);
+        this.parseCheck(coach, data);
+
+    }
+
+    parseNotNull(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.isWord("not") ) {
+            return;
         }
 
-        if ( coach.isWord("not") ) {
-            coach.expectWord("not");
-            coach.expectWord("null");
-            data.nulls = false;
+        if ( data.primaryKey ) {
+            coach.throwError("column already defined as not null by primary key");
         }
 
-        if ( coach.is(CheckConstraint) ) {
-            data.check = coach.parse(CheckConstraint, {
-                column: data.name
-            });
+        if ( data.nulls === false ) {
+            coach.throwError("duplicate not null");
         }
+
+        coach.expectWord("not");
+        coach.expectWord("null");
+        data.nulls = false;
+    }
+
+    parsePrimaryKey(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.is(PrimaryKeyConstraint) ) {
+            return;
+        }
+
+        if ( data.nulls === false && !data.primaryKey ) {
+            coach.throwError("column already defined as not null by primary key");
+        }
+
+        if ( data.primaryKey ) {
+            coach.throwError("duplicate primary key");
+        }
+
+        data.nulls = false;
+        data.primaryKey = coach.parse(PrimaryKeyConstraint, {
+            column: data.name
+        });
+    }
+
+    parseUnique(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.is(UniqueConstraint) ) {
+            return;
+        }
+
+        if ( data.unique ) {
+            coach.throwError("duplicate unique");
+        }
+
+        data.unique = coach.parse(UniqueConstraint, {
+            column: data.name
+        });
+    }
+
+    parseCheck(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.is(CheckConstraint) ) {
+            return;
+        }
+
+        if ( data.check ) {
+            coach.throwError("duplicate check");
+        }
+
+        data.check = coach.parse(CheckConstraint, {
+            column: data.name
+        });
     }
 
     toString() {
@@ -91,6 +154,11 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
         }
         else if ( data.nulls === false ) {
             out += " not null";
+        }
+
+        if ( data.unique ) {
+            out += " ";
+            out += data.unique.toString();
         }
 
         if ( data.check ) {

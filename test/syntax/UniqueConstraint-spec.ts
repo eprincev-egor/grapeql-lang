@@ -11,7 +11,8 @@ describe("UniqueConstraint", () => {
                 word: "test",
                 content: null
             },
-            primaryKey: [
+            column: null,
+            unique: [
                 {
                     word: "id_unit",
                     content: null
@@ -21,6 +22,27 @@ describe("UniqueConstraint", () => {
                     content: null
                 }
             ]
+        }
+    });
+    
+    testSyntax(UniqueConstraint, {
+        str: "unique",
+        options: {
+            column: {
+                word: "test",
+                content: null
+            }
+        },
+        result: {
+            name: null,
+            column: {
+                word: "test",
+                content: null
+            },
+            unique: [{
+                word: "test",
+                content: null
+            }]
         }
     });
     

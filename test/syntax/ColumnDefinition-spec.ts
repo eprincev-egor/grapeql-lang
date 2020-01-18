@@ -116,5 +116,190 @@ describe("ColumnDefinition", () => {
     });
 
 
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric not null check ( profit>0 )",
+        result: {
+            name: {
+                word: "profit",
+                content: null
+            },
+            type: {
+                type: "numeric"
+            },
+            nulls: false,
+            primaryKey: null,
+            unique: null,
+            foreignKey: null,
+            check: {
+                name: null,
+                column: {
+                    word: "profit",
+                    content: null
+                },
+                check: {
+                    elements: [
+                        {star: false, link: [
+                            {word: "profit", content: null}
+                        ]},
+                        {operator: ">"},
+                        {number: "0"}
+                    ]
+                }
+            },
+            default: null
+        }
+    });
+
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric check ( profit>0 ) not null",
+        result: {
+            name: {
+                word: "profit",
+                content: null
+            },
+            type: {
+                type: "numeric"
+            },
+            nulls: false,
+            primaryKey: null,
+            unique: null,
+            foreignKey: null,
+            check: {
+                name: null,
+                column: {
+                    word: "profit",
+                    content: null
+                },
+                check: {
+                    elements: [
+                        {star: false, link: [
+                            {word: "profit", content: null}
+                        ]},
+                        {operator: ">"},
+                        {number: "0"}
+                    ]
+                }
+            },
+            default: null
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric not null not null",
+        error: /duplicate not null/
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric primary key primary key",
+        error: /duplicate primary key/
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric check(true) check(true)",
+        error: /duplicate check/
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric primary key not null",
+        error: /column already defined as not null by primary key/
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric not null primary key",
+        error: /column already defined as not null by primary key/
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric unique unique",
+        error: /duplicate unique/
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "name text unique",
+        result: {
+            name: {
+                word: "name",
+                content: null
+            },
+            type: {
+                type: "text"
+            },
+            nulls: true,
+            primaryKey: null,
+            unique: {
+                name: null,
+                column: {
+                    word: "name",
+                    content: null
+                },
+                unique: [{
+                    word: "name",
+                    content: null
+                }]
+            },
+            foreignKey: null,
+            check: null,
+            default: null
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "name text unique not null",
+        result: {
+            name: {
+                word: "name",
+                content: null
+            },
+            type: {
+                type: "text"
+            },
+            nulls: false,
+            primaryKey: null,
+            unique: {
+                name: null,
+                column: {
+                    word: "name",
+                    content: null
+                },
+                unique: [{
+                    word: "name",
+                    content: null
+                }]
+            },
+            foreignKey: null,
+            check: null,
+            default: null
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "name text not null unique",
+        result: {
+            name: {
+                word: "name",
+                content: null
+            },
+            type: {
+                type: "text"
+            },
+            nulls: false,
+            primaryKey: null,
+            unique: {
+                name: null,
+                column: {
+                    word: "name",
+                    content: null
+                },
+                unique: [{
+                    word: "name",
+                    content: null
+                }]
+            },
+            foreignKey: null,
+            check: null,
+            default: null
+        }
+    });
 
 });
