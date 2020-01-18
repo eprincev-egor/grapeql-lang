@@ -1,4 +1,4 @@
-"use strict";
+
 
 import {Coach} from "lang-coach";
 

@@ -1,4 +1,4 @@
-"use strict";
+
 
 import SchemaParse from "./SchemaParse";
 import { Types } from "lang-coach";

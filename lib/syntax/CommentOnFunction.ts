@@ -1,4 +1,4 @@
-"use strict";
+
 
 import CommentOn from "./CommentOn";
 import FunctionIdentify from "./FunctionIdentify";

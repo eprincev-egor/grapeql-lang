@@ -1,4 +1,4 @@
-"use strict";
+
 
 import {Syntax, Types} from "lang-coach";
 import ColumnLink from "./ColumnLink";

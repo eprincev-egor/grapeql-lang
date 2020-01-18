@@ -1,4 +1,4 @@
-"use strict";
+
 
 import DoubleQuotes from "./DoubleQuotes";
 import { Types } from "lang-coach";

@@ -1,4 +1,4 @@
-"use strict";
+
 
 /*
  join_type from_item [ ON join_condition | USING ( join_column [, ...] ) ]
