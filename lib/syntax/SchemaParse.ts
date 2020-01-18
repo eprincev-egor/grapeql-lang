@@ -5,6 +5,7 @@ import GrapeQLCoach from "../GrapeQLCoach";
 import ObjectLink from "./ObjectLink";
 
 export default class SchemaParse<Child extends SchemaParse = any> extends Syntax<Child> {
+    /* istanbul ignore next */
     structure() {
         return {
 

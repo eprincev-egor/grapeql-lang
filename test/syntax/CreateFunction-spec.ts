@@ -1,6 +1,8 @@
 
 import CreateFunction from "../../lib/syntax/CreateFunction";
 import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import assert from "assert";
 
 describe("CreateFunction", () => {
 
@@ -1095,5 +1097,45 @@ describe("CreateFunction", () => {
             }
         }
     });
+    
+    testSyntax(CreateFunction, {
+        str: `create or replace function 
+            test()
+            returns void as $body$begin;end$body$
+            language plpgsql;
 
+            comment on function wrong_name() is 'test';
+        `,
+        error: /comment after function has wrong identify/
+    });
+
+    it(`using toIdentify()`, () => {
+        const coach = new GrapeQLCoach(`create function test()
+            returns void as $body$select 1$body$
+            language sql
+        `);
+        const func = coach.parse(CreateFunction);
+        const identify = func.toIdentify();
+
+        assert.deepStrictEqual(identify.toJSON(), {
+            schema: "public",
+            name: "test",
+            args: []
+        });
+    });
+
+    it(`using toIdentify() without args`, () => {
+        
+        const func = new CreateFunction({
+            schema: "public",
+            name: "test"
+        });
+        const identify = func.toIdentify();
+
+        assert.deepStrictEqual(identify.toJSON(), {
+            schema: "public",
+            name: "test",
+            args: []
+        });
+    });
 });

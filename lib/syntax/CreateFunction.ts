@@ -42,7 +42,7 @@ export default class CreateFunction extends Syntax<CreateFunction> {
         };
     }
 
-    toIdentify(data: this["TInputData"]) {
+    toIdentify(data: this["TInputData"] = this.data) {
         const inputArgs = (data.args || []).filter((arg: PgArgument) =>
             !arg.data.out
         ) as PgArgument[];

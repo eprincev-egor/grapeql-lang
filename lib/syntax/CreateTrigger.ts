@@ -116,21 +116,15 @@ export default class CreateTrigger extends Syntax<CreateTrigger> {
             }
         }
 
+        coach.expectWord("for");
+        coach.expectWord("each");
 
-        if ( coach.isWord("for") ) {
-            coach.expectWord("for");
-
-            if ( coach.isWord("each") ) {
-                coach.expectWord("each");
-            }
-
-            if ( coach.isWord("row") ) {
-                coach.expectWord("row");
-            }
-            else {
-                coach.expectWord("statement");
-                data.statement = true;
-            }
+        if ( coach.isWord("row") ) {
+            coach.expectWord("row");
+        }
+        else {
+            coach.expectWord("statement");
+            data.statement = true;
         }
         
 
@@ -230,7 +224,7 @@ export default class CreateTrigger extends Syntax<CreateTrigger> {
         if ( trigger.before ) {
             out += "before";
         }
-        else if ( trigger.after ) {
+        else {
             out += "after";
         }
         out += " ";

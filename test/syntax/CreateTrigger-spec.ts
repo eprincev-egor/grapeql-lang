@@ -814,5 +814,18 @@ describe("CreateTrigger", () => {
             }
         }
     });
+
+    testSyntax(CreateTrigger, {
+        str: `
+        create trigger test 
+            before insert
+            on public.company
+            for each row
+            execute procedure public.test();
+
+            comment on trigger wrong_name on company is 'test';
+        `,
+        error: /comment after trigger has wrong identify/
+    });
     
 });

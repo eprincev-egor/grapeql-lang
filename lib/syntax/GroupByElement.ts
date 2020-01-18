@@ -37,6 +37,9 @@ export default class GroupByElement extends Syntax<GroupByElement> {
         }
         
         else if ( coach.isWord("rollup") ) {
+
+            // istanbul error here (else path not taken):
+            /* istanbul ignore next */
             coach.expectWord("rollup");
             
             coach.expect("(");
