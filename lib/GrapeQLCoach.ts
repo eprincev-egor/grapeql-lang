@@ -56,6 +56,14 @@ import WindowDefinitionFrameElement from "./syntax/WindowDefinitionFrameElement"
 import WindowItem from "./syntax/WindowItem";
 import With from "./syntax/With";
 import WithQuery from "./syntax/WithQuery";
+import PgArgument from "./syntax/PgArgument";
+import PgReturns from "./syntax/PgReturns";
+import FunctionIdentify from "./syntax/FunctionIdentify";
+import TriggerIdentify from "./syntax/TriggerIdentify";
+import CommentOn from "./syntax/CommentOn";
+import CommentOnFunction from "./syntax/CommentOnFunction";
+import CommentOnTrigger from "./syntax/CommentOnTrigger";
+import CreateFunction from "./syntax/CreateFunction";
 
 export default class GrapeQLCoach extends Coach {
     syntax = {
@@ -112,6 +120,19 @@ export default class GrapeQLCoach extends Coach {
         WindowDefinitionFrameElement,
         WindowItem,
         With,
-        WithQuery
+        WithQuery,
+        PgArgument,
+        PgReturns,
+        FunctionIdentify,
+        TriggerIdentify,
+        CommentOn,
+        CommentOnFunction,
+        CommentOnTrigger,
+        CreateFunction
     };
+
+    parseType(): string {
+        const dataType = this.parse(DataType as this["syntax"]["DataType"]);
+        return dataType.get("type");
+    }
 }

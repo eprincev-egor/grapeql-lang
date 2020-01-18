@@ -2,6 +2,7 @@
 
 import GrapeQLCoach from "./GrapeQLCoach";
 
-export {
+export default {
+    ...GrapeQLCoach.prototype.syntax,
     GrapeQLCoach
 };
