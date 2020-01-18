@@ -14,7 +14,7 @@ describe("index tests", () => {
             () => {
                 testSyntax(index.PgNull, {
                     
-                });
+                } as any);
             },
             (err) =>
                 err.message === "test.str required"
@@ -26,7 +26,7 @@ describe("index tests", () => {
             () => {
                 testSyntax(index.PgNull, {
                     str: "null"
-                });
+                } as any);
             },
             (err) =>
                 err.message === "test.result or test.error required"
