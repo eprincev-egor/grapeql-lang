@@ -5,6 +5,10 @@ import ObjectName from "./ObjectName";
 
 export default class Constraint<Child extends Constraint = any> extends Syntax<Constraint & Child> {
     
+    IOptions: {
+        column: ObjectName["TInput"]
+    };
+
     structure() {
         return {
             name: ObjectName

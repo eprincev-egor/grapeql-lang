@@ -2,6 +2,7 @@
 import GrapeQLCoach from "../GrapeQLCoach";
 import Constraint from "./Constraint";
 import Expression from "./Expression";
+import ObjectName from "./ObjectName";
 
 export default class CheckConstraint extends Constraint<CheckConstraint> {
     
@@ -9,6 +10,7 @@ export default class CheckConstraint extends Constraint<CheckConstraint> {
         return {
             ...super.structure(),
             
+            column: ObjectName,
             check: Expression
         };
     }
@@ -20,8 +22,17 @@ export default class CheckConstraint extends Constraint<CheckConstraint> {
         );
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        super.parseName(coach, data);
+    parse(
+        coach: GrapeQLCoach, 
+        data: this["TInputData"], 
+        options: this["IOptions"] = {column: null}
+    ) {
+        if ( options.column ) {
+            data.column = options.column;
+        }
+        else {
+            super.parseName(coach, data);
+        }
 
         coach.expectWord("check");
         coach.expect("(");
@@ -34,10 +45,18 @@ export default class CheckConstraint extends Constraint<CheckConstraint> {
     }
 
     toString() {
-        const {check} = this.data;
-        let out = super.toString();
+        const {
+            check, 
+            column
+        } = this.data;
+        let out = "";
+
+        if ( !column ) {
+            out += super.toString();
+            out += " ";
+        }
         
-        out += ` check( ${ check.toString() } )`;
+        out += `check( ${ check.toString() } )`;
 
         return out;
     }

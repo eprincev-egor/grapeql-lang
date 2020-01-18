@@ -11,6 +11,28 @@ describe("PrimaryKeyConstraint", () => {
                 word: "test",
                 content: null
             },
+            column: null,
+            primaryKey: [{
+                word: "id",
+                content: null
+            }]
+        }
+    });
+    
+    testSyntax(PrimaryKeyConstraint, {
+        str: "primary key",
+        options: {
+            column: {
+                word: "id",
+                content: null
+            }
+        },
+        result: {
+            name: null,
+            column: {
+                word: "id",
+                content: null
+            },
             primaryKey: [{
                 word: "id",
                 content: null

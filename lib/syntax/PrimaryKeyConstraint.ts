@@ -9,6 +9,7 @@ export default class PrimaryKeyConstraint extends Constraint<PrimaryKeyConstrain
     structure() {
         return {
             ...super.structure(),
+            column: ObjectName,
             
             primaryKey: Types.Array({
                 element: ObjectName
@@ -23,27 +24,50 @@ export default class PrimaryKeyConstraint extends Constraint<PrimaryKeyConstrain
         );
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        super.parseName(coach, data);
+    parse(
+        coach: GrapeQLCoach, 
+        data: this["TInputData"], 
+        options: this["IOptions"] = {column: null}
+    ) {
+        if ( !options.column ) {
+            super.parseName(coach, data);
+        }
 
         coach.expectWord("primary");
         coach.expectWord("key");
-        coach.expect("(");
-        coach.skipSpace();
 
-        data.primaryKey = coach.parseComma(ObjectName);
+        if ( !options.column ) {
+            coach.expect("(");
+            coach.skipSpace();
 
-        coach.skipSpace();
-        coach.expect(")");
+            data.primaryKey = coach.parseComma(ObjectName);
+
+            coach.skipSpace();
+            coach.expect(")");
+        }
+        else {
+            data.column = options.column;
+            data.primaryKey = [options.column];
+        }
     }
 
     toString() {
-        let out = super.toString();
-        const {primaryKey} = this.data;
+        let out = "";
+        
+        const {
+            primaryKey,
+            column
+        } = this.data;
 
-        out += " primary key (";
-        out += primaryKey.map((name) => name.toString()).join(", ");
-        out += ")";
+        if ( column ) {
+            out = "primary key";
+        }
+        else {
+            out += super.toString();
+            out += " primary key (";
+            out += primaryKey.map((name) => name.toString()).join(", ");
+            out += ")";
+        }
 
         return out;
     }
