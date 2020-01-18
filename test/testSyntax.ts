@@ -11,12 +11,12 @@ export default function testSyntax(SomeSyntax, test) {
         throw new Error("test.result or test.error required");
     }
 
-    it(test.str, () => {
+    const str = test.str;
 
-        const str = test.str;
+    if ( test.error ) {
+        const regExp = test.error;
 
-        if ( test.error ) {
-            const regExp = test.error;
+        it(`expected error:\n ${regExp}\nstring:\n${str}`, () => {
             
             assert.throws(
                 () => {
@@ -26,29 +26,37 @@ export default function testSyntax(SomeSyntax, test) {
                 (err) =>
                     regExp.test( err )
             );
-        }
+        });
+    }
+    else {
 
-        else {
+        it(`testing method coach.is(${ SomeSyntax.name })\n string:\n${str}`, () => {
+
             const coach = new GrapeQLCoach(str);
-            let result;
-
-            // test static method is
-            result = coach.is(SomeSyntax, test.options);
+            const result = coach.is(SomeSyntax, test.options);
             assert.ok( result );
+        });
 
 
-            // test static method parse
-            result = coach.parse(SomeSyntax, test.options);
+        it(`testing method coach.parse(${ SomeSyntax.name })\n string:\n${str}`, () => {
+            
+            const coach = new GrapeQLCoach(str);
+            const result = coach.parse(SomeSyntax, test.options);
             assert.deepEqual(test.result, result.toJSON());
+        });
 
 
-            // test toString method
+        it(`testing method ${ SomeSyntax.name }.toString()\n string:\n${str}`, () => {
+            
+            const coach = new GrapeQLCoach(str);
+            const result = coach.parse(SomeSyntax, test.options);
             const clone = result.clone();
             const cloneString = clone.toString();
             const cloneCoach = new GrapeQLCoach( cloneString );
             
             const cloneResult = cloneCoach.parse(SomeSyntax, test.options);
             assert.deepEqual(test.result, cloneResult.toJSON());
-        }
-    });
+        });
+    }
+
 }
