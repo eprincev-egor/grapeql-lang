@@ -10,7 +10,6 @@ export default class ForeignKeyConstraint extends Constraint<ForeignKeyConstrain
     structure() {
         return {
             ...super.structure(),
-            column: ObjectName,
 
             columns: Types.Array({
                 element: ObjectName
@@ -47,11 +46,19 @@ export default class ForeignKeyConstraint extends Constraint<ForeignKeyConstrain
         };
     }
 
-    is(coach: GrapeQLCoach) {
-        return (
-            coach.isWord("references")  ||
-            super.is(coach)
-        );
+    is(coach: GrapeQLCoach, options: this["IOptions"] = {column: null}) {
+        if ( options.column ) {
+            return coach.isWord("references");
+        }
+        else {
+            const i = coach.i;
+            super.parseName(coach, {});
+            
+            const isForeignKey = coach.isWord("references");
+            coach.i = i;
+
+            return isForeignKey;
+        }
     }
 
     parse(

@@ -9,7 +9,6 @@ export default class PrimaryKeyConstraint extends Constraint<PrimaryKeyConstrain
     structure() {
         return {
             ...super.structure(),
-            column: ObjectName,
             
             primaryKey: Types.Array({
                 element: ObjectName
@@ -17,11 +16,19 @@ export default class PrimaryKeyConstraint extends Constraint<PrimaryKeyConstrain
         };
     }
 
-    is(coach: GrapeQLCoach) {
-        return (
-            coach.isWord("primary") ||
-            super.is(coach)
-        );
+    is(coach: GrapeQLCoach, options: this["IOptions"] = {column: null}) {
+        if ( options.column ) {
+            return coach.isWord("primary");
+        }
+        else {
+            const i = coach.i;
+            super.parseName(coach, {});
+            
+            const isPrimaryKey = coach.isWord("primary");
+            coach.i = i;
+
+            return isPrimaryKey;
+        }
     }
 
     parse(

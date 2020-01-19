@@ -11,7 +11,8 @@ export default class Constraint<Child extends Constraint = any> extends Syntax<C
 
     structure() {
         return {
-            name: ObjectName
+            name: ObjectName,
+            column: ObjectName
         };
     }
 

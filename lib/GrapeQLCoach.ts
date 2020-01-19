@@ -68,6 +68,10 @@ import Constraint from "./syntax/Constraint";
 import CheckConstraint from "./syntax/CheckConstraint";
 import PrimaryKeyConstraint from "./syntax/PrimaryKeyConstraint";
 import UniqueConstraint from "./syntax/UniqueConstraint";
+import ForeignKeyConstraint from "./syntax/ForeignKeyConstraint";
+import ColumnDefinition from "./syntax/ColumnDefinition";
+import CreateTableElement from "./syntax/CreateTableElement";
+import CreateTable from "./syntax/CreateTable";
 
 export default class GrapeQLCoach extends Coach {
     syntax = {
@@ -136,7 +140,11 @@ export default class GrapeQLCoach extends Coach {
         Constraint,
         CheckConstraint,
         PrimaryKeyConstraint,
-        UniqueConstraint
+        UniqueConstraint,
+        ForeignKeyConstraint,
+        ColumnDefinition,
+        CreateTableElement,
+        CreateTable
     };
 
     parseType(): string {

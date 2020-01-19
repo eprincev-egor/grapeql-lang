@@ -115,7 +115,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     parsePrimaryKey(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( !coach.is(PrimaryKeyConstraint) ) {
+        if ( !coach.is(PrimaryKeyConstraint, {coach: data.name}) ) {
             return;
         }
 
@@ -138,7 +138,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     parseUnique(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( !coach.is(UniqueConstraint) ) {
+        if ( !coach.is(UniqueConstraint, {coach: data.name}) ) {
             return;
         }
 
@@ -156,7 +156,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     parseCheck(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( !coach.is(CheckConstraint) ) {
+        if ( !coach.is(CheckConstraint, {coach: data.name}) ) {
             return;
         }
 
@@ -170,7 +170,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     parseForeignKey(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( !coach.is(ForeignKeyConstraint) ) {
+        if ( !coach.is(ForeignKeyConstraint, {coach: data.name}) ) {
             return;
         }
 

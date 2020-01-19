@@ -9,7 +9,6 @@ export default class UniqueConstraint extends Constraint<UniqueConstraint> {
     structure() {
         return {
             ...super.structure(),
-            column: ObjectName,
 
             unique: Types.Array({
                 element: ObjectName
@@ -17,11 +16,19 @@ export default class UniqueConstraint extends Constraint<UniqueConstraint> {
         };
     }
 
-    is(coach: GrapeQLCoach) {
-        return (
-            coach.isWord("unique") ||
-            super.is(coach)
-        );
+    is(coach: GrapeQLCoach, options: this["IOptions"] = {column: null}) {
+        if ( options.column ) {
+            return coach.isWord("unique");
+        }
+        else {
+            const i = coach.i;
+            super.parseName(coach, {});
+            
+            const isUnique = coach.isWord("unique");
+            coach.i = i;
+
+            return isUnique;
+        }
     }
 
     parse(

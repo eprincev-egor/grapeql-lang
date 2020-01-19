@@ -2,7 +2,6 @@
 import GrapeQLCoach from "../GrapeQLCoach";
 import Constraint from "./Constraint";
 import Expression from "./Expression";
-import ObjectName from "./ObjectName";
 
 export default class CheckConstraint extends Constraint<CheckConstraint> {
     
@@ -10,16 +9,23 @@ export default class CheckConstraint extends Constraint<CheckConstraint> {
         return {
             ...super.structure(),
             
-            column: ObjectName,
             check: Expression
         };
     }
 
-    is(coach: GrapeQLCoach) {
-        return (
-            coach.isWord("check") ||
-            super.is(coach)
-        );
+    is(coach: GrapeQLCoach, options: this["IOptions"] = {column: null}) {
+        if ( options.column ) {
+            return coach.isWord("check");
+        }
+        else {
+            const i = coach.i;
+            super.parseName(coach, {});
+            
+            const isCheck = coach.isWord("check");
+            coach.i = i;
+
+            return isCheck;
+        }
     }
 
     parse(
