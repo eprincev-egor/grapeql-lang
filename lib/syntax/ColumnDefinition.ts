@@ -58,6 +58,8 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     parseConstraints(coach: GrapeQLCoach, data: this["TInputData"]) {
+        // default
+        this.parseConstraint(coach, data);
         // not null
         this.parseConstraint(coach, data);
         // check
@@ -73,6 +75,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     parseConstraint(coach: GrapeQLCoach, data: this["TInputData"]) {
         
         this.parseNotNull(coach, data);
+        this.parseDefault(coach, data);
         this.parsePrimaryKey(coach, data);
         this.parseUnique(coach, data);
         this.parseCheck(coach, data);
@@ -98,6 +101,19 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
         data.nulls = false;
     }
 
+    parseDefault(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.isWord("default") ) {
+            return;
+        }
+
+        if ( data.default ) {
+            coach.throwError("duplicate default");
+        }
+
+        coach.expectWord("default");
+        data.default = coach.parse(Expression);
+    }
+
     parsePrimaryKey(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( !coach.is(PrimaryKeyConstraint) ) {
             return;
@@ -105,6 +121,10 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
 
         if ( data.nulls === false && !data.primaryKey ) {
             coach.throwError("column already defined as not null by primary key");
+        }
+
+        if ( data.unique ) {
+            coach.throwError("column already defined as unique by primary key");
         }
 
         if ( data.primaryKey ) {
@@ -120,6 +140,10 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     parseUnique(coach: GrapeQLCoach, data: this["TInputData"]) {
         if ( !coach.is(UniqueConstraint) ) {
             return;
+        }
+
+        if ( data.primaryKey ) {
+            coach.throwError("column already defined as unique by primary key");
         }
 
         if ( data.unique ) {
@@ -173,6 +197,11 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
         }
         else if ( data.nulls === false ) {
             out += " not null";
+        }
+
+        if ( data.default ) {
+            out += " default ";
+            out += data.default.toString();
         }
 
         if ( data.unique ) {

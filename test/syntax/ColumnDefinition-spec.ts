@@ -382,4 +382,198 @@ describe("ColumnDefinition", () => {
         }
     });
 
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric default 0",
+        result: {
+            name: {
+                word: "profit",
+                content: null
+            },
+            type: {
+                type: "numeric"
+            },
+            nulls: true,
+            primaryKey: null,
+            unique: null,
+            foreignKey: null,
+            check: null,
+            default: {
+                elements: [
+                    {number: "0"}
+                ]
+            }
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric default 0 not null",
+        result: {
+            name: {
+                word: "profit",
+                content: null
+            },
+            type: {
+                type: "numeric"
+            },
+            nulls: false,
+            primaryKey: null,
+            unique: null,
+            foreignKey: null,
+            check: null,
+            default: {
+                elements: [
+                    {number: "0"}
+                ]
+            }
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric not null default 0",
+        result: {
+            name: {
+                word: "profit",
+                content: null
+            },
+            type: {
+                type: "numeric"
+            },
+            nulls: false,
+            primaryKey: null,
+            unique: null,
+            foreignKey: null,
+            check: null,
+            default: {
+                elements: [
+                    {number: "0"}
+                ]
+            }
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "profit numeric not null default 0 unique",
+        result: {
+            name: {
+                word: "profit",
+                content: null
+            },
+            type: {
+                type: "numeric"
+            },
+            nulls: false,
+            primaryKey: null,
+            unique: {
+                name: null,
+                column: {
+                    word: "profit",
+                    content: null
+                },
+                unique: [{
+                    word: "profit",
+                    content: null
+                }]
+            },
+            foreignKey: null,
+            check: null,
+            default: {
+                elements: [
+                    {number: "0"}
+                ]
+            }
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "id_order_type integer not null default 1 unique references order_type check (id_order_type in (1,2,3))",
+        result: {
+            name: {
+                word: "id_order_type",
+                content: null
+            },
+            type: {
+                type: "integer"
+            },
+            nulls: false,
+            primaryKey: null,
+            unique: {
+                name: null,
+                column: {
+                    word: "id_order_type",
+                    content: null
+                },
+                unique: [{
+                    word: "id_order_type",
+                    content: null
+                }]
+            },
+            foreignKey: {
+                name: null,
+                column: {
+                    word: "id_order_type",
+                    content: null
+                },
+                columns: [{
+                    word: "id_order_type", 
+                    content: null
+                }],
+                referenceTable: {star: false, link: [
+                    {word: "order_type", content: null}
+                ]},
+                referenceColumns: null,
+                match: null,
+                onDelete: null,
+                onUpdate: null
+            },
+            check: {
+                name: null,
+                column: {
+                    word: "id_order_type",
+                    content: null
+                },
+                check: {
+                    elements: [
+                        {star: false, link: [
+                            {word: "id_order_type", content: null}
+                        ]},
+                        {
+                            inSelect: null,
+                            inItems: [
+                                {elements: [
+                                    {number: "1"}
+                                ]},
+                                {elements: [
+                                    {number: "2"}
+                                ]},
+                                {elements: [
+                                    {number: "3"}
+                                ]}
+                            ]
+                        }
+                    ]
+                }
+            },
+            default: {
+                elements: [
+                    {number: "1"}
+                ]
+            }
+        }
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "id serial primary key unique",
+        error: /column already defined as unique by primary key/
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "id serial unique primary key",
+        error: /column already defined as unique by primary key/
+    });
+
+    testSyntax(ColumnDefinition, {
+        str: "id serial default 1 default 1",
+        error: /duplicate default/
+    });
+
 });

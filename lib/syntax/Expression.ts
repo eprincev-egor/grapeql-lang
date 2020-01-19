@@ -8,6 +8,7 @@ import Operator from "./Operator";
 import In from "./In";
 import SquareBrackets from "./SquareBrackets";
 import Between from "./Between";
+import PgNull from "./PgNull";
 import GrapeQLCoach from "../GrapeQLCoach";
 
 // true or false
@@ -66,6 +67,8 @@ export default class Expression extends Syntax<Expression> {
             }
         }
 
+        const indexBeforeOperators = coach.i;
+
         const operators = this.parseOperators(coach, options.excludeOperators);
         if ( operators === false ) {
             return;
@@ -101,6 +104,17 @@ export default class Expression extends Syntax<Expression> {
             elem = elem.get("element");
         }
 
+        // fix case for ColumnDefinition:
+        // default 0 not null
+        if ( elem instanceof PgNull && lastOperator ) {
+            if ( lastOperator.get("operator") === "not" ) {
+                // return parsing position to place before operator not
+                coach.i = indexBeforeOperators;
+                // removing operator 'not' from data.elements
+                data.elements = data.elements.slice(0, -1);
+                return;
+            }
+        }
         
         data.elements.push( elem );
 
