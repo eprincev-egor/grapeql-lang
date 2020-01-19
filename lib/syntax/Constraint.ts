@@ -16,7 +16,7 @@ export default class Constraint<Child extends Constraint = any> extends Syntax<C
         };
     }
 
-    is(coach: GrapeQLCoach) {
+    is(coach: GrapeQLCoach, str: string, options: this["IOptions"] = {column: null}) {
         return coach.isWord("constraint");
     }
 

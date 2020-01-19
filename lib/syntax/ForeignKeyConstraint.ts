@@ -46,15 +46,19 @@ export default class ForeignKeyConstraint extends Constraint<ForeignKeyConstrain
         };
     }
 
-    is(coach: GrapeQLCoach, options: this["IOptions"] = {column: null}) {
+    is(coach: GrapeQLCoach, str: string, options: this["IOptions"] = {column: null}) {
         if ( options.column ) {
             return coach.isWord("references");
         }
         else {
+            if ( !super.is(coach, str, options) ) {
+                return false;
+            }
+            
             const i = coach.i;
             super.parseName(coach, {});
             
-            const isForeignKey = coach.isWord("references");
+            const isForeignKey = coach.isWord("foreign");
             coach.i = i;
 
             return isForeignKey;

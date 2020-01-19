@@ -13,7 +13,7 @@ export default class CheckConstraint extends Constraint<CheckConstraint> {
         };
     }
 
-    is(coach: GrapeQLCoach, options: this["IOptions"] = {column: null}) {
+    is(coach: GrapeQLCoach, str: string, options: this["IOptions"] = {column: null}) {
         if ( options.column ) {
             return coach.isWord("check");
         }

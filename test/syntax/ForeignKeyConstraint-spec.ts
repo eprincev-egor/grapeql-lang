@@ -5,8 +5,7 @@ import testSyntax from "../testSyntax";
 describe("ForeignKeyConstraint", () => {
     
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company (id)
         `,
         result: {
@@ -26,8 +25,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company
         `,
         result: {
@@ -45,8 +43,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company match simple
         `,
         result: {
@@ -64,8 +61,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company match full
         `,
         result: {
@@ -83,8 +79,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company match partial
         `,
         result: {
@@ -102,8 +97,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on delete no action
         `,
         result: {
@@ -121,8 +115,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on update no action
         `,
         result: {
@@ -140,8 +133,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on delete cascade
         `,
         result: {
@@ -159,8 +151,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on delete set null
         `,
         result: {
@@ -178,8 +169,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on delete set default
         `,
         result: {
@@ -197,8 +187,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on update set null
         `,
         result: {
@@ -216,8 +205,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on update set default
         `,
         result: {
@@ -235,8 +223,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on update cascade
         `,
         result: {
@@ -254,8 +241,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on update set default on delete set default
         `,
         result: {
@@ -273,8 +259,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client)
+        str: `constraint client foreign key (id_client)
             references company on delete set default on update set default 
         `,
         result: {
@@ -292,8 +277,7 @@ describe("ForeignKeyConstraint", () => {
     });
 
     testSyntax(ForeignKeyConstraint, {
-        str: `
-            constraint client foreign key (id_client, x)
+        str: `constraint client foreign key (id_client, x)
             references company (id, y) 
             match full
             on delete set default 

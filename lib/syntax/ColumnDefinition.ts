@@ -81,6 +81,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
         this.parseCheck(coach, data);
         this.parseForeignKey(coach, data);
 
+        coach.skipSpace();
     }
 
     parseNotNull(coach: GrapeQLCoach, data: this["TInputData"]) {
@@ -115,7 +116,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     parsePrimaryKey(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( !coach.is(PrimaryKeyConstraint, {coach: data.name}) ) {
+        if ( !coach.is(PrimaryKeyConstraint, {column: data.name}) ) {
             return;
         }
 
@@ -138,7 +139,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     parseUnique(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( !coach.is(UniqueConstraint, {coach: data.name}) ) {
+        if ( !coach.is(UniqueConstraint, {column: data.name}) ) {
             return;
         }
 
@@ -156,7 +157,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     parseCheck(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( !coach.is(CheckConstraint, {coach: data.name}) ) {
+        if ( !coach.is(CheckConstraint, {column: data.name}) ) {
             return;
         }
 
@@ -170,7 +171,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     parseForeignKey(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( !coach.is(ForeignKeyConstraint, {coach: data.name}) ) {
+        if ( !coach.is(ForeignKeyConstraint, {column: data.name}) ) {
             return;
         }
 
