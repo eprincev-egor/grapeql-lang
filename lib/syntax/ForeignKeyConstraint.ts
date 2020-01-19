@@ -56,7 +56,11 @@ export default class ForeignKeyConstraint extends Constraint<ForeignKeyConstrain
             }
             
             const i = coach.i;
-            super.parseName(coach, {});
+            try {
+                super.parseName(coach, {});
+            } catch (err) {
+                return false;
+            }
             
             const isForeignKey = coach.isWord("foreign");
             coach.i = i;

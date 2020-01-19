@@ -22,7 +22,11 @@ export default class UniqueConstraint extends Constraint<UniqueConstraint> {
         }
         else {
             const i = coach.i;
-            super.parseName(coach, {});
+            try {
+                super.parseName(coach, {});
+            } catch (err) {
+                return false;
+            }
             
             const isUnique = coach.isWord("unique");
             coach.i = i;

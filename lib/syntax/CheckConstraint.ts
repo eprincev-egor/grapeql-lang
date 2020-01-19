@@ -19,7 +19,11 @@ export default class CheckConstraint extends Constraint<CheckConstraint> {
         }
         else {
             const i = coach.i;
-            super.parseName(coach, {});
+            try {
+                super.parseName(coach, {});
+            } catch (err) {
+                return false;
+            }
             
             const isCheck = coach.isWord("check");
             coach.i = i;
