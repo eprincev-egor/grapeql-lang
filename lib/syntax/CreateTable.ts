@@ -31,6 +31,10 @@ export default class CreateTable extends Syntax<CreateTable> {
             inherits: Types.Array({
                 element: ObjectLink,
                 nullAsEmpty: true
+            }),
+            deprecated: Types.Array({
+                element: ObjectName,
+                nullAsEmpty: true
             })
         };
     }
@@ -131,6 +135,19 @@ export default class CreateTable extends Syntax<CreateTable> {
             coach.skipSpace();
             coach.expect(")");
         }
+
+
+        if ( coach.isWord("deprecated") ) {
+            coach.expectWord("deprecated");
+
+            coach.expect("(");
+            coach.skipSpace();
+
+            data.deprecated = coach.parseComma(ObjectName);
+
+            coach.skipSpace();
+            coach.expect(")");
+        }
     }
     
     is(coach: GrapeQLCoach) {
@@ -158,13 +175,22 @@ export default class CreateTable extends Syntax<CreateTable> {
             out += constraints;
         }
 
-        
+
         out += ")";
 
 
         if ( this.data.inherits.length ) {
             out += " inherits (";
             out += this.data.inherits.map((item) => 
+                item.toString()
+            ).join(", ");
+            out += ")";
+        }
+
+        
+        if ( this.data.deprecated.length ) {
+            out += " deprecated (";
+            out += this.data.deprecated.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";

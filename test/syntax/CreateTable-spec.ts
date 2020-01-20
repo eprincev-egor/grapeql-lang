@@ -41,7 +41,8 @@ describe("CreateTable", () => {
                 }
             ],
             constraints: [],
-            inherits: []
+            inherits: [],
+            deprecated: []
         }
     });
     
@@ -93,7 +94,8 @@ describe("CreateTable", () => {
                     }]
                 }
             ],
-            inherits: []
+            inherits: [],
+            deprecated: []
         }
     });
 
@@ -178,6 +180,138 @@ describe("CreateTable", () => {
                     {word: "public", content: null},
                     {word: "parent_b", content: null}
                 ]}
+            ],
+            deprecated: []
+        }
+    });
+    
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial primary key,
+            name1 text,
+            name2 text
+        )
+        deprecated (
+            name3
+        )`,
+        result: {
+            name: {
+                word: "company",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                },
+                {
+                    name: {
+                        word: "name1",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                },
+                {
+                    name: {
+                        word: "name2",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [
+                {word: "name3", content: null}
+            ]
+        }
+    });
+    
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial primary key
+        )
+        inherits (system_fields)
+        deprecated (
+            name
+        )`,
+        result: {
+            name: {
+                word: "company",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [
+                {star: false, link: [
+                    {word: "system_fields", content: null}
+                ]}
+            ],
+            deprecated: [
+                {word: "name", content: null}
             ]
         }
     });
