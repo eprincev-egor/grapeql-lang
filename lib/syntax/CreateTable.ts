@@ -171,6 +171,7 @@ export default class CreateTable extends Syntax<CreateTable> {
             const rows = coach.parseComma(ValuesRow);
             data.values = rows;
 
+            // validate values
             const firstRow = rows[0];
             const firstRowValues = firstRow.get("values");
 
@@ -187,6 +188,8 @@ export default class CreateTable extends Syntax<CreateTable> {
 
                 this.checkValues(coach, columns, row);
             });
+
+            this.checkUniqueValues(coach, columns, constraints, rows);
 
             coach.skipSpace();
             coach.expect(")");
@@ -235,6 +238,10 @@ export default class CreateTable extends Syntax<CreateTable> {
                 if ( !isCasting ) {
                     coach.throwError("values should content only constants");
                 }
+            }
+
+            if ( firstElem instanceof PgNull ) {
+                return;
             }
 
             // column: 'serial', value: '1'::integer
@@ -301,14 +308,126 @@ export default class CreateTable extends Syntax<CreateTable> {
                 !!column.get("default") ||
                 column.get("type").isSerial()
             );
+            const value = (
+                rowValues[i] && 
+                rowValues[i].get("value")
+            );
+            const firstElem = (
+                value &&
+                value.get("elements")[0]
+            );
+
             const hasValue = (
                 !!rowValues[i] &&
                 !rowValues[i].get("default")
             );
+
+            const isInvalid = isNotNull && (
+                !hasDefault && !hasValue
+                ||
+                firstElem instanceof PgNull
+            );
             
-            if ( isNotNull && !hasDefault && !hasValue ) {
+            if ( isInvalid ) {
                 coach.throwError(`need value for not null column: ${column.get("name")}`);
             }
+        });
+    }
+
+    checkUniqueValues(
+        coach: GrapeQLCoach, 
+        columns: ColumnDefinition[],
+        constraints: Constraint[],
+        rows: ValuesRow[]
+    ) {
+        const uniqueness: ObjectName[][] = [];
+
+        constraints.forEach((constraint) => {
+            if ( constraint instanceof UniqueConstraint ) {
+                uniqueness.push( constraint.get("unique") );
+            }
+            else if ( constraint instanceof PrimaryKeyConstraint ) {
+                uniqueness.push( constraint.get("primaryKey") );
+            }
+        });
+
+        columns.forEach((column) => {
+            const isUniqueColumn = (
+                !!column.get("unique") ||
+                !!column.get("primaryKey")
+            );
+            if ( isUniqueColumn ) {
+                uniqueness.push( [column.get("name")] );
+            }
+        });
+
+        uniqueness.forEach((uniqueKeys) => {
+            const existsValue: Array<Array<Syntax<any>>> = [];
+
+            const columnsIndexes = uniqueKeys.map((key) =>
+                columns.findIndex((column) =>
+                    column.get("name").equal(key)
+                )
+            );
+
+            // for special checks
+            const SERIAL_VALUE = {};
+
+            rows.forEach((row) => {
+                const rowValues = row.get("values");
+                const values = columnsIndexes
+                    .map((columnIndex) => 
+                        rowValues[columnIndex]
+                    )
+                    .map((valueItem, i) => {
+                        // when no column inside values
+                        if ( valueItem == null ) {
+                            return null;
+                        }
+
+                        // when used keyword 'default'
+                        if ( valueItem.get("default") ) {
+                            const column = columns[i];
+                            const defaultValue = column.get("default");
+                            
+                            if ( defaultValue ) {
+                                return defaultValue;
+                            }
+
+                            if ( column.get("type").isSerial() ) {
+                                return SERIAL_VALUE;
+                            }
+
+                            return null;
+                        }
+                        else {
+                            // get first element from expression
+                            const value = valueItem.get("value");
+                            const firstElem = value.get("elements")[0];
+
+                            if ( firstElem instanceof PgNull ) {
+                                return null;
+                            }
+
+                            return firstElem;
+                        }
+                    }) as Array<Syntax<any>>;
+                
+                
+                const isDuplicate = existsValue.some((anotherValues) => 
+                    anotherValues.every((anotherValue, i) =>
+                        anotherValue != null &&
+                        values[i] != null &&
+                        anotherValue !== SERIAL_VALUE &&
+                        values[i] !== SERIAL_VALUE &&
+                        anotherValue.equal( values[i] )
+                    )
+                );
+                if ( isDuplicate ) {
+                    coach.throwError(`unique columns (${uniqueKeys}) cannot contain duplicate values: ${values}`);
+                }
+                existsValue.push(values);
+            });
         });
     }
     

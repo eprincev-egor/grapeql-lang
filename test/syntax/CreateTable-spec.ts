@@ -681,6 +681,15 @@ describe("CreateTable", () => {
 
     testSyntax(CreateTable, {
         str: `create table company (
+            id serial primary key
+        ) values (
+            (null)
+        )`,
+        error: /need value for not null column: id/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
             id integer primary key
         ) values (
             (default)
@@ -697,6 +706,324 @@ describe("CreateTable", () => {
             (default, default)
         )`,
         error: /need value for not null column: name/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table order_type (
+            id serial primary key,
+            name text unique
+        ) values (
+            (1, null),
+            (2, null)
+        )`,
+        result: {
+            name: {
+                word: "order_type",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                },
+                {
+                    name: {
+                        word: "name",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: {
+                        name: null,
+                        column: {
+                            word: "name",
+                            content: null
+                        },
+                        unique: [{
+                            word: "name",
+                            content: null
+                        }]
+                    },
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [],
+            values: [
+                {values: [
+                    {value: {elements: [
+                        {number: "1"}
+                    ]}, default: null},
+
+                    {value: {elements: [
+                        {null: true}
+                    ]}, default: null}
+                ]},
+                {values: [
+                    {value: {elements: [
+                        {number: "2"}
+                    ]}, default: null},
+
+                    {value: {elements: [
+                        {null: true}
+                    ]}, default: null}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial primary key
+        ) values (
+            (1),
+            (1)
+        )`,
+        error: /unique columns \(id\) cannot contain duplicate values: 1/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            name text unique
+        ) values (
+            (''),
+            ($_$$_$)
+        )`,
+        error: /unique columns \(name\) cannot contain duplicate values/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            name text unique
+        ) values (
+            ('a'),
+            ('b'),
+            ('a')
+        )`,
+        error: /unique columns \(name\) cannot contain duplicate values: 'a'/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            name text unique default 'a'
+        ) values (
+            (default),
+            (default)
+        )`,
+        error: /unique columns \(name\) cannot contain duplicate values: 'a'/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id_order_a bigint,
+            id_order_b bigint,
+            constraint uniq_orders unique (id_order_a,id_order_b)
+        ) values (
+            (1, 2),
+            (2, 1),
+            (1, 2)
+        )`,
+        error: /unique columns \(id_order_a,id_order_b\) cannot contain duplicate values: 1,2/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table order_type (
+            id serial primary key,
+            name text unique
+        ) values (
+            (default),
+            (default)
+        )`,
+        result: {
+            name: {
+                word: "order_type",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                },
+                {
+                    name: {
+                        word: "name",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: {
+                        name: null,
+                        column: {
+                            word: "name",
+                            content: null
+                        },
+                        unique: [{
+                            word: "name",
+                            content: null
+                        }]
+                    },
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [],
+            values: [
+                {values: [
+                    {value: null, default: true}
+                ]},
+                {values: [
+                    {value: null, default: true}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table order_type (
+            id serial primary key,
+            name text unique
+        ) values (
+            (default, default),
+            (default, default)
+        )`,
+        result: {
+            name: {
+                word: "order_type",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                },
+                {
+                    name: {
+                        word: "name",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: {
+                        name: null,
+                        column: {
+                            word: "name",
+                            content: null
+                        },
+                        unique: [{
+                            word: "name",
+                            content: null
+                        }]
+                    },
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [],
+            values: [
+                {values: [
+                    {value: null, default: true},
+                    {value: null, default: true}
+                ]},
+                {values: [
+                    {value: null, default: true},
+                    {value: null, default: true}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id_order_a serial,
+            id_order_b serial,
+            name text unique,
+            constraint uniq_orders unique (id_order_a,id_order_b)
+        ) values (
+            (default, default, 'Test'),
+            (default, default, $$Test$$)
+        )`,
+        error: /unique columns \(name\) cannot contain duplicate values/
     });
 
 });
