@@ -2,6 +2,7 @@
 
 import DataType from "../../lib/syntax/DataType";
 import testSyntax from "../testSyntax";
+import assert from "assert";
 
 describe("DataType", () => {
 
@@ -480,4 +481,139 @@ describe("DataType", () => {
         }
     });
 
+    it("dataType.isNumber()", () => {
+        const numberTypes = [
+            "real",
+            "decimal",
+            "smallint",
+            "integer",
+            "biginteger",
+            "smallserial",
+            "serial",
+            "bigserial",
+            "numeric",
+            "numeric(10,2)",
+            "double precision"
+        ];
+        const otherTypes = [
+            "text",
+            "boolean",
+            "point"
+        ];
+
+        numberTypes.forEach((typeName) => {
+            const type = new DataType({
+                type: typeName
+            });
+
+            assert.strictEqual(type.isNumber(), true, typeName + ": isNumber() should be true");
+        });
+
+        otherTypes.forEach((typeName) => {
+            const type = new DataType({
+                type: typeName
+            });
+
+            assert.strictEqual(type.isNumber(), false, typeName + ": isNumber() should be false");
+        });
+    });
+
+    it("dataType.isInteger()", () => {
+        const numberTypes = [
+            "smallint",
+            "integer",
+            "biginteger",
+            "smallserial",
+            "serial",
+            "bigserial"
+        ];
+        const otherTypes = [
+            "real",
+            "decimal",
+            "text",
+            "boolean",
+            "point",
+            "numeric",
+            "numeric(10,2)",
+            "double precision"
+        ];
+
+        numberTypes.forEach((typeName) => {
+            const type = new DataType({
+                type: typeName
+            });
+
+            assert.strictEqual(type.isInteger(), true, typeName + ": isInteger() should be true");
+        });
+
+        otherTypes.forEach((typeName) => {
+            const type = new DataType({
+                type: typeName
+            });
+
+            assert.strictEqual(type.isInteger(), false, typeName + ": isInteger() should be false");
+        });
+    });
+
+    it("dataType.isText()", () => {
+        const textTypes = [
+            "text",
+            "char(1)",
+            "character(1)",
+            "character varying(1)",
+            "varchar(1)"
+        ];
+        const otherTypes = [
+            "boolean",
+            "point",
+            "numeric"
+        ];
+
+        textTypes.forEach((typeName) => {
+            const type = new DataType({
+                type: typeName
+            });
+
+            assert.strictEqual(type.isText(), true, typeName + ": isText() should be true");
+        });
+
+        otherTypes.forEach((typeName) => {
+            const type = new DataType({
+                type: typeName
+            });
+
+            assert.strictEqual(type.isText(), false, typeName + ": isText() should be false");
+        });
+    });
+
+
+    it("dataType.equalSameType()", () => {
+        const text1 = new DataType({
+            type: "text"
+        });
+        const text2 = new DataType({
+            type: "char(1)"
+        });
+        const number1 = new DataType({
+            type: "numeric"
+        });
+        const number2 = new DataType({
+            type: "real"
+        });
+        const other1 = new DataType({
+            type: "json"
+        });
+        const other2 = new DataType({
+            type: "json"
+        });
+
+
+        assert.strictEqual(text1.equalSameType(text2), true, "text1 and text2");
+        assert.strictEqual(number1.equalSameType(number2), true, "number1 and number2");
+        assert.strictEqual(other1.equalSameType(other2), true, "other1 and other2");
+
+        assert.strictEqual(text1.equalSameType(other2), false, "text1 and other2");
+        assert.strictEqual(number1.equalSameType(other2), false, "number1 and other2");
+        assert.strictEqual(number1.equalSameType(text1), false, "number1 and text1");
+    });
 });

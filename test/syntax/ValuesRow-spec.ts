@@ -10,7 +10,7 @@ describe("ValuesRow", () => {
         result: {
             values: [{
                 default: true,
-                expression: null
+                value: null
             }]
         }
     });
@@ -21,11 +21,11 @@ describe("ValuesRow", () => {
             values: [
                 {
                     default: true,
-                    expression: null
+                    value: null
                 },
                 {
                     default: null,
-                    expression: {elements: [
+                    value: {elements: [
                         {number: "2"}
                     ]}
                 }

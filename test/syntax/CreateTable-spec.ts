@@ -42,7 +42,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: []
+            deprecated: [],
+            values: []
         }
     });
     
@@ -95,7 +96,8 @@ describe("CreateTable", () => {
                 }
             ],
             inherits: [],
-            deprecated: []
+            deprecated: [],
+            values: []
         }
     });
 
@@ -181,7 +183,8 @@ describe("CreateTable", () => {
                     {word: "parent_b", content: null}
                 ]}
             ],
-            deprecated: []
+            deprecated: [],
+            values: []
         }
     });
     
@@ -260,7 +263,8 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: [
                 {word: "name3", content: null}
-            ]
+            ],
+            values: []
         }
     });
     
@@ -312,8 +316,356 @@ describe("CreateTable", () => {
             ],
             deprecated: [
                 {word: "name", content: null}
+            ],
+            values: []
+        }
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table order_type (
+            id serial primary key,
+            name text unique,
+            note text
+        ) values (
+            (1, 'FCL'),
+            (default, 'FTL'),
+            (3, 'LTL')
+        )`,
+        result: {
+            name: {
+                word: "order_type",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                },
+                {
+                    name: {
+                        word: "name",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: {
+                        name: null,
+                        column: {
+                            word: "name",
+                            content: null
+                        },
+                        unique: [{
+                            word: "name",
+                            content: null
+                        }]
+                    },
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                },
+                {
+                    name: {
+                        word: "note",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [],
+            values: [
+                {values: [
+                    {value: {elements: [
+                        {number: "1"}
+                    ]}, default: null},
+
+                    {value: {elements: [
+                        {content: "FCL"}
+                    ]}, default: null}
+                ]},
+                {values: [
+                    {value: null, default: true},
+
+                    {value: {elements: [
+                        {content: "FTL"}
+                    ]}, default: null}
+                ]},
+                {values: [
+                    {value: {elements: [
+                        {number: "3"}
+                    ]}, default: null},
+
+                    {value: {elements: [
+                        {content: "LTL"}
+                    ]}, default: null}
+                ]}
             ]
         }
     });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial
+        ) values (
+        )`,
+        error: /expected: ValuesRow/
+    });
     
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial
+        ) values (
+            (1, 2)
+        )`,
+        error: /values has more expressions that table columns/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial,
+            name text
+        ) values (
+            (1, ''),
+            (2)
+        )`,
+        error: /VALUES lists must all be the same length/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial,
+            name text
+        ) values (
+            (1, greatest(1, 2))
+        )`,
+        error: /values should content only constants/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial,
+            name text
+        ) values (
+            ('text')
+        )`,
+        error: /values for column id should be number/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial
+        ) values (
+            (1.1)
+        )`,
+        error: /values for column id should be not float number/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial,
+            name text
+        ) values (
+            (1, 33)
+        )`,
+        error: /values for column name should be text/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial,
+            is_ok boolean
+        ) values (
+            (1, '')
+        )`,
+        error: /values for column is_ok should be boolean/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial
+        ) values (
+            (1::text)
+        )`,
+        error: /casting type for column id should be integer/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id double precision
+        ) values (
+            (1::text)
+        )`,
+        error: /casting type for column id should be numeric/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            name varchar(10)
+        ) values (
+            (1::integer)
+        )`,
+        error: /casting type for column name should be text/
+    });
+
+
+    testSyntax(CreateTable, {
+        str: `create table order_type (
+            id serial
+        ) values (
+            (1)
+        )`,
+        result: {
+            name: {
+                word: "order_type",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [],
+            values: [
+                {values: [
+                    {value: {elements: [
+                        {number: "1"}
+                    ]}, default: null}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table order_type (
+            id serial
+        ) values (
+            (1::integer)
+        )`,
+        result: {
+            name: {
+                word: "order_type",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [],
+            values: [
+                {values: [
+                    {value: {elements: [
+                        {number: "1"},
+                        {operator: "::"},
+                        {type: "integer"}
+                    ]}, default: null}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table order_type (
+            id serial
+        ) values (
+            ('1'::integer)
+        )`,
+        result: {
+            name: {
+                word: "order_type",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [],
+            values: [
+                {values: [
+                    {value: {elements: [
+                        {content: "1"},
+                        {operator: "::"},
+                        {type: "integer"}
+                    ]}, default: null}
+                ]}
+            ]
+        }
+    });
+
 });

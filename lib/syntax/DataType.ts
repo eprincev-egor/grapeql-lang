@@ -175,6 +175,61 @@ export default class DataType extends Syntax<DataType> {
             this.parseArrayType(coach, data);
         }
     }
+
+    isNumber(): boolean {
+        // https://www.postgresql.org/docs/9.1/datatype-numeric.html
+        const type = this.data.type;
+        return (
+            type === "real"              ||
+            type === "decimal"           ||
+            type === "smallint"          ||
+            type === "integer"           ||
+            type === "biginteger"        ||
+            type === "smallserial"       ||
+            type === "serial"            ||
+            type === "double precision"  ||
+            type === "bigserial"         ||
+            /^numeric/.test(this.data.type)
+        );
+    }
+
+    isInteger(): boolean {
+        const type = this.data.type;
+        return (
+            type === "smallint"    ||
+            type === "integer"     ||
+            type === "biginteger"  ||
+            type === "smallserial" ||
+            type === "serial"      ||
+            type === "bigserial"
+        );
+    }
+
+    isText() {
+        // https://www.postgresql.org/docs/9.1/datatype-character.html
+        const type = this.data.type;
+        return (
+            type === "text" ||
+            /^char/.test(this.data.type) ||
+            /^character/.test(this.data.type) ||
+            /^varchar/.test(this.data.type)
+        );
+    }
+
+    isBoolean() {
+        return this.data.type === "boolean";
+    }
+
+    equalSameType(anotherType: DataType) {
+        if ( this.isNumber() ) {
+            return anotherType.isNumber();
+        }
+        if ( this.isText() ) {
+            return anotherType.isText();
+        }
+        
+        return this.equal(anotherType);
+    }
     
     is(coach: GrapeQLCoach) {
         return coach.is(ObjectName);

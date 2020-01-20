@@ -8,7 +8,7 @@ export default class ValueItem extends Syntax<ValueItem> {
     structure() {
         return {
             default: Types.Boolean,
-            expression: Expression
+            value: Expression
         };
     }
 
@@ -17,7 +17,7 @@ export default class ValueItem extends Syntax<ValueItem> {
             coach.expectWord("default");
             data.default = true;
         } else {
-            data.expression = coach.parse(Expression);
+            data.value = coach.parse(Expression);
         }
     }
 
@@ -32,7 +32,7 @@ export default class ValueItem extends Syntax<ValueItem> {
         if ( this.data.default ) {
             return "default";
         } else {
-            return this.data.expression.toString();
+            return this.data.value.toString();
         }
     }
 }

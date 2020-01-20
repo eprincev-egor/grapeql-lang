@@ -46,13 +46,13 @@ describe("WithQuery", () => {
                 {values: [
                     {
                         default: null,
-                        expression: {elements: [
+                        value: {elements: [
                             {number: "1"}
                         ]}
                     },
                     {
                         default: null,
-                        expression: {elements: [
+                        value: {elements: [
                             {number: "2"}
                         ]}
                     }
@@ -60,13 +60,13 @@ describe("WithQuery", () => {
                 {values: [
                     {
                         default: null,
-                        expression: {elements: [
+                        value: {elements: [
                             {number: "3"}
                         ]}
                     },
                     {
                         default: null,
-                        expression: {elements: [
+                        value: {elements: [
                             {number: "4"}
                         ]}
                     }
@@ -92,13 +92,13 @@ describe("WithQuery", () => {
                 {values: [
                     {
                         default: null,
-                        expression: {elements: [
+                        value: {elements: [
                             {number: "1"}
                         ]}
                     },
                     {
                         default: null,
-                        expression: {elements: [
+                        value: {elements: [
                             {number: "2"}
                         ]}
                     }
@@ -106,13 +106,13 @@ describe("WithQuery", () => {
                 {values: [
                     {
                         default: null,
-                        expression: {elements: [
+                        value: {elements: [
                             {number: "3"}
                         ]}
                     },
                     {
                         default: null,
-                        expression: {elements: [
+                        value: {elements: [
                             {number: "4"}
                         ]}
                     }

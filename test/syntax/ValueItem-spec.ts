@@ -8,7 +8,7 @@ describe("ValueItem", () => {
     testSyntax(ValueItem, {
         str: "default",
         result: {
-            expression: null,
+            value: null,
             default: true
         }
     });
@@ -16,7 +16,7 @@ describe("ValueItem", () => {
     testSyntax(ValueItem, {
         str: "1",
         result: {
-            expression: {elements: [
+            value: {elements: [
                 {number: "1"}
             ]},
             default: null
