@@ -668,4 +668,35 @@ describe("CreateTable", () => {
         }
     });
 
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial primary key,
+            name text not null
+        ) values (
+            (default)
+        )`,
+        error: /need value for not null column: name/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id integer primary key
+        ) values (
+            (default)
+        )`,
+        error: /need value for not null column: id/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial primary key,
+            name text not null
+        ) values (
+            (1, default),
+            (default, default)
+        )`,
+        error: /need value for not null column: name/
+    });
+
 });

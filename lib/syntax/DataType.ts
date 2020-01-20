@@ -205,6 +205,15 @@ export default class DataType extends Syntax<DataType> {
         );
     }
 
+    isSerial(): boolean {
+        const type = this.data.type;
+        return (
+            type === "smallserial" ||
+            type === "serial"      ||
+            type === "bigserial"
+        );
+    }
+
     isText() {
         // https://www.postgresql.org/docs/9.1/datatype-character.html
         const type = this.data.type;

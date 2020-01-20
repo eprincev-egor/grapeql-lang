@@ -204,6 +204,9 @@ export default class CreateTable extends Syntax<CreateTable> {
                 return;
             }
 
+            // validate expression,
+            // expression should be constant or 
+            // constant::type
             const valueElements = value.get("elements");
             const firstElem = valueElements[0];
             const isConstant = (
@@ -252,7 +255,7 @@ export default class CreateTable extends Syntax<CreateTable> {
                 coach.throwError(`casting type for column ${column.get("name")} should be ${ shouldBeType }`);
             }
 
-
+            // validate constant type
             const constantElem = value.get("elements")[0];
             
             if ( type.isNumber() ) {
@@ -289,6 +292,22 @@ export default class CreateTable extends Syntax<CreateTable> {
                 }
 
                 coach.throwError(`values for column ${column.get("name")} should be boolean`);
+            }
+        });
+
+        columns.forEach((column, i) => {
+            const isNotNull = column.get("nulls") === false;
+            const hasDefault = (
+                !!column.get("default") ||
+                column.get("type").isSerial()
+            );
+            const hasValue = (
+                !!rowValues[i] &&
+                !rowValues[i].get("default")
+            );
+            
+            if ( isNotNull && !hasDefault && !hasValue ) {
+                coach.throwError(`need value for not null column: ${column.get("name")}`);
             }
         });
     }

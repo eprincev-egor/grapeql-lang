@@ -555,6 +555,43 @@ describe("DataType", () => {
         });
     });
 
+    it("dataType.isSerial()", () => {
+        const numberTypes = [
+            "smallserial",
+            "serial",
+            "bigserial"
+        ];
+        const otherTypes = [
+            "smallint",
+            "integer",
+            "biginteger",
+            "real",
+            "decimal",
+            "text",
+            "boolean",
+            "point",
+            "numeric",
+            "numeric(10,2)",
+            "double precision"
+        ];
+
+        numberTypes.forEach((typeName) => {
+            const type = new DataType({
+                type: typeName
+            });
+
+            assert.strictEqual(type.isSerial(), true, typeName + ": isSerial() should be true");
+        });
+
+        otherTypes.forEach((typeName) => {
+            const type = new DataType({
+                type: typeName
+            });
+
+            assert.strictEqual(type.isSerial(), false, typeName + ": isSerial() should be false");
+        });
+    });
+
     it("dataType.isText()", () => {
         const textTypes = [
             "text",
