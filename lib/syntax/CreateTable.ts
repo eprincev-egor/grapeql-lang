@@ -139,32 +139,38 @@ export default class CreateTable extends Syntax<CreateTable> {
     
     toString() {
         const name = this.data.name;
+        let out = `table ${name} (`;
+
 
         const columns = this.data.columns.map((item) => 
             item.toString()
         ).join(", ");
+
+        out += columns;
+
+
         const constraints = this.data.constraints.map((item) => 
             item.toString()
         ).join(", ");
 
-        const content = (
-            columns +
-            (
-                constraints ?
-                    ", " + constraints :
-                    ""
-            )
-        );
+        if ( constraints ) {
+            out += ", ";
+            out += constraints;
+        }
 
-        const inherits = (
-            this.data.inherits.length ?
-                " inherits (" + this.data.inherits.map((item) => 
-                    item.toString()
-                ).join(", ") + ")" :
-                ""
-        );
+        
+        out += ")";
 
-        return `table ${name} (${ content })${ inherits }`;
+
+        if ( this.data.inherits.length ) {
+            out += " inherits (";
+            out += this.data.inherits.map((item) => 
+                item.toString()
+            ).join(", ");
+            out += ")";
+        }
+
+        return out;
     }
 }
 
