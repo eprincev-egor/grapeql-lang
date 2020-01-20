@@ -9,6 +9,7 @@ import UniqueConstraint from "./UniqueConstraint";
 import PrimaryKeyConstraint from "./PrimaryKeyConstraint";
 import ObjectName from "./ObjectName";
 import Constraint from "./Constraint";
+import ObjectLink from "./ObjectLink";
 
 export default class CreateTable extends Syntax<CreateTable> {
     structure() {
@@ -26,6 +27,10 @@ export default class CreateTable extends Syntax<CreateTable> {
                         PrimaryKeyConstraint
                     ]
                 })
+            }),
+            inherits: Types.Array({
+                element: ObjectLink,
+                nullAsEmpty: true
             })
         };
     }
@@ -114,6 +119,18 @@ export default class CreateTable extends Syntax<CreateTable> {
 
         coach.skipSpace();
         coach.expect(")");
+
+        if ( coach.isWord("inherits") ) {
+            coach.expectWord("inherits");
+
+            coach.expect("(");
+            coach.skipSpace();
+
+            data.inherits = coach.parseComma(ObjectLink);
+
+            coach.skipSpace();
+            coach.expect(")");
+        }
     }
     
     is(coach: GrapeQLCoach) {
@@ -139,7 +156,15 @@ export default class CreateTable extends Syntax<CreateTable> {
             )
         );
 
-        return `table ${name} (${ content })`;
+        const inherits = (
+            this.data.inherits.length ?
+                " inherits (" + this.data.inherits.map((item) => 
+                    item.toString()
+                ).join(", ") + ")" :
+                ""
+        );
+
+        return `table ${name} (${ content })${ inherits }`;
     }
 }
 

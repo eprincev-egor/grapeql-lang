@@ -40,7 +40,8 @@ describe("CreateTable", () => {
                     default: null
                 }
             ],
-            constraints: []
+            constraints: [],
+            inherits: []
         }
     });
     
@@ -91,7 +92,8 @@ describe("CreateTable", () => {
                         content: null
                     }]
                 }
-            ]
+            ],
+            inherits: []
         }
     });
 
@@ -130,4 +132,54 @@ describe("CreateTable", () => {
         error: /duplicate primary key/
     });
 
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial primary key
+        )
+        inherits (parent_a, public.parent_b)`,
+        result: {
+            name: {
+                word: "company",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [
+                {star: false, link: [
+                    {word: "parent_a", content: null}
+                ]},
+                {star: false, link: [
+                    {word: "public", content: null},
+                    {word: "parent_b", content: null}
+                ]}
+            ]
+        }
+    });
+    
 });
