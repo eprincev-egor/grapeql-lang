@@ -9,7 +9,11 @@ import In from "./In";
 import SquareBrackets from "./SquareBrackets";
 import Between from "./Between";
 import PgNull from "./PgNull";
+import PgNumber from "./PgNumber";
+import SingleQuotesString from "./SingleQuotesString";
+import DollarString from "./DollarString";
 import GrapeQLCoach from "../GrapeQLCoach";
+import Boolean from "./Boolean";
 
 // true or false
 
@@ -215,6 +219,108 @@ export default class Expression extends Syntax<Expression> {
             coach.is( ExpressionElement, options ) ||
             coach.is(Operator)
         );
+    }
+
+    isPrimitive(): boolean {
+        try {
+            this.toPrimitiveValue();
+            return true;
+        } catch (err) {
+            return false;
+        }
+    }
+
+    toPrimitiveValue(): (number | string | boolean) {
+        const elements = this.data.elements;
+        const firstElem = elements[0];
+        const secondElem = elements[1];
+        const thirdElem = elements[2];
+
+        // -4
+        const isNegativeNumber = (
+            elements.length === 2 &&
+            firstElem instanceof Operator &&
+            secondElem instanceof PgNumber
+        );
+
+        const firstElemIsConstant = (
+            firstElem instanceof PgNull ||
+            firstElem instanceof PgNumber ||
+            firstElem instanceof SingleQuotesString ||
+            firstElem instanceof DollarString ||
+            firstElem instanceof Boolean
+        );
+        // '1'::numeric
+        const isConstantWithCasting = (
+            elements.length === 3 &&
+            firstElemIsConstant &&
+            secondElem instanceof Operator &&
+            secondElem.get("operator") === "::" &&
+            thirdElem instanceof DataType
+        );
+
+        // null, true, false, 'str', $$str$$, 3
+        const isConstant = (
+            elements.length === 1 &&
+            firstElemIsConstant
+        );
+
+
+        const isPrimitive = (
+            isConstant ||
+            isConstantWithCasting ||
+            isNegativeNumber
+        );
+
+        if ( !isPrimitive ) {
+            throw new Error("cannot convert to primitive value");
+        }
+
+        if ( isNegativeNumber ) {
+            const numb = +secondElem.get("number");
+
+            if ( isNaN(numb) ) {
+                throw new Error("cannot convert to primitive value");
+            }
+
+            return -numb;
+        }
+
+        if ( isConstant || isConstantWithCasting ) {
+            let value;
+
+            if ( firstElem instanceof PgNumber ) {
+                const numb = +secondElem.get("number");
+
+                if ( isNaN(numb) ) {
+                    throw new Error("cannot convert to primitive value");
+                }
+
+                value = numb;
+            }
+
+            else if ( firstElem instanceof Boolean ) {
+                value = firstElem.get("boolean");
+            }
+
+            else if ( firstElem instanceof PgNull ) {
+                value = null;
+            }
+
+            else {
+                // SingleQuotesString
+                // DollarString
+                value = firstElem.get("content");
+            }
+
+
+            if ( isConstantWithCasting ) {
+                const type = thirdElem as DataType;
+            }
+
+
+            return value;
+        }
     }
     
     toString() {

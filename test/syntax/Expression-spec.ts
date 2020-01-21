@@ -2,6 +2,8 @@
 
 import Expression from "../../lib/syntax/Expression";
 import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import assert from "assert";
 
 describe("Expression", () => {
 
@@ -1065,4 +1067,62 @@ describe("Expression", () => {
         }
     });
 
+    it("expression.isPrimitive() and expression.toPrimitiveValue()", () => {
+        const primitiveExpressions = [
+            {expressionString: "1", primitiveValue: 1},
+            {expressionString: "'1'", primitiveValue: "1"},
+            {expressionString: "$_$$_$", primitiveValue: ""},
+            {expressionString: "null", primitiveValue: null},
+            {expressionString: "true", primitiveValue: true},
+            {expressionString: "false", primitiveValue: false},
+            {expressionString: "-4", primitiveValue: -4},
+            {expressionString: "'1'::numeric", primitiveValue: 1},
+            {expressionString: "1::text", primitiveValue: "1"},
+            {expressionString: "1::varchar(1)", primitiveValue: "1"}
+        ];
+        const otherExpressions = [
+            "1+1",
+            "-4*2+ x",
+            "y",
+            "1+(select from list_company)"
+        ];
+
+        primitiveExpressions.forEach((primitiveExpression, i) => {
+            const coach = new GrapeQLCoach(primitiveExpression.expressionString);
+            const expression = coach.parse(Expression);
+
+            assert.strictEqual(
+                expression.isPrimitive(), 
+                true, 
+                primitiveExpression.expressionString + 
+                    ": isPrimitive() should be true"
+            );
+            
+            const actualValue = expression.toPrimitiveValue();
+            const expectedValue = primitiveExpression.primitiveValue;
+
+            assert.strictEqual(
+                actualValue, 
+                expectedValue,
+                primitiveExpression.expressionString + 
+                    ": toPrimitiveValue() should be " +
+                    expectedValue
+            );
+        });
+
+        otherExpressions.forEach((hardExpression) => {
+            const coach = new GrapeQLCoach(hardExpression);
+            const expression = coach.parse(Expression);
+
+            assert.strictEqual(expression.isPrimitive(), false, hardExpression + ": isPrimitive() should be false");
+
+            assert.throws(
+                () => {
+                    expression.toPrimitiveValue();
+                },
+                (err) =>
+                    /cannot convert to primitive value/.test(err.message)
+            );
+        });
+    });
 });
