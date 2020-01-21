@@ -622,35 +622,4 @@ describe("DataType", () => {
             assert.strictEqual(type.isText(), false, typeName + ": isText() should be false");
         });
     });
-
-
-    it("dataType.equalSameType()", () => {
-        const text1 = new DataType({
-            type: "text"
-        });
-        const text2 = new DataType({
-            type: "char(1)"
-        });
-        const number1 = new DataType({
-            type: "numeric"
-        });
-        const number2 = new DataType({
-            type: "real"
-        });
-        const other1 = new DataType({
-            type: "json"
-        });
-        const other2 = new DataType({
-            type: "json"
-        });
-
-
-        assert.strictEqual(text1.equalSameType(text2), true, "text1 and text2");
-        assert.strictEqual(number1.equalSameType(number2), true, "number1 and number2");
-        assert.strictEqual(other1.equalSameType(other2), true, "other1 and other2");
-
-        assert.strictEqual(text1.equalSameType(other2), false, "text1 and other2");
-        assert.strictEqual(number1.equalSameType(other2), false, "number1 and other2");
-        assert.strictEqual(number1.equalSameType(text1), false, "number1 and text1");
-    });
 });

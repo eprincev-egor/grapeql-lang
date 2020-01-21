@@ -30,6 +30,7 @@ export default class ExpressionElement extends Syntax<ExpressionElement> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"], options) {
+        const Select = this.syntax.Select as  GrapeQLCoach["syntax"]["Select"];
         options = options || {availableStar: false};
 
         if ( coach.is(PgNull) ) {
@@ -94,6 +95,10 @@ export default class ExpressionElement extends Syntax<ExpressionElement> {
 
         else if ( coach.is(In) ) {
             data.element = coach.parse(In);
+        }
+
+        else if ( coach.is(Select) ) {
+            data.element = coach.parse(Select);
         }
 
         else if ( coach.is(FunctionCall) ) {

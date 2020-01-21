@@ -221,15 +221,6 @@ export default class Expression extends Syntax<Expression> {
         );
     }
 
-    isPrimitive(): boolean {
-        try {
-            this.toPrimitiveValue();
-            return true;
-        } catch (err) {
-            return false;
-        }
-    }
-
     toPrimitiveValue(): (number | string | boolean) {
         const elements = this.data.elements;
         const firstElem = elements[0];
@@ -240,6 +231,7 @@ export default class Expression extends Syntax<Expression> {
         const isNegativeNumber = (
             elements.length === 2 &&
             firstElem instanceof Operator &&
+            firstElem.get("operator") === "-" &&
             secondElem instanceof PgNumber
         );
 
@@ -287,24 +279,18 @@ export default class Expression extends Syntax<Expression> {
         }
 
         if ( isConstant || isConstantWithCasting ) {
+            if ( firstElem instanceof PgNull ) {
+                return null;
+            }
+
             let value;
 
             if ( firstElem instanceof PgNumber ) {
-                const numb = +secondElem.get("number");
-
-                if ( isNaN(numb) ) {
-                    throw new Error("cannot convert to primitive value");
-                }
-
-                value = numb;
+                value = +firstElem.get("number");
             }
 
             else if ( firstElem instanceof Boolean ) {
                 value = firstElem.get("boolean");
-            }
-
-            else if ( firstElem instanceof PgNull ) {
-                value = null;
             }
 
             else {
@@ -316,6 +302,25 @@ export default class Expression extends Syntax<Expression> {
 
             if ( isConstantWithCasting ) {
                 const type = thirdElem as DataType;
+
+                if ( type.isText() ) {
+                    value = value + "";
+                }
+
+                else if ( type.isNumber() ) {
+                    value = +value;
+                }
+
+                else if ( type.isBoolean() ) {
+                    if ( typeof value !== "boolean" ) {
+                        throw new Error("cannot convert to primitive value");
+                    }
+                }
+            }
+
+
+            if ( value !== value ) {// isNaN
+                throw new Error("cannot convert to primitive value");
             }
 
 

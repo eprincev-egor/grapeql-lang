@@ -229,17 +229,6 @@ export default class DataType extends Syntax<DataType> {
         return this.data.type === "boolean";
     }
 
-    equalSameType(anotherType: DataType) {
-        if ( this.isNumber() ) {
-            return anotherType.isNumber();
-        }
-        if ( this.isText() ) {
-            return anotherType.isText();
-        }
-        
-        return this.equal(anotherType);
-    }
-    
     is(coach: GrapeQLCoach) {
         return coach.is(ObjectName);
     }

@@ -519,7 +519,7 @@ describe("CreateTable", () => {
         ) values (
             (1::text)
         )`,
-        error: /casting type for column id should be integer/
+        error: /values for column id should be number/
     });
 
     testSyntax(CreateTable, {
@@ -528,7 +528,7 @@ describe("CreateTable", () => {
         ) values (
             (1::text)
         )`,
-        error: /casting type for column id should be numeric/
+        error: /values for column id should be number/
     });
 
     testSyntax(CreateTable, {
@@ -537,7 +537,7 @@ describe("CreateTable", () => {
         ) values (
             (1::integer)
         )`,
-        error: /casting type for column name should be text/
+        error: /values for column name should be text/
     });
 
 
@@ -827,7 +827,7 @@ describe("CreateTable", () => {
             ('b'),
             ('a')
         )`,
-        error: /unique columns \(name\) cannot contain duplicate values: 'a'/
+        error: /unique columns \(name\) cannot contain duplicate values: a/
     });
 
     testSyntax(CreateTable, {
@@ -837,7 +837,7 @@ describe("CreateTable", () => {
             (default),
             (default)
         )`,
-        error: /unique columns \(name\) cannot contain duplicate values: 'a'/
+        error: /unique columns \(name\) cannot contain duplicate values: a/
     });
 
     testSyntax(CreateTable, {
@@ -1024,6 +1024,138 @@ describe("CreateTable", () => {
             (default, default, $$Test$$)
         )`,
         error: /unique columns \(name\) cannot contain duplicate values/
+    });
+
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial unique
+        ) values (
+            (default),
+            (default),
+            (2)
+        )`,
+        error: /unique columns \(id\) cannot contain duplicate values: 2/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            name text default 'test' unique
+        ) values (
+            (default),
+            (default)
+        )`,
+        error: /unique columns \(name\) cannot contain duplicate values: test/
+    });
+
+    testSyntax(CreateTable, {
+        str: `create table company (
+            id serial primary key,
+            name text default 'test' unique
+        ) values (
+            (default, default),
+            (default, default)
+        )`,
+        error: /unique columns \(name\) cannot contain duplicate values: test/
+    });
+
+    
+    testSyntax(CreateTable, {
+        str: `create table order_type (
+            id serial primary key,
+            dt_create date unique default now()
+        ) values (
+            (default, default),
+            (default, default)
+        )`,
+        result: {
+            name: {
+                word: "order_type",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                },
+                {
+                    name: {
+                        word: "dt_create",
+                        content: null
+                    },
+                    type: {
+                        type: "date"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: {
+                        name: null,
+                        column: {
+                            word: "dt_create",
+                            content: null
+                        },
+                        unique: [{
+                            word: "dt_create",
+                            content: null
+                        }]
+                    },
+                    foreignKey: null,
+                    check: null,
+                    default: {elements: [
+                        {
+                            function: {
+                                star: false,
+                                link: [
+                                    {word: "now", content: null}
+                                ]
+                            },
+                            all: null,
+                            distinct: null,
+                            arguments: [],
+                            where: null,
+                            orderBy: null,
+                            within: null,
+                            over: null,
+                            emptyOver: null
+                        }
+                    ]}
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [],
+            values: [
+                {values: [
+                    {value: null, default: true},
+                    {value: null, default: true}
+                ]},
+                {values: [
+                    {value: null, default: true},
+                    {value: null, default: true}
+                ]}
+            ]
+        }
     });
 
 });
