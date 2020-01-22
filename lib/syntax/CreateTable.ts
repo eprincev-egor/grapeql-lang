@@ -41,8 +41,14 @@ export default class CreateTable extends Syntax<CreateTable> {
                 element: ObjectName,
                 nullAsEmpty: true
             }),
-            values: Types.Array({
+            valuesRows: Types.Array({
                 element: ValuesRow,
+                nullAsEmpty: true
+            }),
+            values: Types.Array({
+                element: Types.Object({
+                    element: Types.Any
+                }),
                 nullAsEmpty: true
             })
         };
@@ -166,23 +172,24 @@ export default class CreateTable extends Syntax<CreateTable> {
             coach.skipSpace();
 
             const rows = coach.parseComma(ValuesRow);
-            data.values = rows;
+            data.valuesRows = rows;
             
-            this.validateValues(coach, columns, constraints, rows);
+            data.values = this.prepareValues(coach, columns, constraints, rows);
 
             coach.skipSpace();
             coach.expect(")");
         }
     }
 
-    validateValues(
+    prepareValues(
         coach: GrapeQLCoach, 
         columns: ColumnDefinition[], 
         constraints: Constraint[],
         rows: ValuesRow[]
-    ) {
+    ): object[] {
         const uniqueness = this.buildUniqueness(columns, constraints);
         const prevDataLines: any[][] = [];
+        const outputRows: object[] = [];
 
         const firstRow = rows[0];
         const firstRowValues = firstRow.get("values");
@@ -196,6 +203,7 @@ export default class CreateTable extends Syntax<CreateTable> {
         rows.forEach((row, rowIndex) => {
             const dataLine = [];
             prevDataLines.push(dataLine);
+            const outputRow = {};
 
             const rowValues = row.get("values");
 
@@ -213,7 +221,15 @@ export default class CreateTable extends Syntax<CreateTable> {
                     value = this.valueItem2value(column, valueItem, rowIndex);
                 } catch (err) {
                     if ( /cannot convert/.test(err.message) ) {
-                        coach.throwError("values should content only constants");
+                        const type = column.get("type");
+                        const typeName = (
+                            type.isNumber() ? 
+                                "number" :
+                                type.isText() ? 
+                                    "text" :
+                                    type.get("type")
+                        );
+                        coach.throwError(`values for column ${column.get("name")} should be ${ typeName }`);
                     }
                     else {
                         throw err;
@@ -231,6 +247,9 @@ export default class CreateTable extends Syntax<CreateTable> {
     
 
                 dataLine[columnIndex] = value;
+
+                const key = column.get("name").toString();
+                outputRow[ key ]  = value;
             });
 
             // validate uniqueness
@@ -253,8 +272,6 @@ export default class CreateTable extends Syntax<CreateTable> {
                     const isDuplicate = prevValues.every((prevValue, j) =>
                         prevValue != null &&
                         currentValues[j] != null &&
-                        prevValue !== DEFAULT_VALUE &&
-                        currentValues[j] !== DEFAULT_VALUE &&
                         prevValue === currentValues[j]
                     );
                     if ( isDuplicate ) {
@@ -262,13 +279,14 @@ export default class CreateTable extends Syntax<CreateTable> {
                     }
                 }
             });
+
+            outputRows.push(outputRow);
         });
+
+        return outputRows;
     }
 
     validateValueType(coach: GrapeQLCoach, column: ColumnDefinition, value: any) {
-        if ( value === DEFAULT_VALUE ) {
-            return;
-        }
         if ( value === null ) {
             return;
         }
@@ -356,16 +374,7 @@ export default class CreateTable extends Syntax<CreateTable> {
             if ( columnDefault ) {
                 // but column default expression can contain function call
                 // column for example: dt_create date default now()
-                try {
-                    value = columnDefault.toPrimitiveValue();
-                } catch (err) {
-                    if ( /cannot convert/.test(err) ) {
-                        return DEFAULT_VALUE;
-                    }
-                    else {
-                        throw err;
-                    }
-                }
+                value = columnDefault.toPrimitiveValue();
             }
             // column can be without default expression
             else {
@@ -426,9 +435,9 @@ export default class CreateTable extends Syntax<CreateTable> {
         }
 
 
-        if ( this.data.values.length ) {
+        if ( this.data.valuesRows.length ) {
             out += " values (";
-            out += this.data.values.map((item) => 
+            out += this.data.valuesRows.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";

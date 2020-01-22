@@ -43,6 +43,7 @@ describe("CreateTable", () => {
             constraints: [],
             inherits: [],
             deprecated: [],
+            valuesRows: [],
             values: []
         }
     });
@@ -97,6 +98,7 @@ describe("CreateTable", () => {
             ],
             inherits: [],
             deprecated: [],
+            valuesRows: [],
             values: []
         }
     });
@@ -184,7 +186,8 @@ describe("CreateTable", () => {
                 ]}
             ],
             deprecated: [],
-            values: []
+            values: [],
+            valuesRows: []
         }
     });
     
@@ -264,6 +267,7 @@ describe("CreateTable", () => {
             deprecated: [
                 {word: "name3", content: null}
             ],
+            valuesRows: [],
             values: []
         }
     });
@@ -317,6 +321,7 @@ describe("CreateTable", () => {
             deprecated: [
                 {word: "name", content: null}
             ],
+            valuesRows: [],
             values: []
         }
     });
@@ -407,6 +412,11 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: [],
             values: [
+                {id: 1, name: "FCL", note: null},
+                {id: 2, name: "FTL", note: null},
+                {id: 3, name: "LTL", note: null}
+            ],
+            valuesRows: [
                 {values: [
                     {value: {elements: [
                         {number: "1"}
@@ -471,7 +481,7 @@ describe("CreateTable", () => {
         ) values (
             (1, greatest(1, 2))
         )`,
-        error: /values should content only constants/
+        error: /values for column name should be text/
     });
 
     testSyntax(CreateTable, {
@@ -573,6 +583,9 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: [],
             values: [
+                {id: 1}
+            ],
+            valuesRows: [
                 {values: [
                     {value: {elements: [
                         {number: "1"}
@@ -614,6 +627,9 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: [],
             values: [
+                {id: 1}
+            ],
+            valuesRows: [
                 {values: [
                     {value: {elements: [
                         {number: "1"},
@@ -657,6 +673,9 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: [],
             values: [
+                {id: 1}
+            ],
+            valuesRows: [
                 {values: [
                     {value: {elements: [
                         {content: "1"},
@@ -777,6 +796,10 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: [],
             values: [
+                {id: 1, name: null},
+                {id: 2, name: null}
+            ],
+            valuesRows: [
                 {values: [
                     {value: {elements: [
                         {number: "1"}
@@ -922,6 +945,10 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: [],
             values: [
+                {id: 1, name: null},
+                {id: 2, name: null}
+            ],
+            valuesRows: [
                 {values: [
                     {value: null, default: true}
                 ]},
@@ -1001,6 +1028,10 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: [],
             values: [
+                {id: 1, name: null},
+                {id: 2, name: null}
+            ],
+            valuesRows: [
                 {values: [
                     {value: null, default: true},
                     {value: null, default: true}
@@ -1068,94 +1099,7 @@ describe("CreateTable", () => {
             (default, default),
             (default, default)
         )`,
-        result: {
-            name: {
-                word: "order_type",
-                content: null
-            },
-            columns: [
-                {
-                    name: {
-                        word: "id",
-                        content: null
-                    },
-                    type: {
-                        type: "serial"
-                    },
-                    nulls: false,
-                    primaryKey: {
-                        name: null,
-                        column: {
-                            word: "id",
-                            content: null
-                        },
-                        primaryKey: [{
-                            word: "id",
-                            content: null
-                        }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
-                },
-                {
-                    name: {
-                        word: "dt_create",
-                        content: null
-                    },
-                    type: {
-                        type: "date"
-                    },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: {
-                        name: null,
-                        column: {
-                            word: "dt_create",
-                            content: null
-                        },
-                        unique: [{
-                            word: "dt_create",
-                            content: null
-                        }]
-                    },
-                    foreignKey: null,
-                    check: null,
-                    default: {elements: [
-                        {
-                            function: {
-                                star: false,
-                                link: [
-                                    {word: "now", content: null}
-                                ]
-                            },
-                            all: null,
-                            distinct: null,
-                            arguments: [],
-                            where: null,
-                            orderBy: null,
-                            within: null,
-                            over: null,
-                            emptyOver: null
-                        }
-                    ]}
-                }
-            ],
-            constraints: [],
-            inherits: [],
-            deprecated: [],
-            values: [
-                {values: [
-                    {value: null, default: true},
-                    {value: null, default: true}
-                ]},
-                {values: [
-                    {value: null, default: true},
-                    {value: null, default: true}
-                ]}
-            ]
-        }
+        error: /values for column dt_create should be date/
     });
 
     testSyntax(CreateTable, {
@@ -1217,6 +1161,10 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: [],
             values: [
+                {id: 1, profit: -1},
+                {id: 2, profit: -2}
+            ],
+            valuesRows: [
                 {values: [
                     {value: null, default: true},
                     {value: {elements: [
