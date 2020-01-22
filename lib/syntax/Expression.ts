@@ -226,6 +226,7 @@ export default class Expression extends Syntax<Expression> {
         const firstElem = elements[0];
         const secondElem = elements[1];
         const thirdElem = elements[2];
+        const fourthElem = elements[3];
 
         // -4
         const isNegativeNumber = (
@@ -233,6 +234,17 @@ export default class Expression extends Syntax<Expression> {
             firstElem instanceof Operator &&
             firstElem.get("operator") === "-" &&
             secondElem instanceof PgNumber
+        );
+
+        // -4::integer
+        const isNegativeNumberWithCasting = (
+            elements.length === 4 &&
+            firstElem instanceof Operator &&
+            firstElem.get("operator") === "-" &&
+            secondElem instanceof PgNumber &&
+            thirdElem instanceof Operator &&
+            thirdElem.get("operator") === "::" &&
+            fourthElem instanceof DataType
         );
 
         const firstElemIsConstant = (
@@ -261,21 +273,37 @@ export default class Expression extends Syntax<Expression> {
         const isPrimitive = (
             isConstant ||
             isConstantWithCasting ||
-            isNegativeNumber
+            isNegativeNumber ||
+            isNegativeNumberWithCasting
         );
 
         if ( !isPrimitive ) {
             throw new Error("cannot convert to primitive value");
         }
 
-        if ( isNegativeNumber ) {
+        if ( isNegativeNumber || isNegativeNumberWithCasting ) {
             const numb = +secondElem.get("number");
 
             if ( isNaN(numb) ) {
                 throw new Error("cannot convert to primitive value");
             }
 
-            return -numb;
+            if ( isNegativeNumberWithCasting ) {
+                const type = fourthElem as DataType;
+
+                if ( type.isText() ) {
+                    return -numb + "";
+                }
+
+                if ( type.isNumber() ) {
+                    return -numb;
+                }
+                
+                throw new Error("cannot convert to primitive value");
+            }
+            else {
+                return -numb;
+            }
         }
 
         if ( isConstant || isConstantWithCasting ) {

@@ -1076,6 +1076,8 @@ describe("Expression", () => {
             {expressionString: "true", primitiveValue: true},
             {expressionString: "false", primitiveValue: false},
             {expressionString: "-4", primitiveValue: -4},
+            {expressionString: "-4::integer", primitiveValue: -4},
+            {expressionString: "-4::text", primitiveValue: "-4"},
             {expressionString: "'1'::numeric", primitiveValue: 1},
             {expressionString: "1::text", primitiveValue: "1"},
             {expressionString: "1::varchar(1)", primitiveValue: "1"}
@@ -1084,7 +1086,8 @@ describe("Expression", () => {
             "1+1",
             "-4*2+ x",
             "y",
-            "1+(select from list_company)"
+            "1+(select from list_company)",
+            "-4::date"
         ];
 
         primitiveExpressions.forEach((primitiveExpression, i) => {

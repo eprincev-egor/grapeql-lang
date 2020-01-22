@@ -1158,4 +1158,85 @@ describe("CreateTable", () => {
         }
     });
 
+    testSyntax(CreateTable, {
+        str: `create table order_type (
+            id serial primary key,
+            profit numeric
+        ) values (
+            (default, -1::numeric),
+            (default, -2::integer)
+        )`,
+        result: {
+            name: {
+                word: "order_type",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                },
+                {
+                    name: {
+                        word: "profit",
+                        content: null
+                    },
+                    type: {
+                        type: "numeric"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: [],
+            values: [
+                {values: [
+                    {value: null, default: true},
+                    {value: {elements: [
+                        {operator: "-"},
+                        {number: "1"},
+                        {operator: "::"},
+                        {type: "numeric"}
+                    ]}, default: null}
+                ]},
+                {values: [
+                    {value: null, default: true},
+                    {value: {elements: [
+                        {operator: "-"},
+                        {number: "2"},
+                        {operator: "::"},
+                        {type: "integer"}
+                    ]}, default: null}
+                ]}
+            ]
+        }
+    });
+
 });

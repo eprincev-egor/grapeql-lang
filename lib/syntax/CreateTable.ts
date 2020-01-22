@@ -11,13 +11,6 @@ import ObjectName from "./ObjectName";
 import Constraint from "./Constraint";
 import ObjectLink from "./ObjectLink";
 import ValuesRow from "./ValuesRow";
-import PgNull from "./PgNull";
-import PgNumber from "./PgNumber";
-import SingleQuotesString from "./SingleQuotesString";
-import DollarString from "./DollarString";
-import Boolean from "./Boolean";
-import Operator from "./Operator";
-import DataType from "./DataType";
 import ValueItem from "./ValueItem";
 
 // for equaling
