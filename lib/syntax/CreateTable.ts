@@ -379,7 +379,7 @@ export default class CreateTable extends Syntax<CreateTable> {
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.isWord("create") || coach.isWord("table");
+        return coach.is(/(create\s+)?table/i);
     }
     
     toString() {
