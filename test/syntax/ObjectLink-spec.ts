@@ -3,13 +3,13 @@
 
 import ObjectLink from "../../lib/syntax/ObjectLink";
 import ObjectName from "../../lib/syntax/ObjectName";
-import testSyntax from "../testSyntax";
+
 import GrapeQLCoach from "../../lib/GrapeQLCoach";
 import assert from "assert";
 
 describe("ObjectLink", () => {
 
-    testSyntax(ObjectLink, {
+    GrapeQLCoach.test(ObjectLink, {
         str: "a.B.c",
         result: {
             star: false,
@@ -30,7 +30,7 @@ describe("ObjectLink", () => {
         }
     });
 
-    testSyntax(ObjectLink, {
+    GrapeQLCoach.test(ObjectLink, {
         str: "a.b.c.d.e.f",
         result: {
             star: false,
@@ -63,7 +63,7 @@ describe("ObjectLink", () => {
         }
     });
 
-    testSyntax(ObjectLink, {
+    GrapeQLCoach.test(ObjectLink, {
         str: `"Nice"
             .
             "test"   . X.y."some"
@@ -95,7 +95,7 @@ describe("ObjectLink", () => {
         }
     });
     
-    testSyntax(ObjectLink, {
+    GrapeQLCoach.test(ObjectLink, {
         str: "*",
         options: {
             availableStar: true
@@ -106,7 +106,7 @@ describe("ObjectLink", () => {
         }
     });
 
-    testSyntax(ObjectLink, {
+    GrapeQLCoach.test(ObjectLink, {
         str: "some.*",
         options: {
             availableStar: true
@@ -122,7 +122,7 @@ describe("ObjectLink", () => {
         }
     });
     
-    testSyntax(ObjectLink, {
+    GrapeQLCoach.test(ObjectLink, {
         str: "some . *",
         options: {
             availableStar: true

@@ -1,10 +1,10 @@
 
 import CreateTrigger from "../../lib/syntax/CreateTrigger";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
 describe("CreateTrigger", () => {
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             before insert
             on public.company
@@ -42,7 +42,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             before insert
             on public.company
@@ -80,7 +80,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             after insert
             on public.company
@@ -117,7 +117,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             before delete
             on public.company
@@ -154,7 +154,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             after delete
             on public.company
@@ -191,7 +191,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             before update
             on public.company
@@ -228,7 +228,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             before insert or delete
             on public.company
@@ -265,7 +265,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             after insert or delete
             on public.company
@@ -302,7 +302,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             after delete or insert
             on public.company
@@ -339,7 +339,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             before delete or insert
             on public.company
@@ -377,7 +377,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             before delete or insert or update
             on public.company
@@ -415,7 +415,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             after delete or insert or update
             on public.company
@@ -452,7 +452,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             after update of name, deleted
             on public.company
@@ -490,7 +490,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             after update of name, deleted or insert
             on public.company
@@ -528,7 +528,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             after insert
             on public.company
@@ -568,7 +568,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create constraint trigger test 
             after insert
             on public.company
@@ -607,7 +607,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create constraint trigger test 
             after insert
             on public.company
@@ -647,7 +647,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create constraint trigger test 
             after insert
             on public.company
@@ -687,7 +687,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create constraint trigger test 
             after insert
             on public.company
@@ -727,7 +727,7 @@ describe("CreateTrigger", () => {
     });
     
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create constraint trigger test 
             after insert
             on public.company
@@ -766,7 +766,7 @@ describe("CreateTrigger", () => {
         }
     });
    
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `create trigger test 
             before insert
             on public.company
@@ -815,7 +815,7 @@ describe("CreateTrigger", () => {
         }
     });
 
-    testSyntax(CreateTrigger, {
+    GrapeQLCoach.test(CreateTrigger, {
         str: `
         create trigger test 
             before insert

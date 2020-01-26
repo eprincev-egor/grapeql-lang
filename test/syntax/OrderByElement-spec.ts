@@ -1,11 +1,11 @@
 
-
 import OrderByElement from "../../lib/syntax/OrderByElement";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("OrderByElement", () => {
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id",
         result: {
             expression: {elements: [
@@ -22,7 +22,7 @@ describe("OrderByElement", () => {
         }
     });
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id asc",
         result: {
             expression: {elements: [
@@ -39,7 +39,7 @@ describe("OrderByElement", () => {
         }
     });
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id desc",
         result: {
             expression: {elements: [
@@ -56,7 +56,7 @@ describe("OrderByElement", () => {
         }
     });
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id using >",
         result: {
             expression: {elements: [
@@ -73,7 +73,7 @@ describe("OrderByElement", () => {
         }
     });
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id using <",
         result: {
             expression: {elements: [
@@ -90,7 +90,7 @@ describe("OrderByElement", () => {
         }
     });
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id nulls first",
         result: {
             expression: {elements: [
@@ -107,7 +107,7 @@ describe("OrderByElement", () => {
         }
     });
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id nulls last",
         result: {
             expression: {elements: [
@@ -124,7 +124,7 @@ describe("OrderByElement", () => {
         }
     });
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id desc nulls first",
         result: {
             expression: {elements: [
@@ -141,7 +141,7 @@ describe("OrderByElement", () => {
         }
     });
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id desc nulls last",
         result: {
             expression: {elements: [
@@ -158,7 +158,7 @@ describe("OrderByElement", () => {
         }
     });
 
-    testSyntax(OrderByElement, {
+    GrapeQLCoach.test(OrderByElement, {
         str: "id using > nulls last",
         result: {
             expression: {elements: [

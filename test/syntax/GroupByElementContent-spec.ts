@@ -1,11 +1,11 @@
 
-
 import GroupByElementContent from "../../lib/syntax/GroupByElementContent";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("GroupByElementContent", () => {
 
-    testSyntax(GroupByElementContent, {
+    GrapeQLCoach.test(GroupByElementContent, {
         str: "id",
         result: {
             single: true,
@@ -17,7 +17,7 @@ describe("GroupByElementContent", () => {
         }
     });
 
-    testSyntax(GroupByElementContent, {
+    GrapeQLCoach.test(GroupByElementContent, {
         str: "(id, name)",
         result: {
             single: false,

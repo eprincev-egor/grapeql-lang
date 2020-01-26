@@ -1,11 +1,11 @@
 
-
 import With from "../../lib/syntax/With";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("With", () => {
 
-    testSyntax(With, {
+    GrapeQLCoach.test(With, {
         str: `with items as (
             select
         )`,
@@ -37,7 +37,7 @@ describe("With", () => {
         }
     });
 
-    testSyntax(With, {
+    GrapeQLCoach.test(With, {
         str: `with recursive items as (
             select
         )`,
@@ -69,7 +69,7 @@ describe("With", () => {
         }
     });
 
-    testSyntax(With, {
+    GrapeQLCoach.test(With, {
         str: `with
             a as (select),
             a as (select)
@@ -77,7 +77,7 @@ describe("With", () => {
         error: /WITH query name "a" specified more than once/
     });
 
-    testSyntax(With, {
+    GrapeQLCoach.test(With, {
         str: `with
         `,
         error: /expected: WithQuery/

@@ -1,11 +1,11 @@
 
-
 import CaseWhen from "../../lib/syntax/CaseWhen";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("CaseWhen", () => {
 
-    testSyntax(CaseWhen, {
+    GrapeQLCoach.test(CaseWhen, {
         str: "case when (true) then 1 else 0 end",
         result: {
             case: [
@@ -18,7 +18,7 @@ describe("CaseWhen", () => {
         }
     });
 
-    testSyntax(CaseWhen, {
+    GrapeQLCoach.test(CaseWhen, {
         str: "case when (true) then 1 end",
         result: {
             case: [
@@ -31,7 +31,7 @@ describe("CaseWhen", () => {
         }
     });
 
-    testSyntax(CaseWhen, {
+    GrapeQLCoach.test(CaseWhen, {
         str: "case when 'some' then (1+1) when true or false then (1+1) else -2 end",
         result: {
             case: [

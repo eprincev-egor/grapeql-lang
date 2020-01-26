@@ -1,11 +1,11 @@
 
-
 import SelectFetch from "../../lib/syntax/SelectFetch";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("SelectFetch", () => {
 
-    testSyntax(SelectFetch, {
+    GrapeQLCoach.test(SelectFetch, {
         str: "fetch first row only",
         result: {
             first: true,
@@ -16,7 +16,7 @@ describe("SelectFetch", () => {
         }
     });
 
-    testSyntax(SelectFetch, {
+    GrapeQLCoach.test(SelectFetch, {
         str: "fetch next row only",
         result: {
             first: null,
@@ -27,7 +27,7 @@ describe("SelectFetch", () => {
         }
     });
 
-    testSyntax(SelectFetch, {
+    GrapeQLCoach.test(SelectFetch, {
         str: "fetch next 5 rows only",
         result: {
             first: null,

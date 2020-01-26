@@ -1,11 +1,11 @@
 
-
 import FunctionCall from "../../lib/syntax/FunctionCall";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("FunctionCall", () => {
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "public.get_default_currency()",
         result: {
             function: {
@@ -26,7 +26,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "public.get_default_currency( 1, 2 )",
         result: {
             function: {
@@ -54,7 +54,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "count( * )",
         result: {
             function: {
@@ -81,7 +81,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "row_to_json( company.* )",
         result: {
             function: {
@@ -110,7 +110,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "array_agg( all company.id )",
         result: {
             function: {
@@ -137,7 +137,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "array_agg( distinct company.id )",
         result: {
             function: {
@@ -164,7 +164,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "array_agg( company.id ) filter (where company.name is not null )",
         result: {
             function: {
@@ -198,7 +198,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "array_agg( company.id order by id desc )",
         result: {
             function: {
@@ -237,7 +237,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "array_agg( company.id order by id desc ) filter (where company.name is not null )",
         result: {
             function: {
@@ -283,7 +283,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "UNNEST( ARRAY[ 1, 2 ] ) WITHIN GROUP (ORDER BY val))",
         result: {
             function: {
@@ -327,7 +327,7 @@ describe("FunctionCall", () => {
     });
 
     
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "ntile(4) OVER (ORDER BY val) AS tile",
         result: {
             function: {
@@ -368,7 +368,7 @@ describe("FunctionCall", () => {
         }
     });
 
-    testSyntax(FunctionCall, {
+    GrapeQLCoach.test(FunctionCall, {
         str: "ntile(4) OVER () AS tile",
         result: {
             function: {

@@ -1,10 +1,10 @@
 
 import PgArgument from "../../lib/syntax/PgArgument";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
 describe("PgArgument", () => {
 
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "ID INTEGER",
         result: {
             name: "id",
@@ -15,7 +15,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "sum numeric ( 10, 3 )",
         result: {
             name: "sum",
@@ -26,7 +26,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "sum numeric",
         result: {
             name: "sum",
@@ -37,7 +37,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "company_id bigint default null",
         options: {default: true},
         result: {
@@ -49,7 +49,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "company_id bigint default null",
         options: {default: false},
         result: {
@@ -61,7 +61,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "company public.company",
         result: {
             name: "company",
@@ -72,7 +72,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "company company",
         result: {
             name: "company",
@@ -83,7 +83,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "text",
         result: {
             name: null,
@@ -94,7 +94,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "timestamp without time zone",
         result: {
             name: null,
@@ -105,7 +105,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "double precision",
         result: {
             name: null,
@@ -116,7 +116,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "character varying(2)",
         result: {
             name: null,
@@ -127,7 +127,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "time with time zone",
         result: {
             name: null,
@@ -138,7 +138,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "date_start time with time zone",
         result: {
             name: "date_start",
@@ -149,7 +149,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "out name text",
         result: {
             name: "name",
@@ -160,7 +160,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "in name text",
         result: {
             name: "name",
@@ -171,7 +171,7 @@ describe("PgArgument", () => {
         }
     });
     
-    testSyntax(PgArgument, {
+    GrapeQLCoach.test(PgArgument, {
         str: "name character varying[]",
         result: {
             name: "name",

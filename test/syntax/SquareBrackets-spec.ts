@@ -1,11 +1,11 @@
 
-
 import SquareBrackets from "../../lib/syntax/SquareBrackets";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("SquareBrackets", () => {
 
-    testSyntax(SquareBrackets, {
+    GrapeQLCoach.test(SquareBrackets, {
         str: "[1]",
         result: {
             content: {elements: [

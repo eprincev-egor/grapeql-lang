@@ -1,10 +1,11 @@
 
 import UniqueConstraint from "../../lib/syntax/UniqueConstraint";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("UniqueConstraint", () => {
     
-    testSyntax(UniqueConstraint, {
+    GrapeQLCoach.test(UniqueConstraint, {
         str: "constraint test unique (id_unit, id_operation)",
         result: {
             name: {
@@ -25,7 +26,7 @@ describe("UniqueConstraint", () => {
         }
     });
     
-    testSyntax(UniqueConstraint, {
+    GrapeQLCoach.test(UniqueConstraint, {
         str: "unique",
         options: {
             column: {

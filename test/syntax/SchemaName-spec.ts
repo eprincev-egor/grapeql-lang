@@ -1,11 +1,11 @@
 
-
 import SchemaName from "../../lib/syntax/SchemaName";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("SchemaName", () => {
 
-    testSyntax(SchemaName, {
+    GrapeQLCoach.test(SchemaName, {
         str: "x",
         result: {
             schema: "public",
@@ -13,7 +13,7 @@ describe("SchemaName", () => {
         }
     });
 
-    testSyntax(SchemaName, {
+    GrapeQLCoach.test(SchemaName, {
         str: "x.y",
         result: {
             schema: "x",
@@ -21,7 +21,7 @@ describe("SchemaName", () => {
         }
     });
 
-    testSyntax(SchemaName, {
+    GrapeQLCoach.test(SchemaName, {
         str: "x.y.z",
         error: /invalid name x\.y\.z/
     });

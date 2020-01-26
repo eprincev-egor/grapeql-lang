@@ -1,11 +1,11 @@
 
-
 import Join from "../../lib/syntax/Join";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("Join", () => {
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "JOIN company on true",
         result: {
             type: "join",
@@ -32,7 +32,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "left join company on true",
         result: {
             type: "left join",
@@ -59,7 +59,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "right join company on true",
         result: {
             type: "right join",
@@ -86,7 +86,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "inner join company on true",
         result: {
             type: "inner join",
@@ -113,7 +113,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "full join company on true",
         result: {
             type: "full join",
@@ -140,7 +140,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "CROSS  Join company on true",
         result: {
             type: "cross join",
@@ -167,7 +167,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "full  outer  join  company on true",
         result: {
             type: "full outer join",
@@ -194,12 +194,12 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "left wrong join",
         error: /expected join keyword/
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "JOIN lateral get_some_rows( company.id ) as rows on true",
         result: {
             type: "join",
@@ -248,7 +248,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "left JOIN lateral get_some_rows( company.id ) as rows on true",
         result: {
             type: "left join",
@@ -297,7 +297,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "inner join lateral get_some_rows( company.id ) as rows on true",
         result: {
             type: "inner join",
@@ -346,13 +346,13 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "right join lateral get_some_rows( company.id ) as rows on true",
         error: /The combining JOIN type must be INNER or LEFT for a LATERAL reference/
     });
 
     
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "JOIN company using(id)",
         result: {
             type: "join",
@@ -379,7 +379,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "JOIN company using ( key1, key2 )",
         result: {
             type: "join",
@@ -407,7 +407,7 @@ describe("Join", () => {
         }
     });
 
-    testSyntax(Join, {
+    GrapeQLCoach.test(Join, {
         str: "left join company",
         error: /expected 'on' or 'using'/
     });

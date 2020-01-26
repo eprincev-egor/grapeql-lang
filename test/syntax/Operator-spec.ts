@@ -1,509 +1,509 @@
 
-
 import Operator from "../../lib/syntax/Operator";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("Operator", () => {
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "-+-",
         result: {operator: "-"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "+-",
         result: {operator: "+"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "::",
         result: {operator: "::"}
     });
     
 
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "=",
         result: {operator: "="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<>",
         result: {operator: "<>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "!=",
         result: {operator: "!="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<",
         result: {operator: "<"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: ">",
         result: {operator: ">"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<=",
         result: {operator: "<="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: ">=",
         result: {operator: ">="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "||",
         result: {operator: "||"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "!",
         result: {operator: "!"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "!!",
         result: {operator: "!!"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "%",
         result: {operator: "%"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "@",
         result: {operator: "@"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "-",
         result: {operator: "-"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<<",
         result: {operator: "<<"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "&<",
         result: {operator: "&<"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "&>",
         result: {operator: "&>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: ">>",
         result: {operator: ">>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<@",
         result: {operator: "<@"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "@>",
         result: {operator: "@>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "~=",
         result: {operator: "~="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "&&",
         result: {operator: "&&"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: ">^",
         result: {operator: ">^"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<^",
         result: {operator: "<^"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "@@",
         result: {operator: "@@"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "*",
         result: {operator: "*"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<->",
         result: {operator: "<->"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "/",
         result: {operator: "/"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "+",
         result: {operator: "+"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "#=",
         result: {operator: "#="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "#<>",
         result: {operator: "#<>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "#<",
         result: {operator: "#<"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "#>",
         result: {operator: "#>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "#<=",
         result: {operator: "#<="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "#>=",
         result: {operator: "#>="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<?>",
         result: {operator: "<?>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "|/",
         result: {operator: "|/"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "||/",
         result: {operator: "||/"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "|",
         result: {operator: "|"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<#>",
         result: {operator: "<#>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "~",
         result: {operator: "~"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "!~",
         result: {operator: "!~"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "#",
         result: {operator: "#"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "?#",
         result: {operator: "?#"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "@-@",
         result: {operator: "@-@"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "?-",
         result: {operator: "?-"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "?|",
         result: {operator: "?|"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "^",
         result: {operator: "^"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "~~",
         result: {operator: "~~"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "!~~",
         result: {operator: "!~~"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "~*",
         result: {operator: "~*"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "!~*",
         result: {operator: "!~*"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "|>>",
         result: {operator: "|>>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<<|",
         result: {operator: "<<|"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "?||",
         result: {operator: "?||"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "?-|",
         result: {operator: "?-|"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "##",
         result: {operator: "##"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "&",
         result: {operator: "&"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "<<=",
         result: {operator: "<<="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: ">>=",
         result: {operator: ">>="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "~~*",
         result: {operator: "~~*"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "!~~*",
         result: {operator: "!~~*"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "~<~",
         result: {operator: "~<~"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "~<=~",
         result: {operator: "~<=~"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "~>=~",
         result: {operator: "~>=~"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "~>~",
         result: {operator: "~>~"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "&<|",
         result: {operator: "&<|"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "|&>",
         result: {operator: "|&>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "@@@",
         result: {operator: "@@@"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "*=",
         result: {operator: "*="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "*<>",
         result: {operator: "*<>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "*<",
         result: {operator: "*<"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "*>",
         result: {operator: "*>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "*<=",
         result: {operator: "*<="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "*>=",
         result: {operator: "*>="}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "-|-",
         result: {operator: "-|-"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "->",
         result: {operator: "->"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "->>",
         result: {operator: "->>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "#>>",
         result: {operator: "#>>"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "?",
         result: {operator: "?"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "?&",
         result: {operator: "?&"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "#-",
         result: {operator: "#-"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "and",
         result: {operator: "and"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "or",
         result: {operator: "or"}
     });
     
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "not",
         result: {operator: "not"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "is",
         result: {operator: "is"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "is  Not null",
         result: {operator: "is not"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "is Distinct from",
         result: {operator: "is distinct from"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "operator( pg_catalog.+  )",
         result: {operator: "operator(pg_catalog.+)"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "isnull some",
         result: {operator: "isnull"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "notnull some",
         result: {operator: "notnull"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "is not distinct from",
         result: {operator: "is not distinct from"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "is unknown",
         result: {operator: "is unknown"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "is not  unknown",
         result: {operator: "is not unknown"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "sImilar  To",
         result: {operator: "similar to"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "iLike",
         result: {operator: "ilike"}
     });
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "likE",
         result: {operator: "like"}
     });
 
 
-    testSyntax(Operator, {
+    GrapeQLCoach.test(Operator, {
         str: "operator(  )",
         error: /invalid operator/
     });

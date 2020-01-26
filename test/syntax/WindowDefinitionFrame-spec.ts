@@ -1,11 +1,11 @@
 
-
 import WindowDefinitionFrame from "../../lib/syntax/WindowDefinitionFrame";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("WindowDefinitionFrame", () => {
 
-    testSyntax(WindowDefinitionFrame, {
+    GrapeQLCoach.test(WindowDefinitionFrame, {
         str: "unbounded preceding",
         result: {
             start: {
@@ -19,7 +19,7 @@ describe("WindowDefinitionFrame", () => {
         }
     });
 
-    testSyntax(WindowDefinitionFrame, {
+    GrapeQLCoach.test(WindowDefinitionFrame, {
         str: "1 preceding",
         result: {
             start: {
@@ -33,7 +33,7 @@ describe("WindowDefinitionFrame", () => {
         }
     });
 
-    testSyntax(WindowDefinitionFrame, {
+    GrapeQLCoach.test(WindowDefinitionFrame, {
         str: "between 1 preceding and 2 preceding",
         result: {
             start: {

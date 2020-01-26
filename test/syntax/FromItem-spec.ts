@@ -1,11 +1,11 @@
 
-
 import FromItem from "../../lib/syntax/FromItem";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("FromItem", () => {
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "public.company",
         result: {
             lateral: null,
@@ -26,7 +26,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "only company",
         result: {
             lateral: null,
@@ -46,7 +46,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "only company *",
         result: {
             lateral: null,
@@ -67,7 +67,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "public.company as Company",
         result: {
             lateral: null,
@@ -88,7 +88,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "public.company as Company ( id, inn )",
         result: {
             lateral: null,
@@ -112,7 +112,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "public.get_rows(1 + 1) as some_rows",
         result: {
             lateral: null,
@@ -153,7 +153,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "lateral get_rows( company.id ) as some_rows",
         result: {
             only: null,
@@ -195,7 +195,7 @@ describe("FromItem", () => {
     });
 
     
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "unnest('{1,2,3}'::int[], '{4,5,6,7}'::int[]) with ordinality as t(a1, a2, num)",
         result: {
             only: null,
@@ -246,7 +246,7 @@ describe("FromItem", () => {
     });
 
     
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "file Order.sql as orders",
         result: {
             lateral: null,
@@ -273,7 +273,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "./Order.sql as orders",
         result: {
             lateral: null,
@@ -300,7 +300,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "./Order",
         result: {
             lateral: null,
@@ -324,7 +324,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "./Order",
         result: {
             lateral: null,
@@ -349,7 +349,7 @@ describe("FromItem", () => {
     });
 
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "./Order join country on true",
         result: {
             lateral: null,
@@ -398,7 +398,7 @@ describe("FromItem", () => {
     });
 
     
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "./Order join country on true inner join public.some on false",
         result: {
             lateral: null,
@@ -470,7 +470,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "( select * from public.order ) as Orders",
         result: {
             lateral: null,
@@ -526,7 +526,7 @@ describe("FromItem", () => {
         }
     });
 
-    testSyntax(FromItem, {
+    GrapeQLCoach.test(FromItem, {
         str: "lateral ( select * from company ) as company (id, inn)",
         result: {
             only: null,

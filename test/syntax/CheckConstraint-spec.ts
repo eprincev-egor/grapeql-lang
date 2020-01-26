@@ -1,10 +1,11 @@
 
 import CheckConstraint from "../../lib/syntax/CheckConstraint";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("CheckConstraint", () => {
 
-    testSyntax(CheckConstraint, {
+    GrapeQLCoach.test(CheckConstraint, {
         str: "constraint test check (profit > 0)",
         result: {
             name: {
@@ -24,7 +25,7 @@ describe("CheckConstraint", () => {
         }
     });
     
-    testSyntax(CheckConstraint, {
+    GrapeQLCoach.test(CheckConstraint, {
         str: "check (profit > 0)",
         options: {
             column: {

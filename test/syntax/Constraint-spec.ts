@@ -1,10 +1,11 @@
 
 import Constraint from "../../lib/syntax/Constraint";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("Constraint", () => {
 
-    testSyntax(Constraint, {
+    GrapeQLCoach.test(Constraint, {
         str: "constraint test",
         result: {
             column: null,

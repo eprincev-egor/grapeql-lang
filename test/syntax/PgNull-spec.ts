@@ -1,26 +1,25 @@
 
-
 import PgNull from "../../lib/syntax/PgNull";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
 describe("PgNull", () => {
 
-    testSyntax(PgNull, {
+    GrapeQLCoach.test(PgNull, {
         str: "null",
         result: {null: true}
     });
 
-    testSyntax(PgNull, {
+    GrapeQLCoach.test(PgNull, {
         str: "NULL",
         result: {null: true}
     });
 
-    testSyntax(PgNull, {
+    GrapeQLCoach.test(PgNull, {
         str: "null ",
         result: {null: true}
     });
 
-    testSyntax(PgNull, {
+    GrapeQLCoach.test(PgNull, {
         str: "null1",
         error: /SyntaxError/
     });

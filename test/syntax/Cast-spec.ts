@@ -1,11 +1,11 @@
 
-
 import Cast from "../../lib/syntax/Cast";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("Cast", () => {
 
-    testSyntax(Cast, {
+    GrapeQLCoach.test(Cast, {
         str: "cast(1 as numeric( 12, 12 ))",
         result: {
             cast: {
@@ -21,7 +21,7 @@ describe("Cast", () => {
         }
     });
 
-    testSyntax(Cast, {
+    GrapeQLCoach.test(Cast, {
         str: "cast('nice' as bigint[][])",
         result: {
             cast: {
@@ -37,7 +37,7 @@ describe("Cast", () => {
         }
     });
 
-    testSyntax(Cast, {
+    GrapeQLCoach.test(Cast, {
         str: "cast( $$nice$$  AS bigint[][])",
         result: {
             cast: {
@@ -53,7 +53,7 @@ describe("Cast", () => {
         }
     });
 
-    testSyntax(Cast, {
+    GrapeQLCoach.test(Cast, {
         str: "cast( 2 * 3 AS bigint[][])",
         result: {
             cast: {

@@ -1,10 +1,11 @@
 
 import TriggerIdentify from "../../lib/syntax/TriggerIdentify";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("TriggerIdentify", () => {
 
-    testSyntax(TriggerIdentify, {
+    GrapeQLCoach.test(TriggerIdentify, {
         str: "some_trigger on public.company",
         result: {
             name: "some_trigger",

@@ -1,11 +1,11 @@
 
-
 import WindowDefinition from "../../lib/syntax/WindowDefinition";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("WindowDefinition", () => {
 
-    testSyntax(WindowDefinition, {
+    GrapeQLCoach.test(WindowDefinition, {
         str: "parent_window",
         result: {
             windowDefinition: {
@@ -19,7 +19,7 @@ describe("WindowDefinition", () => {
         }
     });
 
-    testSyntax(WindowDefinition, {
+    GrapeQLCoach.test(WindowDefinition, {
         str: "partition by company.name, company.id",
         result: {
             windowDefinition: null,
@@ -43,7 +43,7 @@ describe("WindowDefinition", () => {
         }
     });
 
-    testSyntax(WindowDefinition, {
+    GrapeQLCoach.test(WindowDefinition, {
         str: "order by company.name asc, company.id desc",
         result: {
             windowDefinition: null,
@@ -77,7 +77,7 @@ describe("WindowDefinition", () => {
         }
     });
 
-    testSyntax(WindowDefinition, {
+    GrapeQLCoach.test(WindowDefinition, {
         str: "range between 1 following and 2 following",
         result: {
             windowDefinition: null,
@@ -103,7 +103,7 @@ describe("WindowDefinition", () => {
         }
     });
 
-    testSyntax(WindowDefinition, {
+    GrapeQLCoach.test(WindowDefinition, {
         str: "rows between 1 preceding and 2 following",
         result: {
             windowDefinition: null,
@@ -129,7 +129,7 @@ describe("WindowDefinition", () => {
         }
     });
 
-    testSyntax(WindowDefinition, {
+    GrapeQLCoach.test(WindowDefinition, {
         str: "parent_window partition by company.name, company.id order by company.name desc, company.id asc rows between current row and 100 following",
         result: {
             windowDefinition: {word: "parent_window", content: null},
@@ -191,7 +191,7 @@ describe("WindowDefinition", () => {
         }
     });
 
-    testSyntax(WindowDefinition, {
+    GrapeQLCoach.test(WindowDefinition, {
         str: "parent_window partition by company.name, company.id order by company.name desc, company.id asc range between current row and 100 following",
         result: {
             windowDefinition: {word: "parent_window", content: null},

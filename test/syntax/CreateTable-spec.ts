@@ -1,10 +1,11 @@
 
 import CreateTable from "../../lib/syntax/CreateTable";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("CreateTable", () => {
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key
         )`,
@@ -48,7 +49,7 @@ describe("CreateTable", () => {
         }
     });
     
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key,
             id serial
@@ -56,7 +57,7 @@ describe("CreateTable", () => {
         error: /duplicate column name: id/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial,
             constraint company_pk primary key (id)
@@ -104,7 +105,7 @@ describe("CreateTable", () => {
     });
 
     
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial,
             constraint company_pk primary key (id),
@@ -113,7 +114,7 @@ describe("CreateTable", () => {
         error: /duplicate constraint name: company_pk/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key,
             constraint company_pk primary key (id)
@@ -121,7 +122,7 @@ describe("CreateTable", () => {
         error: /duplicate primary key/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key,
             name text primary key
@@ -129,7 +130,7 @@ describe("CreateTable", () => {
         error: /duplicate primary key/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial,
             constraint company_pk1 primary key (id),
@@ -138,7 +139,7 @@ describe("CreateTable", () => {
         error: /duplicate primary key/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key
         )
@@ -191,7 +192,7 @@ describe("CreateTable", () => {
         }
     });
     
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key,
             name1 text,
@@ -272,7 +273,7 @@ describe("CreateTable", () => {
         }
     });
     
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key
         )
@@ -326,7 +327,7 @@ describe("CreateTable", () => {
         }
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table order_type (
             id serial primary key,
             name text unique,
@@ -446,7 +447,7 @@ describe("CreateTable", () => {
         }
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial
         ) values (
@@ -454,7 +455,7 @@ describe("CreateTable", () => {
         error: /expected: ValuesRow/
     });
     
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial
         ) values (
@@ -463,7 +464,7 @@ describe("CreateTable", () => {
         error: /values has more expressions that table columns/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial,
             name text
@@ -474,7 +475,7 @@ describe("CreateTable", () => {
         error: /VALUES lists must all be the same length/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial,
             name text
@@ -484,7 +485,7 @@ describe("CreateTable", () => {
         error: /values for column name should be text/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial,
             name text
@@ -494,7 +495,7 @@ describe("CreateTable", () => {
         error: /values for column id should be number/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial
         ) values (
@@ -503,7 +504,7 @@ describe("CreateTable", () => {
         error: /values for column id should be not float number/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial,
             name text
@@ -513,7 +514,7 @@ describe("CreateTable", () => {
         error: /values for column name should be text/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial,
             is_ok boolean
@@ -523,7 +524,7 @@ describe("CreateTable", () => {
         error: /values for column is_ok should be boolean/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial
         ) values (
@@ -532,7 +533,7 @@ describe("CreateTable", () => {
         error: /values for column id should be number/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id double precision
         ) values (
@@ -541,7 +542,7 @@ describe("CreateTable", () => {
         error: /values for column id should be number/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             name varchar(10)
         ) values (
@@ -551,7 +552,7 @@ describe("CreateTable", () => {
     });
 
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table order_type (
             id serial
         ) values (
@@ -595,7 +596,7 @@ describe("CreateTable", () => {
         }
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table order_type (
             id serial
         ) values (
@@ -641,7 +642,7 @@ describe("CreateTable", () => {
         }
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table order_type (
             id serial
         ) values (
@@ -688,7 +689,7 @@ describe("CreateTable", () => {
     });
 
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key,
             name text not null
@@ -698,7 +699,7 @@ describe("CreateTable", () => {
         error: /need value for not null column: name/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key
         ) values (
@@ -707,7 +708,7 @@ describe("CreateTable", () => {
         error: /need value for not null column: id/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id integer primary key
         ) values (
@@ -716,7 +717,7 @@ describe("CreateTable", () => {
         error: /need value for not null column: id/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key,
             name text not null
@@ -727,7 +728,7 @@ describe("CreateTable", () => {
         error: /need value for not null column: name/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table order_type (
             id serial primary key,
             name text unique
@@ -822,7 +823,7 @@ describe("CreateTable", () => {
         }
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key
         ) values (
@@ -832,7 +833,7 @@ describe("CreateTable", () => {
         error: /unique columns \(id\) cannot contain duplicate values: 1/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             name text unique
         ) values (
@@ -842,7 +843,7 @@ describe("CreateTable", () => {
         error: /unique columns \(name\) cannot contain duplicate values/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             name text unique
         ) values (
@@ -853,7 +854,7 @@ describe("CreateTable", () => {
         error: /unique columns \(name\) cannot contain duplicate values: a/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             name text unique default 'a'
         ) values (
@@ -863,7 +864,7 @@ describe("CreateTable", () => {
         error: /unique columns \(name\) cannot contain duplicate values: a/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id_order_a bigint,
             id_order_b bigint,
@@ -876,7 +877,7 @@ describe("CreateTable", () => {
         error: /unique columns \(id_order_a,id_order_b\) cannot contain duplicate values: 1,2/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table order_type (
             id serial primary key,
             name text unique
@@ -959,7 +960,7 @@ describe("CreateTable", () => {
         }
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table order_type (
             id serial primary key,
             name text unique
@@ -1044,7 +1045,7 @@ describe("CreateTable", () => {
         }
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id_order_a serial,
             id_order_b serial,
@@ -1058,7 +1059,7 @@ describe("CreateTable", () => {
     });
 
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial unique
         ) values (
@@ -1069,7 +1070,7 @@ describe("CreateTable", () => {
         error: /unique columns \(id\) cannot contain duplicate values: 2/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             name text default 'test' unique
         ) values (
@@ -1079,7 +1080,7 @@ describe("CreateTable", () => {
         error: /unique columns \(name\) cannot contain duplicate values: test/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table company (
             id serial primary key,
             name text default 'test' unique
@@ -1091,7 +1092,7 @@ describe("CreateTable", () => {
     });
 
     
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table order_type (
             id serial primary key,
             dt_create date unique default now()
@@ -1102,7 +1103,7 @@ describe("CreateTable", () => {
         error: /values for column dt_create should be date/
     });
 
-    testSyntax(CreateTable, {
+    GrapeQLCoach.test(CreateTable, {
         str: `create table order_type (
             id serial primary key,
             profit numeric

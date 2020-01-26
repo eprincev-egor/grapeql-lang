@@ -3,11 +3,11 @@
 import GrapeQLCoach from "../../lib/GrapeQLCoach";
 import assert from "assert";
 import Column from "../../lib/syntax/Column";
-import testSyntax from "../testSyntax";
+
 
 describe("Column", () => {
 
-    testSyntax(Column, {
+    GrapeQLCoach.test(Column, {
         str: "company.id as id",
         result: {
             expression: {
@@ -22,7 +22,7 @@ describe("Column", () => {
         }
     });
 
-    testSyntax(Column, {
+    GrapeQLCoach.test(Column, {
         str: "company.id id",
         result: {
             expression: {
@@ -37,7 +37,7 @@ describe("Column", () => {
         }
     });
 
-    testSyntax(Column, {
+    GrapeQLCoach.test(Column, {
         str: "company.id \"id\"",
         result: {
             expression: {
@@ -52,7 +52,7 @@ describe("Column", () => {
         }
     });
 
-    testSyntax(Column, {
+    GrapeQLCoach.test(Column, {
         str: "null as nulL1",
         result: {
             expression: {
@@ -64,7 +64,7 @@ describe("Column", () => {
         }
     });
 
-    testSyntax(Column, {
+    GrapeQLCoach.test(Column, {
         str: "*",
         result: {
             expression: {
@@ -104,7 +104,7 @@ describe("Column", () => {
 
     keywords.forEach((keyword) => {
 
-        testSyntax(Column, {
+        GrapeQLCoach.test(Column, {
             str: "1 " + keyword,
             result: {
                 expression: {elements: [

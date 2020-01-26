@@ -1,12 +1,11 @@
 
 import Any from "../../lib/syntax/Any";
 import GrapeQLCoach from "../../lib/GrapeQLCoach";
-import testSyntax from "../testSyntax";
 import assert from "assert";
 
 describe("Any", () => {
 
-    testSyntax(Any, {
+    GrapeQLCoach.test(Any, {
         str: "any( select )",
         result: {
             type: "any",
@@ -30,7 +29,7 @@ describe("Any", () => {
         }
     });
 
-    testSyntax(Any, {
+    GrapeQLCoach.test(Any, {
         str: "some( select )",
         result: {
             type: "some",
@@ -54,7 +53,7 @@ describe("Any", () => {
         }
     });
 
-    testSyntax(Any, {
+    GrapeQLCoach.test(Any, {
         str: "all( select )",
         result: {
             type: "all",
@@ -79,7 +78,7 @@ describe("Any", () => {
     });
 
     
-    testSyntax(Any, {
+    GrapeQLCoach.test(Any, {
         str: "any( array[] )",
         result: {
             type: "any",
@@ -90,7 +89,7 @@ describe("Any", () => {
         }
     });
 
-    testSyntax(Any, {
+    GrapeQLCoach.test(Any, {
         str: "some( array[] )",
         result: {
             type: "some",
@@ -101,7 +100,7 @@ describe("Any", () => {
         }
     });
 
-    testSyntax(Any, {
+    GrapeQLCoach.test(Any, {
         str: "all( array[] )",
         result: {
             type: "all",

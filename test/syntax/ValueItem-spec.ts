@@ -1,11 +1,11 @@
 
-
 import ValueItem from "../../lib/syntax/ValueItem";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("ValueItem", () => {
 
-    testSyntax(ValueItem, {
+    GrapeQLCoach.test(ValueItem, {
         str: "default",
         result: {
             value: null,
@@ -13,7 +13,7 @@ describe("ValueItem", () => {
         }
     });
 
-    testSyntax(ValueItem, {
+    GrapeQLCoach.test(ValueItem, {
         str: "1",
         result: {
             value: {elements: [

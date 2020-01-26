@@ -1,11 +1,11 @@
 
-
 import WithQuery from "../../lib/syntax/WithQuery";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("WithQuery", () => {
 
-    testSyntax(WithQuery, {
+    GrapeQLCoach.test(WithQuery, {
         str: `items as (
             select
         )`,
@@ -32,7 +32,7 @@ describe("WithQuery", () => {
         }
     });
 
-    testSyntax(WithQuery, {
+    GrapeQLCoach.test(WithQuery, {
         str: `items as (
             values
                 (1, 2),
@@ -75,7 +75,7 @@ describe("WithQuery", () => {
         }
     });
     
-    testSyntax(WithQuery, {
+    GrapeQLCoach.test(WithQuery, {
         str: `items (id, code) as (
             values
                 (1, 2),
@@ -121,7 +121,7 @@ describe("WithQuery", () => {
         }
     });
 
-    testSyntax(WithQuery, {
+    GrapeQLCoach.test(WithQuery, {
         str: `items as (
             values
                 (1, 2, 3),
@@ -130,7 +130,7 @@ describe("WithQuery", () => {
         error: /VALUES lists must all be the same length/
     });
 
-    testSyntax(WithQuery, {
+    GrapeQLCoach.test(WithQuery, {
         str: `items as (
             values
                 (1, 2, 3),

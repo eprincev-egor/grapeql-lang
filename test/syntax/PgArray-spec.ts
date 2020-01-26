@@ -1,21 +1,21 @@
 
-
 import PgArray from "../../lib/syntax/PgArray";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("PgArray", () => {
 
-    testSyntax(PgArray, {
+    GrapeQLCoach.test(PgArray, {
         str: "ARRAY[]",
         result: {array: []}
     });
 
-    testSyntax(PgArray, {
+    GrapeQLCoach.test(PgArray, {
         str: "arraY[]",
         result: {array: []}
     });
 
-    testSyntax(PgArray, {
+    GrapeQLCoach.test(PgArray, {
         str: "array[1]",
         result: {array: [
             {elements: [
@@ -24,7 +24,7 @@ describe("PgArray", () => {
         ]}
     });
 
-    testSyntax(PgArray, {
+    GrapeQLCoach.test(PgArray, {
         str: "array[ '' ]",
         result: {array: [
             {elements: [

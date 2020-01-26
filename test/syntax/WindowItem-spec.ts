@@ -2,12 +2,12 @@
 
 import WindowItem from "../../lib/syntax/WindowItem";
 import GrapeQLCoach from "../../lib/GrapeQLCoach";
-import testSyntax from "../testSyntax";
+
 import assert from "assert";
 
 describe("WindowItem", () => {
 
-    testSyntax(WindowItem, {
+    GrapeQLCoach.test(WindowItem, {
         str: "x as (order by company.name)",
         result: {
             as: {word: "x", content: null},
@@ -33,7 +33,7 @@ describe("WindowItem", () => {
         }
     });
 
-    testSyntax(WindowItem, {
+    GrapeQLCoach.test(WindowItem, {
         str: "****",
         error: /SyntaxError/
     });

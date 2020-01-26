@@ -1,10 +1,11 @@
 
 import CreateView from "../../lib/syntax/CreateView";
-import testSyntax from "../testSyntax";
+import GrapeQLCoach from "../../lib/GrapeQLCoach";
+
 
 describe("CreateView", () => {
 
-    testSyntax(CreateView, {
+    GrapeQLCoach.test(CreateView, {
         str: "create view test as select 1",
         result: {
             schema: null,
@@ -38,7 +39,7 @@ describe("CreateView", () => {
         }
     });
     
-    testSyntax(CreateView, {
+    GrapeQLCoach.test(CreateView, {
         str: "create view public.test as select 1",
         result: {
             schema: {
@@ -75,7 +76,7 @@ describe("CreateView", () => {
         }
     });
     
-    testSyntax(CreateView, {
+    GrapeQLCoach.test(CreateView, {
         str: "view public.test as select 1",
         result: {
             schema: {
@@ -112,7 +113,7 @@ describe("CreateView", () => {
         }
     });
     
-    testSyntax(CreateView, {
+    GrapeQLCoach.test(CreateView, {
         str: "view test as select 1",
         result: {
             schema: null,
@@ -146,7 +147,7 @@ describe("CreateView", () => {
         }
     });
     
-    testSyntax(CreateView, {
+    GrapeQLCoach.test(CreateView, {
         str: "create or replace view test as select 1",
         result: {
             schema: null,
