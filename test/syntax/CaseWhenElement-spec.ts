@@ -1,11 +1,11 @@
 
-import CaseWhenElement from "../../lib/syntax/CaseWhenElement";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import CaseWhenElement from "../../lib/syntax/CaseWhenElement";
+import testSyntax from "../testSyntax";
 
 describe("CaseWhenElement", () => {
 
-    GrapeQLCoach.test(CaseWhenElement, {
+    testSyntax(CaseWhenElement, {
         str: "when true then 1",
         result: {
             when: {elements: [{boolean: true}]},

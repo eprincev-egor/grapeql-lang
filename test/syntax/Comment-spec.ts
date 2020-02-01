@@ -1,10 +1,11 @@
 
+
 import Comment from "../../lib/syntax/Comment";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import testSyntax from "../testSyntax";
 
 describe("Comment", () => {
 
-    GrapeQLCoach.test(Comment, {
+    testSyntax(Comment, {
         str: "--123\n",
         result: {
             isLine: true,
@@ -13,7 +14,7 @@ describe("Comment", () => {
         }
     });
 
-    GrapeQLCoach.test(Comment, {
+    testSyntax(Comment, {
         str: "--123\r",
         result: {
             isLine: true,
@@ -22,7 +23,7 @@ describe("Comment", () => {
         }
     });
 
-    GrapeQLCoach.test(Comment, {
+    testSyntax(Comment, {
         str: "/*123\n456*/",
         result: {
             isLine: false,
@@ -31,7 +32,7 @@ describe("Comment", () => {
         }
     });
 
-    GrapeQLCoach.test(Comment, {
+    testSyntax(Comment, {
         str: "/*123\r456*/",
         result: {
             isLine: false,
@@ -40,7 +41,7 @@ describe("Comment", () => {
         }
     });
 
-    GrapeQLCoach.test(Comment, {
+    testSyntax(Comment, {
         str: "-1",
         error: /SyntaxError/
     });

@@ -1,11 +1,11 @@
 
-import Extract from "../../lib/syntax/Extract";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import Extract from "../../lib/syntax/Extract";
+import testSyntax from "../testSyntax";
 
 describe("Extract", () => {
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(CENTURY FROM TIMESTAMP '2000-12-16 12:21:13')",
         result: {
             field: "century",
@@ -16,7 +16,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(Century FROM TIMESTAMP '2000-12-16 12:21:13')",
         result: {
             field: "century",
@@ -27,7 +27,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(CENTURY FROM '2000-12-16 12:21:13')",
         result: {
             field: "century",
@@ -38,7 +38,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(DAY FROM TIMESTAMP '2000-12-16 12:21:13')",
         result: {
             field: "day",
@@ -49,7 +49,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(DECADE FROM '2000-12-16 12:21:13')",
         result: {
             field: "decade",
@@ -60,7 +60,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(DECADE FROM '2000-12-16 12:21:13')",
         result: {
             field: "decade",
@@ -71,7 +71,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(dow FROM '2000-12-16 12:21:13')",
         result: {
             field: "dow",
@@ -82,7 +82,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(doy FROM '2000-12-16 12:21:13')",
         result: {
             field: "doy",
@@ -93,7 +93,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(epoch FROM '2000-12-16 12:21:13')",
         result: {
             field: "epoch",
@@ -104,7 +104,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(hour FROM '2000-12-16 12:21:13')",
         result: {
             field: "hour",
@@ -115,7 +115,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(microseconds FROM '2000-12-16 12:21:13')",
         result: {
             field: "microseconds",
@@ -126,7 +126,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(millennium FROM '2000-12-16 12:21:13')",
         result: {
             field: "millennium",
@@ -137,7 +137,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(milliseconds FROM '2000-12-16 12:21:13')",
         result: {
             field: "milliseconds",
@@ -148,7 +148,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(minute FROM '2000-12-16 12:21:13')",
         result: {
             field: "minute",
@@ -159,7 +159,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(month FROM '2000-12-16 12:21:13')",
         result: {
             field: "month",
@@ -170,7 +170,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(quarter FROM '2000-12-16 12:21:13')",
         result: {
             field: "quarter",
@@ -181,7 +181,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(second FROM '2000-12-16 12:21:13')",
         result: {
             field: "second",
@@ -192,7 +192,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(timezone FROM '2000-12-16 12:21:13')",
         result: {
             field: "timezone",
@@ -203,7 +203,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(timezone_hour FROM '2000-12-16 12:21:13')",
         result: {
             field: "timezone_hour",
@@ -214,7 +214,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(timezone_minute FROM '2000-12-16 12:21:13')",
         result: {
             field: "timezone_minute",
@@ -225,7 +225,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(week FROM '2000-12-16 12:21:13')",
         result: {
             field: "week",
@@ -236,7 +236,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(year FROM '2000-12-16 12:21:13')",
         result: {
             field: "year",
@@ -247,7 +247,7 @@ describe("Extract", () => {
         }
     });
 
-    GrapeQLCoach.test(Extract, {
+    testSyntax(Extract, {
         str: "extract(wrong FROM '2000-12-16 12:21:13')",
         error: /unrecognized extract field/
     });

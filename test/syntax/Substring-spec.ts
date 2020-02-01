@@ -1,11 +1,11 @@
 
-import Substring from "../../lib/syntax/Substring";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import Substring from "../../lib/syntax/Substring";
+import testSyntax from "../testSyntax";
 
 describe("Substring", () => {
 
-    GrapeQLCoach.test(Substring, {
+    testSyntax(Substring, {
         str: "substring('test' from 1)",
         result: {
             str: {elements: [{
@@ -18,7 +18,7 @@ describe("Substring", () => {
         }
     });
 
-    GrapeQLCoach.test(Substring, {
+    testSyntax(Substring, {
         str: "substring('test' for 2)",
         result: {
             str: {elements: [{
@@ -31,7 +31,7 @@ describe("Substring", () => {
         }
     });
 
-    GrapeQLCoach.test(Substring, {
+    testSyntax(Substring, {
         str: "substring('123456' from 2 for 3)",
         result: {
             str: {elements: [{

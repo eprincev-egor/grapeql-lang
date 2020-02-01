@@ -2,12 +2,12 @@
 
 import ObjectName from "../../lib/syntax/ObjectName";
 import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 import assert from "assert";
 
 describe("ObjectName", () => {
 
-    GrapeQLCoach.test(ObjectName, {
+    testSyntax(ObjectName, {
         str: "\"Nice\"",
         result: {
             content: "Nice",
@@ -15,7 +15,7 @@ describe("ObjectName", () => {
         }
     });
 
-    GrapeQLCoach.test(ObjectName, {
+    testSyntax(ObjectName, {
         str: "NICE",
         result: {
             word: "nice",

@@ -1,11 +1,11 @@
 
-import CacheFor from "../../lib/syntax/CacheFor";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import CacheFor from "../../lib/syntax/CacheFor";
+import testSyntax from "../testSyntax";
 
 describe("CacheReverseExpression", () => {
 
-    GrapeQLCoach.test(CacheFor, {
+    testSyntax(CacheFor, {
         str: "cache for public.order (select 1 as some_numb)",
         result: {
             for: {star: false, link: [
@@ -40,7 +40,7 @@ describe("CacheReverseExpression", () => {
         }
     });
 
-    GrapeQLCoach.test(CacheFor, {
+    testSyntax(CacheFor, {
         str: "cache for public.order as orders (select orders.id as some_numb)",
         result: {
             for: {star: false, link: [
@@ -78,7 +78,7 @@ describe("CacheReverseExpression", () => {
         }
     });
 
-    GrapeQLCoach.test(CacheFor, {
+    testSyntax(CacheFor, {
         str: `cache for company (
             select 
                 count(*) as orders_count 

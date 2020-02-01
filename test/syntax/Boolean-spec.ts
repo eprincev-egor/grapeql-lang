@@ -1,40 +1,39 @@
 
 
 import Boolean from "../../lib/syntax/Boolean";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 
 describe("Boolean", () => {
 
-    GrapeQLCoach.test(Boolean, {
+    testSyntax(Boolean, {
         str: "true",
         result: {
             boolean: true
         }
     });
 
-    GrapeQLCoach.test(Boolean, {
+    testSyntax(Boolean, {
         str: "false",
         result: {
             boolean: false
         }
     });
 
-    GrapeQLCoach.test(Boolean, {
+    testSyntax(Boolean, {
         str: "fAlse",
         result: {
             boolean: false
         }
     });
 
-    GrapeQLCoach.test(Boolean, {
+    testSyntax(Boolean, {
         str: "  TRUE ",
         result: {
             boolean: true
         }
     });
 
-    GrapeQLCoach.test(Boolean, {
+    testSyntax(Boolean, {
         str: "true1",
         error: /SyntaxError/
     });

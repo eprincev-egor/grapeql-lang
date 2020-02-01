@@ -1,7 +1,7 @@
 
-import Union from "../../lib/syntax/Union";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import Union from "../../lib/syntax/Union";
+import testSyntax from "../testSyntax";
 
 const EMPTY_SELECT = {
     with: null,
@@ -22,7 +22,7 @@ const EMPTY_SELECT = {
 
 describe("Union", () => {
 
-    GrapeQLCoach.test(Union, {
+    testSyntax(Union, {
         str: "union select",
         result: {
             union: true,
@@ -34,7 +34,7 @@ describe("Union", () => {
         }
     });
 
-    GrapeQLCoach.test(Union, {
+    testSyntax(Union, {
         str: "except select",
         result: {
             union: null,
@@ -46,7 +46,7 @@ describe("Union", () => {
         }
     });
 
-    GrapeQLCoach.test(Union, {
+    testSyntax(Union, {
         str: "intersect select",
         result: {
             union: null,
@@ -59,7 +59,7 @@ describe("Union", () => {
     });
 
     
-    GrapeQLCoach.test(Union, {
+    testSyntax(Union, {
         str: "union all select",
         result: {
             union: true,
@@ -71,7 +71,7 @@ describe("Union", () => {
         }
     });
 
-    GrapeQLCoach.test(Union, {
+    testSyntax(Union, {
         str: "except all select",
         result: {
             union: null,
@@ -83,7 +83,7 @@ describe("Union", () => {
         }
     });
 
-    GrapeQLCoach.test(Union, {
+    testSyntax(Union, {
         str: "intersect all select",
         result: {
             union: null,
@@ -96,7 +96,7 @@ describe("Union", () => {
     });
 
     
-    GrapeQLCoach.test(Union, {
+    testSyntax(Union, {
         str: "union distinct select",
         result: {
             union: true,
@@ -108,7 +108,7 @@ describe("Union", () => {
         }
     });
 
-    GrapeQLCoach.test(Union, {
+    testSyntax(Union, {
         str: "except distinct select",
         result: {
             union: null,
@@ -120,7 +120,7 @@ describe("Union", () => {
         }
     });
 
-    GrapeQLCoach.test(Union, {
+    testSyntax(Union, {
         str: "intersect distinct select",
         result: {
             union: null,

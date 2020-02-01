@@ -1,10 +1,10 @@
 
 import PgReturns from "../../lib/syntax/PgReturns";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import testSyntax from "../testSyntax";
 
 describe("PgReturns", () => {
 
-    GrapeQLCoach.test(PgReturns, {
+    testSyntax(PgReturns, {
         str: "numerIc( 12 )",
         result: {
             setof: null,
@@ -13,7 +13,7 @@ describe("PgReturns", () => {
         }
     });
 
-    GrapeQLCoach.test(PgReturns, {
+    testSyntax(PgReturns, {
         str: "table ( id integer , name text  )",
         result: {
             setof: null,
@@ -37,7 +37,7 @@ describe("PgReturns", () => {
         }
     });
 
-    GrapeQLCoach.test(PgReturns, {
+    testSyntax(PgReturns, {
         str: "public.company",
         result: {
             setof: null,
@@ -46,7 +46,7 @@ describe("PgReturns", () => {
         }
     });
 
-    GrapeQLCoach.test(PgReturns, {
+    testSyntax(PgReturns, {
         str: "company",
         result: {
             setof: null,
@@ -55,7 +55,7 @@ describe("PgReturns", () => {
         }
     });
 
-    GrapeQLCoach.test(PgReturns, {
+    testSyntax(PgReturns, {
         str: "company[]",
         result: {
             setof: null,
@@ -64,7 +64,7 @@ describe("PgReturns", () => {
         }
     });
 
-    GrapeQLCoach.test(PgReturns, {
+    testSyntax(PgReturns, {
         str: "setof company",
         result: {
             setof: true,

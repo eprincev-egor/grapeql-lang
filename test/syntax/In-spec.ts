@@ -1,11 +1,11 @@
 
-import In from "../../lib/syntax/In";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import In from "../../lib/syntax/In";
+import testSyntax from "../testSyntax";
 
 describe("In", () => {
 
-    GrapeQLCoach.test(In, {
+    testSyntax(In, {
         str: "in( select )",
         result: {
             inItems: null,
@@ -28,7 +28,7 @@ describe("In", () => {
         }
     });
 
-    GrapeQLCoach.test(In, {
+    testSyntax(In, {
         str: "in( 1, 2 )",
         result: {
             inItems: [

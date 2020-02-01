@@ -1,11 +1,11 @@
 
-import FilePathElement from "../../lib/syntax/FilePathElement";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import FilePathElement from "../../lib/syntax/FilePathElement";
+import testSyntax from "../testSyntax";
 
 describe("FilePathElement", () => {
 
-    GrapeQLCoach.test(FilePathElement, {
+    testSyntax(FilePathElement, {
         str: "Order",
         result: {
             name: "Order",
@@ -13,7 +13,7 @@ describe("FilePathElement", () => {
         }
     });
 
-    GrapeQLCoach.test(FilePathElement, {
+    testSyntax(FilePathElement, {
         str: "\"sOme\"",
         result: {
             name: null,
@@ -21,7 +21,7 @@ describe("FilePathElement", () => {
         }
     });
 
-    GrapeQLCoach.test(FilePathElement, {
+    testSyntax(FilePathElement, {
         str: ")",
         error: /expected file path/
     });

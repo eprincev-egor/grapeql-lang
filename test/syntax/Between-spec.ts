@@ -1,10 +1,10 @@
 
 import Between from "../../lib/syntax/Between";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import testSyntax from "../testSyntax";
 
 describe("Between", () => {
 
-    GrapeQLCoach.test(Between, {
+    testSyntax(Between, {
         str: "Between 1 and 2",
         result: {
             symmetric: null,
@@ -17,7 +17,7 @@ describe("Between", () => {
         }
     });
 
-    GrapeQLCoach.test(Between, {
+    testSyntax(Between, {
         str: "between symmetric 1 + 1 and 2 + 2",
         result: {
             symmetric: true,

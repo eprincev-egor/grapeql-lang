@@ -1,13 +1,13 @@
 
+
 import assert from "assert";
 import PgNull from "../../lib/syntax/PgNull";
 import Interval from "../../lib/syntax/Interval";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 
 describe("Interval", () => {
 
-    GrapeQLCoach.test(Interval, {
+    testSyntax(Interval, {
         str: "interval '1 day'",
         result: {
             interval: {
@@ -16,7 +16,7 @@ describe("Interval", () => {
         }
     });
 
-    GrapeQLCoach.test(Interval, {
+    testSyntax(Interval, {
         str: "interval $$100 hours$$",
         result: {
             interval: {

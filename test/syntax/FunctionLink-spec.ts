@@ -1,8 +1,8 @@
 
+
 import FunctionLink from "../../lib/syntax/FunctionLink";
 import ObjectLink from "../../lib/syntax/ObjectLink";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 import assert from "assert";
 
 describe("FunctionLink", () => {
@@ -11,7 +11,7 @@ describe("FunctionLink", () => {
         assert.ok( FunctionLink.prototype instanceof ObjectLink );
     });
 
-    GrapeQLCoach.test(FunctionLink, {
+    testSyntax(FunctionLink, {
         str: "public.get_curs",
         result: {
             star: false,

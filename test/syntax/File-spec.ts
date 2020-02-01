@@ -1,21 +1,21 @@
 
-import File from "../../lib/syntax/File";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import File from "../../lib/syntax/File";
+import testSyntax from "../testSyntax";
 
 describe("File", () => {
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "file )",
         error: /expected file path/
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: ")",
         error: /expected word: file/
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "file Order",
         result: {
             relative: true,
@@ -26,7 +26,7 @@ describe("File", () => {
         }
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "./Order",
         result: {
             relative: true,
@@ -37,7 +37,7 @@ describe("File", () => {
         }
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "../Order",
         result: {
             relative: true,
@@ -48,7 +48,7 @@ describe("File", () => {
         }
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "file Order.sql",
         result: {
             relative: true,
@@ -59,7 +59,7 @@ describe("File", () => {
         }
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "file \" nice \"",
         result: {
             relative: true,
@@ -70,7 +70,7 @@ describe("File", () => {
         }
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "file some / file on",
         result: {
             relative: true,
@@ -82,7 +82,7 @@ describe("File", () => {
         }
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "file /root.sql",
         result: {
             relative: false,
@@ -92,7 +92,7 @@ describe("File", () => {
         }
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "/root.sql",
         result: {
             relative: false,
@@ -102,7 +102,7 @@ describe("File", () => {
         }
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "file ./company",
         result: {
             relative: true,
@@ -113,7 +113,7 @@ describe("File", () => {
         }
     });
 
-    GrapeQLCoach.test(File, {
+    testSyntax(File, {
         str: "./Country)",
         result: {
             relative: true,

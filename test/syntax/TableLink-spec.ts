@@ -1,8 +1,8 @@
 
+
 import TableLink from "../../lib/syntax/TableLink";
 import ObjectLink from "../../lib/syntax/ObjectLink";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 import assert from "assert";
 
 describe("TableLink", () => {
@@ -11,7 +11,7 @@ describe("TableLink", () => {
         assert.ok( TableLink.prototype instanceof ObjectLink );
     });
 
-    GrapeQLCoach.test(TableLink, {
+    testSyntax(TableLink, {
         str: "public.company",
         result: {
             star: false,

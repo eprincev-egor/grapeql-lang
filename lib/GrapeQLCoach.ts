@@ -1,6 +1,6 @@
 
 
-import {Coach, testSyntax, ITestResult} from "lang-coach";
+import {Coach} from "lang-coach";
 
 import Any from "./syntax/Any";
 import Between from "./syntax/Between";
@@ -74,21 +74,6 @@ import CreateTableElement from "./syntax/CreateTableElement";
 import CreateTable from "./syntax/CreateTable";
 
 export default class GrapeQLCoach extends Coach {
-    
-    static test<
-        K extends keyof GrapeQLCoach["syntax"], 
-        TSyntax extends GrapeQLCoach["syntax"][K]
-    >(
-        SomeSyntax: TSyntax, 
-        inputTest: ITestResult<InstanceType<TSyntax>>
-    ) {
-        testSyntax(
-            GrapeQLCoach,
-            SomeSyntax, 
-            inputTest
-        );
-    }
-
     syntax = {
         Any,
         Between,

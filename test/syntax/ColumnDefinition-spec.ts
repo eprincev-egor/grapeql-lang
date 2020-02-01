@@ -1,12 +1,12 @@
 
 import GrapeQLCoach from "../../lib/GrapeQLCoach";
 import ColumnDefinition from "../../lib/syntax/ColumnDefinition";
-
+import testSyntax from "../testSyntax";
 import assert from "assert";
 
 describe("ColumnDefinition", () => {
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id serial",
         result: {
             name: {
@@ -25,7 +25,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id serial primary key",
         result: {
             name: {
@@ -54,7 +54,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id serial not null",
         result: {
             name: {
@@ -81,7 +81,7 @@ describe("ColumnDefinition", () => {
         assert.equal(str, "id serial primary key");
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric check(profit>0)",
         result: {
             name: {
@@ -116,7 +116,7 @@ describe("ColumnDefinition", () => {
     });
 
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric not null check ( profit>0 )",
         result: {
             name: {
@@ -151,7 +151,7 @@ describe("ColumnDefinition", () => {
     });
 
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric check ( profit>0 ) not null",
         result: {
             name: {
@@ -185,42 +185,42 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric not null not null",
         error: /duplicate not null/
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric primary key primary key",
         error: /duplicate primary key/
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric check(true) check(true)",
         error: /duplicate check/
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric primary key not null",
         error: /column already defined as not null by primary key/
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric not null primary key",
         error: /column already defined as not null by primary key/
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric unique unique",
         error: /duplicate unique/
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id_company integer references company references company",
         error: /duplicate foreign key/
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "name text unique",
         result: {
             name: {
@@ -249,7 +249,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "name text unique not null",
         result: {
             name: {
@@ -278,7 +278,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "name text not null unique",
         result: {
             name: {
@@ -307,7 +307,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id_company integer references company",
         result: {
             name: {
@@ -343,7 +343,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id_company integer references company (id)",
         result: {
             name: {
@@ -382,7 +382,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric default 0",
         result: {
             name: {
@@ -405,7 +405,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric default 0 not null",
         result: {
             name: {
@@ -428,7 +428,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric not null default 0",
         result: {
             name: {
@@ -451,7 +451,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "profit numeric not null default 0 unique",
         result: {
             name: {
@@ -484,7 +484,7 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id_order_type integer not null default 1 unique references order_type check (id_order_type in (1,2,3))",
         result: {
             name: {
@@ -561,17 +561,17 @@ describe("ColumnDefinition", () => {
         }
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id serial primary key unique",
         error: /column already defined as unique by primary key/
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id serial unique primary key",
         error: /column already defined as unique by primary key/
     });
 
-    GrapeQLCoach.test(ColumnDefinition, {
+    testSyntax(ColumnDefinition, {
         str: "id serial default 1 default 1",
         error: /duplicate default/
     });

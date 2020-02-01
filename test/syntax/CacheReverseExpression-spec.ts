@@ -1,11 +1,11 @@
 
 
 import CacheReverseExpression from "../../lib/syntax/CacheReverseExpression";
-
+import testSyntax from "../testSyntax";
 
 describe("CacheReverseExpression", () => {
 
-    GrapeQLCoach.test(CacheReverseExpression, {
+    testSyntax(CacheReverseExpression, {
         str: `after change orders 
         set where
             orders.id = 1
@@ -26,7 +26,7 @@ describe("CacheReverseExpression", () => {
         }
     });
 
-    GrapeQLCoach.test(CacheReverseExpression, {
+    testSyntax(CacheReverseExpression, {
         str: `after change public.order as orders 
         set where
             orders.id = 1

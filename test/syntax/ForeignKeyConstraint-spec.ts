@@ -1,11 +1,10 @@
 
 import ForeignKeyConstraint from "../../lib/syntax/ForeignKeyConstraint";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 
 describe("ForeignKeyConstraint", () => {
     
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company (id)
         `,
@@ -25,7 +24,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company
         `,
@@ -43,7 +42,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company match simple
         `,
@@ -61,7 +60,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company match full
         `,
@@ -79,7 +78,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company match partial
         `,
@@ -97,7 +96,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on delete no action
         `,
@@ -115,7 +114,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on update no action
         `,
@@ -133,7 +132,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on delete cascade
         `,
@@ -151,7 +150,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on delete set null
         `,
@@ -169,7 +168,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on delete set default
         `,
@@ -187,7 +186,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on update set null
         `,
@@ -205,7 +204,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on update set default
         `,
@@ -223,7 +222,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on update cascade
         `,
@@ -241,7 +240,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on update set default on delete set default
         `,
@@ -259,7 +258,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client)
             references company on delete set default on update set default 
         `,
@@ -277,7 +276,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `constraint client foreign key (id_client, x)
             references company (id, y) 
             match full
@@ -304,7 +303,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `references company`,
         options: {
             column: {
@@ -329,7 +328,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `references company (id)`,
         options: {
             column: {
@@ -357,7 +356,7 @@ describe("ForeignKeyConstraint", () => {
         }
     });
 
-    GrapeQLCoach.test(ForeignKeyConstraint, {
+    testSyntax(ForeignKeyConstraint, {
         str: `references company (id)
             match full
             on delete set default 

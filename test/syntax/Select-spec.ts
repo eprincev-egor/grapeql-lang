@@ -1,11 +1,11 @@
 
-import Select from "../../lib/syntax/Select";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import Select from "../../lib/syntax/Select";
+import testSyntax from "../testSyntax";
 
 describe("Select", () => {
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select",
         result: {
             with: null,
@@ -25,7 +25,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select 1, 2, 3",
         result: {
             with: null,
@@ -64,7 +64,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select 1 where false",
         result: {
             with: null,
@@ -93,7 +93,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select * from orders order by id",
         result: {
             with: null,
@@ -148,7 +148,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select sum( payments ) from orders group by orders.client",
         result: {
             with: null,
@@ -224,7 +224,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: `
             select 
                 sum( payments )
@@ -331,7 +331,7 @@ describe("Select", () => {
     });
 
     
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select * from orders offset 1",
         result: {
             with: null,
@@ -375,7 +375,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select * from orders offset 1 row",
         result: {
             with: null,
@@ -420,7 +420,7 @@ describe("Select", () => {
     });
 
     
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select * from orders offset 10 rows",
         result: {
             with: null,
@@ -465,7 +465,7 @@ describe("Select", () => {
     });
 
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select * from orders limit 1",
         result: {
             with: null,
@@ -509,7 +509,7 @@ describe("Select", () => {
         }
     });
     
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select * from orders limit all",
         result: {
             with: null,
@@ -553,7 +553,7 @@ describe("Select", () => {
         }
     });
     
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select * from orders offset 1 limit 1",
         result: {
             with: null,
@@ -597,7 +597,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select * from orders limit 1 offset 1",
         result: {
             with: null,
@@ -641,7 +641,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select limit 1",
         result: {
             with: null,
@@ -661,7 +661,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select * from orders fetch first row only",
         result: {
             with: null,
@@ -712,7 +712,7 @@ describe("Select", () => {
     });
 
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "with recursive x as (select) select * from x",
         result: {
             with: {
@@ -781,7 +781,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select 1 union all select 2",
         result: {
             with: null,
@@ -837,7 +837,7 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select from company window x as (order by company.name), y as (order by company.id)",
         result: {
             with: null,
@@ -919,22 +919,22 @@ describe("Select", () => {
         }
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select from x, x",
         error: /table name "x" specified more than once/
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select from y as x, x",
         error: /table name "x" specified more than once/
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select from a as x, b as x",
         error: /table name "x" specified more than once/
     });
 
-    GrapeQLCoach.test(Select, {
+    testSyntax(Select, {
         str: "select from x.a, y.a",
         result: {
             with: null,

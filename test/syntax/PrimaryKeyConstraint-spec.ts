@@ -1,11 +1,10 @@
 
 import PrimaryKeyConstraint from "../../lib/syntax/PrimaryKeyConstraint";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 
 describe("PrimaryKeyConstraint", () => {
     
-    GrapeQLCoach.test(PrimaryKeyConstraint, {
+    testSyntax(PrimaryKeyConstraint, {
         str: "constraint test primary key (id)",
         result: {
             name: {
@@ -20,7 +19,7 @@ describe("PrimaryKeyConstraint", () => {
         }
     });
     
-    GrapeQLCoach.test(PrimaryKeyConstraint, {
+    testSyntax(PrimaryKeyConstraint, {
         str: "primary key",
         options: {
             column: {

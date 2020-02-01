@@ -1,11 +1,11 @@
 
-import GroupByElement from "../../lib/syntax/GroupByElement";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import GroupByElement from "../../lib/syntax/GroupByElement";
+import testSyntax from "../testSyntax";
 
 describe("GroupByElement", () => {
 
-    GrapeQLCoach.test(GroupByElement, {
+    testSyntax(GroupByElement, {
         str: "id",
         result: {
             isEmpty: null,
@@ -21,7 +21,7 @@ describe("GroupByElement", () => {
         }
     });
 
-    GrapeQLCoach.test(GroupByElement, {
+    testSyntax(GroupByElement, {
         str: "GROUPING SETS (brand, size, ( ))",
         result: {
             isEmpty: null,
@@ -66,7 +66,7 @@ describe("GroupByElement", () => {
         }
     });
 
-    GrapeQLCoach.test(GroupByElement, {
+    testSyntax(GroupByElement, {
         str: "cube ( brand, (size, 1) )",
         result: {
             
@@ -103,7 +103,7 @@ describe("GroupByElement", () => {
         }
     });
 
-    GrapeQLCoach.test(GroupByElement, {
+    testSyntax(GroupByElement, {
         str: "rollup ( brand, (size, 1) )",
         result: {
             

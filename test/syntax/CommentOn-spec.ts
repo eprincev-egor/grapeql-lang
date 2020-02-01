@@ -1,12 +1,11 @@
 
 import CommentOnFunction from "../../lib/syntax/CommentOnFunction";
 import CommentOnTrigger from "../../lib/syntax/CommentOnTrigger";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 
 describe("CommentOn", () => {
 
-    GrapeQLCoach.test(CommentOnTrigger, {
+    testSyntax(CommentOnTrigger, {
         str: "comment on trigger test on company is $$xxx$$",
         result: {
             trigger: {
@@ -20,7 +19,7 @@ describe("CommentOn", () => {
         }
     });
     
-    GrapeQLCoach.test(CommentOnTrigger, {
+    testSyntax(CommentOnTrigger, {
         str: "comment on trigger test on company is 'nice'",
         result: {
             trigger: {
@@ -34,7 +33,7 @@ describe("CommentOn", () => {
         }
     });
     
-    GrapeQLCoach.test(CommentOnFunction, {
+    testSyntax(CommentOnFunction, {
         str: "comment on function test(integer, text) is $$yyy$$",
         result: {
             function: {
@@ -51,7 +50,7 @@ describe("CommentOn", () => {
         }
     });
 
-    GrapeQLCoach.test(CommentOnFunction, {
+    testSyntax(CommentOnFunction, {
         str: "comment on function operation.func() is $$yyy$$",
         result: {
             function: {

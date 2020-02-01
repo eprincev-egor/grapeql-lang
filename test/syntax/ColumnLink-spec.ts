@@ -1,8 +1,8 @@
 
+
 import ColumnLink from "../../lib/syntax/ColumnLink";
 import ObjectLink from "../../lib/syntax/ObjectLink";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 import assert from "assert";
 
 describe("ColumnLink", () => {
@@ -11,7 +11,7 @@ describe("ColumnLink", () => {
         assert.ok( ColumnLink.prototype instanceof ObjectLink );
     });
 
-    GrapeQLCoach.test(ColumnLink, {
+    testSyntax(ColumnLink, {
         str: "public.company.id",
         result: {
             star: false,

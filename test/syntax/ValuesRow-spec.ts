@@ -1,11 +1,11 @@
 
-import ValuesRow from "../../lib/syntax/ValuesRow";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import ValuesRow from "../../lib/syntax/ValuesRow";
+import testSyntax from "../testSyntax";
 
 describe("ValuesRow", () => {
 
-    GrapeQLCoach.test(ValuesRow, {
+    testSyntax(ValuesRow, {
         str: "(default)",
         result: {
             values: [{
@@ -15,7 +15,7 @@ describe("ValuesRow", () => {
         }
     });
 
-    GrapeQLCoach.test(ValuesRow, {
+    testSyntax(ValuesRow, {
         str: "(default, 2)",
         result: {
             values: [

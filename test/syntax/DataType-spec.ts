@@ -1,479 +1,480 @@
 
+
 import DataType from "../../lib/syntax/DataType";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import testSyntax from "../testSyntax";
 import assert from "assert";
 
 describe("DataType", () => {
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "Timestamp",
         result: {type: "timestamp"}
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "numeric  ( 10 )",
         result: {type: "numeric(10)"}
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "numeric ( 10, 3 )",
         result: {type: "numeric(10,3)"}
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "bigint[ ]",
         result: {
             type: "bigint[]"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "bigint [ 1 ]",
         result: {
             type: "bigint[1]"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "numeric",
         result: {type: "numeric"}
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "\"char\"",
         result: {
             type: "\"char\""
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "smallint",
         result: {
             type: "smallint"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "integer",
         result: {
             type: "integer"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "bigint",
         result: {
             type: "bigint"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "decimal",
         result: {
             type: "decimal"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "real",
         result: {
             type: "real"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "double precision",
         result: {
             type: "double precision"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "smallserial",
         result: {
             type: "smallserial"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "serial",
         result: {
             type: "serial"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "bigserial",
         result: {
             type: "bigserial"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "money",
         result: {
             type: "money"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "text",
         result: {
             type: "text"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "name",
         result: {
             type: "name"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "bytea",
         result: {
             type: "bytea"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "timestamp without time zone",
         result: {
             type: "timestamp without time zone"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "timestamp with time zone",
         result: {
             type: "timestamp with time zone"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "timestamp",
         result: {
             type: "timestamp"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "time without time zone",
         result: {
             type: "time without time zone"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "time with time zone",
         result: {
             type: "time with time zone"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "boolean",
         result: {
             type: "boolean"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "point",
         result: {
             type: "point"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "line",
         result: {
             type: "line"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "lseg",
         result: {
             type: "lseg"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "box",
         result: {
             type: "box"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "path",
         result: {
             type: "path"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "polygon",
         result: {
             type: "polygon"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "path",
         result: {
             type: "path"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "circle",
         result: {
             type: "circle"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "cidr",
         result: {
             type: "cidr"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "inet",
         result: {
             type: "inet"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "macaddr",
         result: {
             type: "macaddr"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "macaddr8",
         result: {
             type: "macaddr8"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "tsvector",
         result: {
             type: "tsvector"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "tsquery",
         result: {
             type: "tsquery"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "uuid",
         result: {
             type: "uuid"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "xml",
         result: {
             type: "xml"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "json",
         result: {
             type: "json"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "jsonb",
         result: {
             type: "jsonb"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "int",
         result: {
             type: "int"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "int4range",
         result: {
             type: "int4range"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "int8range",
         result: {
             type: "int8range"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "numrange",
         result: {
             type: "numrange"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "tsrange",
         result: {
             type: "tsrange"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "tstzrange",
         result: {
             type: "tstzrange"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "daterange",
         result: {
             type: "daterange"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regclass",
         result: {
             type: "regclass"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regproc",
         result: {
             type: "regproc"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regprocedure",
         result: {
             type: "regprocedure"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regoper",
         result: {
             type: "regoper"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regoperator",
         result: {
             type: "regoperator"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regclass",
         result: {
             type: "regclass"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regtype",
         result: {
             type: "regtype"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regrole",
         result: {
             type: "regrole"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regnamespace",
         result: {
             type: "regnamespace"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regconfig",
         result: {
             type: "regconfig"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "regdictionary",
         result: {
             type: "regdictionary"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "date",
         result: {
             type: "date"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "trigger",
         result: {
             type: "trigger"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "void",
         result: {
             type: "void"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "public.company",
         result: {
             type: "public.company"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "company",
         result: {
             type: "public.company"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "public.company[]",
         result: {
             type: "public.company[]"
         }
     });
 
-    GrapeQLCoach.test(DataType, {
+    testSyntax(DataType, {
         str: "character varying[]",
         result: {
             type: "character varying[]"

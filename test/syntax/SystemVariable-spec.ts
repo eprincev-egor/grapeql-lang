@@ -3,45 +3,46 @@
 import GrapeQLCoach from "../../lib/GrapeQLCoach";
 import assert from "assert";
 import SystemVariable from "../../lib/syntax/SystemVariable";
+import testSyntax from "../testSyntax";
 
 describe("SystemVariable", () => {
 
-    GrapeQLCoach.test(SystemVariable, {
+    testSyntax(SystemVariable, {
         str: "$x",
         result: {name: "x"}
     });
 
-    GrapeQLCoach.test(SystemVariable, {
+    testSyntax(SystemVariable, {
         str: "$X",
         result: {name: "X"}
     });
 
-    GrapeQLCoach.test(SystemVariable, {
+    testSyntax(SystemVariable, {
         str: "$_",
         result: {name: "_"}
     });
 
-    GrapeQLCoach.test(SystemVariable, {
+    testSyntax(SystemVariable, {
         str: "$x1",
         result: {name: "x1"}
     });
 
-    GrapeQLCoach.test(SystemVariable, {
+    testSyntax(SystemVariable, {
         str: "$Ёё",
         result: {name: "Ёё"}
     });
 
-    GrapeQLCoach.test(SystemVariable, {
+    testSyntax(SystemVariable, {
         str: "$Привет",
         result: {name: "Привет"}
     });
 
-    GrapeQLCoach.test(SystemVariable, {
+    testSyntax(SystemVariable, {
         str: "$$Any_Variable",
         error: /forbidden symbol \$ in variable name/
     });
 
-    GrapeQLCoach.test(SystemVariable, {
+    testSyntax(SystemVariable, {
         str: "$",
         error: /expect variable name/
     });

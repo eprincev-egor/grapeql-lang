@@ -1,11 +1,11 @@
 
-import Exists from "../../lib/syntax/Exists";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
 
+import Exists from "../../lib/syntax/Exists";
+import testSyntax from "../testSyntax";
 
 describe("Exists", () => {
 
-    GrapeQLCoach.test(Exists, {
+    testSyntax(Exists, {
         str: "exists( select )",
         result: {
             exists: {

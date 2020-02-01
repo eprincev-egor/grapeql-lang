@@ -1,11 +1,12 @@
 
 import CreateFunction from "../../lib/syntax/CreateFunction";
+import testSyntax from "../testSyntax";
 import GrapeQLCoach from "../../lib/GrapeQLCoach";
 import assert from "assert";
 
 describe("CreateFunction", () => {
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function 
             TEST_NAME(xid integer, names text[])
             returns table(
@@ -68,7 +69,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function 
             TEST_NAME(id integer)
             returns table(
@@ -79,7 +80,7 @@ describe("CreateFunction", () => {
         error: /parameter name "id" used more than once/
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function 
             TEST_NAME()
             returns table(
@@ -91,7 +92,7 @@ describe("CreateFunction", () => {
         error: /parameter name "id" used more than once/
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function 
             TEST_NAME(id integer, id text)
             returns integer as $body$begin;end$body$
@@ -100,7 +101,7 @@ describe("CreateFunction", () => {
         error: /parameter name "id" used more than once/
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function 
             TEST_NAME(xid integer, names text[])
             returns table(
@@ -165,7 +166,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function TEST_NAME()
             returns trigger as $body$begin;end$body$
             language plpgsql;
@@ -194,7 +195,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create Function TEST_NAME()
             returns trigger as $body$begin;end$body$
             language plpgsql;
@@ -223,7 +224,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create Function TEST_NAME()
             returns void as $body$begin;end$body$
             language plpgsql;
@@ -252,7 +253,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create Function TEST_NAME(
             a text default 'hi'
         )
@@ -291,7 +292,7 @@ describe("CreateFunction", () => {
         }
     });
     
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create Function test(
             a text default null,
             b integer
@@ -303,7 +304,7 @@ describe("CreateFunction", () => {
     });
 
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create function test_sql_lang()
             returns integer as $body$select 1$body$
             language sql;
@@ -332,7 +333,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create function some_func()
             returns integer as $body$begin\nend$body$
             language plpgsql
@@ -362,7 +363,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create function some_func()
             returns integer as $body$begin\nend$body$
             language plpgsql
@@ -392,7 +393,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create function some_func()
             returns integer as $body$begin\nend$body$
             language plpgsql
@@ -422,7 +423,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create function some_func()
             returns integer as $body$begin\nend$body$
             language plpgsql
@@ -452,7 +453,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create function some_func()
             returns integer as $body$begin\nend$body$
             language plpgsql
@@ -483,7 +484,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create function some_func()
             returns integer as $body$begin\nend$body$
             language plpgsql
@@ -514,7 +515,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create function some_func()
             returns integer 
             language plpgsql
@@ -546,7 +547,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns some_schema.some_table
             as $body$begin\nend$body$
@@ -576,7 +577,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns setof some_schema.some_table
             as $body$begin\nend$body$
@@ -606,7 +607,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func(company public.company)
             returns setof some_schema.some_table
             as $body$begin\nend$body$
@@ -644,7 +645,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func(companies public.company[])
             returns public.company[]
             as $body$begin\nend$body$
@@ -682,7 +683,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func(text, integer)
             returns void
             as $body$begin\nend$body$
@@ -727,7 +728,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns void
             parallel safe
@@ -758,7 +759,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns void
             parallel restricted
@@ -789,7 +790,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns void
             parallel unsafe
@@ -820,7 +821,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns void
             parallel safe
@@ -852,7 +853,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns void
             CALLED ON NULL INPUT
@@ -883,7 +884,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns void
             RETURNS NULL ON NULL INPUT
@@ -914,7 +915,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns void
             STRICT
@@ -945,7 +946,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function 
             TEST_NAME()
             returns table(
@@ -985,7 +986,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function test_func()
             returns void
             as 'begin\nend'
@@ -1015,7 +1016,7 @@ describe("CreateFunction", () => {
         }
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create Function test()
             returns void as $body$begin;end$body$
             language something;
@@ -1023,7 +1024,7 @@ describe("CreateFunction", () => {
         error: /expected language plpgsql or sql/
     });
 
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function 
             TEST_NAME(xid integer, names text[])
             returns table(
@@ -1097,7 +1098,7 @@ describe("CreateFunction", () => {
         }
     });
     
-    GrapeQLCoach.test(CreateFunction, {
+    testSyntax(CreateFunction, {
         str: `create or replace function 
             test()
             returns void as $body$begin;end$body$

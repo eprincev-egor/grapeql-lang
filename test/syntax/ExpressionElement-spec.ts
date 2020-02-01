@@ -3,10 +3,11 @@
 import GrapeQLCoach from "../../lib/GrapeQLCoach";
 import assert from "assert";
 import ExpressionElement from "../../lib/syntax/ExpressionElement";
+import testSyntax from "../testSyntax";
 
 describe("ExpressionElement", () => {
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "null",
         result: {
             element: {
@@ -15,7 +16,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "true",
         result: {
             element: {
@@ -24,7 +25,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "1",
         result: {
             element: {
@@ -33,7 +34,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "b'0011'",
         result: {
             element: {
@@ -42,7 +43,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "$body$some code$body$",
         result: {
             element: {
@@ -51,7 +52,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "'string'",
         result: {
             element: {
@@ -60,7 +61,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "$var",
         result: {
             element: {
@@ -69,7 +70,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "public.table.column",
         result: {
             element: {
@@ -92,7 +93,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "public.table.*",
         options: {availableStar: true},
         result: {
@@ -112,7 +113,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "*",
         options: {availableStar: true},
         result: {
@@ -123,7 +124,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "cast(1 as numeric( 12, 12 ))",
         result: {
             element: {
@@ -141,7 +142,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "array[1]",
         result: {
             element: {array: [
@@ -152,7 +153,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "public.table.*",
         error: /SyntaxError/
     });
@@ -168,7 +169,7 @@ describe("ExpressionElement", () => {
         );
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "case when true then 1 else 0 end",
         result: {
             element: {
@@ -189,7 +190,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "extract(week FROM $$2000-12-16 12:21:13$$)",
         result: {
             element: {
@@ -202,7 +203,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "substring( company.name from 1 for 5)",
         result: {
             element: {
@@ -223,7 +224,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "now()",
         result: {
             element: {
@@ -245,7 +246,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "interval '2 years 13 months'",
         result: {
             element: {
@@ -256,7 +257,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "exists(select)",
         result: {
             element: {
@@ -280,7 +281,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "any(select)",
         result: {
             element: {
@@ -306,7 +307,7 @@ describe("ExpressionElement", () => {
         }
     });
 
-    GrapeQLCoach.test(ExpressionElement, {
+    testSyntax(ExpressionElement, {
         str: "in( 1 + 1 )",
         result: {
             element: {

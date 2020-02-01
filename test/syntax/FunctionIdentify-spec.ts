@@ -1,11 +1,10 @@
 
 import FunctionIdentify from "../../lib/syntax/FunctionIdentify";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
-
+import testSyntax from "../testSyntax";
 
 describe("FunctionIdentify", () => {
 
-    GrapeQLCoach.test(FunctionIdentify, {
+    testSyntax(FunctionIdentify, {
         str: "public.func()",
         result: {
             name: "func",
