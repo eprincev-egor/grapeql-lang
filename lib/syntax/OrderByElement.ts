@@ -3,10 +3,11 @@
 import {Syntax, Types} from "lang-coach";
 import Operator from "./Operator";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class OrderByElement extends Syntax<OrderByElement> {
     structure() {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             expression: Expression,
@@ -21,7 +22,7 @@ export default class OrderByElement extends Syntax<OrderByElement> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         data.expression = coach.parse(Expression);
         
@@ -51,7 +52,7 @@ export default class OrderByElement extends Syntax<OrderByElement> {
     }
     
     is(coach: GrapeQLCoach) {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
         return coach.is(Expression);
     }
     

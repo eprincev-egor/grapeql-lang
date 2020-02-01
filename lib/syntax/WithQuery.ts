@@ -4,10 +4,11 @@ import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 import ValuesRow from "./ValuesRow";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class WithQuery extends Syntax<WithQuery> {
     structure() {
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         return {
             name: ObjectName,
@@ -22,7 +23,7 @@ export default class WithQuery extends Syntax<WithQuery> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Select = this.syntax.Select as any as GrapeQLCoach["syntax"]["Select"];
+        const Select = allSyntax.Select as any as GrapeQLCoach["syntax"]["Select"];
 
         data.name = coach.parse(ObjectName);
         coach.skipSpace();

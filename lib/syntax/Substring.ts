@@ -2,10 +2,11 @@
 
 import {Syntax} from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class Substring extends Syntax<Substring> {
     structure() {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             str: Expression,
@@ -15,7 +16,7 @@ export default class Substring extends Syntax<Substring> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         coach.expectWord("substring");
         

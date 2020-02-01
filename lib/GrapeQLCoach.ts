@@ -1,6 +1,7 @@
 
 
 import {Coach} from "lang-coach";
+import allSyntax from "./allSyntax";
 
 import Any from "./syntax/Any";
 import Between from "./syntax/Between";
@@ -152,3 +153,10 @@ export default class GrapeQLCoach extends Coach {
         return dataType.get("type");
     }
 }
+
+// need for cycle recursion structure inside some syntaxes
+const coach = new GrapeQLCoach("");
+for (const key in coach.syntax) {
+    allSyntax[ key ] = coach.syntax[ key ];
+}
+

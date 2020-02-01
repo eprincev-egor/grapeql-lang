@@ -2,10 +2,11 @@
 
 import {Syntax} from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class SquareBrackets extends Syntax<SquareBrackets> {
     structure() {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             content: Expression
@@ -13,7 +14,7 @@ export default class SquareBrackets extends Syntax<SquareBrackets> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
         
         coach.expect("[");
         coach.skipSpace();

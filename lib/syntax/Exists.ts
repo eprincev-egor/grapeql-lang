@@ -2,10 +2,11 @@
 
 import {Syntax} from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class Exists extends Syntax<Exists> {
     structure() {
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
         
         return {
             exists: Select
@@ -13,7 +14,7 @@ export default class Exists extends Syntax<Exists> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         coach.expectWord("exists");
         

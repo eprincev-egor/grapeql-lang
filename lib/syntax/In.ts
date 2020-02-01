@@ -2,11 +2,12 @@
 
 import {Syntax, Types} from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class In extends Syntax<In> {
     structure() {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         return {
             inSelect: Select,
@@ -17,8 +18,8 @@ export default class In extends Syntax<In> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         coach.expectWord("in");
         

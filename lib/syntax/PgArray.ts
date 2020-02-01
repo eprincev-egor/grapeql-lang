@@ -2,10 +2,11 @@
 
 import {Syntax, Types} from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class PgArray extends Syntax<PgArray> {
     structure() {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             array: Types.Array({
@@ -15,7 +16,7 @@ export default class PgArray extends Syntax<PgArray> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         data.array = [];
         coach.expectWord("array");

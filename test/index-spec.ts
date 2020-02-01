@@ -17,7 +17,7 @@ describe("index tests", () => {
                 } as any);
             },
             (err) =>
-                err.message === "test.str required"
+                err.message === "str required"
         );
     });
 
@@ -29,7 +29,7 @@ describe("index tests", () => {
                 } as any);
             },
             (err) =>
-                err.message === "test.result or test.error required"
+                err.message === "result or error required"
         );
     });
     

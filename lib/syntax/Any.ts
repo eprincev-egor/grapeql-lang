@@ -2,11 +2,12 @@
 
 import {Syntax, Types} from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class Any extends Syntax<Any> {
     structure() {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         return {
             type: Types.String({
@@ -18,8 +19,8 @@ export default class Any extends Syntax<Any> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
         
         if ( coach.isWord("any") ) {
             coach.expectWord("any");

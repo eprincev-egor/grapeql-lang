@@ -15,10 +15,11 @@ import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
 import ObjectName from "./ObjectName";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class Join extends Syntax<Join> {
     structure() {
-        const FromItem = this.syntax.FromItem as GrapeQLCoach["syntax"]["FromItem"];
+        const FromItem = allSyntax.FromItem as GrapeQLCoach["syntax"]["FromItem"];
         
         return {
             type: Types.String,
@@ -31,7 +32,7 @@ export default class Join extends Syntax<Join> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const FromItem = this.syntax.FromItem as GrapeQLCoach["syntax"]["FromItem"];
+        const FromItem = allSyntax.FromItem as GrapeQLCoach["syntax"]["FromItem"];
 
         const lateralErrorIndex = coach.i;
 

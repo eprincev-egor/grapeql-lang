@@ -2,10 +2,11 @@
 
 import {Syntax, Types} from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class Union extends Syntax<Union> {
     structure() {
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         return {
             union: Types.Boolean,
@@ -18,7 +19,7 @@ export default class Union extends Syntax<Union> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         // { UNION | INTERSECT | EXCEPT }
         if ( coach.isWord("intersect") ) {

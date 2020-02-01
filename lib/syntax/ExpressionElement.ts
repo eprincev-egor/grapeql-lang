@@ -20,6 +20,7 @@ import In from "./In";
 import FunctionCall from "./FunctionCall";
 import ColumnLink from "./ColumnLink";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class ExpressionElement extends Syntax<ExpressionElement> {
 
@@ -30,7 +31,7 @@ export default class ExpressionElement extends Syntax<ExpressionElement> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"], options) {
-        const Select = this.syntax.Select as  GrapeQLCoach["syntax"]["Select"];
+        const Select = allSyntax.Select as  GrapeQLCoach["syntax"]["Select"];
         options = options || {availableStar: false};
 
         if ( coach.is(PgNull) ) {

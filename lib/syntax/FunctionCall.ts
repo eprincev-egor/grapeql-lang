@@ -5,12 +5,13 @@ import FunctionLink from "./FunctionLink";
 import OrderByElement from "./OrderByElement";
 import WindowDefinition from "./WindowDefinition";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 // some(1,2)
 
 export default class FunctionCall extends Syntax<FunctionCall> {
     structure() {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             function: FunctionLink,
@@ -32,7 +33,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         data.function = coach.parse(FunctionLink);
 

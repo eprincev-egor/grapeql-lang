@@ -8,10 +8,11 @@ import ObjectName from "./ObjectName";
 import Join from "./Join";
 import DoubleQuotes from "./DoubleQuotes";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 export default class FromItem extends Syntax<FromItem> {
     structure() {
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
         
         return {
             only: Types.Boolean,
@@ -34,7 +35,7 @@ export default class FromItem extends Syntax<FromItem> {
     }
 
     parse(coach: GrapeQLCoach, data) {
-        const Select = this.syntax.Select as GrapeQLCoach["syntax"]["Select"];
+        const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         let needAs = false;
 

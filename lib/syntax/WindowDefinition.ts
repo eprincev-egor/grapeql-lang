@@ -5,6 +5,7 @@ import ObjectName from "./ObjectName";
 import OrderByElement from "./OrderByElement";
 import WindowDefinitionFrame from "./WindowDefinitionFrame";
 import GrapeQLCoach from "../GrapeQLCoach";
+import allSyntax from "../allSyntax";
 
 /*
 window_definition is
@@ -25,7 +26,7 @@ UNBOUNDED FOLLOWING
 
 export default class WindowDefinition extends Syntax<WindowDefinition> {
     structure() {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
             windowDefinition: ObjectName,
@@ -41,7 +42,7 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        const Expression = this.syntax.Expression as GrapeQLCoach["syntax"]["Expression"];
+        const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         // [ existing_window_name ]
         if ( !coach.is(/(partition|order|range|rows)[^\w$]/i) ) {
