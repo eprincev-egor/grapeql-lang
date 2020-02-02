@@ -1,48 +1,27 @@
 
-import {Syntax, Types, Coach} from "lang-coach";
+import {Types} from "lang-coach";
 import GrapeQLCoach from "../GrapeQLCoach";
-import CreateTableElement from "./CreateTableElement";
 import ColumnDefinition from "./ColumnDefinition";
-import ForeignKeyConstraint from "./ForeignKeyConstraint";
-import CheckConstraint from "./CheckConstraint";
-import UniqueConstraint from "./UniqueConstraint";
-import PrimaryKeyConstraint from "./PrimaryKeyConstraint";
+import TableSyntax from "./TableSyntax";
 import ObjectName from "./ObjectName";
-import Constraint from "./Constraint";
 import ObjectLink from "./ObjectLink";
 import ValuesRow from "./ValuesRow";
+import Constraint from "./Constraint";
 import ValueItem from "./ValueItem";
+import UniqueConstraint from "./UniqueConstraint";
+import PrimaryKeyConstraint from "./PrimaryKeyConstraint";
 
-// for equaling
-const DEFAULT_VALUE = {};
-
-export default class CreateTable extends Syntax<CreateTable> {
+export default class CreateTable extends TableSyntax<CreateTable> {
     structure() {
         return {
+            ...super.structure(),
             name: ObjectName,
-            columns: Types.Array({
-                element: ColumnDefinition
-            }),
-            constraints: Types.Array({
-                element: Types.Or({
-                    or: [
-                        ForeignKeyConstraint,
-                        CheckConstraint,
-                        UniqueConstraint,
-                        PrimaryKeyConstraint
-                    ]
-                })
-            }),
             inherits: Types.Array({
                 element: ObjectLink,
                 nullAsEmpty: true
             }),
             deprecated: Types.Array({
                 element: ObjectName,
-                nullAsEmpty: true
-            }),
-            valuesRows: Types.Array({
-                element: ValuesRow,
                 nullAsEmpty: true
             }),
             values: Types.Array({
@@ -62,83 +41,8 @@ export default class CreateTable extends Syntax<CreateTable> {
         coach.expectWord("table");
         data.name = coach.parse(ObjectName);
 
-        coach.expect("(");
-        coach.skipSpace();
-
-
-        // parse table content
-        const elements = coach.parseComma(CreateTableElement);
-        const tableElements = elements.map((element) => 
-            element.get("element")
-        );
-
-        // table columns
-        const columns = tableElements.filter((element) =>
-        element instanceof ColumnDefinition
-        ) as ColumnDefinition[];
-
-        // table constraints
-        const constraints = tableElements.filter((element) =>
-            element instanceof Constraint
-        ) as Constraint[];
-
-
-        // validate columns names
-        const existsColumnNames = {};
-        for (const column of columns) {
-            const name = column.get("name").toString();
-
-            if ( name in existsColumnNames ) {
-                coach.throwError("duplicate column name: " + name);
-            }
-
-            existsColumnNames[ name ] = true;
-        }
-
-        // validate constraints names
-        const existsConstraintNames = {};
-        for (const constraint of constraints) {
-            const name = constraint.get("name").toString();
-
-            if ( name in existsConstraintNames ) {
-                coach.throwError("duplicate constraint name: " + name);
-            }
-
-            existsConstraintNames[ name ] = true;
-        }
-
-        // table should have only one primary key
-        let existsPrimaryKey = false;
-        for (const constraint of constraints) {
-            if ( constraint instanceof PrimaryKeyConstraint ) {
-                if ( existsPrimaryKey ) {
-                    coach.throwError("duplicate primary key");
-                }
-                existsPrimaryKey = true;
-            }
-        }
-        for (const column of columns) {
-            if ( column.get("primaryKey") ) {
-                if ( existsPrimaryKey ) {
-                    coach.throwError("duplicate primary key");
-                }
-                existsPrimaryKey = true;
-            }
-        }
-
-
+        super.parseBody(coach, data);
         
-        data.columns = columns;
-        data.constraints = constraints as Array<
-            ForeignKeyConstraint |
-            CheckConstraint |
-            UniqueConstraint |
-            PrimaryKeyConstraint
-        >;
-
-        coach.skipSpace();
-        coach.expect(")");
-
         if ( coach.isWord("inherits") ) {
             coach.expectWord("inherits");
 
@@ -164,21 +68,17 @@ export default class CreateTable extends Syntax<CreateTable> {
             coach.expect(")");
         }
 
-
-        if ( coach.isWord("values") ) {
-            coach.expectWord("values");
-
-            coach.expect("(");
-            coach.skipSpace();
-
-            const rows = coach.parseComma(ValuesRow);
-            data.valuesRows = rows;
-            
-            data.values = this.prepareValues(coach, columns, constraints, rows);
-
-            coach.skipSpace();
-            coach.expect(")");
+        super.parseValues(coach, data);
+        
+        if ( data.valuesRows ) {
+            data.values = this.prepareValues(
+                coach, 
+                data.columns as ColumnDefinition[], 
+                data.constraints as Constraint[], 
+                data.valuesRows as ValuesRow[]
+            );
         }
+
     }
 
     prepareValues(
@@ -392,30 +292,10 @@ export default class CreateTable extends Syntax<CreateTable> {
     }
     
     toString() {
-        const name = this.data.name;
-        let out = `table ${name} (`;
+        let out = "table ";
+        out += this.data.name.toString();
 
-
-        const columns = this.data.columns.map((item) => 
-            item.toString()
-        ).join(", ");
-
-        out += columns;
-
-
-        if ( this.data.constraints.length ) {
-            const constraints = this.data.constraints.map((item) => 
-                item.toString()
-            ).join(", ");
-
-            
-            out += ", ";
-            out += constraints;
-        }
-
-
-        out += ")";
-
+        out += super.bodyToString();
 
         if ( this.data.inherits.length ) {
             out += " inherits (";
@@ -434,14 +314,7 @@ export default class CreateTable extends Syntax<CreateTable> {
             out += ")";
         }
 
-
-        if ( this.data.valuesRows.length ) {
-            out += " values (";
-            out += this.data.valuesRows.map((item) => 
-                item.toString()
-            ).join(", ");
-            out += ")";
-        }
+        out += super.valuesToString();
 
         return out;
     }
