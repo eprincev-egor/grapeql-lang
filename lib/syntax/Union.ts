@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class Union extends Syntax<Union> {
@@ -56,24 +56,24 @@ export default class Union extends Syntax<Union> {
     toString() {
         let out = "";
 
-        if ( this.data.intersect ) {
+        if ( this.row.intersect ) {
             out += "intersect ";
         }
-        else if ( this.data.except ) {
+        else if ( this.row.except ) {
             out += "except ";
         }
         else {
             out += "union ";
         }
 
-        if ( this.data.all ) {
+        if ( this.row.all ) {
             out += "all ";
         }
-        else if ( this.data.distinct ) {
+        else if ( this.row.distinct ) {
             out += "distinct ";
         }
 
-        out += this.data.select.toString();
+        out += this.row.select.toString();
 
         return out;
     }

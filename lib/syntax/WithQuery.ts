@@ -3,7 +3,7 @@
 import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 import ValuesRow from "./ValuesRow";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class WithQuery extends Syntax<WithQuery> {
@@ -94,7 +94,7 @@ export default class WithQuery extends Syntax<WithQuery> {
     }
 
     toString() {
-        const data = this.data;
+        const data = this.row;
         let out = "";
 
         out += data.name.toString() + " ";

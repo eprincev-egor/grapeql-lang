@@ -1,6 +1,6 @@
 
 import {Syntax} from "lang-coach";
-import GrapeQLCoach from "../lib/GrapeQLCoach";
+import {GrapeQLCoach} from "../lib/GrapeQLCoach";
 import assert from "assert";
 
 interface ITestResult<SomeSyntax extends Syntax<any>> {

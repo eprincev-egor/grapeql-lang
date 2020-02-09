@@ -4,7 +4,7 @@
 // https://www.postgresql.org/docs/9.5/sql-createtrigger.html
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import FunctionIdentify from "./FunctionIdentify";
 import TriggerIdentify from "./TriggerIdentify";
 import CommentOn from "./CommentOn";
@@ -211,7 +211,7 @@ export default class CreateTrigger extends Syntax<CreateTrigger> {
     }
 
     toString() {
-        const trigger = this.data;
+        const trigger = this.row;
         let out = "create ";
 
         if ( trigger.constraint ) {

@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 const OPERATORS = [
     "=", "<>", "!=", "<", ">", "<=", ">=", "||", "!", "!!", "%", "@", "-", "<<", "&<", "&>", ">>",
@@ -156,7 +156,7 @@ export default class Operator extends Syntax<Operator> {
     }
     
     toString() {
-        return this.data.operator;
+        return this.row.operator;
     }
 }
 

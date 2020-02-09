@@ -2,7 +2,7 @@
 
 import DoubleQuotes from "./DoubleQuotes";
 import { Types } from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class FilePathElement extends DoubleQuotes<FilePathElement> {
     structure() {
@@ -31,8 +31,8 @@ export default class FilePathElement extends DoubleQuotes<FilePathElement> {
     }
 
     toString() {
-        if ( this.data.name ) {
-            return this.data.name;
+        if ( this.row.name ) {
+            return this.row.name;
         } else {
             return super.toString();
         }

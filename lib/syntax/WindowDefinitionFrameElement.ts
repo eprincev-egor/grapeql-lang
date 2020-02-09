@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import PgNumber from "./PgNumber";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 /*
 UNBOUNDED PRECEDING
@@ -73,21 +73,21 @@ export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitio
     }
     
     toString() {
-        if ( this.data.unbounded ) {
+        if ( this.row.unbounded ) {
             return (
                 "unbounded " +
-                (this.data.preceding ?
+                (this.row.preceding ?
                     "preceding" :
                     "following")
             );
         }
-        else if ( this.data.currentRow ) {
+        else if ( this.row.currentRow ) {
             return "current row";
         }
         else {
             return (
-                this.data.value.toString() + " " +
-                (this.data.preceding ? 
+                this.row.value.toString() + " " +
+                (this.row.preceding ? 
                     "preceding" : 
                     "following")
             );

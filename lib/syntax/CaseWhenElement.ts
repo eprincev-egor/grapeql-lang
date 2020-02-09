@@ -1,7 +1,7 @@
 
 
 import {Syntax} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class CaseWhenElement extends Syntax<CaseWhenElement> {
@@ -30,6 +30,6 @@ export default class CaseWhenElement extends Syntax<CaseWhenElement> {
     }
     
     toString() {
-        return `when ${ this.data.when } then ${ this.data.then }`;
+        return `when ${ this.row.when } then ${ this.row.then }`;
     }
 }

@@ -2,7 +2,7 @@
 
 import SchemaParse from "./SchemaParse";
 import { Types } from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class SchemaTable extends SchemaParse<SchemaTable> {
     structure() {
@@ -20,7 +20,7 @@ export default class SchemaTable extends SchemaParse<SchemaTable> {
     }
 
     toString() {
-        return `${this.data.schema}.${this.data.table}`;
+        return `${this.row.schema}.${this.row.table}`;
     }
 }
 

@@ -4,7 +4,7 @@ import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 import SchemaName from "./SchemaName";
 import PgNumber from "./PgNumber";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 // TODO: load types from db
 const types = [
@@ -178,7 +178,7 @@ export default class DataType extends Syntax<DataType> {
 
     isNumber(): boolean {
         // https://www.postgresql.org/docs/9.1/datatype-numeric.html
-        const type = this.data.type;
+        const type = this.row.type;
         return (
             type === "real"              ||
             type === "decimal"           ||
@@ -189,12 +189,12 @@ export default class DataType extends Syntax<DataType> {
             type === "serial"            ||
             type === "double precision"  ||
             type === "bigserial"         ||
-            /^numeric/.test(this.data.type)
+            /^numeric/.test(this.row.type)
         );
     }
 
     isInteger(): boolean {
-        const type = this.data.type;
+        const type = this.row.type;
         return (
             type === "smallint"    ||
             type === "integer"     ||
@@ -206,7 +206,7 @@ export default class DataType extends Syntax<DataType> {
     }
 
     isSerial(): boolean {
-        const type = this.data.type;
+        const type = this.row.type;
         return (
             type === "smallserial" ||
             type === "serial"      ||
@@ -216,17 +216,17 @@ export default class DataType extends Syntax<DataType> {
 
     isText() {
         // https://www.postgresql.org/docs/9.1/datatype-character.html
-        const type = this.data.type;
+        const type = this.row.type;
         return (
             type === "text" ||
-            /^char/.test(this.data.type) ||
-            /^character/.test(this.data.type) ||
-            /^varchar/.test(this.data.type)
+            /^char/.test(this.row.type) ||
+            /^character/.test(this.row.type) ||
+            /^varchar/.test(this.row.type)
         );
     }
 
     isBoolean() {
-        return this.data.type === "boolean";
+        return this.row.type === "boolean";
     }
 
     is(coach: GrapeQLCoach) {
@@ -234,7 +234,7 @@ export default class DataType extends Syntax<DataType> {
     }
     
     toString() {
-        return this.data.type;
+        return this.row.type;
     }
 }
 

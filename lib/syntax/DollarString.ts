@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class DollarString extends Syntax<DollarString> {
     structure() {
@@ -45,12 +45,12 @@ export default class DollarString extends Syntax<DollarString> {
     toString() {
         let tag = "tag";
         let index = 1;
-        while ( this.data.content.indexOf("$tag" + index + "$") !== -1 ) {
+        while ( this.row.content.indexOf("$tag" + index + "$") !== -1 ) {
             index++;
         }
         tag += index;
 
-        return `$${tag}$${ this.data.content }$${tag}$`;
+        return `$${tag}$${ this.row.content }$${tag}$`;
     }
 }
 

@@ -1,6 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import ColumnDefinition from "./ColumnDefinition";
 import ForeignKeyConstraint from "./ForeignKeyConstraint";
 import CheckConstraint from "./CheckConstraint";
@@ -51,7 +51,7 @@ export default class CreateTableElement extends Syntax<CreateTableElement> {
     }
     
     toString() {
-        return this.data.element.toString();
+        return this.row.element.toString();
     }
 }
 

@@ -1,6 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import CreateTableElement from "./CreateTableElement";
 import ColumnDefinition from "./ColumnDefinition";
 import ForeignKeyConstraint from "./ForeignKeyConstraint";
@@ -132,15 +132,15 @@ export default class TableSyntax<Child extends TableSyntax = any> extends Syntax
     bodyToString() {
         let out = "(";
 
-        const columns = this.data.columns.map((item) => 
+        const columns = this.row.columns.map((item) => 
             item.toString()
         ).join(", ");
 
         out += columns;
 
 
-        if ( this.data.constraints.length ) {
-            const constraints = this.data.constraints.map((item) => 
+        if ( this.row.constraints.length ) {
+            const constraints = this.row.constraints.map((item) => 
                 item.toString()
             ).join(", ");
 
@@ -160,9 +160,9 @@ export default class TableSyntax<Child extends TableSyntax = any> extends Syntax
     valuesToString() {
         let out = "";
 
-        if ( this.data.valuesRows.length ) {
+        if ( this.row.valuesRows.length ) {
             out += " values (";
-            out += this.data.valuesRows.map((item) => 
+            out += this.row.valuesRows.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";

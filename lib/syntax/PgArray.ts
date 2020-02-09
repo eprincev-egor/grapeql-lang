@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class PgArray extends Syntax<PgArray> {
@@ -39,7 +39,7 @@ export default class PgArray extends Syntax<PgArray> {
     toString() {
         let out = "array[";
         
-        out += this.data.array.map((item) => item.toString()).join(", ");
+        out += this.row.array.map((item) => item.toString()).join(", ");
 
         out += "]";
         return out;

@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class ValueItem extends Syntax<ValueItem> {
     structure() {
@@ -29,10 +29,10 @@ export default class ValueItem extends Syntax<ValueItem> {
     }
 
     toString() {
-        if ( this.data.default ) {
+        if ( this.row.default ) {
             return "default";
         } else {
-            return this.data.value.toString();
+            return this.row.value.toString();
         }
     }
 }

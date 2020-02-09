@@ -1,6 +1,6 @@
 
 
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
 import assert from "assert";
 import SystemVariable from "../../lib/syntax/SystemVariable";
 import testSyntax from "../testSyntax";

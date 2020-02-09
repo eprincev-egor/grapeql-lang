@@ -1,6 +1,6 @@
 
 import {Syntax} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import ObjectName from "./ObjectName";
 
 export default class Constraint<Child extends Constraint = any> extends Syntax<Constraint & Child> {
@@ -32,6 +32,6 @@ export default class Constraint<Child extends Constraint = any> extends Syntax<C
     }
 
     toString() {
-        return "constraint " + this.data.name.toString();
+        return "constraint " + this.row.name.toString();
     }
 }

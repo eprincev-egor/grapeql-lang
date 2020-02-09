@@ -4,7 +4,7 @@ import {Syntax} from "lang-coach";
 import Expression from "./Expression";
 import ObjectName from "./ObjectName";
 import DoubleQuotes from "./DoubleQuotes";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 const keywords = [
     "from",
@@ -78,10 +78,10 @@ export default class Column extends Syntax<Column> {
     }
 
     toString() {
-        let out = this.data.expression.toString();
+        let out = this.row.expression.toString();
 
-        if ( this.data.as ) {
-            out += " as " + this.data.as.toString();
+        if ( this.row.as ) {
+            out += " as " + this.row.as.toString();
         }
 
         return out;

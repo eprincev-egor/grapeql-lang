@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class SingleQuotesString extends Syntax<SingleQuotesString> {
 
@@ -206,7 +206,7 @@ export default class SingleQuotesString extends Syntax<SingleQuotesString> {
     }
 
     toString() {
-        let content = this.data.content;
+        let content = this.row.content;
         // escape single quotes
         content = content.replace(/'/g, "''");
 

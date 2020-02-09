@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import SingleQuotesString from "./SingleQuotesString";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class ByteString extends Syntax<ByteString> {
     structure() {
@@ -61,6 +61,6 @@ export default class ByteString extends Syntax<ByteString> {
     }
 
     toString() {
-        return "b'" + this.data.content + "'";
+        return "b'" + this.row.content + "'";
     }
 }

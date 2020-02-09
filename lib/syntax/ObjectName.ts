@@ -2,7 +2,7 @@
 
 import DoubleQuotes from "./DoubleQuotes";
 import { Types } from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class ObjectName extends DoubleQuotes<ObjectName> {
     structure() {
@@ -26,8 +26,8 @@ export default class ObjectName extends DoubleQuotes<ObjectName> {
     }
 
     toString() {
-        if ( this.data.word ) {
-            return this.data.word;
+        if ( this.row.word ) {
+            return this.row.word;
         } else {
             return super.toString();
         }
@@ -35,8 +35,8 @@ export default class ObjectName extends DoubleQuotes<ObjectName> {
     
     toLowerCase() {
         return (
-            this.data.word || 
-            this.data.content
+            this.row.word || 
+            this.row.content
         );
     }
 }

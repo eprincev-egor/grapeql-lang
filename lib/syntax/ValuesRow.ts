@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import ValueItem from "./ValueItem";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class ValuesRow extends Syntax<ValuesRow> {
     structure() {
@@ -30,7 +30,7 @@ export default class ValuesRow extends Syntax<ValuesRow> {
     toString() {
         let out = "(";
 
-        out += this.data.values.map((valueItem) => valueItem.toString()).join(", ");
+        out += this.row.values.map((valueItem) => valueItem.toString()).join(", ");
 
         out += ")";
         return out;

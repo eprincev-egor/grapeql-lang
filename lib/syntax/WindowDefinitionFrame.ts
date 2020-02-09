@@ -2,7 +2,7 @@
 
 import {Syntax} from "lang-coach";
 import WindowDefinitionFrameElement from "./WindowDefinitionFrameElement";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 /*
 frame_start
@@ -40,16 +40,16 @@ export default class WindowDefinitionFrame extends Syntax<WindowDefinitionFrame>
     }
 
     toString() {
-        if ( this.data.end ) {
+        if ( this.row.end ) {
             return (
                 "between " +
-                this.data.start.toString() +
+                this.row.start.toString() +
                 " and " +
-                this.data.end.toString()
+                this.row.end.toString()
             );
         }
         else {
-            return this.data.start.toString();
+            return this.row.start.toString();
         }
     }
 }

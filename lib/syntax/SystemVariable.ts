@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class SystemVariable extends Syntax<SystemVariable> {
     structure() {
@@ -38,11 +38,11 @@ export default class SystemVariable extends Syntax<SystemVariable> {
     }
 
     toString() {
-        return "$" + this.data.name;
+        return "$" + this.row.name;
     }
 
     toLowerCase() {
-        return this.data.name.toLowerCase();
+        return this.row.name.toLowerCase();
     }
 }
 

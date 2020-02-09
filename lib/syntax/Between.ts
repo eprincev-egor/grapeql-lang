@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class Between extends Syntax<Between> {
@@ -41,13 +41,13 @@ export default class Between extends Syntax<Between> {
     toString() {
         let out = "between ";
 
-        if ( this.data.symmetric ) {
+        if ( this.row.symmetric ) {
             out += "symmetric ";
         }
 
-        out += this.data.between;
+        out += this.row.between;
         out += " and ";
-        out += this.data.and;
+        out += this.row.and;
 
         return out;
     }

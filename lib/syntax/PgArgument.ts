@@ -1,6 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import Expression from "./Expression";
 
 export default class PgArgument extends Syntax<PgArgument> {
@@ -61,7 +61,7 @@ export default class PgArgument extends Syntax<PgArgument> {
     }
 
     toString() {
-        const arg = this.data;
+        const arg = this.row;
         let out = "";
 
         if ( arg.out ) {

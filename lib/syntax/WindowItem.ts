@@ -3,7 +3,7 @@
 import {Syntax} from "lang-coach";
 import ObjectName from "./ObjectName";
 import WindowDefinition from "./WindowDefinition";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class WindowItem extends Syntax<WindowItem> {
     structure() {
@@ -46,7 +46,7 @@ export default class WindowItem extends Syntax<WindowItem> {
     }
 
     toString() {
-        return `${this.data.as} as (${ this.data.body })`;
+        return `${this.row.as} as (${ this.row.body })`;
     }
 }
 

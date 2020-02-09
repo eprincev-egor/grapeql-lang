@@ -1,5 +1,5 @@
 
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import Constraint from "./Constraint";
 import Expression from "./Expression";
 
@@ -58,7 +58,7 @@ export default class CheckConstraint extends Constraint<CheckConstraint> {
         const {
             check, 
             column
-        } = this.data;
+        } = this.row;
         let out = "";
 
         if ( !column ) {

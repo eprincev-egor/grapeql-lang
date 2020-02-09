@@ -1,7 +1,7 @@
 
  
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class DoubleQuotes<Child extends DoubleQuotes = any> extends Syntax<DoubleQuotes & Child> {
     structure() {
@@ -96,7 +96,7 @@ export default class DoubleQuotes<Child extends DoubleQuotes = any> extends Synt
     }
 
     toString() {
-        let content = this.data.content;
+        let content = this.row.content;
         // escape double quotes
         content = content.replace(/"/g, "\"\"");
 

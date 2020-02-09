@@ -19,7 +19,7 @@ import Any from "./Any";
 import In from "./In";
 import FunctionCall from "./FunctionCall";
 import ColumnLink from "./ColumnLink";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class ExpressionElement extends Syntax<ExpressionElement> {
@@ -138,7 +138,7 @@ export default class ExpressionElement extends Syntax<ExpressionElement> {
     }
 
     toString() {
-        return this.data.element.toString();
+        return this.row.element.toString();
     }
 }
 

@@ -5,7 +5,7 @@ import TableLink from "./TableLink";
 import ObjectName from "./ObjectName";
 import Select from "./Select";
 import CacheReverseExpression from "./CacheReverseExpression";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 /*
 cache totals for company (
@@ -61,7 +61,7 @@ export default class CacheFor extends Syntax<CacheFor> {
     }
 
     toString() {
-        const data = this.data;
+        const data = this.row;
         let out = "";
 
         out += "cache for ";

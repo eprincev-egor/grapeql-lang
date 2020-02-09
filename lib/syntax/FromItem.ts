@@ -7,7 +7,7 @@ import TableLink from "./TableLink";
 import ObjectName from "./ObjectName";
 import Join from "./Join";
 import DoubleQuotes from "./DoubleQuotes";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class FromItem extends Syntax<FromItem> {
@@ -144,7 +144,7 @@ export default class FromItem extends Syntax<FromItem> {
     }
 
     toString() {
-        const data = this.data;
+        const data = this.row;
         let out = "";
 
         if ( data.file ) {

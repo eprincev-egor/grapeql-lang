@@ -1,6 +1,6 @@
 
 import { Types } from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import Constraint from "./Constraint";
 import ObjectName from "./ObjectName";
 
@@ -66,7 +66,7 @@ export default class UniqueConstraint extends Constraint<UniqueConstraint> {
         const {
             unique, 
             column
-        } = this.data;
+        } = this.row;
 
         if ( column ) {
             out += "unique";  

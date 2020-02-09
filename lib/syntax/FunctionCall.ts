@@ -4,7 +4,7 @@ import {Syntax, Types} from "lang-coach";
 import FunctionLink from "./FunctionLink";
 import OrderByElement from "./OrderByElement";
 import WindowDefinition from "./WindowDefinition";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 // some(1,2)
@@ -144,7 +144,7 @@ export default class FunctionCall extends Syntax<FunctionCall> {
     }
 
     toString() {
-        const data = this.data;
+        const data = this.row;
         let out = "";
 
         out += data.function.toString();

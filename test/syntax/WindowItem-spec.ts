@@ -1,7 +1,7 @@
 
 
 import WindowItem from "../../lib/syntax/WindowItem";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
 import testSyntax from "../testSyntax";
 import assert from "assert";
 

@@ -10,7 +10,7 @@ import WindowItem from "./WindowItem";
 import OrderByElement from "./OrderByElement";
 import Union from "./Union";
 import SelectFetch from "./SelectFetch";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 // https://www.postgresql.org/docs/9.5/static/sql-select.html
 /*
@@ -328,7 +328,7 @@ export default class Select extends Syntax<Select> {
     }
 
     toString() {
-        const data = this.data;
+        const data = this.row;
         // options = options || {pg: false};
         let out = "";
 

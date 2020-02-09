@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import Operator from "./Operator";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class OrderByElement extends Syntax<OrderByElement> {
@@ -57,18 +57,18 @@ export default class OrderByElement extends Syntax<OrderByElement> {
     }
     
     toString() {
-        let out = this.data.expression.toString();
+        let out = this.row.expression.toString();
         
-        if ( this.data.vector ) {
+        if ( this.row.vector ) {
             // asc or desc
-            out += " " + this.data.vector;
+            out += " " + this.row.vector;
         } 
         else {
-            out += " using " + this.data.using.toString();
+            out += " using " + this.row.using.toString();
         }
         
-        if ( this.data.nulls ) {
-            out += " nulls " + this.data.nulls;
+        if ( this.row.nulls ) {
+            out += " nulls " + this.row.nulls;
         }
         
         return out;

@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 /*
     { expression | ( expression [, ...] ) }
@@ -41,14 +41,14 @@ export default class GroupByElementContent extends Syntax<GroupByElementContent>
     }
     
     toString() {
-        if ( this.data.single ) {
-            const expression = this.data.expressions[0];
+        if ( this.row.single ) {
+            const expression = this.row.expressions[0];
             return expression.toString();
         } 
         else {
             let out = "(";
 
-            out += this.data.expressions.map((expression) => 
+            out += this.row.expressions.map((expression) => 
                 expression.toString()
             ).join(", ");
             

@@ -1,7 +1,7 @@
 
 
 import {Syntax} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class Substring extends Syntax<Substring> {
@@ -47,16 +47,16 @@ export default class Substring extends Syntax<Substring> {
     toString() {
         let out = "substring(";
 
-        out += this.data.str.toString();
+        out += this.row.str.toString();
 
-        if ( this.data.from ) {
+        if ( this.row.from ) {
             out += " from ";
-            out += this.data.from.toString();
+            out += this.row.from.toString();
         }
 
-        if ( this.data.for ) {
+        if ( this.row.for ) {
             out += " for ";
-            out += this.data.for.toString();
+            out += this.row.for.toString();
         }
 
         out += ")";

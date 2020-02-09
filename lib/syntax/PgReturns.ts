@@ -1,6 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import PgArgument from "./PgArgument";
 import DataType from "./DataType";
 
@@ -43,7 +43,7 @@ export default class PgReturns extends Syntax<PgReturns> {
     }
 
     toString() {
-        const returns = this.data;
+        const returns = this.row;
         let out = "";
 
         if ( returns.setof ) {

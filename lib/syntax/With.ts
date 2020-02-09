@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import WithQuery from "./WithQuery";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 // WITH [ RECURSIVE ] with_query [, ...]
 
@@ -47,11 +47,11 @@ export default class With extends Syntax<With> {
     toString() {
         let sql = "with ";
 
-        if ( this.data.recursive ) {
+        if ( this.row.recursive ) {
             sql += "recursive ";
         }
 
-        sql += this.data.queries.map((query) =>
+        sql += this.row.queries.map((query) =>
             query.toString()
         ).join(", ");
 

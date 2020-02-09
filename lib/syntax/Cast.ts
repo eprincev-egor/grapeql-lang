@@ -1,7 +1,7 @@
 
 
 import {Syntax} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class Cast extends Syntax<Cast> {
@@ -39,7 +39,7 @@ export default class Cast extends Syntax<Cast> {
     }
     
     toString() {
-        return `cast(${ this.data.expression } as ${ this.data.cast })`;
+        return `cast(${ this.row.expression } as ${ this.row.cast })`;
     }
 }
 

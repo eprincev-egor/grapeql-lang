@@ -2,7 +2,7 @@
 import {Syntax, Types} from "lang-coach";
 import ObjectLink from "./ObjectLink";
 import SchemaTable from "./SchemaTable";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class TriggerIdentify extends Syntax<TriggerIdentify> {
     structure() {
@@ -31,7 +31,7 @@ export default class TriggerIdentify extends Syntax<TriggerIdentify> {
     }
 
     toString() {
-        const {name, schema, table} = this.data;
+        const {name, schema, table} = this.row;
         return `${name} on ${schema}.${table}`;
     }
 }

@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class ObjectLink extends Syntax<ObjectLink> {
     structure() {
@@ -58,12 +58,12 @@ export default class ObjectLink extends Syntax<ObjectLink> {
     }
 
     toString() {
-        const elems = this.data.link.map((elem) =>
+        const elems = this.row.link.map((elem) =>
             elem.toString()
         );
         let str = elems.join(".");
 
-        if ( this.data.star ) {
+        if ( this.row.star ) {
             if ( elems.length ) {
                 str += ".";
             }
@@ -74,15 +74,15 @@ export default class ObjectLink extends Syntax<ObjectLink> {
     }
 
     isStar() {
-        return this.data.star;
+        return this.row.star;
     }
 
     first() {
-        return this.data.link[0];
+        return this.row.link[0];
     }
 
     last() {
-        return this.data.link[ this.data.link.length - 1 ];
+        return this.row.link[ this.row.link.length - 1 ];
     }
     
     clear() {
@@ -98,7 +98,7 @@ export default class ObjectLink extends Syntax<ObjectLink> {
             });
         }
 
-        const link = this.data.link.slice();
+        const link = this.row.link.slice();
         link.push( objectName );
 
         this.set({

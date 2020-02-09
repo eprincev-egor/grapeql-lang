@@ -4,7 +4,7 @@
 import ObjectLink from "../../lib/syntax/ObjectLink";
 import ObjectName from "../../lib/syntax/ObjectName";
 import testSyntax from "../testSyntax";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
 import assert from "assert";
 
 describe("ObjectLink", () => {

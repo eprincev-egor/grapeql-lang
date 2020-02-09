@@ -4,7 +4,7 @@ import {Syntax, Types} from "lang-coach";
 import ObjectName from "./ObjectName";
 import OrderByElement from "./OrderByElement";
 import WindowDefinitionFrame from "./WindowDefinitionFrame";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 /*
@@ -88,7 +88,7 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
     }
 
     toString() {
-        const data = this.data;
+        const data = this.row;
         let out = "";
 
         if ( data.windowDefinition ) {

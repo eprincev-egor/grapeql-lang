@@ -1,7 +1,7 @@
 
 import CommentOn from "./CommentOn";
 import TriggerIdentify from "./TriggerIdentify";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class CommentOnTrigger extends CommentOn<CommentOnTrigger> {
     structure() {

@@ -74,7 +74,7 @@ import ColumnDefinition from "./syntax/ColumnDefinition";
 import CreateTableElement from "./syntax/CreateTableElement";
 import CreateTable from "./syntax/CreateTable";
 
-export default class GrapeQLCoach extends Coach {
+export class GrapeQLCoach extends Coach {
     syntax = {
         Any,
         Between,
@@ -160,3 +160,73 @@ for (const key in coach.syntax) {
     allSyntax[ key ] = coach.syntax[ key ];
 }
 
+export {Any};
+export {Between};
+export {Boolean};
+export {ByteString};
+export {CacheFor};
+export {CacheReverseExpression};
+export {CaseWhen};
+export {CaseWhenElement};
+export {Cast};
+export {Column};
+export {ColumnLink};
+export {Comment};
+export {DataType};
+export {DollarString};
+export {DoubleQuotes};
+export {Exists};
+export {Expression};
+export {ExpressionElement};
+export {Extract};
+export {File};
+export {FilePathElement};
+export {FromItem};
+export {FunctionCall};
+export {FunctionLink};
+export {GroupByElement};
+export {GroupByElementContent};
+export {In};
+export {Interval};
+export {Join};
+export {ObjectLink};
+export {ObjectName};
+export {Operator};
+export {OrderByElement};
+export {PgArray};
+export {PgNull};
+export {PgNumber};
+export {SchemaName};
+export {SchemaTable};
+export {Select};
+export {SelectFetch};
+export {SingleQuotesString};
+export {SquareBrackets};
+export {Substring};
+export {SystemVariable};
+export {TableLink};
+export {Union};
+export {ValueItem};
+export {ValuesRow};
+export {WindowDefinition};
+export {WindowDefinitionFrame};
+export {WindowDefinitionFrameElement};
+export {WindowItem};
+export {With};
+export {WithQuery};
+export {PgArgument};
+export {PgReturns};
+export {FunctionIdentify};
+export {TriggerIdentify};
+export {CommentOn};
+export {CommentOnFunction};
+export {CommentOnTrigger};
+export {CreateFunction};
+export {Constraint};
+export {CheckConstraint};
+export {PrimaryKeyConstraint};
+export {UniqueConstraint};
+export {ForeignKeyConstraint};
+export {ColumnDefinition};
+export {CreateTableElement};
+export {CreateTable};

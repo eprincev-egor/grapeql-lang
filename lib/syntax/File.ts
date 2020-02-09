@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import FilePathElement from "./FilePathElement";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class File extends Syntax<File> {
     structure() {
@@ -58,9 +58,9 @@ export default class File extends Syntax<File> {
     }
 
     toString() {
-        let out = this.data.path.map((elem) => elem.toString()).join("/");
+        let out = this.row.path.map((elem) => elem.toString()).join("/");
         
-        if ( !this.data.relative ) {
+        if ( !this.row.relative ) {
             out = "/" + out;
         }
 

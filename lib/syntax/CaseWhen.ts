@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import CaseWhenElement from "./CaseWhenElement";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class CaseWhen extends Syntax<CaseWhen> {
@@ -54,12 +54,12 @@ export default class CaseWhen extends Syntax<CaseWhen> {
     toString() {
         let out = "case ";
         
-        const cases = this.data.case.map((elem) => elem.toString()).join(" ");
+        const cases = this.row.case.map((elem) => elem.toString()).join(" ");
         out += cases;
         
-        if ( this.data.else ) {
+        if ( this.row.else ) {
             out += " else ";
-            out += this.data.else.toString();
+            out += this.row.else.toString();
         }
         
         out += " end";

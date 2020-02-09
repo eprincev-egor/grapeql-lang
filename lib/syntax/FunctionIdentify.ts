@@ -1,6 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import ObjectLink from "./ObjectLink";
 import SchemaName from "./SchemaName";
 import DataType from "./DataType";
@@ -45,7 +45,7 @@ export default class FunctionIdentify extends Syntax<FunctionIdentify> {
     }
 
     toString() {
-        const {schema, name, args} = this.data;
+        const {schema, name, args} = this.row;
 
         return `${schema}.${name}(${ args.join(", ") })`;
     }

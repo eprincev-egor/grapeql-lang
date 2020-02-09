@@ -1,7 +1,7 @@
 
 
 import {Syntax} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class Exists extends Syntax<Exists> {
@@ -32,7 +32,7 @@ export default class Exists extends Syntax<Exists> {
     }
     
     toString() {
-        return `exists( ${ this.data.exists } )`;
+        return `exists( ${ this.row.exists } )`;
     }
 }
 

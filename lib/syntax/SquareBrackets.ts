@@ -1,7 +1,7 @@
 
 
 import {Syntax} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class SquareBrackets extends Syntax<SquareBrackets> {
@@ -30,7 +30,7 @@ export default class SquareBrackets extends Syntax<SquareBrackets> {
     }
     
     toString() {
-        return `[${ this.data.content }]`;
+        return `[${ this.row.content }]`;
     }
 }
 

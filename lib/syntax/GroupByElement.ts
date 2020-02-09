@@ -3,7 +3,7 @@
 import {Syntax, Types} from "lang-coach";
 import GroupByElementContent from "./GroupByElementContent";
 import Expression from "./Expression";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 /*
     ()
@@ -92,7 +92,7 @@ export default class GroupByElement extends Syntax<GroupByElement> {
     }
     
     toString() {
-        const data = this.data;
+        const data = this.row;
 
         if ( data.isEmpty ) {
             return "()";

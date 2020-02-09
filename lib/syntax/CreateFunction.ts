@@ -1,6 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import PgArgument from "./PgArgument";
 import PgReturns from "./PgReturns";
 import FunctionIdentify from "./FunctionIdentify";
@@ -42,11 +42,11 @@ export default class CreateFunction extends Syntax<CreateFunction> {
         };
     }
 
-    toIdentify(data: this["TInputData"] = this.data) {
+    toIdentify(data: this["TInputData"] = this.row) {
         const inputArgs = (data.args || []).filter((arg: PgArgument) =>
-            !arg.data.out
+            !arg.row.out
         ) as PgArgument[];
-        const types = inputArgs.map((arg) => arg.data.type);
+        const types = inputArgs.map((arg) => arg.row.type);
 
         return new FunctionIdentify({
             schema: data.schema,
@@ -83,7 +83,7 @@ export default class CreateFunction extends Syntax<CreateFunction> {
         coach.expect("(");
         coach.skipSpace();
 
-        let args;
+        let args: PgArgument[];
         if ( coach.isWord() ) {
             args = coach.parseComma(PgArgument, {default: true});
         } else {
@@ -96,12 +96,12 @@ export default class CreateFunction extends Syntax<CreateFunction> {
         // (a integer default null, b integer)
         let hasDefault = false;
         args.forEach((arg) => {
-            if ( arg.data.default ) {
+            if ( arg.row.default ) {
                 hasDefault = true;
                 return;
             }
 
-            if ( !arg.data.default && hasDefault ) {
+            if ( !arg.row.default && hasDefault ) {
                 coach.throwError("input parameters after one with a default value must also have defaults");
             }
         });
@@ -137,24 +137,24 @@ export default class CreateFunction extends Syntax<CreateFunction> {
         // error on duplicate name
         const existsName = {};
         args.forEach((arg) => {
-            if ( arg.data.name === null ) {
+            if ( arg.row.name === null ) {
                 return;
             }
             
-            if ( arg.data.name in existsName ) {
-                throw new Error(`parameter name "${ arg.data.name }" used more than once`);
+            if ( arg.row.name in existsName ) {
+                throw new Error(`parameter name "${ arg.row.name }" used more than once`);
             }
 
-            existsName[ arg.data.name ] = true;
+            existsName[ arg.row.name ] = true;
         });
 
         if ( data.returns.get("table") ) {
             data.returns.get("table").forEach((arg) => {
-                if ( arg.data.name in existsName ) {
-                    throw new Error(`parameter name "${ arg.data.name }" used more than once`);
+                if ( arg.row.name in existsName ) {
+                    throw new Error(`parameter name "${ arg.row.name }" used more than once`);
                 }
 
-                existsName[ arg.data.name ] = true;
+                existsName[ arg.row.name ] = true;
             });
         }
 
@@ -258,7 +258,7 @@ export default class CreateFunction extends Syntax<CreateFunction> {
     }
 
     toString() {
-        const func = this.data;
+        const func = this.row;
         let additionalParams = "";
 
         additionalParams += " language ";

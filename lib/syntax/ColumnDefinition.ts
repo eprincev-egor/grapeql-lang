@@ -1,6 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import ObjectName from "./ObjectName";
 import DataType from "./DataType";
 import ForeignKeyConstraint from "./ForeignKeyConstraint";
@@ -185,7 +185,7 @@ export default class ColumnDefinition extends Syntax<ColumnDefinition> {
     }
 
     toString() {
-        const data = this.data;
+        const data = this.row;
         let out = "";
 
         out += data.name.toString();

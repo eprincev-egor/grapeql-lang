@@ -1,6 +1,6 @@
 
 import { Types } from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import Constraint from "./Constraint";
 import ObjectName from "./ObjectName";
 
@@ -68,7 +68,7 @@ export default class PrimaryKeyConstraint extends Constraint<PrimaryKeyConstrain
         const {
             primaryKey,
             column
-        } = this.data;
+        } = this.row;
 
         if ( column ) {
             out = "primary key";

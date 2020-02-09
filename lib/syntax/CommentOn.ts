@@ -1,6 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import DollarString from "./DollarString";
 import SingleQuotesString from "./SingleQuotesString";
 
@@ -32,6 +32,6 @@ export default class CommentOn<Child extends CommentOn = any> extends Syntax<Com
     }
     
     toStringCommentIs(): string {
-        return `is ${ this.data.comment }`;
+        return `is ${ this.row.comment }`;
     }
 }

@@ -12,7 +12,7 @@ export default class SchemaName extends SchemaParse<SchemaName> {
     }
 
     toString() {
-        return `${this.data.schema}.${this.data.name}`;
+        return `${this.row.schema}.${this.row.name}`;
     }
 }
 

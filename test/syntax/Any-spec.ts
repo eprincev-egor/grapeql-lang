@@ -1,6 +1,6 @@
 
 import Any from "../../lib/syntax/Any";
-import GrapeQLCoach from "../../lib/GrapeQLCoach";
+import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
 import testSyntax from "../testSyntax";
 import assert from "assert";
 

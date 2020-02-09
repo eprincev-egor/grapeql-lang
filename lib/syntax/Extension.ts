@@ -1,5 +1,5 @@
 
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import TableSyntax from "./TableSyntax";
 import ObjectLink from "./ObjectLink";
 
@@ -35,11 +35,11 @@ export default class Extension extends TableSyntax<Extension> {
     
     toString() {
         let out = "extension for ";
-        out += this.data.forTable.toString();
+        out += this.row.forTable.toString();
 
         const hasBody = (
-            this.data.columns.length || 
-            this.data.constraints.length
+            this.row.columns.length || 
+            this.row.constraints.length
         );
         if ( hasBody ) {
             out += super.bodyToString();

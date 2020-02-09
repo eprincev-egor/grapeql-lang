@@ -14,7 +14,7 @@ where
 import {Syntax, Types} from "lang-coach";
 import Expression from "./Expression";
 import ObjectName from "./ObjectName";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class Join extends Syntax<Join> {
@@ -81,15 +81,15 @@ export default class Join extends Syntax<Join> {
     }
 
     toString() {
-        let out = this.data.type;
+        let out = this.row.type;
 
         out += " ";
-        out += this.data.from.toString();
+        out += this.row.from.toString();
 
-        if ( this.data.on ) {
-            out += " on " + this.data.on.toString();
+        if ( this.row.on ) {
+            out += " on " + this.row.on.toString();
         } else {
-            out += " using (" + this.data.using.map((elem) => elem.toString()).join(", ") + ")";
+            out += " using (" + this.row.using.map((elem) => elem.toString()).join(", ") + ")";
         }
 
         return out;

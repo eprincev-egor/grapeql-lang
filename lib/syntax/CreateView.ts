@@ -1,6 +1,6 @@
 
 import {Syntax} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import ObjectName from "./ObjectName";
 import Select from "./Select";
 
@@ -45,14 +45,14 @@ export default class CreateView extends Syntax<CreateView> {
     toString() {
         let out = "view ";
         
-        if ( this.data.schema ) {
-            out += this.data.schema.toString();
+        if ( this.row.schema ) {
+            out += this.row.schema.toString();
             out += ".";
         }
-        out += this.data.name.toString();
+        out += this.row.name.toString();
 
         out += " as ";
-        out += this.data.select.toString();
+        out += this.row.select.toString();
 
         return out;
     }

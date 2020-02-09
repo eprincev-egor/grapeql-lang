@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class Comment extends Syntax<Comment> {
     structure() {
@@ -61,11 +61,11 @@ export default class Comment extends Syntax<Comment> {
     }
     
     toString() {
-        if ( this.data.isMulti ) {
-            return "/*" + this.data.content + "*/";
+        if ( this.row.isMulti ) {
+            return "/*" + this.row.content + "*/";
         }
         else {
-            return "--" + this.data.content;
+            return "--" + this.row.content;
         }
     }
 }

@@ -4,7 +4,7 @@ import {Syntax} from "lang-coach";
 import TableLink from "./TableLink";
 import ObjectName from "./ObjectName";
 import Expression from "./Expression";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 /*
 after change orders set where
@@ -49,15 +49,15 @@ export default class CacheReverseExpression extends Syntax<CacheReverseExpressio
         let out = "";
 
         out += "after change ";
-        out += this.data.table.toString();
+        out += this.row.table.toString();
 
-        if ( this.data.as ) {
+        if ( this.row.as ) {
             out += " as ";
-            out += this.data.as.toString();
+            out += this.row.as.toString();
         }
 
         out += " set where ";
-        out += this.data.where.toString();
+        out += this.row.where.toString();
 
         return out;
     }

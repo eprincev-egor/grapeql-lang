@@ -1,6 +1,6 @@
 
 import {Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import ColumnDefinition from "./ColumnDefinition";
 import TableSyntax from "./TableSyntax";
 import ObjectName from "./ObjectName";
@@ -293,22 +293,22 @@ export default class CreateTable extends TableSyntax<CreateTable> {
     
     toString() {
         let out = "table ";
-        out += this.data.name.toString();
+        out += this.row.name.toString();
 
         out += super.bodyToString();
 
-        if ( this.data.inherits.length ) {
+        if ( this.row.inherits.length ) {
             out += " inherits (";
-            out += this.data.inherits.map((item) => 
+            out += this.row.inherits.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";
         }
 
         
-        if ( this.data.deprecated.length ) {
+        if ( this.row.deprecated.length ) {
             out += " deprecated (";
-            out += this.data.deprecated.map((item) => 
+            out += this.row.deprecated.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";

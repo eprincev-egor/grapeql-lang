@@ -2,7 +2,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import DataType from "./DataType";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 const extractFields = [
@@ -70,14 +70,14 @@ export default class Extract extends Syntax<Extract> {
     }
     
     toString() {
-        let out = `extract( ${this.data.field} from `;
+        let out = `extract( ${this.row.field} from `;
 
-        if ( this.data.type ) {
-            out += this.data.type.toString();
+        if ( this.row.type ) {
+            out += this.row.type.toString();
             out += " ";
         }
 
-        out += this.data.source.toString();
+        out += this.row.source.toString();
 
         out += ")";
         return out;

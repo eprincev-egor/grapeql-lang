@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 // true or false
 
@@ -31,7 +31,7 @@ export default class Boolean extends Syntax<Boolean> {
     }
     
     toString() {
-        if ( this.data.boolean ) {
+        if ( this.row.boolean ) {
             return "true";
         } else {
             return "false";

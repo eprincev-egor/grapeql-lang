@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 // 42
 // 3.5
@@ -70,7 +70,7 @@ export default class PgNumber extends Syntax<PgNumber> {
     }
     
     toString() {
-        return this.data.number;
+        return this.row.number;
     }
 }
 

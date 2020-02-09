@@ -1,6 +1,6 @@
 
 import { Types } from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import Constraint from "./Constraint";
 import ObjectName from "./ObjectName";
 import ObjectLink from "./ObjectLink";
@@ -189,7 +189,7 @@ export default class ForeignKeyConstraint extends Constraint<ForeignKeyConstrain
             onDelete,
             onUpdate,
             column
-        } = this.data;
+        } = this.row;
 
         let out = "";
 

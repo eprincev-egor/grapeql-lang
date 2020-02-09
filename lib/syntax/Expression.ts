@@ -12,7 +12,7 @@ import PgNull from "./PgNull";
 import PgNumber from "./PgNumber";
 import SingleQuotesString from "./SingleQuotesString";
 import DollarString from "./DollarString";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import Boolean from "./Boolean";
 
 // true or false
@@ -222,7 +222,7 @@ export default class Expression extends Syntax<Expression> {
     }
 
     toPrimitiveValue(): (number | string | boolean) {
-        const elements = this.data.elements;
+        const elements = this.row.elements;
         const firstElem = elements[0];
         const secondElem = elements[1];
         const thirdElem = elements[2];
@@ -359,7 +359,7 @@ export default class Expression extends Syntax<Expression> {
     toString() {
         let out = "";
 
-        this.data.elements.forEach((elem, i) => {
+        this.row.elements.forEach((elem, i) => {
             if ( i > 0 ) {
                 out += " ";
             }

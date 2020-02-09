@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class In extends Syntax<In> {
@@ -42,10 +42,10 @@ export default class In extends Syntax<In> {
     }
     
     toString() {
-        if ( this.data.inItems ) {
-            return `in (${ this.data.inItems.join(", ") })`;
+        if ( this.row.inItems ) {
+            return `in (${ this.row.inItems.join(", ") })`;
         } else {
-            return `in (${ this.data.inSelect })`;
+            return `in (${ this.row.inSelect })`;
         }
     }
 }

@@ -1,7 +1,7 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
 export default class Any extends Syntax<Any> {
@@ -70,10 +70,10 @@ export default class Any extends Syntax<Any> {
     }
     
     toString() {
-        if ( this.data.select ) {
-            return `${this.data.type} (${ this.data.select })`;
+        if ( this.row.select ) {
+            return `${this.row.type} (${ this.row.select })`;
         } else {
-            return `${this.data.type} (${ this.data.array })`;
+            return `${this.row.type} (${ this.row.array })`;
         }
     }
 }

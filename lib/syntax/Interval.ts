@@ -3,7 +3,7 @@
 import {Syntax, Types} from "lang-coach";
 import SingleQuotesString from "./SingleQuotesString";
 import DollarString from "./DollarString";
-import GrapeQLCoach from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
 export default class Interval extends Syntax<Interval> {
     structure() {
@@ -33,7 +33,7 @@ export default class Interval extends Syntax<Interval> {
     }
 
     toString() {
-        return "interval " + this.data.interval.toString();
+        return "interval " + this.row.interval.toString();
     }
 }
 
