@@ -15,12 +15,16 @@ export default class CreateTable extends TableSyntax<CreateTable> {
     structure() {
         return {
             ...super.structure(),
+            deprecated: Types.Boolean({
+                required: true,
+                default: false
+            }),
             name: ObjectName,
             inherits: Types.Array({
                 element: ObjectLink,
                 nullAsEmpty: true
             }),
-            deprecated: Types.Array({
+            deprecatedColumns: Types.Array({
                 element: ObjectName,
                 nullAsEmpty: true
             }),
@@ -34,6 +38,11 @@ export default class CreateTable extends TableSyntax<CreateTable> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( coach.isWord("deprecated") ) {
+            coach.expectWord("deprecated");
+            data.deprecated = true;
+        }
+
         if ( coach.isWord("create") ) {
             coach.expectWord("create");
         }
@@ -62,7 +71,7 @@ export default class CreateTable extends TableSyntax<CreateTable> {
             coach.expect("(");
             coach.skipSpace();
 
-            data.deprecated = coach.parseComma(ObjectName);
+            data.deprecatedColumns = coach.parseComma(ObjectName);
 
             coach.skipSpace();
             coach.expect(")");
@@ -288,11 +297,17 @@ export default class CreateTable extends TableSyntax<CreateTable> {
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.is(/(create\s+)?table/i);
+        return coach.is(/(deprecated\s+)?(create\s+)?table/i);
     }
     
     toString() {
-        let out = "table ";
+        let out = "";
+
+        if ( this.row.deprecated ) {
+            out += "deprecated ";
+        }
+
+        out += "table ";
         out += this.row.name.toString();
 
         out += super.bodyToString();
@@ -306,9 +321,9 @@ export default class CreateTable extends TableSyntax<CreateTable> {
         }
 
         
-        if ( this.row.deprecated.length ) {
+        if ( this.row.deprecatedColumns.length ) {
             out += " deprecated (";
-            out += this.row.deprecated.map((item) => 
+            out += this.row.deprecatedColumns.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";

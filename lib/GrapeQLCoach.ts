@@ -65,6 +65,7 @@ import CommentOn from "./syntax/CommentOn";
 import CommentOnFunction from "./syntax/CommentOnFunction";
 import CommentOnTrigger from "./syntax/CommentOnTrigger";
 import CreateFunction from "./syntax/CreateFunction";
+import CreateTrigger from "./syntax/CreateTrigger";
 import Constraint from "./syntax/Constraint";
 import CheckConstraint from "./syntax/CheckConstraint";
 import PrimaryKeyConstraint from "./syntax/PrimaryKeyConstraint";
@@ -138,6 +139,7 @@ export class GrapeQLCoach extends Coach {
         CommentOnFunction,
         CommentOnTrigger,
         CreateFunction,
+        CreateTrigger,
         Constraint,
         CheckConstraint,
         PrimaryKeyConstraint,
@@ -222,6 +224,7 @@ export {CommentOn};
 export {CommentOnFunction};
 export {CommentOnTrigger};
 export {CreateFunction};
+export {CreateTrigger};
 export {Constraint};
 export {CheckConstraint};
 export {PrimaryKeyConstraint};

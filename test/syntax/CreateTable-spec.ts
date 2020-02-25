@@ -42,7 +42,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             valuesRows: [],
             values: []
         }
@@ -97,7 +98,8 @@ describe("CreateTable", () => {
                 }
             ],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             valuesRows: [],
             values: []
         }
@@ -185,7 +187,8 @@ describe("CreateTable", () => {
                     {word: "parent_b", content: null}
                 ]}
             ],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             values: [],
             valuesRows: []
         }
@@ -264,7 +267,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [
+            deprecated: false,
+            deprecatedColumns: [
                 {word: "name3", content: null}
             ],
             valuesRows: [],
@@ -318,7 +322,8 @@ describe("CreateTable", () => {
                     {word: "system_fields", content: null}
                 ]}
             ],
-            deprecated: [
+            deprecated: false,
+            deprecatedColumns: [
                 {word: "name", content: null}
             ],
             valuesRows: [],
@@ -410,7 +415,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             values: [
                 {id: 1, name: "FCL", note: null},
                 {id: 2, name: "FTL", note: null},
@@ -581,7 +587,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             values: [
                 {id: 1}
             ],
@@ -625,7 +632,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             values: [
                 {id: 1}
             ],
@@ -671,7 +679,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             values: [
                 {id: 1}
             ],
@@ -794,7 +803,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             values: [
                 {id: 1, name: null},
                 {id: 2, name: null}
@@ -943,7 +953,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             values: [
                 {id: 1, name: null},
                 {id: 2, name: null}
@@ -1026,7 +1037,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             values: [
                 {id: 1, name: null},
                 {id: 2, name: null}
@@ -1159,7 +1171,8 @@ describe("CreateTable", () => {
             ],
             constraints: [],
             inherits: [],
-            deprecated: [],
+            deprecated: false,
+            deprecatedColumns: [],
             values: [
                 {id: 1, profit: -1},
                 {id: 2, profit: -2}
@@ -1187,4 +1200,49 @@ describe("CreateTable", () => {
         }
     });
 
+    testSyntax(CreateTable, {
+        str: `deprecated table company (
+            id serial primary key
+        )`,
+        result: {
+            deprecated: true,
+            name: {
+                word: "company",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecatedColumns: [],
+            valuesRows: [],
+            values: []
+        }
+    });
+    
 });
