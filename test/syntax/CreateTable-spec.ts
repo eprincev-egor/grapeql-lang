@@ -9,6 +9,7 @@ describe("CreateTable", () => {
             id serial primary key
         )`,
         result: {
+            schema: null,
             name: {
                 word: "company",
                 content: null
@@ -63,6 +64,7 @@ describe("CreateTable", () => {
             constraint company_pk primary key (id)
         )`,
         result: {
+            schema: null,
             name: {
                 word: "company",
                 content: null
@@ -146,6 +148,7 @@ describe("CreateTable", () => {
         )
         inherits (parent_a, public.parent_b)`,
         result: {
+            schema: null,
             name: {
                 word: "company",
                 content: null
@@ -204,6 +207,7 @@ describe("CreateTable", () => {
             name3
         )`,
         result: {
+            schema: null,
             name: {
                 word: "company",
                 content: null
@@ -285,6 +289,7 @@ describe("CreateTable", () => {
             name
         )`,
         result: {
+            schema: null,
             name: {
                 word: "company",
                 content: null
@@ -342,6 +347,7 @@ describe("CreateTable", () => {
             (3, 'LTL')
         )`,
         result: {
+            schema: null,
             name: {
                 word: "order_type",
                 content: null
@@ -564,6 +570,7 @@ describe("CreateTable", () => {
             (1)
         )`,
         result: {
+            schema: null,
             name: {
                 word: "order_type",
                 content: null
@@ -609,6 +616,7 @@ describe("CreateTable", () => {
             (1::integer)
         )`,
         result: {
+            schema: null,
             name: {
                 word: "order_type",
                 content: null
@@ -656,6 +664,7 @@ describe("CreateTable", () => {
             ('1'::integer)
         )`,
         result: {
+            schema: null,
             name: {
                 word: "order_type",
                 content: null
@@ -745,6 +754,7 @@ describe("CreateTable", () => {
             (2, null)
         )`,
         result: {
+            schema: null,
             name: {
                 word: "order_type",
                 content: null
@@ -895,6 +905,7 @@ describe("CreateTable", () => {
             (default)
         )`,
         result: {
+            schema: null,
             name: {
                 word: "order_type",
                 content: null
@@ -979,6 +990,7 @@ describe("CreateTable", () => {
             (default, default)
         )`,
         result: {
+            schema: null,
             name: {
                 word: "order_type",
                 content: null
@@ -1123,6 +1135,7 @@ describe("CreateTable", () => {
             (default, -2::integer)
         )`,
         result: {
+            schema: null,
             name: {
                 word: "order_type",
                 content: null
@@ -1205,6 +1218,7 @@ describe("CreateTable", () => {
             id serial primary key
         )`,
         result: {
+            schema: null,
             deprecated: true,
             name: {
                 word: "company",
@@ -1244,5 +1258,54 @@ describe("CreateTable", () => {
             values: []
         }
     });
-    
+
+    testSyntax(CreateTable, {
+        str: `create table operation.unit (
+            id serial primary key
+        )`,
+        result: {
+            schema: {
+                word: "operation",
+                content: null
+            },
+            name: {
+                word: "unit",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: false,
+            deprecatedColumns: [],
+            valuesRows: [],
+            values: []
+        }
+    });
+        
 });

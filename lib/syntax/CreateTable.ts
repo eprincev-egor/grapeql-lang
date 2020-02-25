@@ -19,6 +19,7 @@ export default class CreateTable extends TableSyntax<CreateTable> {
                 required: true,
                 default: false
             }),
+            schema: ObjectName,
             name: ObjectName,
             inherits: Types.Array({
                 element: ObjectLink,
@@ -49,6 +50,15 @@ export default class CreateTable extends TableSyntax<CreateTable> {
 
         coach.expectWord("table");
         data.name = coach.parse(ObjectName);
+        
+        if ( coach.is(/\s*\./) ) {
+            coach.skipSpace();
+            coach.expect(".");
+            coach.skipSpace();
+
+            data.schema = data.name;
+            data.name = coach.parse(ObjectName);
+        }
 
         super.parseBody(coach, data);
         
@@ -308,6 +318,10 @@ export default class CreateTable extends TableSyntax<CreateTable> {
         }
 
         out += "table ";
+        if ( this.row.schema ) {
+            out += this.row.schema.toString();
+            out += ".";
+        }
         out += this.row.name.toString();
 
         out += super.bodyToString();
