@@ -66,14 +66,17 @@ export default class Column extends Syntax<Column> {
     }
 
     is(coach: GrapeQLCoach) {
+        const checkpoint = coach.i;
+        coach.skipSpace();
+
         if ( coach.isWord() ) {
-            const i = coach.i;
             const word = coach.readWord();
-            coach.i = i;
+            coach.i = checkpoint;
 
             return !keywords.includes(word);
         }
 
+        coach.i = checkpoint;
         return coach.is(Expression, { availableStar: true });
     }
 

@@ -14,7 +14,26 @@ export default class CreateView extends Syntax<CreateView> {
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.is(/(create(\s+or\s+replace)?\s+)?view/i);
+        if ( coach.isWord("view") ) {
+            return true;
+        }
+
+        if ( !coach.isWord("create") ) {
+            return false;
+        }
+
+        const checkpoint = coach.i;
+
+        coach.expectWord("create");
+        if ( coach.isWord("or") ) {
+            coach.expectWord("or");
+            coach.expectWord("replace");
+        }
+
+        const isCreateView = coach.isWord("view");
+
+        coach.i = checkpoint;
+        return isCreateView;
     }
    
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {

@@ -4,7 +4,7 @@ import {Syntax} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import ObjectLink from "./ObjectLink";
 
-export default class SchemaParse<Child extends SchemaParse = any> extends Syntax<Child> {
+export default abstract class SchemaParse<Child extends SchemaParse = any> extends Syntax<Child> {
     /* istanbul ignore next */
     structure() {
         return {
@@ -12,12 +12,11 @@ export default class SchemaParse<Child extends SchemaParse = any> extends Syntax
         };
     }
     
-    is(coach: GrapeQLCoach) {
+    is(coach: GrapeQLCoach): boolean {
         return coach.is(ObjectLink);
     }
 
-    parse(coach: GrapeQLCoach, data) {
-        
+    parse(coach: GrapeQLCoach, data: any) {
         // name
         const i = coach.i;
         const objectLink = coach.parse(ObjectLink);

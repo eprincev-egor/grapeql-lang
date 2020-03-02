@@ -16,7 +16,7 @@ export default class With extends Syntax<With> {
         };
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+    parse(coach: GrapeQLCoach, data: any) {
         coach.expectWord("with");
 
         if ( coach.isWord("recursive") ) {

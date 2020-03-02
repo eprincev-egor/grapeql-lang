@@ -56,7 +56,26 @@ export default class CreateFunction extends Syntax<CreateFunction> {
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.is(/^create(\s+or\s+replace)?\s+function/i);
+        if ( coach.isWord("function") ) {
+            return true;
+        }
+
+        if ( !coach.isWord("create") ) {
+            return false;
+        }
+
+        const checkpoint = coach.i;
+
+        coach.expectWord("create");
+        if ( coach.isWord("or") ) {
+            coach.expectWord("or");
+            coach.expectWord("replace");
+        }
+
+        const isCreateFunction = coach.isWord("function");
+
+        coach.i = checkpoint;
+        return isCreateFunction;
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
@@ -168,7 +187,7 @@ export default class CreateFunction extends Syntax<CreateFunction> {
         }
 
         if ( existsSemicolon ) {
-            if ( coach.is(CommentOn) ) {
+            if ( coach.is(CommentOnFunction) ) {
                 data.comment = coach.parse(CommentOnFunction);
     
                 const identify = this.toIdentify( data );

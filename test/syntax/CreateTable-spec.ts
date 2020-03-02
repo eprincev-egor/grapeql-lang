@@ -1308,4 +1308,54 @@ describe("CreateTable", () => {
         }
     });
         
+    testSyntax(CreateTable, {
+        str: `create/*ignore me*/table/* multi line comment */ operation.unit (
+            -- inline comment
+            id /* multi line comment */ serial primary key
+        )`,
+        result: {
+            schema: {
+                word: "operation",
+                content: null
+            },
+            name: {
+                word: "unit",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "id",
+                        content: null
+                    },
+                    type: {
+                        type: "serial"
+                    },
+                    nulls: false,
+                    primaryKey: {
+                        name: null,
+                        column: {
+                            word: "id",
+                            content: null
+                        },
+                        primaryKey: [{
+                            word: "id",
+                            content: null
+                        }]
+                    },
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            inherits: [],
+            deprecated: false,
+            deprecatedColumns: [],
+            valuesRows: [],
+            values: []
+        }
+    });
+        
 });

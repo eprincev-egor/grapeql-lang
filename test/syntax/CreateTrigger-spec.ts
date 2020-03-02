@@ -827,5 +827,47 @@ describe("CreateTrigger", () => {
         `,
         error: /comment after trigger has wrong identify/
     });
-    
+
+    testSyntax(CreateTrigger, {
+        str: `create /* multi 
+        line
+        comment */ trigger test 
+            before insert
+            -- inline
+            on public.company
+            -- comment
+            for each row
+            -- execute procedure public.test()
+            execute procedure public.test()
+        `,
+        result: {
+            name: "test",
+            table: {
+                schema: "public",
+                name: "company"
+            },
+            
+            before: true,
+            insert: true,
+
+            procedure: {
+                args: [],
+                schema: "public",
+                name: "test"
+            },
+            
+            after: null,
+            delete: null,
+            update: null,
+            updateOf: null,
+            
+            constraint: null,
+            deferrable: null,
+            statement: null,
+            initially: null,
+            when: null,
+            comment: null
+        }
+    });
+        
 });

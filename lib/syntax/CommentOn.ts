@@ -4,7 +4,7 @@ import {GrapeQLCoach} from "../GrapeQLCoach";
 import DollarString from "./DollarString";
 import SingleQuotesString from "./SingleQuotesString";
 
-export default class CommentOn<Child extends CommentOn = any> extends Syntax<CommentOn & Child> {
+export default abstract class CommentOn<Child extends CommentOn = any> extends Syntax<CommentOn & Child> {
     structure() {
         return {
             comment: Types.Or({

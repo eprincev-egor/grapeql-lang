@@ -10,7 +10,7 @@ import PrimaryKeyConstraint from "./PrimaryKeyConstraint";
 import Constraint from "./Constraint";
 import ValuesRow from "./ValuesRow";
 
-export default class TableSyntax<Child extends TableSyntax = any> extends Syntax<TableSyntax & Child> {
+export default abstract class TableSyntax<Child extends TableSyntax = any> extends Syntax<TableSyntax & Child> {
     structure() {
         return {
             columns: Types.Array({

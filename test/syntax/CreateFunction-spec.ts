@@ -1138,4 +1138,72 @@ describe("CreateFunction", () => {
             args: []
         });
     });
+
+    
+    testSyntax(CreateFunction, {
+        str: `create /* multi */ or /* line */ replace /* comment */ function /* here */
+            TEST_NAME(xid integer, names text[] /* or here */)
+            -- returns table(
+            returns table(
+                id integer, 
+                -- inline comment here
+                sum numeric
+                -- inline comment here
+            ) as $body$begin;/* but not here */end$body$
+            language plpgsql;
+        `,
+        result: {
+            schema: "public",
+            name: "test_name",
+            args: [
+                {
+                    name: "xid",
+                    type: "integer",
+                    out: null,
+                    in: null,
+                    default: null
+                },
+                {
+                    name: "names",
+                    type: "text[]",
+                    out: null,
+                    in: null,
+                    default: null
+                }
+            ],
+            returns: {
+                setof: null,
+                type: null,
+                table: [
+                    {
+                        name: "id",
+                        type: "integer",
+                        out: null,
+                        in: null,
+                        default: null
+                    },
+                    {
+                        name: "sum",
+                        type: "numeric",
+                        out: null,
+                        in: null,
+                        default: null
+                    }
+                ]
+            },
+            body: {
+                content: "begin;/* but not here */end"
+            },
+
+            language: "plpgsql",
+            immutable: null,
+            returnsNullOnNull: null,
+            stable: null,
+            strict: null,
+            parallel: null,
+            cost: null,
+            comment: null
+        }
+    });
+
 });

@@ -136,7 +136,6 @@ export class GrapeQLCoach extends Coach {
         PgReturns,
         FunctionIdentify,
         TriggerIdentify,
-        CommentOn,
         CommentOnFunction,
         CommentOnTrigger,
         CreateFunction,
@@ -155,6 +154,24 @@ export class GrapeQLCoach extends Coach {
     parseType(): string {
         const dataType = this.parse(DataType as this["syntax"]["DataType"]);
         return dataType.get("type");
+    }
+
+    skipSpace(): void {
+        for (; this.i < this.n; this.i++) {
+            const symbol = this.str[ this.i ];
+
+            // skip spacing symbols
+            if ( /\s/.test(symbol) ) {
+                continue;
+            }
+
+            // skip comments
+            if ( this.is(Comment as this["syntax"]["Comment"]) ) {
+                this.parse(Comment as this["syntax"]["Comment"]);
+            }
+
+            break;
+        }
     }
 }
 

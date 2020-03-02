@@ -54,9 +54,37 @@ export default class CreateTrigger extends Syntax<CreateTrigger> {
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.is(/create(\s+constraint)?\s+trigger/i);
-    }
+        const checkpoint = coach.i;
 
+        if ( coach.isWord("constraint") ) {
+            coach.expectWord("constraint");
+
+            const isCreateTrigger = coach.isWord("trigger");
+
+            coach.i = checkpoint;
+            return isCreateTrigger;
+        }
+
+        if ( coach.isWord("trigger") ) {
+            return true;
+        }
+
+        if ( coach.isWord("create") ) {
+            coach.expectWord("create");
+            
+            if ( coach.isWord("constraint") ) {
+                coach.expectWord("constraint");
+            }
+
+            const isCreateTrigger = coach.isWord("trigger");
+
+            coach.i = checkpoint;
+            return isCreateTrigger;
+        }
+        
+        return false;
+    }
+    
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("create");
 
@@ -156,7 +184,7 @@ export default class CreateTrigger extends Syntax<CreateTrigger> {
         }
 
         if ( existsSemicolon ) {
-            if ( coach.is(CommentOn) ) {
+            if ( coach.is(CommentOnTrigger) ) {
                 data.comment = coach.parse(CommentOnTrigger);
     
                 const identify = this.toIdentify( data );
