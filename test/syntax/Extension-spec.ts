@@ -5,7 +5,7 @@ import testSyntax from "../testSyntax";
 describe("Extension", () => {
 
     testSyntax(Extension, {
-        str: `create extension for company (
+        str: `create extension inn_company for company (
             inn text
         )`,
         result: {
@@ -15,6 +15,10 @@ describe("Extension", () => {
                     word: "company",
                     content: null
                 }]
+            },
+            name: {
+                word: "inn_company",
+                content: null
             },
             columns: [
                 {
@@ -41,7 +45,7 @@ describe("Extension", () => {
     });
     
     testSyntax(Extension, {
-        str: `extension for company (
+        str: `extension inn_company for company (
             inn text
         )`,
         result: {
@@ -51,6 +55,10 @@ describe("Extension", () => {
                     word: "company",
                     content: null
                 }]
+            },
+            name: {
+                word: "inn_company",
+                content: null
             },
             columns: [
                 {
@@ -78,13 +86,17 @@ describe("Extension", () => {
 
     
     testSyntax(Extension, {
-        str: `extension for public.orders (
+        str: `extension check_order for public.orders (
             constraint has_profit check (
                 profit is not null and
                 profit > 0
             )
         )`,
         result: {
+            name: {
+                word: "check_order",
+                content: null
+            },
             forTable: {
                 star: false,
                 link: [{
@@ -128,10 +140,14 @@ describe("Extension", () => {
 
 
     testSyntax(Extension, {
-        str: `extension for public.orders values (
+        str: `extension orders_values for public.orders values (
             (1, 'FCL')
         )`,
         result: {
+            name: {
+                word: "orders_values",
+                content: null
+            },
             forTable: {
                 star: false,
                 link: [{
@@ -161,10 +177,14 @@ describe("Extension", () => {
     });
 
     testSyntax(Extension, {
-        str: `deprecated extension for company (
+        str: `deprecated extension inn_company for company (
             inn text
         )`,
         result: {
+            name: {
+                word: "inn_company",
+                content: null
+            },
             forTable: {
                 star: false,
                 link: [{
@@ -197,10 +217,14 @@ describe("Extension", () => {
     });
     
     testSyntax(Extension, {
-        str: `deprecated create extension for company (
+        str: `deprecated create extension inn_company for company (
             inn text
         )`,
         result: {
+            name: {
+                word: "inn_company",
+                content: null
+            },
             forTable: {
                 star: false,
                 link: [{

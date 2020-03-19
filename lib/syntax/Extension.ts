@@ -2,11 +2,13 @@
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import TableSyntax from "./TableSyntax";
 import ObjectLink from "./ObjectLink";
+import ObjectName from "./ObjectName";
 
 export default class Extension extends TableSyntax<Extension> {
     structure() {
         return {
             ...super.structure(),
+            name: ObjectName,
             forTable: ObjectLink
         };
     }
@@ -22,6 +24,10 @@ export default class Extension extends TableSyntax<Extension> {
         }
 
         coach.expectWord("extension");
+        
+        data.name = coach.parse(ObjectName);
+        coach.skipSpace();
+
         coach.expectWord("for");
         data.forTable = coach.parse(ObjectLink);
 
@@ -62,7 +68,10 @@ export default class Extension extends TableSyntax<Extension> {
             out += "deprecated ";
         }
 
-        out += "extension for ";
+        out += "extension ";
+        out += this.row.name.toString();
+
+        out += " for ";
         out += this.row.forTable.toString();
 
         const hasBody = (
