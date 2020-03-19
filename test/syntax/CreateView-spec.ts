@@ -1,6 +1,8 @@
 
 import CreateView from "../../lib/syntax/CreateView";
 import testSyntax from "../testSyntax";
+import assert from "assert";
+import { GrapeQLCoach } from "../../lib/GrapeQLCoach";
 
 describe("CreateView", () => {
 
@@ -215,5 +217,13 @@ describe("CreateView", () => {
                 fetch: null
             }
         }
-    });    
+    });
+
+    
+    it("CreateView.is('create or replace function')", () => {
+        const coach = new GrapeQLCoach("-- create or replace function");
+
+        const actual = coach.is(CreateView);
+        assert.strictEqual(actual, false);
+    });
 });

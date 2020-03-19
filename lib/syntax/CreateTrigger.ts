@@ -7,7 +7,6 @@ import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import FunctionIdentify from "./FunctionIdentify";
 import TriggerIdentify from "./TriggerIdentify";
-import CommentOn from "./CommentOn";
 import CommentOnTrigger from "./CommentOnTrigger";
 import SchemaName from "./SchemaName";
 import Expression from "./Expression";
