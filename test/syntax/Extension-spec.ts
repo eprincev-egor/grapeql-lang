@@ -34,7 +34,9 @@ describe("Extension", () => {
                 }
             ],
             constraints: [],
-            valuesRows: []
+            valuesRows: [],
+            deprecated: false,
+            deprecatedColumns: []
         }
     });
     
@@ -68,7 +70,9 @@ describe("Extension", () => {
                 }
             ],
             constraints: [],
-            valuesRows: []
+            valuesRows: [],
+            deprecated: false,
+            deprecatedColumns: []
         }
     });
 
@@ -116,7 +120,9 @@ describe("Extension", () => {
                     ]
                 }
             }],
-            valuesRows: []
+            valuesRows: [],
+            deprecated: false,
+            deprecatedColumns: []
         }
     });
 
@@ -148,7 +154,10 @@ describe("Extension", () => {
                         {content: "FCL"}
                     ]}, default: null}
                 ]}
-            ]
+            ],
+            deprecated: false,
+            deprecatedColumns: []
         }
     });
+
 });

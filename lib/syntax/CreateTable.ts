@@ -15,18 +15,10 @@ export default class CreateTable extends TableSyntax<CreateTable> {
     structure() {
         return {
             ...super.structure(),
-            deprecated: Types.Boolean({
-                required: true,
-                default: false
-            }),
             schema: ObjectName,
             name: ObjectName,
             inherits: Types.Array({
                 element: ObjectLink,
-                nullAsEmpty: true
-            }),
-            deprecatedColumns: Types.Array({
-                element: ObjectName,
                 nullAsEmpty: true
             }),
             values: Types.Array({

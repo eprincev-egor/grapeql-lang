@@ -3,6 +3,7 @@ import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import CreateTableElement from "./CreateTableElement";
 import ColumnDefinition from "./ColumnDefinition";
+import ObjectName from "./ObjectName";
 import ForeignKeyConstraint from "./ForeignKeyConstraint";
 import CheckConstraint from "./CheckConstraint";
 import UniqueConstraint from "./UniqueConstraint";
@@ -13,6 +14,14 @@ import ValuesRow from "./ValuesRow";
 export default abstract class TableSyntax<Child extends TableSyntax = any> extends Syntax<TableSyntax & Child> {
     structure() {
         return {
+            deprecated: Types.Boolean({
+                required: true,
+                default: false
+            }),
+            deprecatedColumns: Types.Array({
+                element: ObjectName,
+                nullAsEmpty: true
+            }),
             columns: Types.Array({
                 element: ColumnDefinition,
                 nullAsEmpty: true
