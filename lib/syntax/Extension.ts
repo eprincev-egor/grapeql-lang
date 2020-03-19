@@ -12,6 +12,11 @@ export default class Extension extends TableSyntax<Extension> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( coach.isWord("deprecated") ) {
+            coach.expectWord("deprecated");
+            data.deprecated = true;
+        }
+
         if ( coach.isWord("create") ) {
             coach.expectWord("create");
         }
@@ -30,11 +35,34 @@ export default class Extension extends TableSyntax<Extension> {
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.is(/(create\s+)?extension/i);
+        if ( coach.isWord("deprecated") ) {
+            return true;
+        }
+        if ( coach.isWord("extension") ) {
+            return true;
+        }
+
+        if ( !coach.isWord("create") ) {
+            return false;
+        }
+
+        const checkpoint = coach.i;
+
+        coach.expectWord("create");
+        const isExtension = coach.isWord("extension");
+
+        coach.i = checkpoint;
+        return isExtension;
     }
     
     toString() {
-        let out = "extension for ";
+        let out = "";
+        
+        if ( this.row.deprecated ) {
+            out += "deprecated ";
+        }
+
+        out += "extension for ";
         out += this.row.forTable.toString();
 
         const hasBody = (

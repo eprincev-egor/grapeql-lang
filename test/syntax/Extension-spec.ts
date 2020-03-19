@@ -160,4 +160,76 @@ describe("Extension", () => {
         }
     });
 
+    testSyntax(Extension, {
+        str: `deprecated extension for company (
+            inn text
+        )`,
+        result: {
+            forTable: {
+                star: false,
+                link: [{
+                    word: "company",
+                    content: null
+                }]
+            },
+            columns: [
+                {
+                    name: {
+                        word: "inn",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            valuesRows: [],
+            deprecated: true,
+            deprecatedColumns: []
+        }
+    });
+    
+    testSyntax(Extension, {
+        str: `deprecated create extension for company (
+            inn text
+        )`,
+        result: {
+            forTable: {
+                star: false,
+                link: [{
+                    word: "company",
+                    content: null
+                }]
+            },
+            columns: [
+                {
+                    name: {
+                        word: "inn",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            valuesRows: [],
+            deprecated: true,
+            deprecatedColumns: []
+        }
+    });
+    
 });
