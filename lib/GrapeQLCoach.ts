@@ -75,6 +75,7 @@ import ForeignKeyConstraint from "./syntax/ForeignKeyConstraint";
 import ColumnDefinition from "./syntax/ColumnDefinition";
 import CreateTableElement from "./syntax/CreateTableElement";
 import CreateTable from "./syntax/CreateTable";
+import Extension from "./syntax/Extension";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -148,7 +149,8 @@ export class GrapeQLCoach extends Coach {
         ForeignKeyConstraint,
         ColumnDefinition,
         CreateTableElement,
-        CreateTable
+        CreateTable,
+        Extension
     };
 
     parseType(): string {
@@ -253,3 +255,4 @@ export {ForeignKeyConstraint};
 export {ColumnDefinition};
 export {CreateTableElement};
 export {CreateTable};
+export {Extension};
