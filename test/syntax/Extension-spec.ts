@@ -300,4 +300,33 @@ describe("Extension", () => {
             ]
         }
     });
+
+    
+    testSyntax(Extension, {
+        str: `extension test for company (
+            x numeric,
+            x numeric
+        )`,
+        error: /duplicate column name: x/
+    });
+
+    testSyntax(Extension, {
+        str: `extension test for company (
+            inn1 text not null,
+            inn2 text not null,
+            constraint company_inn_uniq unique (inn1),
+            constraint company_inn_uniq unique (inn2)
+        )`,
+        error: /duplicate constraint name: company_inn_uniq/
+    });
+
+    // testSyntax(Extension, {
+    //     str: `extension test for company 
+    //     values (
+    //         (1, ''),
+    //         (2)
+    //     )`,
+    //     error: /VALUES lists must all be the same length/
+    // });
+
 });
