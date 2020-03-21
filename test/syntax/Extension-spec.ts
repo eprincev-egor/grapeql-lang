@@ -256,4 +256,48 @@ describe("Extension", () => {
         }
     });
     
+    
+    testSyntax(Extension, {
+        str: `extension test for company (
+            name text
+        ) deprecated (
+            inn
+        )`,
+        result: {
+            forTable: {
+                star: false,
+                link: [{
+                    word: "company",
+                    content: null
+                }]
+            },
+            name: {
+                word: "test",
+                content: null
+            },
+            columns: [
+                {
+                    name: {
+                        word: "name",
+                        content: null
+                    },
+                    type: {
+                        type: "text"
+                    },
+                    nulls: true,
+                    primaryKey: null,
+                    unique: null,
+                    foreignKey: null,
+                    check: null,
+                    default: null
+                }
+            ],
+            constraints: [],
+            valuesRows: [],
+            deprecated: false,
+            deprecatedColumns: [
+                {word: "inn", content: null}
+            ]
+        }
+    });
 });

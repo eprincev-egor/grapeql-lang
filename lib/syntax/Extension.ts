@@ -36,6 +36,18 @@ export default class Extension extends TableSyntax<Extension> {
             super.parseBody(coach, data);
         }
         
+        if ( coach.isWord("deprecated") ) {
+            coach.expectWord("deprecated");
+
+            coach.expect("(");
+            coach.skipSpace();
+
+            data.deprecatedColumns = coach.parseComma(ObjectName);
+
+            coach.skipSpace();
+            coach.expect(")");
+        }
+
         // values (...)
         super.parseValues(coach, data);
     }
@@ -81,6 +93,15 @@ export default class Extension extends TableSyntax<Extension> {
         if ( hasBody ) {
             out += super.bodyToString();
         }
+
+        if ( this.row.deprecatedColumns.length ) {
+            out += " deprecated (";
+            out += this.row.deprecatedColumns.map((item) => 
+                item.toString()
+            ).join(", ");
+            out += ")";
+        }
+
         
         out += super.valuesToString();
 
