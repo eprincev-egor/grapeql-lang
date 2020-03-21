@@ -1,6 +1,8 @@
 
 import CreateTable from "../../lib/syntax/CreateTable";
 import testSyntax from "../testSyntax";
+import assert from "assert";
+import { GrapeQLCoach } from "../../lib/GrapeQLCoach";
 
 describe("CreateTable", () => {
 
@@ -1357,5 +1359,12 @@ describe("CreateTable", () => {
             values: []
         }
     });
-        
+    
+    
+    it("CreateTable.is('deprecated extension')", () => {
+        const coach = new GrapeQLCoach("deprecated extension");
+
+        const actual = coach.is(CreateTable);
+        assert.strictEqual(actual, false);
+    });
 });

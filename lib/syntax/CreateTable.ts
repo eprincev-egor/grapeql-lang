@@ -299,22 +299,24 @@ export default class CreateTable extends TableSyntax<CreateTable> {
     }
 
     is(coach: GrapeQLCoach) {
+        const checkpoint = coach.i;
+    
         if ( coach.isWord("deprecated") ) {
-            return true;
+            coach.expectWord("deprecated"); 
         }
         if ( coach.isWord("table") ) {
+            coach.i = checkpoint;
             return true;
         }
-
+    
         if ( !coach.isWord("create") ) {
+            coach.i = checkpoint;
             return false;
         }
-
-        const checkpoint = coach.i;
-
+    
         coach.expectWord("create");
         const isCreateTable = coach.isWord("table");
-
+    
         coach.i = checkpoint;
         return isCreateTable;
     }

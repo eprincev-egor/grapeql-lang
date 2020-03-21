@@ -1,6 +1,6 @@
 {
   "name": "grapeql-lang",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "GrapeQL parser",
   "main": "dist/index.js",
   "types": "lib/index.ts",
