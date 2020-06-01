@@ -76,6 +76,9 @@ import ColumnDefinition from "./syntax/ColumnDefinition";
 import CreateTableElement from "./syntax/CreateTableElement";
 import CreateTable from "./syntax/CreateTable";
 import Extension from "./syntax/Extension";
+import {SetItem} from "./syntax/SetItem";
+import {Returning} from "./syntax/Returning";
+import {Update} from "./syntax/Update";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -150,7 +153,10 @@ export class GrapeQLCoach extends Coach {
         ColumnDefinition,
         CreateTableElement,
         CreateTable,
-        Extension
+        Extension,
+        SetItem,
+        Returning,
+        Update
     };
 
     parseType(): string {
@@ -256,3 +262,6 @@ export {ColumnDefinition};
 export {CreateTableElement};
 export {CreateTable};
 export {Extension};
+export {SetItem};
+export {Returning};
+export {Update};
