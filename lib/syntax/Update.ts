@@ -92,7 +92,7 @@ export class Update extends Syntax<Update> {
         if ( coach.isWord("update") ) {
             return true;
         }
-        if ( coach.isWith() ) {
+        if ( coach.is(With) ) {
             const index = coach.i;
             coach.parseWith();
             coach.skipSpace();
