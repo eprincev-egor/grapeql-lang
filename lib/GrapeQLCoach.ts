@@ -80,6 +80,9 @@ import {SetItem} from "./syntax/SetItem";
 import {Returning} from "./syntax/Returning";
 import {Update} from "./syntax/Update";
 import {Delete} from "./syntax/Delete";
+import {ConflictTargetItem} from "./syntax/ConflictTargetItem";
+import {OnConflict} from "./syntax/OnConflict";
+import {Insert} from "./syntax/Insert";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -158,7 +161,10 @@ export class GrapeQLCoach extends Coach {
         SetItem,
         Returning,
         Update,
-        Delete
+        Delete,
+        ConflictTargetItem,
+        OnConflict,
+        Insert
     };
 
     parseType(): string {
@@ -268,3 +274,6 @@ export {SetItem};
 export {Returning};
 export {Update};
 export {Delete};
+export {ConflictTargetItem};
+export {OnConflict};
+export {Insert};
