@@ -4,7 +4,6 @@ import {Syntax, Types} from "lang-coach";
 import TableLink from "./TableLink";
 import ObjectName from "./ObjectName";
 import Select from "./Select";
-import CacheReverseExpression from "./CacheReverseExpression";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
 /*
@@ -15,24 +14,24 @@ cache totals for company (
     where
         orders.id_client = company.id
 )
-after change orders set where
-    company.id = orders.id_client
  */
 
 export default class CacheFor extends Syntax<CacheFor> {
     structure() {
         return {
             for: TableLink,
+            name: ObjectName,
             as: ObjectName,
-            cache: Select,
-            reverse: Types.Array({
-                element: CacheReverseExpression
-            })
+            cache: Select
         };
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("cache");
+
+        data.name = coach.parse(ObjectName);
+        coach.skipSpace();
+
         coach.expectWord("for");
 
         data.for = coach.parse(TableLink);
@@ -52,19 +51,20 @@ export default class CacheFor extends Syntax<CacheFor> {
 
         coach.skipSpace();
         coach.expect(")");
-
-        data.reverse = coach.parseChain(CacheReverseExpression);
     }
 
     is(coach: GrapeQLCoach) {
-        return coach.is(/cache\s+for/i);
+        return coach.isWord("cache");
     }
 
     toString() {
         const data = this.row;
         let out = "";
 
-        out += "cache for ";
+        out += "cache ";
+        out += data.name.toString();
+        
+        out += " for ";
         out += data.for.toString();
 
         if ( data.as ) {
@@ -75,11 +75,6 @@ export default class CacheFor extends Syntax<CacheFor> {
         out += " ( ";
         out += data.cache.toString();
         out += " )";
-
-        data.reverse.forEach((item) => {
-            out += " ";
-            out += item.toString();
-        });
 
         return out;
     }

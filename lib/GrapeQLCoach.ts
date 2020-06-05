@@ -8,7 +8,6 @@ import Between from "./syntax/Between";
 import Boolean from "./syntax/Boolean";
 import ByteString from "./syntax/ByteString";
 import CacheFor from "./syntax/CacheFor";
-import CacheReverseExpression from "./syntax/CacheReverseExpression";
 import CaseWhen from "./syntax/CaseWhen";
 import CaseWhenElement from "./syntax/CaseWhenElement";
 import Cast from "./syntax/Cast";
@@ -91,7 +90,6 @@ export class GrapeQLCoach extends Coach {
         Boolean,
         ByteString,
         CacheFor,
-        CacheReverseExpression,
         CaseWhen,
         CaseWhenElement,
         Cast,
@@ -202,7 +200,6 @@ export {Between};
 export {Boolean};
 export {ByteString};
 export {CacheFor};
-export {CacheReverseExpression};
 export {CaseWhen};
 export {CaseWhenElement};
 export {Cast};

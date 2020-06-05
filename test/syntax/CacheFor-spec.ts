@@ -1,97 +1,21 @@
 
-
 import CacheFor from "../../lib/syntax/CacheFor";
 import testSyntax from "../testSyntax";
 
-describe("CacheReverseExpression", () => {
+describe("CacheFor", () => {
 
     testSyntax(CacheFor, {
-        str: "cache for public.order (select 1 as some_numb)",
-        result: {
-            for: {star: false, link: [
-                {word: "public", content: null},
-                {word: "order", content: null}
-            ]},
-            as: null,
-            cache: {
-                with: null,
-                columns: [
-                    {
-                        expression: {elements: [
-                            {number: "1"}
-                        ]},
-                        as: { word: "some_numb", content: null }
-                    }
-                ],
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
-            },
-            reverse: []
-        }
-    });
-
-    testSyntax(CacheFor, {
-        str: "cache for public.order as orders (select orders.id as some_numb)",
-        result: {
-            for: {star: false, link: [
-                {word: "public", content: null},
-                {word: "order", content: null}
-            ]},
-            as: {word: "orders", content: null},
-            cache: {
-                with: null,
-                columns: [
-                    {
-                        expression: {elements: [
-                            {star: false, link: [
-                                {word: "orders", content: null},
-                                {word: "id", content: null}
-                            ]}
-                        ]},
-                        as: { word: "some_numb", content: null }
-                    }
-                ],
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
-            },
-            reverse: []
-        }
-    });
-
-    testSyntax(CacheFor, {
-        str: `cache for company (
+        str: `cache gtd_totals for orders (
             select 
-                count(*) as orders_count 
-            from orders
+                string_agg(distinct gtds.doc_number, ', ') as gtds_numbers
+            from gtds
             where
-                orders.id_client = company.id
-        )
-        after change orders set where
-            orders.id_client = company.id
-        `,
+                gtds.id_order = orders.id
+        )`,
         result: {
+            name: {word: "gtd_totals", content: null},
             for: {star: false, link: [
-                {word: "company", content: null}
+                {word: "orders", content: null}
             ]},
             as: null,
             cache: {
@@ -103,17 +27,20 @@ describe("CacheReverseExpression", () => {
                                 function: {
                                     star: false,
                                     link: [
-                                        {word: "count", content: null}
+                                        {word: "string_agg", content: null}
                                     ]
                                 },
                                 all: null,
-                                distinct: null,
+                                distinct: true,
                                 arguments: [
                                     {elements: [
-                                        {
-                                            star: true,
-                                            link: []
-                                        }
+                                        {star: false, link: [
+                                            {word: "gtds", content: null},
+                                            {word: "doc_number", content: null}
+                                        ]}
+                                    ]},
+                                    {elements: [
+                                        {content: ", "}
                                     ]}
                                 ],
                                 where: null,
@@ -123,7 +50,7 @@ describe("CacheReverseExpression", () => {
                                 emptyOver: null
                             }
                         ]},
-                        as: { word: "orders_count", content: null }
+                        as: {word: "gtds_numbers", content: null}
                     }
                 ],
                 from: [
@@ -133,25 +60,25 @@ describe("CacheReverseExpression", () => {
                         file: null,
                         withOrdinality: null,
                         functionCall: null,
+                        select: null,
                         as: null,
                         columns: null,
                         joins: [],
                         star: null,
-                        select: null,
-            
+    
                         table: {star: false, link: [
-                            {word: "orders", content: null}
+                            {word: "gtds", content: null}
                         ]}
                     }
                 ],
                 where: {elements: [
                     {star: false, link: [
-                        {word: "orders", content: null},
-                        {word: "id_client", content: null}
+                        {word: "gtds", content: null},
+                        {word: "id_order", content: null}
                     ]},
                     {operator: "="},
                     {star: false, link: [
-                        {word: "company", content: null},
+                        {word: "orders", content: null},
                         {word: "id", content: null}
                     ]}
                 ]},
@@ -165,26 +92,128 @@ describe("CacheReverseExpression", () => {
                 offsetRows: null,
                 limit: null,
                 fetch: null
-            },
-            reverse: [
-                {
-                    table: {star: false, link: [
-                        {word: "orders", content: null}
-                    ]},
-                    as: null,
-                    where: {elements: [
-                        {star: false, link: [
-                            {word: "orders", content: null},
-                            {word: "id_client", content: null}
+            }
+        }
+    });
+
+    testSyntax(CacheFor, {
+        str: `cache gtd_totals for orders as my_order (
+            select 
+                string_agg(distinct gtds.doc_number, ', ') as gtds_numbers,
+                array_agg(gtds.id) as gtds_ids
+            from gtds
+            where
+                gtds.id_order = my_order.id
+        )`,
+        result: {
+            name: {word: "gtd_totals", content: null},
+            for: {star: false, link: [
+                {word: "orders", content: null}
+            ]},
+            as: {word: "my_order", content: null},
+            cache: {
+                with: null,
+                columns: [
+                    {
+                        expression: {elements: [
+                            {
+                                function: {
+                                    star: false,
+                                    link: [
+                                        {word: "string_agg", content: null}
+                                    ]
+                                },
+                                all: null,
+                                distinct: true,
+                                arguments: [
+                                    {elements: [
+                                        {star: false, link: [
+                                            {word: "gtds", content: null},
+                                            {word: "doc_number", content: null}
+                                        ]}
+                                    ]},
+                                    {elements: [
+                                        {content: ", "}
+                                    ]}
+                                ],
+                                where: null,
+                                orderBy: null,
+                                within: null,
+                                over: null,
+                                emptyOver: null
+                            }
                         ]},
-                        {operator: "="},
-                        {star: false, link: [
-                            {word: "company", content: null},
-                            {word: "id", content: null}
+                        as: {word: "gtds_numbers", content: null}
+                    },
+                    {
+                        expression: {elements: [
+                            {
+                                function: {
+                                    star: false,
+                                    link: [
+                                        {word: "array_agg", content: null}
+                                    ]
+                                },
+                                all: null,
+                                distinct: null,
+                                arguments: [
+                                    {elements: [
+                                        {star: false, link: [
+                                            {word: "gtds", content: null},
+                                            {word: "id", content: null}
+                                        ]}
+                                    ]}
+                                ],
+                                where: null,
+                                orderBy: null,
+                                within: null,
+                                over: null,
+                                emptyOver: null
+                            }
+                        ]},
+                        as: {word: "gtds_ids", content: null}
+                    }
+                ],
+                from: [
+                    {
+                        lateral: null,
+                        only: null,
+                        file: null,
+                        withOrdinality: null,
+                        functionCall: null,
+                        select: null,
+                        as: null,
+                        columns: null,
+                        joins: [],
+                        star: null,
+    
+                        table: {star: false, link: [
+                            {word: "gtds", content: null}
                         ]}
+                    }
+                ],
+                where: {elements: [
+                    {star: false, link: [
+                        {word: "gtds", content: null},
+                        {word: "id_order", content: null}
+                    ]},
+                    {operator: "="},
+                    {star: false, link: [
+                        {word: "my_order", content: null},
+                        {word: "id", content: null}
                     ]}
-                }
-            ]
+                ]},
+                groupBy: null,
+                having: null,
+                window: null,
+                orderBy: null,
+                union: null,
+                offset: null,
+                offsetRow: null,
+                offsetRows: null,
+                limit: null,
+                fetch: null
+            }
         }
     });
 
