@@ -76,7 +76,7 @@ export default function testSyntax<
             
             const coach = new GrapeQLCoach(str);
             const result = coach.parse(SomeSyntax, test.options);
-            assert.deepEqual(shouldBeResult, result.toJSON());
+            assert.deepEqual(result.toJSON(), shouldBeResult);
         });
 
 
@@ -89,7 +89,7 @@ export default function testSyntax<
             const cloneCoach = new GrapeQLCoach( cloneString );
             
             const cloneResult = cloneCoach.parse(SomeSyntax, test.options);
-            assert.deepEqual(shouldBeResult, cloneResult.toJSON());
+            assert.deepEqual(cloneResult.toJSON(), shouldBeResult);
         });
     }
 

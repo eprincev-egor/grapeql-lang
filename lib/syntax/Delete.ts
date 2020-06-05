@@ -1,39 +1,38 @@
-import { GrapeQLCoach, With, TableLink, ObjectName, FromItem, Expression } from "../GrapeQLCoach";
-import { Types, Syntax } from "lang-coach";
-import {SetItem} from "./SetItem";
-import {Returning} from "./Returning";
 
-export class Update extends Syntax<Update> {
+import {Syntax, Types} from "lang-coach";
+import {GrapeQLCoach, TableLink, With, ObjectName, FromItem, Expression, Returning} from "../GrapeQLCoach";
+
+// true or false
+
+export class Delete extends Syntax<Delete> {
     structure() {
         return {
-            with: With,
             only: Types.Boolean({
+                default: false
+            }),
+            star: Types.Boolean({
                 default: false
             }),
             table: TableLink,
             as: ObjectName,
-            star: Types.Boolean({
-                default: false
-            }),
-            set: Types.Array({
-                element: SetItem
-            }),
-            from: Types.Array({
+            using: Types.Array({
                 element: FromItem
             }),
+            with: With,
             where: Expression,
             returning: Returning
         };
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        
+
         if ( coach.is(With) ) {
             data.with = coach.parse(With);
             coach.skipSpace();
         }
 
-        coach.expectWord("update");
+        coach.expectWord("delete");
+        coach.expectWord("from");
 
         if ( coach.isWord("only") ) {
             coach.expectWord("only");
@@ -54,27 +53,14 @@ export class Update extends Syntax<Update> {
         if ( coach.isWord("as") ) {
             coach.expectWord("as");
 
-            const i = coach.i;
             data.as = coach.parse(ObjectName);
-
             coach.skipSpace();
-
-            if ( data.as.toLowerCase()[0] === "$" ) {
-                coach.i = i;
-                coach.throwError("$ is reserved symbol for alias");
-            }
         }
 
-        coach.expectWord("set");
+        if ( coach.isWord("using") ) {
+            coach.expectWord("using");
 
-        data.set = coach.parseComma(SetItem);
-        coach.skipSpace();
-
-        if ( coach.isWord("from") ) {
-            coach.expectWord("from");
-
-            data.from = coach.parseComma(FromItem);
-            coach.skipSpace();
+            data.using = coach.parseComma(FromItem);
         }
 
         if ( coach.isWord("where") ) {
@@ -83,13 +69,13 @@ export class Update extends Syntax<Update> {
             data.where = coach.parse(Expression);
         }
 
-        if ( coach.isWord("returning") ) {
+        if ( coach.is(Returning) ) {
             data.returning = coach.parse(Returning);
         }
     }
 
     is(coach: GrapeQLCoach) {
-        if ( coach.isWord("update") ) {
+        if ( coach.isWord("delete") ) {
             return true;
         }
         if ( coach.is(With) ) {
@@ -97,10 +83,10 @@ export class Update extends Syntax<Update> {
             coach.parse(With);
             coach.skipSpace();
 
-            const isInsert = coach.isWord("update");
+            const isDelete = coach.isWord("delete");
             coach.i = index;
 
-            return isInsert;
+            return isDelete;
         } else {
             return false;
         }
@@ -115,7 +101,7 @@ export class Update extends Syntax<Update> {
             out += " ";
         }
 
-        out += "update ";
+        out += "delete from ";
 
         if ( row.only ) {
             out += "only ";
@@ -132,12 +118,9 @@ export class Update extends Syntax<Update> {
             out += row.as.toString();
         }
 
-        out += " set ";
-        out += row.set.map((setItem) => setItem.toString()).join(", ");
-
-        if ( row.from ) {
-            out += " from ";
-            out += row.from.map((fromItem) => fromItem.toString()).join(", ");
+        if ( row.using ) {
+            out += " using ";
+            out += row.using.map((fromItem) => fromItem.toString()).join(", ");
         }
 
         if ( row.where ) {
@@ -153,4 +136,3 @@ export class Update extends Syntax<Update> {
         return out;
     }
 }
-

@@ -79,6 +79,7 @@ import Extension from "./syntax/Extension";
 import {SetItem} from "./syntax/SetItem";
 import {Returning} from "./syntax/Returning";
 import {Update} from "./syntax/Update";
+import {Delete} from "./syntax/Delete";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -156,7 +157,8 @@ export class GrapeQLCoach extends Coach {
         Extension,
         SetItem,
         Returning,
-        Update
+        Update,
+        Delete
     };
 
     parseType(): string {
@@ -265,3 +267,4 @@ export {Extension};
 export {SetItem};
 export {Returning};
 export {Update};
+export {Delete};
