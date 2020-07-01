@@ -53,6 +53,7 @@ describe("CacheFor", () => {
                         as: {word: "gtds_numbers", content: null}
                     }
                 ],
+                into: null,
                 from: [
                     {
                         lateral: null,
@@ -174,6 +175,7 @@ describe("CacheFor", () => {
                         as: {word: "gtds_ids", content: null}
                     }
                 ],
+                into: null,
                 from: [
                     {
                         lateral: null,

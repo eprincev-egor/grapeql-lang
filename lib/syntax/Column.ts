@@ -7,6 +7,7 @@ import DoubleQuotes from "./DoubleQuotes";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
 const keywords = [
+    "into",
     "from",
     "where",
     "having",

@@ -24,6 +24,7 @@ describe("CreateView", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,
@@ -61,6 +62,7 @@ describe("CreateView", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,
@@ -98,6 +100,7 @@ describe("CreateView", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,
@@ -132,6 +135,7 @@ describe("CreateView", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,
@@ -166,6 +170,7 @@ describe("CreateView", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,
@@ -203,6 +208,7 @@ describe("CreateView", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,

@@ -114,6 +114,7 @@ describe("Insert", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,
@@ -151,6 +152,7 @@ describe("Insert", () => {
                                 as: null
                             }
                         ],
+                        into: null,
                         from: null,
                         where: null,
                         groupBy: null,
@@ -184,6 +186,7 @@ describe("Insert", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: [{
                     lateral: null,
                     only: null,

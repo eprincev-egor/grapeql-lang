@@ -6,6 +6,7 @@ import testSyntax from "../testSyntax";
 const EMPTY_SELECT = {
     with: null,
     columns: null,
+    into: null,
     from: null,
     where: null,
     groupBy: null,

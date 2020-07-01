@@ -879,6 +879,7 @@ describe("Expression", () => {
                     exists: {
                         with: null,
                         columns: null,
+                        into: null,
                         from: null,
                         where: null,
                         groupBy: null,
@@ -899,6 +900,7 @@ describe("Expression", () => {
                     exists: {
                         with: null,
                         columns: null,
+                        into: null,
                         from: null,
                         where: null,
                         groupBy: null,
@@ -929,6 +931,7 @@ describe("Expression", () => {
                     select: {
                         with: null,
                         columns: null,
+                        into: null,
                         from: null,
                         where: null,
                         groupBy: null,
@@ -948,6 +951,7 @@ describe("Expression", () => {
                     exists: {
                         with: null,
                         columns: null,
+                        into: null,
                         from: null,
                         where: null,
                         groupBy: null,
@@ -1119,4 +1123,19 @@ describe("Expression", () => {
             );
         });
     });
+
+    it("correctly return coach position in sql: 'false then'", () => {
+        const coach = new GrapeQLCoach("false then");
+        const expression = coach.parse(Expression);
+
+        assert.deepEqual(expression.toJSON(), {
+            elements: [
+                {boolean: false}
+            ]
+        });
+
+        // if position is correct, then we can parse next word
+        coach.expectWord("then");
+    });
+
 });

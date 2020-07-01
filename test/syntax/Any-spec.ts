@@ -14,6 +14,7 @@ describe("Any", () => {
             select: {
                 with: null,
                 columns: null,
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,
@@ -38,6 +39,7 @@ describe("Any", () => {
             select: {
                 with: null,
                 columns: null,
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,
@@ -62,6 +64,7 @@ describe("Any", () => {
             select: {
                 with: null,
                 columns: null,
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,

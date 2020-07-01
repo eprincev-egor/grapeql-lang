@@ -80,6 +80,7 @@ describe("Column", () => {
     // test keywords
     
     const keywords = [
+        "into",
         "from",
         "where",
         "having",

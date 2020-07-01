@@ -163,6 +163,7 @@ describe("Delete", () => {
                                 as: null
                             }
                         ],
+                        into: null,
                         from: [{
                             lateral: null,
                             only: null,
@@ -221,6 +222,7 @@ describe("Delete", () => {
                             as: null
                         }
                     ],
+                    into: null,
                     from: [{
                         lateral: null,
                         only: null,

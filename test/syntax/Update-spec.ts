@@ -259,6 +259,7 @@ describe("Update", () => {
                                 as: null
                             }
                         ],
+                        into: null,
                         from: [{
                             lateral: null,
                             only: null,
@@ -468,6 +469,7 @@ describe("Update", () => {
                                 as: {word: "id", content: null}
                             }
                         ],
+                        into: null,
                         from: null,
                         where: null,
                         groupBy: null,
@@ -550,6 +552,7 @@ describe("Update", () => {
                             as: null
                         }
                     ],
+                    into: null,
                     from: [{
                         lateral: null,
                         only: null,

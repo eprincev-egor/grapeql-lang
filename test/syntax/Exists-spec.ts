@@ -11,6 +11,7 @@ describe("Exists", () => {
             exists: {
                 with: null,
                 columns: null,
+                into: null,
                 from: null,
                 where: null,
                 groupBy: null,

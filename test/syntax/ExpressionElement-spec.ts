@@ -264,6 +264,7 @@ describe("ExpressionElement", () => {
                 exists: {
                     with: null,
                     columns: null,
+                    into: null,
                     from: null,
                     where: null,
                     groupBy: null,
@@ -290,6 +291,7 @@ describe("ExpressionElement", () => {
                 select: {
                     with: null,
                     columns: null,
+                    into: null,
                     from: null,
                     where: null,
                     groupBy: null,

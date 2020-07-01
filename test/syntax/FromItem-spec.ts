@@ -494,6 +494,7 @@ describe("FromItem", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: [{
                     lateral: null,
                     only: null,
@@ -553,6 +554,7 @@ describe("FromItem", () => {
                         as: null
                     }
                 ],
+                into: null,
                 from: [{
                     lateral: null,
                     only: null,

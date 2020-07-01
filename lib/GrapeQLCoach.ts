@@ -82,6 +82,11 @@ import {Delete} from "./syntax/Delete";
 import {ConflictTargetItem} from "./syntax/ConflictTargetItem";
 import {OnConflict} from "./syntax/OnConflict";
 import {Insert} from "./syntax/Insert";
+import {AssignVarStatement} from "./syntax/AssignVarStatement";
+import {ReturnStatement} from "./syntax/ReturnStatement";
+import {BodyStatement} from "./syntax/BodyStatement";
+import {IfStatement} from "./syntax/IfStatement";
+import {ElseIfStatement} from "./syntax/ElseIfStatement";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -162,7 +167,12 @@ export class GrapeQLCoach extends Coach {
         Delete,
         ConflictTargetItem,
         OnConflict,
-        Insert
+        Insert,
+        AssignVarStatement,
+        ReturnStatement,
+        IfStatement,
+        ElseIfStatement,
+        BodyStatement
     };
 
     parseType(): string {
@@ -274,3 +284,8 @@ export {Delete};
 export {ConflictTargetItem};
 export {OnConflict};
 export {Insert};
+export {AssignVarStatement};
+export {ReturnStatement};
+export {IfStatement};
+export {ElseIfStatement};
+export {BodyStatement};

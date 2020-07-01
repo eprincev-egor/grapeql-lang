@@ -10,7 +10,7 @@ import WindowItem from "./WindowItem";
 import OrderByElement from "./OrderByElement";
 import Union from "./Union";
 import SelectFetch from "./SelectFetch";
-import {GrapeQLCoach} from "../GrapeQLCoach";
+import {GrapeQLCoach, ObjectLink} from "../GrapeQLCoach";
 
 // https://www.postgresql.org/docs/9.5/static/sql-select.html
 /*
@@ -57,6 +57,9 @@ export default class Select extends Syntax<Select> {
             with: With,
             columns: Types.Array({
                 element: Column
+            }),
+            into: Types.Array({
+                element: ObjectLink
             }),
             from: Types.Array({
                 element: FromItem
@@ -125,6 +128,7 @@ export default class Select extends Syntax<Select> {
         //     }
         // }
 
+        this.parseInto(coach, data);
         this.parseFrom(coach, data);
         this.parseWhere(coach, data);
         this.parseGroupBy(coach, data);
@@ -151,6 +155,17 @@ export default class Select extends Syntax<Select> {
             return;
         }
         data.with = coach.parse(With);
+
+        coach.skipSpace();
+    }
+
+    parseInto(coach: GrapeQLCoach, data: this["TInputData"]) {
+        if ( !coach.isWord("into") ) {
+            return;
+        }
+
+        coach.expectWord("into");
+        data.into = coach.parseComma(ObjectLink);
 
         coach.skipSpace();
     }
@@ -352,6 +367,12 @@ export default class Select extends Syntax<Select> {
             out += " ";
         }
 
+        if ( data.into ) {
+            out += "into ";
+            out += data.into.map((item) => item.toString()).join(", ");
+            out += " ";
+        }
+
         if ( data.from ) {
             out += "from ";
             out += data.from.map((item) => item.toString()).join(", ");
@@ -430,12 +451,12 @@ function validate(data: Select["TInputData"]) {
     // validate from items
     const fromMap = {};
 
-    data.from.forEach((fromItem) => {
+    data.from.forEach((fromItem: FromItem) => {
         validateFromItem( fromMap, fromItem );
     });
 }
 
-function validateFromItem(fromMap, fromItem: FromItem) {
+function validateFromItem(fromMap: any, fromItem: FromItem) {
     let name;
 
     if ( fromItem.get("as") ) {
@@ -494,6 +515,7 @@ function throwFromUniqError(name) {
 
 // stop keywords for alias
 (Select as any).keywords = [
+    "into",
     "from",
     "where",
     "select",

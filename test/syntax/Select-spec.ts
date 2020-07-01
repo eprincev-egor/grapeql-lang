@@ -10,6 +10,49 @@ describe("Select", () => {
         result: {
             with: null,
             columns: null,
+            into: null,
+            from: null,
+            where: null,
+            groupBy: null,
+            having: null,
+            window: null,
+            orderBy: null,
+            union: null,
+            offset: null,
+            offsetRow: null,
+            offsetRows: null,
+            limit: null,
+            fetch: null
+        }
+    });
+
+    testSyntax(Select, {
+        str: "select 1, 2 into a, new.b",
+        result: {
+            with: null,
+            columns: [
+                {
+                    expression: {elements: [
+                        {number: "1"}
+                    ]},
+                    as: null
+                },
+                {
+                    expression: {elements: [
+                        {number: "2"}
+                    ]},
+                    as: null
+                }
+            ],
+            into: [
+                {star: false, link: [
+                    {word: "a", content: null}
+                ]},
+                {star: false, link: [
+                    {word: "new", content: null},
+                    {word: "b", content: null}
+                ]}
+            ],
             from: null,
             where: null,
             groupBy: null,
@@ -49,6 +92,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: null,
             where: null,
             groupBy: null,
@@ -76,6 +120,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: null,
             where: {elements: [
                 {boolean: false}
@@ -105,6 +150,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -179,6 +225,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -263,6 +310,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -343,6 +391,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -387,6 +436,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -432,6 +482,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -477,6 +528,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -521,6 +573,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -565,6 +618,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -609,6 +663,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -646,6 +701,7 @@ describe("Select", () => {
         result: {
             with: null,
             columns: null,
+            into: null,
             from: null,
             where: null,
             groupBy: null,
@@ -673,6 +729,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -724,6 +781,7 @@ describe("Select", () => {
                         select: {
                             with: null,
                             columns: null,
+                            into: null,
                             from: null,
                             where: null,
                             groupBy: null,
@@ -749,6 +807,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -793,6 +852,7 @@ describe("Select", () => {
                     as: null
                 }
             ],
+            into: null,
             from: null,
             where: null,
             groupBy: null,
@@ -820,6 +880,7 @@ describe("Select", () => {
                             as: null
                         }
                     ],
+                    into: null,
                     from: null,
                     where: null,
                     groupBy: null,
@@ -842,6 +903,7 @@ describe("Select", () => {
         result: {
             with: null,
             columns: null,
+            into: null,
             from: [
                 {
                     lateral: null,
@@ -939,6 +1001,7 @@ describe("Select", () => {
         result: {
             with: null,
             columns: null,
+            into: null,
             from: [
                 {
                     lateral: null,
