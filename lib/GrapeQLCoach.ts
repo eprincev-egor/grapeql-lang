@@ -1,5 +1,4 @@
 
-
 import {Coach} from "lang-coach";
 import allSyntax from "./allSyntax";
 
@@ -84,9 +83,11 @@ import {OnConflict} from "./syntax/OnConflict";
 import {Insert} from "./syntax/Insert";
 import {AssignVarStatement} from "./syntax/AssignVarStatement";
 import {ReturnStatement} from "./syntax/ReturnStatement";
-import {BodyStatement} from "./syntax/BodyStatement";
 import {IfStatement} from "./syntax/IfStatement";
 import {ElseIfStatement} from "./syntax/ElseIfStatement";
+import {BodyStatement} from "./syntax/BodyStatement";
+import {VariableDefinition} from "./syntax/VariableDefinition";
+import {Declare} from "./syntax/Declare";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -172,7 +173,9 @@ export class GrapeQLCoach extends Coach {
         ReturnStatement,
         IfStatement,
         ElseIfStatement,
-        BodyStatement
+        BodyStatement,
+        VariableDefinition,
+        Declare
     };
 
     parseType(): string {
@@ -289,3 +292,5 @@ export {ReturnStatement};
 export {IfStatement};
 export {ElseIfStatement};
 export {BodyStatement};
+export {VariableDefinition};
+export {Declare};
