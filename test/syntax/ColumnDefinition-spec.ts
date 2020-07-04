@@ -104,7 +104,7 @@ describe("ColumnDefinition", () => {
                 check: {
                     elements: [
                         {star: false, link: [
-                            {word: "profit", content: null}
+                            {word: "profit"}
                         ]},
                         {operator: ">"},
                         {number: "0"}
@@ -139,7 +139,7 @@ describe("ColumnDefinition", () => {
                 check: {
                     elements: [
                         {star: false, link: [
-                            {word: "profit", content: null}
+                            {word: "profit"}
                         ]},
                         {operator: ">"},
                         {number: "0"}
@@ -174,7 +174,7 @@ describe("ColumnDefinition", () => {
                 check: {
                     elements: [
                         {star: false, link: [
-                            {word: "profit", content: null}
+                            {word: "profit"}
                         ]},
                         {operator: ">"},
                         {number: "0"}
@@ -331,7 +331,7 @@ describe("ColumnDefinition", () => {
                     content: null
                 }],
                 referenceTable: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]},
                 referenceColumns: null,
                 match: null,
@@ -367,7 +367,7 @@ describe("ColumnDefinition", () => {
                     content: null
                 }],
                 referenceTable: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]},
                 referenceColumns: [{
                     word: "id",
@@ -518,7 +518,7 @@ describe("ColumnDefinition", () => {
                     content: null
                 }],
                 referenceTable: {star: false, link: [
-                    {word: "order_type", content: null}
+                    {word: "order_type"}
                 ]},
                 referenceColumns: null,
                 match: null,
@@ -534,7 +534,7 @@ describe("ColumnDefinition", () => {
                 check: {
                     elements: [
                         {star: false, link: [
-                            {word: "id_order_type", content: null}
+                            {word: "id_order_type"}
                         ]},
                         {
                             inSelect: null,

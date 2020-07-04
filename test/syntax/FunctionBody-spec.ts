@@ -19,7 +19,7 @@ describe("FunctionBody", () => {
                 {
                     variables: [
                         {
-                            name: {word: "a", content: null},
+                            name: {word: "a"},
                             type: {type: "integer"},
                             collate: null,
                             nulls: true,
@@ -30,7 +30,7 @@ describe("FunctionBody", () => {
                 {
                     variables: [
                         {
-                            name: {word: "b", content: null},
+                            name: {word: "b"},
                             type: {type: "integer"},
                             collate: null,
                             nulls: true,
@@ -44,7 +44,7 @@ describe("FunctionBody", () => {
                     {
                         variable: {
                             star: false, link: [
-                                {word: "a", content: null}
+                                {word: "a"}
                             ]
                         },
                         assign: {elements: [
@@ -54,7 +54,7 @@ describe("FunctionBody", () => {
                     {
                         variable: {
                             star: false, link: [
-                                {word: "b", content: null}
+                                {word: "b"}
                             ]
                         },
                         assign: {elements: [
@@ -64,11 +64,11 @@ describe("FunctionBody", () => {
                     {
                         return: {elements: [
                             {star: false, link: [
-                                {word: "a", content: null}
+                                {word: "a"}
                             ]},
                             {operator: "+"},
                             {star: false, link: [
-                                {word: "b", content: null}
+                                {word: "b"}
                             ]},
                         ]}
                     }

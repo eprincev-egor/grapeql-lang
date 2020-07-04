@@ -117,7 +117,7 @@ describe("Extension", () => {
                 check: {
                     elements: [
                         {star: false, link: [
-                            {word: "profit", content: null}
+                            {word: "profit"}
                         ]},
                         {operator: "is not"},
                         {null: true},
@@ -125,7 +125,7 @@ describe("Extension", () => {
                         {operator: "and"},
 
                         {star: false, link: [
-                            {word: "profit", content: null}
+                            {word: "profit"}
                         ]},
                         {operator: ">"},
                         {number: "0"}
@@ -296,7 +296,7 @@ describe("Extension", () => {
             valuesRows: [],
             deprecated: false,
             deprecatedColumns: [
-                {word: "inn", content: null}
+                {word: "inn"}
             ]
         }
     });

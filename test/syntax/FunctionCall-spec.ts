@@ -10,8 +10,8 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "public", content: null},
-                    {word: "get_default_currency", content: null}
+                    {word: "public"},
+                    {word: "get_default_currency"}
                 ]
             },
             all: null,
@@ -31,8 +31,8 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "public", content: null},
-                    {word: "get_default_currency", content: null}
+                    {word: "public"},
+                    {word: "get_default_currency"}
                 ]
             },
             all: null,
@@ -59,7 +59,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "count", content: null}
+                    {word: "count"}
                 ]
             },
             all: null,
@@ -86,7 +86,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "row_to_json", content: null}
+                    {word: "row_to_json"}
                 ]
             },
             all: null,
@@ -96,7 +96,7 @@ describe("FunctionCall", () => {
                     {
                         star: true,
                         link: [
-                            {word: "company", content: null}
+                            {word: "company"}
                         ]
                     }
                 ]}
@@ -115,7 +115,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "array_agg", content: null}
+                    {word: "array_agg"}
                 ]
             },
             all: true,
@@ -123,8 +123,8 @@ describe("FunctionCall", () => {
             arguments: [
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]}
             ],
@@ -142,7 +142,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "array_agg", content: null}
+                    {word: "array_agg"}
                 ]
             },
             all: null,
@@ -150,8 +150,8 @@ describe("FunctionCall", () => {
             arguments: [
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]}
             ],
@@ -169,7 +169,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "array_agg", content: null}
+                    {word: "array_agg"}
                 ]
             },
             all: null,
@@ -177,15 +177,15 @@ describe("FunctionCall", () => {
             arguments: [
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]}
             ],
             where: {elements: [
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "name", content: null}
+                    {word: "company"},
+                    {word: "name"}
                 ]},
                 {operator: "is not"},
                 {null: true}
@@ -203,7 +203,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "array_agg", content: null}
+                    {word: "array_agg"}
                 ]
             },
             all: null,
@@ -211,8 +211,8 @@ describe("FunctionCall", () => {
             arguments: [
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]}
             ],
@@ -222,7 +222,7 @@ describe("FunctionCall", () => {
                     {
                         star: false,
                         link: [
-                            {word: "id", content: null}
+                            {word: "id"}
                         ]
                     }
                 ]},
@@ -242,7 +242,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "array_agg", content: null}
+                    {word: "array_agg"}
                 ]
             },
             all: null,
@@ -250,15 +250,15 @@ describe("FunctionCall", () => {
             arguments: [
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]}
             ],
             where: {elements: [
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "name", content: null}
+                    {word: "company"},
+                    {word: "name"}
                 ]},
                 {operator: "is not"},
                 {null: true}
@@ -268,7 +268,7 @@ describe("FunctionCall", () => {
                     {
                         star: false,
                         link: [
-                            {word: "id", content: null}
+                            {word: "id"}
                         ]
                     }
                 ]},
@@ -288,7 +288,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "unnest", content: null}
+                    {word: "unnest"}
                 ]
             },
             all: null,
@@ -312,7 +312,7 @@ describe("FunctionCall", () => {
                     {
                         star: false,
                         link: [
-                            {word: "val", content: null}
+                            {word: "val"}
                         ]
                     }
                 ]},
@@ -332,7 +332,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "ntile", content: null}
+                    {word: "ntile"}
                 ]
             },
             distinct: null,
@@ -352,7 +352,7 @@ describe("FunctionCall", () => {
                     {
                         expression: {elements: [
                             {star: false, link: [
-                                {word: "val", content: null}
+                                {word: "val"}
                             ]}
                         ]},
                         vector: "asc",
@@ -373,7 +373,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "ntile", content: null}
+                    {word: "ntile"}
                 ]
             },
             distinct: null,

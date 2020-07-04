@@ -15,7 +15,7 @@ describe("CheckConstraint", () => {
             check: {
                 elements: [
                     {star: false, link: [
-                        {word: "profit", content: null}
+                        {word: "profit"}
                     ]},
                     {operator: ">"},
                     {number: "0"}
@@ -41,7 +41,7 @@ describe("CheckConstraint", () => {
             check: {
                 elements: [
                     {star: false, link: [
-                        {word: "profit", content: null}
+                        {word: "profit"}
                     ]},
                     {operator: ">"},
                     {number: "0"}

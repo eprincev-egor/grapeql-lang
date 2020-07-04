@@ -11,7 +11,7 @@ describe("BodyStatement", () => {
                 {
                     variable: {
                         star: false, link: [
-                            {word: "a", content: null}
+                            {word: "a"}
                         ]
                     },
                     assign: {elements: [
@@ -29,7 +29,7 @@ describe("BodyStatement", () => {
                 {
                     variable: {
                         star: false, link: [
-                            {word: "a", content: null}
+                            {word: "a"}
                         ]
                     },
                     assign: {elements: [
@@ -39,12 +39,12 @@ describe("BodyStatement", () => {
                 {
                     variable: {
                         star: false, link: [
-                            {word: "b", content: null}
+                            {word: "b"}
                         ]
                     },
                     assign: {elements: [
                         {star: false, link: [
-                            {word: "a", content: null}
+                            {word: "a"}
                         ]}
                     ]}
                 }
@@ -59,7 +59,7 @@ describe("BodyStatement", () => {
                 {
                     variable: {
                         star: false, link: [
-                            {word: "a", content: null}
+                            {word: "a"}
                         ]
                     },
                     assign: {elements: [
@@ -69,7 +69,7 @@ describe("BodyStatement", () => {
                 {
                     return: {elements: [
                         {star: false, link: [
-                            {word: "a", content: null}
+                            {word: "a"}
                         ]},
                         {operator: "+"},
                         {number: "10"}
@@ -115,7 +115,7 @@ describe("BodyStatement", () => {
                     ],
                     into: [
                         {star: false, link: [
-                            {word: "a", content: null}
+                            {word: "a"}
                         ]}
                     ],
                     from: null,
@@ -143,13 +143,13 @@ describe("BodyStatement", () => {
                     with: null,
                     only: false,
                     table: {link: [
-                        {word: "companies", content: null}
+                        {word: "companies"}
                     ], star: false},
                     as: null,
                     star: false,
                     set: [
                         {
-                            column: {word: "name", content: null},
+                            column: {word: "name"},
                             columns: null,
                             select: null,
                             values: null,
@@ -175,14 +175,14 @@ describe("BodyStatement", () => {
                     only: false,
                     star: false,
                     table: {star: false, link: [
-                        {word: "companies", content: null}
+                        {word: "companies"}
                     ]},
                     as: null,
                     using: null,
                     with: null,
                     where: {elements: [
                         {star: false, link: [
-                            {word: "id", content: null}
+                            {word: "id"}
                         ]},
                         {operator: "="},
                         {number: "1"}
@@ -200,11 +200,11 @@ describe("BodyStatement", () => {
                 {
                     with: null,
                     table: {star: false, link: [
-                        {word: "companies", content: null}
+                        {word: "companies"}
                     ]},
                     as: null,
                     columns: [
-                        {word: "name", content: null}
+                        {word: "name"}
                     ],
                     defaultValues: null,
                     values: [
@@ -232,7 +232,7 @@ describe("BodyStatement", () => {
                 {
                     variable: {
                         star: false, link: [
-                            {word: "a", content: null}
+                            {word: "a"}
                         ]
                     },
                     assign: {elements: [
@@ -247,7 +247,7 @@ describe("BodyStatement", () => {
                     parameters: [
                         {elements: [
                             {star: false, link: [
-                                {word: "a", content: null}
+                                {word: "a"}
                             ]}
                         ]}
                     ],

@@ -162,13 +162,13 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "order", content: null},
-                    {word: "sum", content: null}
+                    {word: "order"},
+                    {word: "sum"}
                 ]},
                 {operator: "+"},
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "total", content: null}
+                    {word: "company"},
+                    {word: "total"}
                 ]}
             ]
         }
@@ -272,8 +272,8 @@ describe("Expression", () => {
                     str: {elements: [{
                         star: false,
                         link: [
-                            {word: "country", content: null},
-                            {word: "id", content: null}
+                            {word: "country"},
+                            {word: "id"}
                         ]
                     }]},
                     from: {elements: [{
@@ -290,8 +290,8 @@ describe("Expression", () => {
                     str: {elements: [{
                         star: false,
                         link: [
-                            {word: "company", content: null},
-                            {word: "name", content: null}
+                            {word: "company"},
+                            {word: "name"}
                         ]
                     }]},
                     from: {elements: [{
@@ -313,7 +313,7 @@ describe("Expression", () => {
                     function: {
                         star: false,
                         link: [
-                            {word: "default_pay", content: null}
+                            {word: "default_pay"}
                         ]
                     },
                     all: null,
@@ -340,7 +340,7 @@ describe("Expression", () => {
                         function: {
                             star: false,
                             link: [
-                                {word: "get_some_arr", content: null}
+                                {word: "get_some_arr"}
                             ]
                         },
                         all: null,
@@ -367,7 +367,7 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]},
                 {operator: "="},
                 {number: "2"},
@@ -375,7 +375,7 @@ describe("Expression", () => {
                 {operator: "or"},
 
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]},
                 {operator: "="},
                 {operator: "-"},
@@ -389,7 +389,7 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]},
                 {operator: "="},
                 {number: "2"},
@@ -401,7 +401,7 @@ describe("Expression", () => {
                 {operator: "+"},
 
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]},
                 {operator: "="},
                 {number: "3"}
@@ -473,8 +473,8 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "my_table", content: null},
-                    {word: "my_column_arr", content: null}
+                    {word: "my_table"},
+                    {word: "my_column_arr"}
                 ]},
                 {content: {elements: [
                     {number: "1"}
@@ -631,8 +631,8 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "id", content: null}
+                    {word: "company"},
+                    {word: "id"}
                 ]},
                 {
                     symmetric: null,
@@ -652,8 +652,8 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "id", content: null}
+                    {word: "company"},
+                    {word: "id"}
                 ]},
                 {
                     symmetric: null,
@@ -666,8 +666,8 @@ describe("Expression", () => {
                 },
                 {operator: "or"},
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "id", content: null}
+                    {word: "company"},
+                    {word: "id"}
                 ]},
                 {
                     symmetric: null,
@@ -687,8 +687,8 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "id", content: null}
+                    {word: "company"},
+                    {word: "id"}
                 ]},
                 {
                     symmetric: null,
@@ -710,8 +710,8 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "id", content: null}
+                    {word: "company"},
+                    {word: "id"}
                 ]},
                 {
                     symmetric: null,
@@ -733,8 +733,8 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "id", content: null}
+                    {word: "company"},
+                    {word: "id"}
                 ]},
                 {
                     symmetric: null,
@@ -758,8 +758,8 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "id", content: null}
+                    {word: "company"},
+                    {word: "id"}
                 ]},
                 {operator: "not"},
                 {
@@ -782,8 +782,8 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "test", content: null},
-                    {word: "id", content: null}
+                    {word: "test"},
+                    {word: "id"}
                 ]},
                 {
                     symmetric: null,
@@ -802,8 +802,8 @@ describe("Expression", () => {
                 {operator: ">"},
     
                 {star: false, link: [
-                    {word: "test", content: null},
-                    {word: "id", content: null}
+                    {word: "test"},
+                    {word: "id"}
                 ]},
                 {
                     symmetric: null,
@@ -811,8 +811,8 @@ describe("Expression", () => {
                         {number: "8"},
                         {operator: "*"},
                         {star: false, link: [
-                            {word: "test", content: null},
-                            {word: "id", content: null}
+                            {word: "test"},
+                            {word: "id"}
                         ]}
                     ]},
                     and: {elements: [
@@ -830,8 +830,8 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "company", content: null},
-                    {word: "name", content: null}
+                    {word: "company"},
+                    {word: "name"}
                 ]},
                 {operator: "not"},
                 {operator: "like"},
@@ -848,7 +848,7 @@ describe("Expression", () => {
                     function: {
                         star: false,
                         link: [
-                            {word: "now_utc", content: null}
+                            {word: "now_utc"}
                         ]
                     },
                     all: null,
@@ -974,7 +974,7 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]},
                 {
                     inSelect: null,
@@ -989,7 +989,7 @@ describe("Expression", () => {
                 },
                 {operator: "or"},
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]},
                 {operator: "="},
                 {
@@ -1015,7 +1015,7 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]},
                 {operator: "not"},
                 {
@@ -1031,7 +1031,7 @@ describe("Expression", () => {
                 },
                 {operator: "or"},
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]},
                 {operator: "="},
                 {

@@ -185,11 +185,11 @@ describe("CreateTable", () => {
             constraints: [],
             inherits: [
                 {star: false, link: [
-                    {word: "parent_a", content: null}
+                    {word: "parent_a"}
                 ]},
                 {star: false, link: [
-                    {word: "public", content: null},
-                    {word: "parent_b", content: null}
+                    {word: "public"},
+                    {word: "parent_b"}
                 ]}
             ],
             deprecated: false,
@@ -275,7 +275,7 @@ describe("CreateTable", () => {
             inherits: [],
             deprecated: false,
             deprecatedColumns: [
-                {word: "name3", content: null}
+                {word: "name3"}
             ],
             valuesRows: [],
             values: []
@@ -326,12 +326,12 @@ describe("CreateTable", () => {
             constraints: [],
             inherits: [
                 {star: false, link: [
-                    {word: "system_fields", content: null}
+                    {word: "system_fields"}
                 ]}
             ],
             deprecated: false,
             deprecatedColumns: [
-                {word: "name", content: null}
+                {word: "name"}
             ],
             valuesRows: [],
             values: []

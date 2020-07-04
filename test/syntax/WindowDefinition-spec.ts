@@ -25,14 +25,14 @@ describe("WindowDefinition", () => {
             partitionBy: [
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "name", content: null}
+                        {word: "company"},
+                        {word: "name"}
                     ]}
                 ]},
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]}
             ],
@@ -51,8 +51,8 @@ describe("WindowDefinition", () => {
                 {
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "company", content: null},
-                            {word: "name", content: null}
+                            {word: "company"},
+                            {word: "name"}
                         ]}
                     ]},
                     vector: "asc",
@@ -62,8 +62,8 @@ describe("WindowDefinition", () => {
                 {
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "company", content: null},
-                            {word: "id", content: null}
+                            {word: "company"},
+                            {word: "id"}
                         ]}
                     ]},
                     vector: "desc",
@@ -131,18 +131,18 @@ describe("WindowDefinition", () => {
     testSyntax(WindowDefinition, {
         str: "parent_window partition by company.name, company.id order by company.name desc, company.id asc rows between current row and 100 following",
         shouldBe: {
-            windowDefinition: {word: "parent_window", content: null},
+            windowDefinition: {word: "parent_window"},
             partitionBy: [
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "name", content: null}
+                        {word: "company"},
+                        {word: "name"}
                     ]}
                 ]},
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]}
             ],
@@ -150,8 +150,8 @@ describe("WindowDefinition", () => {
                 {
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "company", content: null},
-                            {word: "name", content: null}
+                            {word: "company"},
+                            {word: "name"}
                         ]}
                     ]},
                     vector: "desc",
@@ -161,8 +161,8 @@ describe("WindowDefinition", () => {
                 {
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "company", content: null},
-                            {word: "id", content: null}
+                            {word: "company"},
+                            {word: "id"}
                         ]}
                     ]},
                     vector: "asc",
@@ -193,18 +193,18 @@ describe("WindowDefinition", () => {
     testSyntax(WindowDefinition, {
         str: "parent_window partition by company.name, company.id order by company.name desc, company.id asc range between current row and 100 following",
         shouldBe: {
-            windowDefinition: {word: "parent_window", content: null},
+            windowDefinition: {word: "parent_window"},
             partitionBy: [
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "name", content: null}
+                        {word: "company"},
+                        {word: "name"}
                     ]}
                 ]},
                 {elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]}
             ],
@@ -212,8 +212,8 @@ describe("WindowDefinition", () => {
                 {
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "company", content: null},
-                            {word: "name", content: null}
+                            {word: "company"},
+                            {word: "name"}
                         ]}
                     ]},
                     vector: "desc",
@@ -223,8 +223,8 @@ describe("WindowDefinition", () => {
                 {
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "company", content: null},
-                            {word: "id", content: null}
+                            {word: "company"},
+                            {word: "id"}
                         ]}
                     ]},
                     vector: "asc",

@@ -12,8 +12,8 @@ describe("Column", () => {
             expression: {
                 elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]
             },
@@ -27,8 +27,8 @@ describe("Column", () => {
             expression: {
                 elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]
             },
@@ -42,8 +42,8 @@ describe("Column", () => {
             expression: {
                 elements: [
                     {star: false, link: [
-                        {word: "company", content: null},
-                        {word: "id", content: null}
+                        {word: "company"},
+                        {word: "id"}
                     ]}
                 ]
             },

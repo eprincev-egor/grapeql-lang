@@ -19,8 +19,8 @@ describe("File", () => {
         shouldBe: {
             relative: true,
             path: [
-                {name: ".", content: null},
-                {name: "Order", content: null}
+                {name: "."},
+                {name: "Order"}
             ]
         }
     });
@@ -30,8 +30,8 @@ describe("File", () => {
         shouldBe: {
             relative: true,
             path: [
-                {name: ".", content: null},
-                {name: "Order", content: null}
+                {name: "."},
+                {name: "Order"}
             ]
         }
     });
@@ -41,8 +41,8 @@ describe("File", () => {
         shouldBe: {
             relative: true,
             path: [
-                {name: "..", content: null},
-                {name: "Order", content: null}
+                {name: ".."},
+                {name: "Order"}
             ]
         }
     });
@@ -52,8 +52,8 @@ describe("File", () => {
         shouldBe: {
             relative: true,
             path: [
-                {name: ".", content: null},
-                {name: "Order.sql", content: null}
+                {name: "."},
+                {name: "Order.sql"}
             ]
         }
     });
@@ -63,7 +63,7 @@ describe("File", () => {
         shouldBe: {
             relative: true,
             path: [
-                {name: ".", content: null},
+                {name: "."},
                 {content: " nice ", name: null}
             ]
         }
@@ -74,9 +74,9 @@ describe("File", () => {
         shouldBe: {
             relative: true,
             path: [
-                {name: ".", content: null},
-                {name: "some", content: null},
-                {name: "file", content: null}
+                {name: "."},
+                {name: "some"},
+                {name: "file"}
             ]
         }
     });
@@ -86,7 +86,7 @@ describe("File", () => {
         shouldBe: {
             relative: false,
             path: [
-                {name: "root.sql", content: null}
+                {name: "root.sql"}
             ]
         }
     });
@@ -96,7 +96,7 @@ describe("File", () => {
         shouldBe: {
             relative: false,
             path: [
-                {name: "root.sql", content: null}
+                {name: "root.sql"}
             ]
         }
     });
@@ -106,8 +106,8 @@ describe("File", () => {
         shouldBe: {
             relative: true,
             path: [
-                {name: ".", content: null},
-                {name: "company", content: null}
+                {name: "."},
+                {name: "company"}
             ]
         }
     });
@@ -117,8 +117,8 @@ describe("File", () => {
         shouldBe: {
             relative: true,
             path: [
-                {name: ".", content: null},
-                {name: "Country", content: null}
+                {name: "."},
+                {name: "Country"}
             ]
         }
     });

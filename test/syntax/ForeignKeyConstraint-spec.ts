@@ -9,14 +9,14 @@ describe("ForeignKeyConstraint", () => {
             references company (id)
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: [
-                {word: "id", content: null}
+                {word: "id"}
             ],
             match: null,
             onDelete: null,
@@ -29,11 +29,11 @@ describe("ForeignKeyConstraint", () => {
             references company
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -47,11 +47,11 @@ describe("ForeignKeyConstraint", () => {
             references company match simple
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: "simple",
@@ -65,11 +65,11 @@ describe("ForeignKeyConstraint", () => {
             references company match full
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: "full",
@@ -83,11 +83,11 @@ describe("ForeignKeyConstraint", () => {
             references company match partial
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: "partial",
@@ -101,11 +101,11 @@ describe("ForeignKeyConstraint", () => {
             references company on delete no action
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -119,11 +119,11 @@ describe("ForeignKeyConstraint", () => {
             references company on update no action
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -137,11 +137,11 @@ describe("ForeignKeyConstraint", () => {
             references company on delete cascade
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -155,11 +155,11 @@ describe("ForeignKeyConstraint", () => {
             references company on delete set null
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -173,11 +173,11 @@ describe("ForeignKeyConstraint", () => {
             references company on delete set default
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -191,11 +191,11 @@ describe("ForeignKeyConstraint", () => {
             references company on update set null
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -209,11 +209,11 @@ describe("ForeignKeyConstraint", () => {
             references company on update set default
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -227,11 +227,11 @@ describe("ForeignKeyConstraint", () => {
             references company on update cascade
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -245,11 +245,11 @@ describe("ForeignKeyConstraint", () => {
             references company on update set default on delete set default
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -263,11 +263,11 @@ describe("ForeignKeyConstraint", () => {
             references company on delete set default on update set default 
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
-            columns: [{word: "id_client", content: null}],
+            columns: [{word: "id_client"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -284,18 +284,18 @@ describe("ForeignKeyConstraint", () => {
             on update set default 
         `,
         shouldBe: {
-            name: {word: "client", content: null},
+            name: {word: "client"},
             column: null,
             columns: [
-                {word: "id_client", content: null},
-                {word: "x", content: null}
+                {word: "id_client"},
+                {word: "x"}
             ],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: [
-                {word: "id", content: null},
-                {word: "y", content: null}
+                {word: "id"},
+                {word: "y"}
             ],
             match: "full",
             onDelete: "set default",
@@ -317,9 +317,9 @@ describe("ForeignKeyConstraint", () => {
                 word: "id_company",
                 content: null
             },
-            columns: [{word: "id_company", content: null}],
+            columns: [{word: "id_company"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: null,
             match: null,
@@ -342,9 +342,9 @@ describe("ForeignKeyConstraint", () => {
                 word: "id_company",
                 content: null
             },
-            columns: [{word: "id_company", content: null}],
+            columns: [{word: "id_company"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: [{
                 word: "id",
@@ -373,9 +373,9 @@ describe("ForeignKeyConstraint", () => {
                 word: "id_company",
                 content: null
             },
-            columns: [{word: "id_company", content: null}],
+            columns: [{word: "id_company"}],
             referenceTable: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]},
             referenceColumns: [{
                 word: "id",

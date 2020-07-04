@@ -13,9 +13,9 @@ describe("CacheFor", () => {
                 gtds.id_order = orders.id
         )`,
         shouldBe: {
-            name: {word: "gtd_totals", content: null},
+            name: {word: "gtd_totals"},
             for: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             cache: {
@@ -27,7 +27,7 @@ describe("CacheFor", () => {
                                 function: {
                                     star: false,
                                     link: [
-                                        {word: "string_agg", content: null}
+                                        {word: "string_agg"}
                                     ]
                                 },
                                 all: null,
@@ -35,8 +35,8 @@ describe("CacheFor", () => {
                                 arguments: [
                                     {elements: [
                                         {star: false, link: [
-                                            {word: "gtds", content: null},
-                                            {word: "doc_number", content: null}
+                                            {word: "gtds"},
+                                            {word: "doc_number"}
                                         ]}
                                     ]},
                                     {elements: [
@@ -50,7 +50,7 @@ describe("CacheFor", () => {
                                 emptyOver: null
                             }
                         ]},
-                        as: {word: "gtds_numbers", content: null}
+                        as: {word: "gtds_numbers"}
                     }
                 ],
                 into: null,
@@ -68,19 +68,19 @@ describe("CacheFor", () => {
                         star: null,
     
                         table: {star: false, link: [
-                            {word: "gtds", content: null}
+                            {word: "gtds"}
                         ]}
                     }
                 ],
                 where: {elements: [
                     {star: false, link: [
-                        {word: "gtds", content: null},
-                        {word: "id_order", content: null}
+                        {word: "gtds"},
+                        {word: "id_order"}
                     ]},
                     {operator: "="},
                     {star: false, link: [
-                        {word: "orders", content: null},
-                        {word: "id", content: null}
+                        {word: "orders"},
+                        {word: "id"}
                     ]}
                 ]},
                 groupBy: null,
@@ -107,11 +107,11 @@ describe("CacheFor", () => {
                 gtds.id_order = my_order.id
         )`,
         shouldBe: {
-            name: {word: "gtd_totals", content: null},
+            name: {word: "gtd_totals"},
             for: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
-            as: {word: "my_order", content: null},
+            as: {word: "my_order"},
             cache: {
                 with: null,
                 columns: [
@@ -121,7 +121,7 @@ describe("CacheFor", () => {
                                 function: {
                                     star: false,
                                     link: [
-                                        {word: "string_agg", content: null}
+                                        {word: "string_agg"}
                                     ]
                                 },
                                 all: null,
@@ -129,8 +129,8 @@ describe("CacheFor", () => {
                                 arguments: [
                                     {elements: [
                                         {star: false, link: [
-                                            {word: "gtds", content: null},
-                                            {word: "doc_number", content: null}
+                                            {word: "gtds"},
+                                            {word: "doc_number"}
                                         ]}
                                     ]},
                                     {elements: [
@@ -144,7 +144,7 @@ describe("CacheFor", () => {
                                 emptyOver: null
                             }
                         ]},
-                        as: {word: "gtds_numbers", content: null}
+                        as: {word: "gtds_numbers"}
                     },
                     {
                         expression: {elements: [
@@ -152,7 +152,7 @@ describe("CacheFor", () => {
                                 function: {
                                     star: false,
                                     link: [
-                                        {word: "array_agg", content: null}
+                                        {word: "array_agg"}
                                     ]
                                 },
                                 all: null,
@@ -160,8 +160,8 @@ describe("CacheFor", () => {
                                 arguments: [
                                     {elements: [
                                         {star: false, link: [
-                                            {word: "gtds", content: null},
-                                            {word: "id", content: null}
+                                            {word: "gtds"},
+                                            {word: "id"}
                                         ]}
                                     ]}
                                 ],
@@ -172,7 +172,7 @@ describe("CacheFor", () => {
                                 emptyOver: null
                             }
                         ]},
-                        as: {word: "gtds_ids", content: null}
+                        as: {word: "gtds_ids"}
                     }
                 ],
                 into: null,
@@ -190,19 +190,19 @@ describe("CacheFor", () => {
                         star: null,
     
                         table: {star: false, link: [
-                            {word: "gtds", content: null}
+                            {word: "gtds"}
                         ]}
                     }
                 ],
                 where: {elements: [
                     {star: false, link: [
-                        {word: "gtds", content: null},
-                        {word: "id_order", content: null}
+                        {word: "gtds"},
+                        {word: "id_order"}
                     ]},
                     {operator: "="},
                     {star: false, link: [
-                        {word: "my_order", content: null},
-                        {word: "id", content: null}
+                        {word: "my_order"},
+                        {word: "id"}
                     ]}
                 ]},
                 groupBy: null,

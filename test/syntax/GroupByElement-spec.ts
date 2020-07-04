@@ -14,7 +14,7 @@ describe("GroupByElement", () => {
 
             expression: {elements: [
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]}
             ]}
         }
@@ -37,7 +37,7 @@ describe("GroupByElement", () => {
 
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "brand", content: null}
+                            {word: "brand"}
                         ]}
                     ]}
                 },
@@ -49,7 +49,7 @@ describe("GroupByElement", () => {
 
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "size", content: null}
+                            {word: "size"}
                         ]}
                     ]}
                 },
@@ -80,7 +80,7 @@ describe("GroupByElement", () => {
                     expressions: [
                         {elements: [
                             {star: false, link: [
-                                {word: "brand", content: null}
+                                {word: "brand"}
                             ]}
                         ]}
                     ]
@@ -90,7 +90,7 @@ describe("GroupByElement", () => {
                     expressions: [
                         {elements: [
                             {star: false, link: [
-                                {word: "size", content: null}
+                                {word: "size"}
                             ]}
                         ]},
                         {elements: [
@@ -117,7 +117,7 @@ describe("GroupByElement", () => {
                     expressions: [
                         {elements: [
                             {star: false, link: [
-                                {word: "brand", content: null}
+                                {word: "brand"}
                             ]}
                         ]}
                     ]
@@ -127,7 +127,7 @@ describe("GroupByElement", () => {
                     expressions: [
                         {elements: [
                             {star: false, link: [
-                                {word: "size", content: null}
+                                {word: "size"}
                             ]}
                         ]},
                         {elements: [

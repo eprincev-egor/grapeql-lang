@@ -9,7 +9,7 @@ describe("WindowItem", () => {
     testSyntax(WindowItem, {
         str: "x as (order by company.name)",
         shouldBe: {
-            as: {word: "x", content: null},
+            as: {word: "x"},
             body: {
                 windowDefinition: null,
                 partitionBy: null,
@@ -17,8 +17,8 @@ describe("WindowItem", () => {
                     {
                         expression: {elements: [
                             {star: false, link: [
-                                {word: "company", content: null},
-                                {word: "name", content: null}
+                                {word: "company"},
+                                {word: "name"}
                             ]}
                         ]},
                         vector: "asc",

@@ -9,7 +9,7 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             columns: null,
@@ -26,9 +26,9 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
-            as: {word: "order", content: null},
+            as: {word: "order"},
             columns: null,
             defaultValues: true,
             values: null,
@@ -43,7 +43,7 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             columns: null,
@@ -77,10 +77,10 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
-            columns: [{word: "id_country", content: null}],
+            columns: [{word: "id_country"}],
             defaultValues: null,
             values: [
                 {values: [
@@ -98,7 +98,7 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             columns: null,
@@ -140,7 +140,7 @@ describe("Insert", () => {
             with: {
                 recursive: null,
                 queries: [{
-                    name: {word: "x1", content: null},
+                    name: {word: "x1"},
                     columns: null,
                     select: {
                         with: null,
@@ -170,7 +170,7 @@ describe("Insert", () => {
                 }]
             },
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             columns: null,
@@ -200,7 +200,7 @@ describe("Insert", () => {
                     star: null,
     
                     table: {star: false, link: [
-                        {word: "x1", content: null}
+                        {word: "x1"}
                     ]}
                 }],
                 where: null,
@@ -225,12 +225,12 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ]},
             as: null,
             columns: [
-                {word: "id", content: null},
-                {word: "name", content: null}
+                {word: "id"},
+                {word: "name"}
             ],
             defaultValues: null,
             values: [
@@ -247,7 +247,7 @@ describe("Insert", () => {
             onConflict: {
                 target: [{
                     expression: null,
-                    column: {word: "id", content: null}
+                    column: {word: "id"}
                 }],
                 constraint: null,
                 where: null,
@@ -264,12 +264,12 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ]},
             as: null,
             columns: [
-                {word: "id", content: null},
-                {word: "name", content: null}
+                {word: "id"},
+                {word: "name"}
             ],
             defaultValues: null,
             values: [
@@ -286,12 +286,12 @@ describe("Insert", () => {
             onConflict: {
                 target: [{
                     expression: null,
-                    column: {word: "id", content: null}
+                    column: {word: "id"}
                 }],
                 constraint: null,
                 where: {elements: [
                     {star: false, link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]},
                     {operator: ">"},
                     {number: "0"}
@@ -315,12 +315,12 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ]},
             as: null,
             columns: [
-                {word: "id", content: null},
-                {word: "name", content: null}
+                {word: "id"},
+                {word: "name"}
             ],
             defaultValues: null,
             values: [
@@ -336,10 +336,10 @@ describe("Insert", () => {
             select: null,
             onConflict: {
                 target: null,
-                constraint: {word: "some_constraint_name", content: null},
+                constraint: {word: "some_constraint_name"},
                 where: {elements: [
                     {star: false, link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]},
                     {operator: ">"},
                     {number: "0"}
@@ -362,12 +362,12 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ]},
             as: null,
             columns: [
-                {word: "id", content: null},
-                {word: "name", content: null}
+                {word: "id"},
+                {word: "name"}
             ],
             defaultValues: null,
             values: [
@@ -383,7 +383,7 @@ describe("Insert", () => {
             select: null,
             onConflict: {
                 target: [{
-                    column: {word: "inn", content: null}, 
+                    column: {word: "inn"}, 
                     expression: null
                 }],
                 constraint: null,
@@ -393,11 +393,11 @@ describe("Insert", () => {
                     columns: null,
                     values: null,
                     select: null,
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     value: {default: null, value: {elements: [
                         {star: false, link: [
-                            {word: "excluded", content: null},
-                            {word: "name", content: null}
+                            {word: "excluded"},
+                            {word: "name"}
                         ]}
                     ]}}
                 }],
@@ -418,12 +418,12 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ]},
             as: null,
             columns: [
-                {word: "id", content: null},
-                {word: "name", content: null}
+                {word: "id"},
+                {word: "name"}
             ],
             defaultValues: null,
             values: [
@@ -439,7 +439,7 @@ describe("Insert", () => {
             select: null,
             onConflict: {
                 target: [{
-                    column: {word: "inn", content: null}, 
+                    column: {word: "inn"}, 
                     expression: null
                 }],
                 constraint: null,
@@ -449,17 +449,17 @@ describe("Insert", () => {
                     columns: null,
                     values: null,
                     select: null,
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     value: {default: null, value: {elements: [
                         {star: false, link: [
-                            {word: "excluded", content: null},
-                            {word: "name", content: null}
+                            {word: "excluded"},
+                            {word: "name"}
                         ]}
                     ]}}
                 }],
                 updateWhere: {elements: [
                     {star: false, link: [
-                        {word: "name", content: null}
+                        {word: "name"}
                     ]},
                     {operator: "<>"},
                     {content: "x"}
@@ -474,7 +474,7 @@ describe("Insert", () => {
         shouldBe: {
             with: null,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             columns: null,
@@ -489,14 +489,14 @@ describe("Insert", () => {
                     ]}, as: null},
                     {expression: {elements: [
                         {star: false, link: [
-                            {word: "id", content: null}
+                            {word: "id"}
                         ]}
                     ]}, as: null},
                     {expression: {elements: [
                         {star: false, link: [
-                            {word: "id_client", content: null}
+                            {word: "id_client"}
                         ]}
-                    ]}, as: {word: "client_id", content: null}}
+                    ]}, as: {word: "client_id"}}
                 ]
             }
         }

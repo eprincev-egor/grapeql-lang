@@ -209,8 +209,8 @@ describe("ExpressionElement", () => {
                 str: {elements: [{
                     star: false,
                     link: [
-                        {word: "company", content: null},
-                        {word: "name", content: null}
+                        {word: "company"},
+                        {word: "name"}
                     ]
                 }]},
                 from: {elements: [{
@@ -230,7 +230,7 @@ describe("ExpressionElement", () => {
                 function: {
                     star: false,
                     link: [
-                        {word: "now", content: null}
+                        {word: "now"}
                     ]
                 },
                 all: null,

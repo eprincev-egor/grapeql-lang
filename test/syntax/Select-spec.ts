@@ -45,11 +45,11 @@ describe("Select", () => {
             ],
             into: [
                 {star: false, link: [
-                    {word: "a", content: null}
+                    {word: "a"}
                 ]},
                 {star: false, link: [
-                    {word: "new", content: null},
-                    {word: "b", content: null}
+                    {word: "new"},
+                    {word: "b"}
                 ]}
             ],
             from: null,
@@ -164,7 +164,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -176,7 +176,7 @@ describe("Select", () => {
                 {
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "id", content: null}
+                            {word: "id"}
                         ]}
                     ]},
                     nulls: null,
@@ -204,14 +204,14 @@ describe("Select", () => {
                             function: {
                                 star: false,
                                 link: [
-                                    {word: "sum", content: null}
+                                    {word: "sum"}
                                 ]
                             },
                             all: null,
                             distinct: null,
                             arguments: [{elements: [
                                 {star: false, link: [
-                                    {word: "payments", content: null}
+                                    {word: "payments"}
                                 ]}
                             ]}],
                             where: null,
@@ -239,7 +239,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -249,8 +249,8 @@ describe("Select", () => {
                     cube: null,
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "orders", content: null},
-                            {word: "client", content: null}
+                            {word: "orders"},
+                            {word: "client"}
                         ]}
                     ]},
                     groupingSets: null,
@@ -289,14 +289,14 @@ describe("Select", () => {
                             function: {
                                 star: false,
                                 link: [
-                                    {word: "sum", content: null}
+                                    {word: "sum"}
                                 ]
                             },
                             all: null,
                             distinct: null,
                             arguments: [{elements: [
                                 {star: false, link: [
-                                    {word: "payments", content: null}
+                                    {word: "payments"}
                                 ]}
                             ]}],
                             where: null,
@@ -324,7 +324,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -334,7 +334,7 @@ describe("Select", () => {
                     cube: null,
                     expression: {elements: [
                         {star: false, link: [
-                            {word: "order_date", content: null}
+                            {word: "order_date"}
                         ]}
                     ]},
                     groupingSets: null,
@@ -347,14 +347,14 @@ describe("Select", () => {
                     function: {
                         star: false,
                         link: [
-                            {word: "sum", content: null}
+                            {word: "sum"}
                         ]
                     },
                     all: null,
                     distinct: null,
                     arguments: [{elements: [
                         {star: false, link: [
-                            {word: "payments", content: null}
+                            {word: "payments"}
                         ]}
                     ]}],
                     where: null,
@@ -405,7 +405,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -450,7 +450,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -496,7 +496,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -542,7 +542,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -587,7 +587,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -632,7 +632,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -677,7 +677,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -743,7 +743,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "orders", content: null}
+                        {word: "orders"}
                     ]}
                 }
             ],
@@ -775,7 +775,7 @@ describe("Select", () => {
                 recursive: true,
                 queries: [
                     {
-                        name: {word: "x", content: null},
+                        name: {word: "x"},
                         columns: null,
                         select: {
                             with: null,
@@ -821,7 +821,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "x", content: null}
+                        {word: "x"}
                     ]}
                 }
             ],
@@ -917,7 +917,7 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "company", content: null}
+                        {word: "company"}
                     ]}
                 }
             ],
@@ -926,7 +926,7 @@ describe("Select", () => {
             having: null,
             window: [
                 {
-                    as: {word: "x", content: null},
+                    as: {word: "x"},
                     body: {
                         windowDefinition: null,
                         partitionBy: null,
@@ -934,8 +934,8 @@ describe("Select", () => {
                             {
                                 expression: {elements: [
                                     {star: false, link: [
-                                        {word: "company", content: null},
-                                        {word: "name", content: null}
+                                        {word: "company"},
+                                        {word: "name"}
                                     ]}
                                 ]},
                                 vector: "asc",
@@ -948,7 +948,7 @@ describe("Select", () => {
                     }
                 },
                 {
-                    as: {word: "y", content: null},
+                    as: {word: "y"},
                     body: {
                         windowDefinition: null,
                         partitionBy: null,
@@ -956,8 +956,8 @@ describe("Select", () => {
                             {
                                 expression: {elements: [
                                     {star: false, link: [
-                                        {word: "company", content: null},
-                                        {word: "id", content: null}
+                                        {word: "company"},
+                                        {word: "id"}
                                     ]}
                                 ]},
                                 vector: "asc",
@@ -1015,8 +1015,8 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "x", content: null},
-                        {word: "a", content: null}
+                        {word: "x"},
+                        {word: "a"}
                     ]}
                 },
                 {
@@ -1032,8 +1032,8 @@ describe("Select", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "y", content: null},
-                        {word: "a", content: null}
+                        {word: "y"},
+                        {word: "a"}
                     ]}
                 }
             ],

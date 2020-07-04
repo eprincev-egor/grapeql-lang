@@ -11,7 +11,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},
@@ -28,7 +28,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},
@@ -45,7 +45,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},
@@ -62,7 +62,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},
@@ -79,7 +79,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},
@@ -96,7 +96,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},
@@ -113,7 +113,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},
@@ -130,7 +130,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},
@@ -147,7 +147,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},
@@ -164,7 +164,7 @@ describe("OrderByElement", () => {
                 {
                     star: false,
                     link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]
                 }
             ]},

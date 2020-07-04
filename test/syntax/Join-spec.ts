@@ -21,7 +21,7 @@ describe("Join", () => {
                 joins: [],
     
                 table: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]}
             },
             on: {elements: [
@@ -48,7 +48,7 @@ describe("Join", () => {
                 joins: [],
     
                 table: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]}
             },
             on: {elements: [
@@ -75,7 +75,7 @@ describe("Join", () => {
                 joins: [],
     
                 table: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]}
             },
             on: {elements: [
@@ -102,7 +102,7 @@ describe("Join", () => {
                 joins: [],
     
                 table: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]}
             },
             on: {elements: [
@@ -129,7 +129,7 @@ describe("Join", () => {
                 joins: [],
     
                 table: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]}
             },
             on: {elements: [
@@ -156,7 +156,7 @@ describe("Join", () => {
                 joins: [],
     
                 table: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]}
             },
             on: {elements: [
@@ -183,7 +183,7 @@ describe("Join", () => {
                 joins: [],
     
                 table: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]}
             },
             on: {elements: [
@@ -368,12 +368,12 @@ describe("Join", () => {
                 star: null,
     
                 table: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]}
             },
             on: null,
             using: [
-                {word: "id", content: null}
+                {word: "id"}
             ]
         }
     });
@@ -395,13 +395,13 @@ describe("Join", () => {
                 star: null,
     
                 table: {star: false, link: [
-                    {word: "company", content: null}
+                    {word: "company"}
                 ]}
             },
             on: null,
             using: [
-                {word: "key1", content: null},
-                {word: "key2", content: null}
+                {word: "key1"},
+                {word: "key2"}
             ]
         }
     });

@@ -10,7 +10,7 @@ describe("GroupByElementContent", () => {
             single: true,
             expressions: [{elements: [
                 {star: false, link: [
-                    {word: "id", content: null}
+                    {word: "id"}
                 ]}
             ]}]
         }
@@ -23,12 +23,12 @@ describe("GroupByElementContent", () => {
             expressions: [
                 {elements: [
                     {star: false, link: [
-                        {word: "id", content: null}
+                        {word: "id"}
                     ]}
                 ]},
                 {elements: [
                     {star: false, link: [
-                        {word: "name", content: null}
+                        {word: "name"}
                     ]}
                 ]}
             ]

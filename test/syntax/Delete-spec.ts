@@ -10,7 +10,7 @@ describe("Delete", () => {
             only: false,
             star: false,
             table: {star: false, link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ]},
             as: null,
             using: null,
@@ -26,7 +26,7 @@ describe("Delete", () => {
             only: true,
             star: false,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             using: null,
@@ -42,7 +42,7 @@ describe("Delete", () => {
             only: false,
             star: true,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             using: null,
@@ -58,7 +58,7 @@ describe("Delete", () => {
             only: true,
             star: true,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             using: null,
@@ -74,9 +74,9 @@ describe("Delete", () => {
             only: true,
             star: true,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
-            as: {word: "order", content: null},
+            as: {word: "order"},
             using: null,
             with: null,
             where: null,
@@ -95,7 +95,7 @@ describe("Delete", () => {
             only: false,
             star: false,
             table: {star: false, link: [
-                {word: "orders", content: null}
+                {word: "orders"}
             ]},
             as: null,
             using: [{
@@ -111,26 +111,26 @@ describe("Delete", () => {
                 star: null,
 
                 table: {star: false, link: [
-                    {word: "companies", content: null}
+                    {word: "companies"}
                 ]}
             }],
             with: null,
             where: {elements: [
                 {star: false, link: [
-                    {word: "orders", content: null},
-                    {word: "id_client", content: null}
+                    {word: "orders"},
+                    {word: "id_client"}
                 ]},
                 {operator: "="},
                 {star: false, link: [
-                    {word: "companies", content: null},
-                    {word: "id", content: null}
+                    {word: "companies"},
+                    {word: "id"}
                 ]},
 
                 {operator: "and"},
 
                 {star: false, link: [
-                    {word: "companies", content: null},
-                    {word: "name", content: null}
+                    {word: "companies"},
+                    {word: "name"}
                 ]},
                 {operator: "ilike"},
                 {content: "%ooo%"}
@@ -151,7 +151,7 @@ describe("Delete", () => {
             with: {
                 recursive: null,
                 queries: [{
-                    name: {word: "some_orders", content: null},
+                    name: {word: "some_orders"},
                     columns: null,
                     select: {
                         with: null,
@@ -177,7 +177,7 @@ describe("Delete", () => {
                             star: null,
             
                             table: {star: false, link: [
-                                {word: "orders", content: null}
+                                {word: "orders"}
                             ]}
                         }],
                         where: null,
@@ -198,14 +198,14 @@ describe("Delete", () => {
             only: false,
             star: false,
             table: {star: false, link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ]},
             as: null,
             using: null,
             where: {elements: [
                 {star: false, link: [
-                    {word: "companies", content: null},
-                    {word: "id", content: null}
+                    {word: "companies"},
+                    {word: "id"}
                 ]},
 
                 {operator: "="},
@@ -216,7 +216,7 @@ describe("Delete", () => {
                         {
                             expression: {elements: [
                                 {star: false, link: [
-                                    {word: "id_client", content: null}
+                                    {word: "id_client"}
                                 ]}
                             ]},
                             as: null
@@ -236,7 +236,7 @@ describe("Delete", () => {
                         star: null,
         
                         table: {star: false, link: [
-                            {word: "some_orders", content: null}
+                            {word: "some_orders"}
                         ]}
                     }],
                     where: null,

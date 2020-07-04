@@ -9,14 +9,14 @@ describe("Declare", () => {
         shouldBe: {
             variables: [
                 {
-                    name: {word: "a", content: null},
+                    name: {word: "a"},
                     type: {type: "text"},
                     collate: null,
                     nulls: true,
                     default: null
                 },
                 {
-                    name: {word: "b", content: null},
+                    name: {word: "b"},
                     type: {type: "numeric"},
                     collate: null,
                     nulls: true,

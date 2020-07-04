@@ -9,7 +9,7 @@ describe("WithQuery", () => {
             select
         )`,
         shouldBe: {
-            name: {word: "items", content: null},
+            name: {word: "items"},
             columns: null,
             select: {
                 with: null,
@@ -39,7 +39,7 @@ describe("WithQuery", () => {
                 (3, 4)
         )`,
         shouldBe: {
-            name: {word: "items", content: null},
+            name: {word: "items"},
             columns: null,
             select: null,
             values: [
@@ -82,10 +82,10 @@ describe("WithQuery", () => {
                 (3, 4)
         )`,
         shouldBe: {
-            name: {word: "items", content: null},
+            name: {word: "items"},
             columns: [
-                {word: "id", content: null},
-                {word: "code", content: null}
+                {word: "id"},
+                {word: "code"}
             ],
             select: null,
             values: [

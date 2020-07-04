@@ -9,7 +9,7 @@ describe("AssignVarStatement", () => {
         shouldBe: {
             variable: {
                 star: false, link: [
-                    {word: "a", content: null}
+                    {word: "a"}
                 ]
             },
             assign: {elements: [
@@ -23,8 +23,8 @@ describe("AssignVarStatement", () => {
         shouldBe: {
             variable: {
                 star: false, link: [
-                    {word: "new", content: null},
-                    {word: "x", content: null}
+                    {word: "new"},
+                    {word: "x"}
                 ]
             },
             assign: {elements: [
@@ -38,15 +38,15 @@ describe("AssignVarStatement", () => {
         shouldBe: {
             variable: {
                 star: false, link: [
-                    {word: "old", content: null},
-                    {word: "y", content: null}
+                    {word: "old"},
+                    {word: "y"}
                 ]
             },
             assign: {elements: [
                 {
                     star: false, link: [
-                        {word: "new", content: null},
-                        {word: "x", content: null}
+                        {word: "new"},
+                        {word: "x"}
                     ]
                 }
             ]}

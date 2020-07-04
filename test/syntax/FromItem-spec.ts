@@ -19,8 +19,8 @@ describe("FromItem", () => {
             select: null,
 
             table: {star: false, link: [
-                {word: "public", content: null},
-                {word: "company", content: null}
+                {word: "public"},
+                {word: "company"}
             ]}
         }
     });
@@ -40,7 +40,7 @@ describe("FromItem", () => {
             
             only: true,
             table: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]}
         }
     });
@@ -61,7 +61,7 @@ describe("FromItem", () => {
             
             only: true,
             table: {star: false, link: [
-                {word: "company", content: null}
+                {word: "company"}
             ]}
         }
     });
@@ -81,8 +81,8 @@ describe("FromItem", () => {
             
             as: { word: "company", content: null },
             table: {star: false, link: [
-                {word: "public", content: null},
-                {word: "company", content: null}
+                {word: "public"},
+                {word: "company"}
             ]}
         }
     });
@@ -99,14 +99,14 @@ describe("FromItem", () => {
             star: null,
             select: null,
 
-            as: { word: "company", content: null},
+            as: { word: "company"},
             table: {star: false, link: [
-                {word: "public", content: null},
-                {word: "company", content: null}
+                {word: "public"},
+                {word: "company"}
             ]},
             columns: [
-                {word: "id", content: null},
-                {word: "inn", content: null}
+                {word: "id"},
+                {word: "inn"}
             ]
         }
     });
@@ -180,8 +180,8 @@ describe("FromItem", () => {
                 arguments: [
                     {elements: [
                         {star: false, link: [
-                            {word: "company", content: null},
-                            {word: "id", content: null}
+                            {word: "company"},
+                            {word: "id"}
                         ]}
                     ]}
                 ]
@@ -237,9 +237,9 @@ describe("FromItem", () => {
             },
             
             columns: [
-                {word: "a1", content: null},
-                {word: "a2", content: null},
-                {word: "num", content: null}
+                {word: "a1"},
+                {word: "a2"},
+                {word: "num"}
             ]
         }
     });
@@ -261,8 +261,8 @@ describe("FromItem", () => {
             file: {
                 relative: true,
                 path: [
-                    {name: ".", content: null},
-                    {name: "Order.sql", content: null}
+                    {name: "."},
+                    {name: "Order.sql"}
                 ]
             },
             as: {
@@ -288,8 +288,8 @@ describe("FromItem", () => {
             file: {
                 relative: true,
                 path: [
-                    {name: ".", content: null},
-                    {name: "Order.sql", content: null}
+                    {name: "."},
+                    {name: "Order.sql"}
                 ]
             },
             as: {
@@ -315,8 +315,8 @@ describe("FromItem", () => {
             file: {
                 relative: true,
                 path: [
-                    {name: ".", content: null},
-                    {name: "Order", content: null}
+                    {name: "."},
+                    {name: "Order"}
                 ]
             },
             as: null
@@ -339,8 +339,8 @@ describe("FromItem", () => {
             file: {
                 relative: true,
                 path: [
-                    {name: ".", content: null},
-                    {name: "Order", content: null}
+                    {name: "."},
+                    {name: "Order"}
                 ]
             },
             as: null
@@ -375,7 +375,7 @@ describe("FromItem", () => {
                         joins: [],
     
                         table: {star: false, link: [
-                            {word: "country", content: null}
+                            {word: "country"}
                         ]}
                     },
                     on: {elements: [
@@ -388,8 +388,8 @@ describe("FromItem", () => {
             file: {
                 relative: true,
                 path: [
-                    {name: ".", content: null},
-                    {name: "Order", content: null}
+                    {name: "."},
+                    {name: "Order"}
                 ]
             },
             as: null
@@ -424,7 +424,7 @@ describe("FromItem", () => {
                         joins: [],
     
                         table: {star: false, link: [
-                            {word: "country", content: null}
+                            {word: "country"}
                         ]}
                     },
                     on: {elements: [
@@ -447,8 +447,8 @@ describe("FromItem", () => {
                         joins: [],
     
                         table: {star: false, link: [
-                            {word: "public", content: null},
-                            {word: "some", content: null}
+                            {word: "public"},
+                            {word: "some"}
                         ]}
                     },
                     on: {elements: [
@@ -461,8 +461,8 @@ describe("FromItem", () => {
             file: {
                 relative: true,
                 path: [
-                    {name: ".", content: null},
-                    {name: "Order", content: null}
+                    {name: "."},
+                    {name: "Order"}
                 ]
             },
             as: null
@@ -482,7 +482,7 @@ describe("FromItem", () => {
             star: null,
             table: null,
             
-            as: {word: "orders", content: null},
+            as: {word: "orders"},
             select: {
                 with: null,
                 columns: [
@@ -507,8 +507,8 @@ describe("FromItem", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "public", content: null},
-                        {word: "order", content: null}
+                        {word: "public"},
+                        {word: "order"}
                     ]}
                 }],
                 where: null,
@@ -539,10 +539,10 @@ describe("FromItem", () => {
             
             lateral: true,
             columns: [
-                {word: "id", content: null},
-                {word: "inn", content: null}
+                {word: "id"},
+                {word: "inn"}
             ],
-            as: {word: "company", content: null},
+            as: {word: "company"},
             select: {
                 with: null,
                 columns: [
@@ -567,7 +567,7 @@ describe("FromItem", () => {
                     star: null,
 
                     table: {star: false, link: [
-                        {word: "company", content: null}
+                        {word: "company"}
                     ]}
                 }],
                 where: null,

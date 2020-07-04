@@ -53,13 +53,13 @@ describe("IfStatement", () => {
         shouldBe: {
             if: {elements: [
                 {star: false, link: [
-                    {word: "a", content: null}
+                    {word: "a"}
                 ]}
             ]},
             then: {statements: [
                 {return: {elements: [
                     {star: false, link: [
-                        {word: "a", content: null}
+                        {word: "a"}
                     ]}
                 ]}}
             ]},
@@ -67,13 +67,13 @@ describe("IfStatement", () => {
                 {
                     elsif: {elements: [
                         {star: false, link: [
-                            {word: "b", content: null}
+                            {word: "b"}
                         ]}
                     ]},
                     then: {statements: [
                         {return: {elements: [
                             {star: false, link: [
-                                {word: "b", content: null}
+                                {word: "b"}
                             ]}
                         ]}}
                     ]}
@@ -81,13 +81,13 @@ describe("IfStatement", () => {
                 {
                     elsif: {elements: [
                         {star: false, link: [
-                            {word: "c", content: null}
+                            {word: "c"}
                         ]}
                     ]},
                     then: {statements: [
                         {return: {elements: [
                             {star: false, link: [
-                                {word: "c", content: null}
+                                {word: "c"}
                             ]}
                         ]}}
                     ]}
@@ -110,13 +110,13 @@ describe("IfStatement", () => {
         shouldBe: {
             if: {elements: [
                 {star: false, link: [
-                    {word: "a", content: null}
+                    {word: "a"}
                 ]}
             ]},
             then: {statements: [
                 {return: {elements: [
                     {star: false, link: [
-                        {word: "a", content: null}
+                        {word: "a"}
                     ]}
                 ]}}
             ]},
@@ -124,13 +124,13 @@ describe("IfStatement", () => {
                 {
                     elsif: {elements: [
                         {star: false, link: [
-                            {word: "b", content: null}
+                            {word: "b"}
                         ]}
                     ]},
                     then: {statements: [
                         {return: {elements: [
                             {star: false, link: [
-                                {word: "b", content: null}
+                                {word: "b"}
                             ]}
                         ]}}
                     ]}
@@ -139,7 +139,7 @@ describe("IfStatement", () => {
             else: {statements: [
                 {return: {elements: [
                     {star: false, link: [
-                        {word: "c", content: null}
+                        {word: "c"}
                     ]}
                 ]}}
             ]}

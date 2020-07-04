@@ -10,13 +10,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -37,13 +37,13 @@ describe("Update", () => {
             with: null,
             only: true,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -64,13 +64,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: true,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -91,13 +91,13 @@ describe("Update", () => {
             with: null,
             only: true,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: true,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -118,13 +118,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -133,7 +133,7 @@ describe("Update", () => {
                     ]}}
                 },
                 {
-                    column: {word: "note", content: null},
+                    column: {word: "note"},
                     columns: null,
                     select: null,
                     values: null,
@@ -154,13 +154,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -171,8 +171,8 @@ describe("Update", () => {
                 {
                     select: null,
                     columns: [
-                        {word: "x", content: null},
-                        {word: "y", content: null}
+                        {word: "x"},
+                        {word: "y"}
                     ],
                     values: [
                         {default: null, value: {elements: [
@@ -207,13 +207,13 @@ describe("Update", () => {
             with: null,
             only: true,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: true,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -224,8 +224,8 @@ describe("Update", () => {
                 {
                     select: null,
                     columns: [
-                        {word: "x", content: null},
-                        {word: "y", content: null}
+                        {word: "x"},
+                        {word: "y"}
                     ],
                     values: [
                         {default: null, value: {elements: [
@@ -245,7 +245,7 @@ describe("Update", () => {
                             {
                                 expression: {elements: [
                                     {star: false, link: [
-                                        {word: "v1", content: null}
+                                        {word: "v1"}
                                     ]}
                                 ]},
                                 as: null
@@ -253,7 +253,7 @@ describe("Update", () => {
                             {
                                 expression: {elements: [
                                     {star: false, link: [
-                                        {word: "v2", content: null}
+                                        {word: "v2"}
                                     ]}
                                 ]},
                                 as: null
@@ -273,7 +273,7 @@ describe("Update", () => {
                             star: null,
         
                             table: {star: false, link: [
-                                {word: "requisites", content: null}
+                                {word: "requisites"}
                             ]}
                         }],
                         where: null,
@@ -289,8 +289,8 @@ describe("Update", () => {
                         fetch: null
                     },
                     columns: [
-                        {word: "inn", content: null},
-                        {word: "kpp", content: null}
+                        {word: "inn"},
+                        {word: "kpp"}
                     ],
                     values: null,
                     column: null,
@@ -313,13 +313,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -331,8 +331,8 @@ describe("Update", () => {
             from: null,
             where: {elements: [
                 {star: false, link: [
-                    {word: "companies", content: null},
-                    {word: "id", content: null}
+                    {word: "companies"},
+                    {word: "id"}
                 ]},
                 {operator: ">"},
                 {number: "100"}
@@ -351,14 +351,14 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "public", content: null},
-                {word: "companies", content: null}
+                {word: "public"},
+                {word: "companies"}
             ], star: false},
-            as: {word: "companies", content: null},
+            as: {word: "companies"},
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -370,8 +370,8 @@ describe("Update", () => {
             from: null,
             where: {elements: [
                 {star: false, link: [
-                    {word: "companies", content: null},
-                    {word: "id", content: null}
+                    {word: "companies"},
+                    {word: "id"}
                 ]},
                 {operator: ">"},
                 {number: "100"}
@@ -392,13 +392,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -420,23 +420,23 @@ describe("Update", () => {
                 star: null,
 
                 table: {star: false, link: [
-                    {word: "orders", content: null}
+                    {word: "orders"}
                 ]}
             }],
             where: {elements: [
                 {star: false, link: [
-                    {word: "orders", content: null},
-                    {word: "id_client", content: null}
+                    {word: "orders"},
+                    {word: "id_client"}
                 ]},
                 {operator: "="},
                 {star: false, link: [
-                    {word: "companies", content: null},
-                    {word: "id", content: null}
+                    {word: "companies"},
+                    {word: "id"}
                 ]},
                 {operator: "and"},
                 {star: false, link: [
-                    {word: "orders", content: null},
-                    {word: "need_update", content: null}
+                    {word: "orders"},
+                    {word: "need_update"}
                 ]}
             ]},
             returning: null
@@ -457,7 +457,7 @@ describe("Update", () => {
             with: {
                 recursive: null,
                 queries: [{
-                    name: {word: "x1", content: null},
+                    name: {word: "x1"},
                     columns: null,
                     select: {
                         with: null,
@@ -466,7 +466,7 @@ describe("Update", () => {
                                 expression: {elements: [
                                     {number: "1"}
                                 ]},
-                                as: {word: "id", content: null}
+                                as: {word: "id"}
                             }
                         ],
                         into: null,
@@ -488,13 +488,13 @@ describe("Update", () => {
             },
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -516,28 +516,28 @@ describe("Update", () => {
                 star: null,
 
                 table: {star: false, link: [
-                    {word: "orders", content: null}
+                    {word: "orders"}
                 ]}
             }],
             where: {elements: [
                 {star: false, link: [
-                    {word: "orders", content: null},
-                    {word: "id_client", content: null}
+                    {word: "orders"},
+                    {word: "id_client"}
                 ]},
                 {operator: "="},
                 {star: false, link: [
-                    {word: "companies", content: null},
-                    {word: "id", content: null}
+                    {word: "companies"},
+                    {word: "id"}
                 ]},
                 {operator: "and"},
                 {star: false, link: [
-                    {word: "orders", content: null},
-                    {word: "need_update", content: null}
+                    {word: "orders"},
+                    {word: "need_update"}
                 ]},
                 {operator: "and"},
                 {star: false, link: [
-                    {word: "orders", content: null},
-                    {word: "id_country", content: null}
+                    {word: "orders"},
+                    {word: "id_country"}
                 ]},
                 {operator: "="},
                 {elements: [{
@@ -546,7 +546,7 @@ describe("Update", () => {
                         {
                             expression: {elements: [
                                 {star: false, link: [
-                                    {word: "id", content: null}
+                                    {word: "id"}
                                 ]}
                             ]},
                             as: null
@@ -566,7 +566,7 @@ describe("Update", () => {
                         star: null,
         
                         table: {star: false, link: [
-                            {word: "x1", content: null}
+                            {word: "x1"}
                         ]}
                     }],
                     where: null,
@@ -592,13 +592,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -628,13 +628,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -650,7 +650,7 @@ describe("Update", () => {
                     {
                         expression: {elements: [
                             {star: false, link: [
-                                {word: "id", content: null}
+                                {word: "id"}
                             ]}
                         ]},
                         as: null
@@ -658,7 +658,7 @@ describe("Update", () => {
                     {
                         expression: {elements: [
                             {star: false, link: [
-                                {word: "id_client", content: null}
+                                {word: "id_client"}
                             ]}
                         ]},
                         as: null
@@ -674,13 +674,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -702,7 +702,7 @@ describe("Update", () => {
                     {
                         expression: {elements: [
                             {star: false, link: [
-                                {word: "id", content: null}
+                                {word: "id"}
                             ]}
                         ]},
                         as: null
@@ -718,13 +718,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -741,7 +741,7 @@ describe("Update", () => {
                         expression: {elements: [
                             {number: "1"}
                         ]},
-                        as: {word: "x", content: null}
+                        as: {word: "x"}
                     }
                 ]
             }
@@ -754,13 +754,13 @@ describe("Update", () => {
             with: null,
             only: false,
             table: {link: [
-                {word: "companies", content: null}
+                {word: "companies"}
             ], star: false},
             as: null,
             star: false,
             set: [
                 {
-                    column: {word: "name", content: null},
+                    column: {word: "name"},
                     columns: null,
                     select: null,
                     values: null,
@@ -779,7 +779,7 @@ describe("Update", () => {
                         expression: {elements: [
                             {number: "1"}
                         ]},
-                        as: {word: "x", content: null}
+                        as: {word: "x"}
                     }
                 ]
             }

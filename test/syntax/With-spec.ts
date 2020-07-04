@@ -12,7 +12,7 @@ describe("With", () => {
             recursive: null,
             queries: [
                 {
-                    name: {word: "items", content: null},
+                    name: {word: "items"},
                     columns: null,
                     select: {
                         with: null,
@@ -45,7 +45,7 @@ describe("With", () => {
             recursive: true,
             queries: [
                 {
-                    name: {word: "items", content: null},
+                    name: {word: "items"},
                     columns: null,
                     select: {
                         with: null,

@@ -1,7 +1,10 @@
 
 import {Syntax} from "lang-coach";
 import {GrapeQLCoach} from "../lib/GrapeQLCoach";
-import assert from "assert";
+import {expect, use} from "chai";
+import chaiShallowDeepEqualPlugin from "chai-shallow-deep-equal";
+
+use(chaiShallowDeepEqualPlugin);
 
 interface ITestResult<SomeSyntax extends Syntax<any>> {
     // string for parsing
@@ -50,14 +53,10 @@ export function testSyntax<
 
         it(`expected error:\n ${regExp}\nstring:\n${str}`, () => {
             
-            assert.throws(
-                () => {
-                    const coach = new GrapeQLCoach(str);
-                    coach.parse(SomeSyntax);
-                },
-                (err) =>
-                    regExp.test( err )
-            );
+            expect(() => {
+                const coach = new GrapeQLCoach(str);
+                coach.parse(SomeSyntax);
+            }).to.throw(regExp);
         });
     }
     else {
@@ -68,7 +67,8 @@ export function testSyntax<
 
             const coach = new GrapeQLCoach(str);
             const actual = coach.is(SomeSyntax, test.options);
-            assert.ok( actual );
+
+            expect(actual).to.be.equal(true);
         });
 
 
@@ -76,7 +76,9 @@ export function testSyntax<
             
             const coach = new GrapeQLCoach(str);
             const actualResult = coach.parse(SomeSyntax, test.options);
-            assert.deepEqual(actualResult.toJSON(), shouldBeResult);
+
+            expect(actualResult.toJSON())
+                .to.shallowDeepEqual(shouldBeResult);
         });
 
 
@@ -89,7 +91,9 @@ export function testSyntax<
             const cloneCoach = new GrapeQLCoach( cloneString );
             
             const cloneActualResult = cloneCoach.parse(SomeSyntax, test.options);
-            assert.deepEqual(cloneActualResult.toJSON(), shouldBeResult);
+
+            expect(cloneActualResult.toJSON())
+                .to.shallowDeepEqual(shouldBeResult);
         });
     }
 
