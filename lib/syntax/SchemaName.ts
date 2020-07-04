@@ -1,9 +1,8 @@
 
-
 import {Types} from "lang-coach";
-import SchemaParse from "./SchemaParse";
+import {SchemaParse} from "./SchemaParse";
 
-export default class SchemaName extends SchemaParse<SchemaName> {
+export class SchemaName extends SchemaParse<SchemaName> {
     structure() {
         return {
             schema: Types.String,
@@ -15,5 +14,3 @@ export default class SchemaName extends SchemaParse<SchemaName> {
         return `${this.row.schema}.${this.row.name}`;
     }
 }
-
-

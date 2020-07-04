@@ -1,10 +1,9 @@
 
-
 import {Syntax} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
-export default class Cast extends Syntax<Cast> {
+export class Cast extends Syntax<Cast> {
     structure() {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
         const DataType = allSyntax.DataType as GrapeQLCoach["syntax"]["DataType"];

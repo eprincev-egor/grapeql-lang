@@ -1,7 +1,4 @@
 
+import {ObjectLink} from "./ObjectLink";
 
-import ObjectLink from "./ObjectLink";
-
-export default class TableLink extends ObjectLink {}
-
-
+export class TableLink extends ObjectLink {}

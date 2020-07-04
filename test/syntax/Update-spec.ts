@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {Update} from "../../lib/syntax/Update";
-import testSyntax from "../testSyntax";
 
 describe("Update", () => {
 

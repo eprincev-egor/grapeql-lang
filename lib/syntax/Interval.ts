@@ -1,11 +1,10 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import SingleQuotesString from "./SingleQuotesString";
-import DollarString from "./DollarString";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {SingleQuotesString} from "./SingleQuotesString";
+import {DollarString} from "./DollarString";
 
-export default class Interval extends Syntax<Interval> {
+export class Interval extends Syntax<Interval> {
     structure() {
         return {
             interval: Types.Or({

@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {Delete} from "../../lib/syntax/Delete";
-import testSyntax from "../testSyntax";
 
 describe("Delete", () => {
 

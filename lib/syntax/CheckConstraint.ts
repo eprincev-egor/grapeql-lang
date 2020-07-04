@@ -1,9 +1,9 @@
 
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import Constraint from "./Constraint";
-import Expression from "./Expression";
+import {Constraint} from "./Constraint";
+import {Expression} from "./Expression";
 
-export default class CheckConstraint extends Constraint<CheckConstraint> {
+export class CheckConstraint extends Constraint<CheckConstraint> {
     
     structure() {
         return {

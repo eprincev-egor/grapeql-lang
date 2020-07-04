@@ -1,8 +1,6 @@
 
-
-
-import DollarString from "../../lib/syntax/DollarString";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {DollarString} from "../../lib/syntax/DollarString";
 
 describe("DollarString", () => {
 

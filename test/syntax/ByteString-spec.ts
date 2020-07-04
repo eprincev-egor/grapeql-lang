@@ -1,7 +1,6 @@
 
-
-import ByteString from "../../lib/syntax/ByteString";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {ByteString} from "../../lib/syntax/ByteString";
 
 describe("ByteString", () => {
 

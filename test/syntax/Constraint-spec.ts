@@ -1,6 +1,6 @@
 
-import Constraint from "../../lib/syntax/Constraint";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Constraint} from "../../lib/syntax/Constraint";
 
 describe("Constraint", () => {
 

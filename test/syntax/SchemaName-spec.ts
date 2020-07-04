@@ -1,7 +1,6 @@
 
-
-import SchemaName from "../../lib/syntax/SchemaName";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {SchemaName} from "../../lib/syntax/SchemaName";
 
 describe("SchemaName", () => {
 

@@ -1,6 +1,6 @@
 
-import FunctionIdentify from "../../lib/syntax/FunctionIdentify";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {FunctionIdentify} from "../../lib/syntax/FunctionIdentify";
 
 describe("FunctionIdentify", () => {
 

@@ -1,10 +1,9 @@
 
-
-import CommentOn from "./CommentOn";
-import FunctionIdentify from "./FunctionIdentify";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {CommentOn} from "./CommentOn";
+import {FunctionIdentify} from "./FunctionIdentify";
 
-export default class CommentOnFunction extends CommentOn<CommentOnFunction> {
+export class CommentOnFunction extends CommentOn<CommentOnFunction> {
     structure() {
         return {
             ...super.structure(),

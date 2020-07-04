@@ -1,10 +1,9 @@
 
-
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
-export default class Union extends Syntax<Union> {
+export class Union extends Syntax<Union> {
     structure() {
         const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 

@@ -1,7 +1,7 @@
 
-import Any from "../../lib/syntax/Any";
 import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Any} from "../../lib/syntax/Any";
 import assert from "assert";
 
 describe("Any", () => {

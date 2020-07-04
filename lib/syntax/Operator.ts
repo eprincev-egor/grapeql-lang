@@ -1,5 +1,4 @@
 
-
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
@@ -43,7 +42,7 @@ const CONDITION_OPERATORS = [
     "ilike"
 ];
 
-export default class Operator extends Syntax<Operator> {
+export class Operator extends Syntax<Operator> {
     structure() {
         return {
             operator: Types.String

@@ -1,8 +1,6 @@
 
-
-
-import SingleQuotesString from "../../lib/syntax/SingleQuotesString";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {SingleQuotesString} from "../../lib/syntax/SingleQuotesString";
 
 describe("SingleQuotesString", () => {
 

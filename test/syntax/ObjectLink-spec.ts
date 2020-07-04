@@ -1,11 +1,9 @@
 
-
-
-import ObjectLink from "../../lib/syntax/ObjectLink";
-import ObjectName from "../../lib/syntax/ObjectName";
-import testSyntax from "../testSyntax";
 import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
+import {ObjectLink} from "../../lib/syntax/ObjectLink";
+import {ObjectName} from "../../lib/syntax/ObjectName";
 
 describe("ObjectLink", () => {
 

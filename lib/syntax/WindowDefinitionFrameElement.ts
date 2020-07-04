@@ -1,8 +1,7 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import PgNumber from "./PgNumber";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {PgNumber} from "./PgNumber";
 
 /*
 UNBOUNDED PRECEDING
@@ -12,7 +11,7 @@ value PRECEDING
 value FOLLOWING
     */
 
-export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitionFrameElement> {
+export class WindowDefinitionFrameElement extends Syntax<WindowDefinitionFrameElement> {
     structure() {
         return {
             value: PgNumber,
@@ -94,5 +93,3 @@ export default class WindowDefinitionFrameElement extends Syntax<WindowDefinitio
         }
     }
 }
-
-

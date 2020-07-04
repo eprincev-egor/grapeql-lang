@@ -1,7 +1,6 @@
 
-
-import SelectFetch from "../../lib/syntax/SelectFetch";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {SelectFetch} from "../../lib/syntax/SelectFetch";
 
 describe("SelectFetch", () => {
 

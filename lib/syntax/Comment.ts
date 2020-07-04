@@ -1,9 +1,8 @@
 
-
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
-export default class Comment extends Syntax<Comment> {
+export class Comment extends Syntax<Comment> {
     structure() {
         return {
             isLine: Types.Boolean({

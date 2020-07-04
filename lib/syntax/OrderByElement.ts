@@ -1,11 +1,10 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import Operator from "./Operator";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
+import {Operator} from "./Operator";
 
-export default class OrderByElement extends Syntax<OrderByElement> {
+export class OrderByElement extends Syntax<OrderByElement> {
     structure() {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 

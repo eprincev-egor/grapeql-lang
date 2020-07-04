@@ -1,11 +1,11 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import ObjectLink from "./ObjectLink";
-import SchemaName from "./SchemaName";
-import DataType from "./DataType";
+import {ObjectLink} from "./ObjectLink";
+import {SchemaName} from "./SchemaName";
+import {DataType} from "./DataType";
 
-export default class FunctionIdentify extends Syntax<FunctionIdentify> {
+export class FunctionIdentify extends Syntax<FunctionIdentify> {
     structure() {
         return {
             schema: Types.String,

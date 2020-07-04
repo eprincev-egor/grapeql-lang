@@ -1,7 +1,12 @@
 
 import {Syntax, Types} from "lang-coach";
-import {GrapeQLCoach, With, TableLink, ObjectName, Select, OnConflict} from "../GrapeQLCoach";
-import ValuesRow from "./ValuesRow";
+import {GrapeQLCoach} from "../GrapeQLCoach";
+import {ObjectName} from "./ObjectName";
+import {With} from "./With";
+import {Select} from "./Select";
+import {OnConflict} from "./OnConflict";
+import {TableLink} from "./TableLink";
+import {ValuesRow} from "./ValuesRow";
 import {Returning} from "./Returning";
 
 

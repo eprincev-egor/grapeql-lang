@@ -1,7 +1,6 @@
 
-
-import Cast from "../../lib/syntax/Cast";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Cast} from "../../lib/syntax/Cast";
 
 describe("Cast", () => {
 

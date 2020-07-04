@@ -1,9 +1,8 @@
 
-
-import FunctionLink from "../../lib/syntax/FunctionLink";
-import ObjectLink from "../../lib/syntax/ObjectLink";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
+import {FunctionLink} from "../../lib/syntax/FunctionLink";
+import {ObjectLink} from "../../lib/syntax/ObjectLink";
 
 describe("FunctionLink", () => {
 

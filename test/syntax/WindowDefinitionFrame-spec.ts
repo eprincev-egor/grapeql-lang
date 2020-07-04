@@ -1,7 +1,6 @@
 
-
-import WindowDefinitionFrame from "../../lib/syntax/WindowDefinitionFrame";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {WindowDefinitionFrame} from "../../lib/syntax/WindowDefinitionFrame";
 
 describe("WindowDefinitionFrame", () => {
 

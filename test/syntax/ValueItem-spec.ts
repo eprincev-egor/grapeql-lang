@@ -1,7 +1,6 @@
 
-
-import ValueItem from "../../lib/syntax/ValueItem";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {ValueItem} from "../../lib/syntax/ValueItem";
 
 describe("ValueItem", () => {
 

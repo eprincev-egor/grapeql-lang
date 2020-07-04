@@ -1,10 +1,10 @@
 
 import {Syntax, Types} from "lang-coach";
-import ObjectLink from "./ObjectLink";
-import SchemaTable from "./SchemaTable";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {ObjectLink} from "./ObjectLink";
+import {SchemaTable} from "./SchemaTable";
 
-export default class TriggerIdentify extends Syntax<TriggerIdentify> {
+export class TriggerIdentify extends Syntax<TriggerIdentify> {
     structure() {
         return {
             name: Types.String,

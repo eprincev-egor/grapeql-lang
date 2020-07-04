@@ -1,7 +1,6 @@
 
-
-import Union from "../../lib/syntax/Union";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Union} from "../../lib/syntax/Union";
 
 const EMPTY_SELECT = {
     with: null,

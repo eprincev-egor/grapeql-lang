@@ -1,8 +1,8 @@
 
 import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
-import ColumnDefinition from "../../lib/syntax/ColumnDefinition";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
+import {ColumnDefinition} from "../../lib/syntax/ColumnDefinition";
 
 describe("ColumnDefinition", () => {
 

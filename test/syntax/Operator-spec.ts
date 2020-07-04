@@ -1,7 +1,6 @@
 
-
-import Operator from "../../lib/syntax/Operator";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Operator} from "../../lib/syntax/Operator";
 
 describe("Operator", () => {
 

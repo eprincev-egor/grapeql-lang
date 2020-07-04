@@ -1,7 +1,6 @@
 
-
-import OrderByElement from "../../lib/syntax/OrderByElement";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {OrderByElement} from "../../lib/syntax/OrderByElement";
 
 describe("OrderByElement", () => {
 

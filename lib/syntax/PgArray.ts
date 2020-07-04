@@ -1,10 +1,9 @@
 
-
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
-export default class PgArray extends Syntax<PgArray> {
+export class PgArray extends Syntax<PgArray> {
     structure() {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 

@@ -14,7 +14,7 @@ interface ITestResult<SomeSyntax extends Syntax<any>> {
     error?: RegExp;
 }
 
-export default function testSyntax<
+export function testSyntax<
     K extends keyof GrapeQLCoach["syntax"], 
     TSyntax extends GrapeQLCoach["syntax"][K]
 >(

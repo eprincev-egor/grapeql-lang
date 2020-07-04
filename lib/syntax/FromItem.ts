@@ -1,16 +1,15 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import File from "./File";
-import FunctionCall from "./FunctionCall";
-import TableLink from "./TableLink";
-import ObjectName from "./ObjectName";
-import Join from "./Join";
-import DoubleQuotes from "./DoubleQuotes";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
+import {File} from "./File";
+import {FunctionCall} from "./FunctionCall";
+import {TableLink} from "./TableLink";
+import {ObjectName} from "./ObjectName";
+import {Join} from "./Join";
+import {DoubleQuotes} from "./DoubleQuotes";
 
-export default class FromItem extends Syntax<FromItem> {
+export class FromItem extends Syntax<FromItem> {
     structure() {
         const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
         

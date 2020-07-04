@@ -1,7 +1,6 @@
 
-
-import FunctionCall from "../../lib/syntax/FunctionCall";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {FunctionCall} from "../../lib/syntax/FunctionCall";
 
 describe("FunctionCall", () => {
 

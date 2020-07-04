@@ -1,9 +1,8 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import GroupByElementContent from "./GroupByElementContent";
-import Expression from "./Expression";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {GroupByElementContent} from "./GroupByElementContent";
+import {Expression} from "./Expression";
 
 /*
     ()
@@ -12,7 +11,7 @@ import {GrapeQLCoach} from "../GrapeQLCoach";
     CUBE ( { expression | ( expression [, ...] ) } [, ...] )
     GROUPING SETS ( grouping_element [, ...] )
  */
-export default class GroupByElement extends Syntax<GroupByElement> {
+export class GroupByElement extends Syntax<GroupByElement> {
     structure() {
         return {
             isEmpty: Types.Boolean,

@@ -1,10 +1,9 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import SingleQuotesString from "./SingleQuotesString";
+import {SingleQuotesString} from "./SingleQuotesString";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
-export default class ByteString extends Syntax<ByteString> {
+export class ByteString extends Syntax<ByteString> {
     structure() {
         return {
             content: Types.String

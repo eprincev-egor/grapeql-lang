@@ -1,6 +1,6 @@
 
-import PgReturns from "../../lib/syntax/PgReturns";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {PgReturns} from "../../lib/syntax/PgReturns";
 
 describe("PgReturns", () => {
 

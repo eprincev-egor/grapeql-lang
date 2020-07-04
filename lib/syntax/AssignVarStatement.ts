@@ -1,6 +1,8 @@
 
 import {Syntax} from "lang-coach";
-import {GrapeQLCoach, Expression, ObjectLink} from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
+import {ObjectLink} from "./ObjectLink";
+import {Expression} from "./Expression";
 
 // variable = expression
 // new.column = expression

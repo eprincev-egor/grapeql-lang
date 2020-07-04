@@ -1,10 +1,10 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import DollarString from "./DollarString";
-import SingleQuotesString from "./SingleQuotesString";
+import {DollarString} from "./DollarString";
+import {SingleQuotesString} from "./SingleQuotesString";
 
-export default abstract class CommentOn<Child extends CommentOn = any> extends Syntax<CommentOn & Child> {
+export abstract class CommentOn<Child extends CommentOn = any> extends Syntax<CommentOn & Child> {
     structure() {
         return {
             comment: Types.Or({

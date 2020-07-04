@@ -1,15 +1,14 @@
 
-
 import {Syntax} from "lang-coach";
-import WindowDefinitionFrameElement from "./WindowDefinitionFrameElement";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {WindowDefinitionFrameElement} from "./WindowDefinitionFrameElement";
 
 /*
 frame_start
 BETWEEN frame_start AND frame_end
 */
 
-export default class WindowDefinitionFrame extends Syntax<WindowDefinitionFrame> {
+export class WindowDefinitionFrame extends Syntax<WindowDefinitionFrame> {
     structure() {
         return {
             start: WindowDefinitionFrameElement,
@@ -53,4 +52,3 @@ export default class WindowDefinitionFrame extends Syntax<WindowDefinitionFrame>
         }
     }
 }
-

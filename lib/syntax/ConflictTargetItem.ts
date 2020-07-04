@@ -1,6 +1,8 @@
 
 import {Syntax} from "lang-coach";
-import {GrapeQLCoach, Expression, ObjectName} from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
+import {ObjectName} from "./ObjectName";
+import {Expression} from "./Expression";
 
 export class ConflictTargetItem extends Syntax<ConflictTargetItem> {
     structure() {

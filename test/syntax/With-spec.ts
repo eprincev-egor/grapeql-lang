@@ -1,7 +1,6 @@
 
-
-import With from "../../lib/syntax/With";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {With} from "../../lib/syntax/With";
 
 describe("With", () => {
 

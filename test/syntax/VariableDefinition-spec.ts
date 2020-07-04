@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {VariableDefinition} from "../../lib/syntax/VariableDefinition";
-import testSyntax from "../testSyntax";
 
 describe("VariableDefinition", () => {
 

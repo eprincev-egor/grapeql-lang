@@ -1,10 +1,9 @@
 
-
 import {Syntax} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
-export default class Exists extends Syntax<Exists> {
+export class Exists extends Syntax<Exists> {
     structure() {
         const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
         

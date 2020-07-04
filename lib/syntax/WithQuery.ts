@@ -1,12 +1,11 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import ObjectName from "./ObjectName";
-import ValuesRow from "./ValuesRow";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
+import {ObjectName} from "./ObjectName";
+import {ValuesRow} from "./ValuesRow";
 
-export default class WithQuery extends Syntax<WithQuery> {
+export class WithQuery extends Syntax<WithQuery> {
     structure() {
         const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
@@ -127,4 +126,3 @@ export default class WithQuery extends Syntax<WithQuery> {
         return out;
     }
 }
-

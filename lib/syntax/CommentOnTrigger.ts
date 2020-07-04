@@ -1,9 +1,9 @@
 
-import CommentOn from "./CommentOn";
-import TriggerIdentify from "./TriggerIdentify";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {CommentOn} from "./CommentOn";
+import {TriggerIdentify} from "./TriggerIdentify";
 
-export default class CommentOnTrigger extends CommentOn<CommentOnTrigger> {
+export class CommentOnTrigger extends CommentOn<CommentOnTrigger> {
     structure() {
         return {
             ...super.structure(),

@@ -1,9 +1,9 @@
 
 import {Syntax} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import ObjectName from "./ObjectName";
+import {ObjectName} from "./ObjectName";
 
-export default class Constraint<Child extends Constraint = any> extends Syntax<Constraint & Child> {
+export class Constraint<Child extends Constraint = any> extends Syntax<Constraint & Child> {
     
     IOptions: {
         column: ObjectName["TInput"]

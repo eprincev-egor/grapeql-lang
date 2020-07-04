@@ -1,9 +1,9 @@
 
 import {Syntax, Types} from "lang-coach";
-import { GrapeQLCoach } from "../GrapeQLCoach";
-import { ConflictTargetItem } from "./ConflictTargetItem";
-import ObjectName from "./ObjectName";
-import Expression from "./Expression";
+import {GrapeQLCoach} from "../GrapeQLCoach";
+import {ConflictTargetItem} from "./ConflictTargetItem";
+import {ObjectName} from "./ObjectName";
+import {Expression} from "./Expression";
 import {SetItem} from "./SetItem";
 
 export class OnConflict extends Syntax<OnConflict> {

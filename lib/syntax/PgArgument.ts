@@ -1,9 +1,9 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import Expression from "./Expression";
+import {Expression} from "./Expression";
 
-export default class PgArgument extends Syntax<PgArgument> {
+export class PgArgument extends Syntax<PgArgument> {
     structure() {
         return {
             out: Types.Boolean,

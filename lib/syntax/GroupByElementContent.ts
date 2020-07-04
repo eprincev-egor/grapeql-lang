@@ -1,13 +1,12 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import Expression from "./Expression";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {Expression} from "./Expression";
 
 /*
     { expression | ( expression [, ...] ) }
  */
-export default class GroupByElementContent extends Syntax<GroupByElementContent> {
+export class GroupByElementContent extends Syntax<GroupByElementContent> {
     structure() {
         return {
             single: Types.Boolean,

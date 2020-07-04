@@ -1,6 +1,9 @@
 
 import {Syntax, Types} from "lang-coach";
-import {GrapeQLCoach, ObjectName, Select, ValueItem} from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
+import {ValueItem} from "./ValueItem";
+import {ObjectName} from "./ObjectName";
+import {Select} from "./Select";
 
 /*
     column_name = { expression | DEFAULT }

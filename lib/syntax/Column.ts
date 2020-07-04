@@ -1,9 +1,8 @@
 
-
 import {Syntax} from "lang-coach";
-import Expression from "./Expression";
-import ObjectName from "./ObjectName";
-import DoubleQuotes from "./DoubleQuotes";
+import {Expression} from "./Expression";
+import {ObjectName} from "./ObjectName";
+import {DoubleQuotes} from "./DoubleQuotes";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
 const keywords = [
@@ -30,7 +29,7 @@ const keywords = [
     "join"
 ];
 
-export default class Column extends Syntax<Column> {
+export class Column extends Syntax<Column> {
     structure() {
         return {
             expression: Expression,

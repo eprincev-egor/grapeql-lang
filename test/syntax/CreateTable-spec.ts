@@ -1,8 +1,8 @@
 
-import CreateTable from "../../lib/syntax/CreateTable";
-import testSyntax from "../testSyntax";
-import assert from "assert";
 import { GrapeQLCoach } from "../../lib/GrapeQLCoach";
+import {testSyntax} from "../testSyntax";
+import assert from "assert";
+import {CreateTable} from "../../lib/syntax/CreateTable";
 
 describe("CreateTable", () => {
 

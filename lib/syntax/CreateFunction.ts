@@ -1,17 +1,16 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import PgArgument from "./PgArgument";
-import PgReturns from "./PgReturns";
-import FunctionIdentify from "./FunctionIdentify";
-import CommentOn from "./CommentOn";
-import CommentOnFunction from "./CommentOnFunction";
-import DollarString from "./DollarString";
-import SingleQuotesString from "./SingleQuotesString";
-import SchemaName from "./SchemaName";
-import PgNumber from "./PgNumber";
+import {PgArgument} from "./PgArgument";
+import {PgReturns} from "./PgReturns";
+import {FunctionIdentify} from "./FunctionIdentify";
+import {CommentOnFunction} from "./CommentOnFunction";
+import {DollarString} from "./DollarString";
+import {SingleQuotesString} from "./SingleQuotesString";
+import {SchemaName} from "./SchemaName";
+import {PgNumber} from "./PgNumber";
 
-export default class CreateFunction extends Syntax<CreateFunction> {
+export class CreateFunction extends Syntax<CreateFunction> {
     structure() {
         return {
             schema: Types.String,

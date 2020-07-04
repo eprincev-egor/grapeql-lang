@@ -1,6 +1,6 @@
 
-import CreateTrigger from "../../lib/syntax/CreateTrigger";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {CreateTrigger} from "../../lib/syntax/CreateTrigger";
 
 describe("CreateTrigger", () => {
 

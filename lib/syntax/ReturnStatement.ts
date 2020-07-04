@@ -1,6 +1,7 @@
 
 import {Syntax} from "lang-coach";
-import {GrapeQLCoach, Expression} from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
+import {Expression} from "./Expression";
 
 // return expression
 

@@ -1,10 +1,10 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import SingleQuotesString from "./SingleQuotesString";
-import DollarString from "./DollarString";
-import Expression from "./Expression";
-import { RaiseUsing } from "./RaiseUsing";
+import {SingleQuotesString} from "./SingleQuotesString";
+import {DollarString} from "./DollarString";
+import {Expression} from "./Expression";
+import {RaiseUsing} from "./RaiseUsing";
 
 // https://www.postgresql.org/docs/10/plpgsql-errors-and-messages.html
 // RAISE [ level ] 'format' [, expression [, ... ]] [ USING option = expression [, ... ] ];

@@ -1,9 +1,8 @@
 
-
-import ColumnLink from "../../lib/syntax/ColumnLink";
-import ObjectLink from "../../lib/syntax/ObjectLink";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
+import {ColumnLink} from "../../lib/syntax/ColumnLink";
+import {ObjectLink} from "../../lib/syntax/ObjectLink";
 
 describe("ColumnLink", () => {
 

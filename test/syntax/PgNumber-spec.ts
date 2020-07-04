@@ -1,7 +1,6 @@
 
-
-import PgNumber from "../../lib/syntax/PgNumber";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {PgNumber} from "../../lib/syntax/PgNumber";
 
 describe("PgNumber", () => {
 

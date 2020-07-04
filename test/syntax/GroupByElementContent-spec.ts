@@ -1,7 +1,6 @@
 
-
-import GroupByElementContent from "../../lib/syntax/GroupByElementContent";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {GroupByElementContent} from "../../lib/syntax/GroupByElementContent";
 
 describe("GroupByElementContent", () => {
 

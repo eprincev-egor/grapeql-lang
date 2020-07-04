@@ -1,9 +1,8 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import TableLink from "./TableLink";
-import ObjectName from "./ObjectName";
-import Select from "./Select";
+import {TableLink} from "./TableLink";
+import {ObjectName} from "./ObjectName";
+import {Select} from "./Select";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
 /*
@@ -16,7 +15,7 @@ cache totals for company (
 )
  */
 
-export default class CacheFor extends Syntax<CacheFor> {
+export class CacheFor extends Syntax<CacheFor> {
     structure() {
         return {
             for: TableLink,

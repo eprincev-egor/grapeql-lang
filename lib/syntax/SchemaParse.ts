@@ -1,10 +1,9 @@
 
-
 import {Syntax} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import ObjectLink from "./ObjectLink";
+import {ObjectLink} from "./ObjectLink";
 
-export default abstract class SchemaParse<Child extends SchemaParse = any> extends Syntax<Child> {
+export abstract class SchemaParse<Child extends SchemaParse = any> extends Syntax<Child> {
     /* istanbul ignore next */
     structure() {
         return {
@@ -41,5 +40,3 @@ export default abstract class SchemaParse<Child extends SchemaParse = any> exten
         data.name = name;
     }
 }
-
-

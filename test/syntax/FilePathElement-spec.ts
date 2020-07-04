@@ -1,7 +1,6 @@
 
-
-import FilePathElement from "../../lib/syntax/FilePathElement";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {FilePathElement} from "../../lib/syntax/FilePathElement";
 
 describe("FilePathElement", () => {
 

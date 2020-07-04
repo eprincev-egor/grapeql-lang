@@ -1,10 +1,9 @@
 
-
-import DoubleQuotes from "./DoubleQuotes";
 import { Types } from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {DoubleQuotes} from "./DoubleQuotes";
 
-export default class ObjectName extends DoubleQuotes<ObjectName> {
+export class ObjectName extends DoubleQuotes<ObjectName> {
     structure() {
         return {
             content: Types.String,

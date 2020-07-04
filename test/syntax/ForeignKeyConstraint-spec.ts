@@ -1,6 +1,6 @@
 
-import ForeignKeyConstraint from "../../lib/syntax/ForeignKeyConstraint";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {ForeignKeyConstraint} from "../../lib/syntax/ForeignKeyConstraint";
 
 describe("ForeignKeyConstraint", () => {
     

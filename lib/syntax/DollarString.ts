@@ -1,9 +1,8 @@
 
-
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
-export default class DollarString extends Syntax<DollarString> {
+export class DollarString extends Syntax<DollarString> {
     structure() {
         return {
             content: Types.String

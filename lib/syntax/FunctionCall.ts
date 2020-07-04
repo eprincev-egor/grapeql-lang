@@ -1,15 +1,14 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import FunctionLink from "./FunctionLink";
-import OrderByElement from "./OrderByElement";
-import WindowDefinition from "./WindowDefinition";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
+import {FunctionLink} from "./FunctionLink";
+import {OrderByElement} from "./OrderByElement";
+import {WindowDefinition} from "./WindowDefinition";
 
 // some(1,2)
 
-export default class FunctionCall extends Syntax<FunctionCall> {
+export class FunctionCall extends Syntax<FunctionCall> {
     structure() {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 

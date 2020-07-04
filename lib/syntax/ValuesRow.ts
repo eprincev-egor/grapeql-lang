@@ -1,10 +1,9 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import ValueItem from "./ValueItem";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {ValueItem} from "./ValueItem";
 
-export default class ValuesRow extends Syntax<ValuesRow> {
+export class ValuesRow extends Syntax<ValuesRow> {
     structure() {
         return {
             values: Types.Array({
@@ -36,4 +35,3 @@ export default class ValuesRow extends Syntax<ValuesRow> {
         return out;
     }
 }
-

@@ -1,7 +1,6 @@
 
-
-import SquareBrackets from "../../lib/syntax/SquareBrackets";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {SquareBrackets} from "../../lib/syntax/SquareBrackets";
 
 describe("SquareBrackets", () => {
 

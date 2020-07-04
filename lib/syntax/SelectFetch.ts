@@ -1,9 +1,8 @@
 
-
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
-export default class SelectFetch extends Syntax<SelectFetch> {
+export class SelectFetch extends Syntax<SelectFetch> {
     structure() {
         return {
             first: Types.Boolean,
@@ -78,4 +77,3 @@ export default class SelectFetch extends Syntax<SelectFetch> {
         return out;
     }
 }
-

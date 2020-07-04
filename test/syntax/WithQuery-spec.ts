@@ -1,7 +1,6 @@
 
-
-import WithQuery from "../../lib/syntax/WithQuery";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {WithQuery} from "../../lib/syntax/WithQuery";
 
 describe("WithQuery", () => {
 

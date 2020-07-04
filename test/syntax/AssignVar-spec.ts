@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {AssignVarStatement} from "../../lib/syntax/AssignVarStatement";
-import testSyntax from "../testSyntax";
 
 describe("AssignVarStatement", () => {
 

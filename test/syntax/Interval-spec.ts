@@ -1,9 +1,8 @@
 
-
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
-import PgNull from "../../lib/syntax/PgNull";
-import Interval from "../../lib/syntax/Interval";
-import testSyntax from "../testSyntax";
+import {PgNull} from "../../lib/syntax/PgNull";
+import {Interval} from "../../lib/syntax/Interval";
 
 describe("Interval", () => {
 

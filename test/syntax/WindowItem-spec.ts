@@ -1,9 +1,8 @@
 
-
-import WindowItem from "../../lib/syntax/WindowItem";
 import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
+import {WindowItem} from "../../lib/syntax/WindowItem";
 
 describe("WindowItem", () => {
 

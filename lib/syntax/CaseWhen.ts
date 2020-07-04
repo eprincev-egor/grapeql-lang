@@ -1,11 +1,10 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import CaseWhenElement from "./CaseWhenElement";
+import {CaseWhenElement} from "./CaseWhenElement";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
-export default class CaseWhen extends Syntax<CaseWhen> {
+export class CaseWhen extends Syntax<CaseWhen> {
     structure() {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 

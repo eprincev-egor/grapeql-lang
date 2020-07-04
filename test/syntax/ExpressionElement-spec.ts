@@ -1,9 +1,8 @@
 
-
 import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
-import ExpressionElement from "../../lib/syntax/ExpressionElement";
-import testSyntax from "../testSyntax";
+import {ExpressionElement} from "../../lib/syntax/ExpressionElement";
 
 describe("ExpressionElement", () => {
 

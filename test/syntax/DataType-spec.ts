@@ -1,8 +1,7 @@
 
-
-import DataType from "../../lib/syntax/DataType";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
+import {DataType} from "../../lib/syntax/DataType";
 
 describe("DataType", () => {
 

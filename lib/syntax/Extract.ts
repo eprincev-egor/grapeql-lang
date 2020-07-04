@@ -1,9 +1,9 @@
 
 
 import {Syntax, Types} from "lang-coach";
-import DataType from "./DataType";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
+import {DataType} from "./DataType";
 
 const extractFields = [
     "century",
@@ -27,7 +27,7 @@ const extractFields = [
     "year"
 ];
 
-export default class Extract extends Syntax<Extract> {
+export class Extract extends Syntax<Extract> {
     structure() {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
         

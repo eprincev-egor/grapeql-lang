@@ -1,9 +1,9 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import ObjectName from "./ObjectName";
-import DataType from "./DataType";
-import Expression from "./Expression";
+import {ObjectName} from "./ObjectName";
+import {DataType} from "./DataType";
+import {Expression} from "./Expression";
 
 // https://www.postgresql.org/docs/10/plpgsql-declarations.html
 // name [ CONSTANT ] type [ COLLATE collation_name ] [ NOT NULL ] [ { DEFAULT | := | = } expression ];

@@ -1,7 +1,6 @@
 
-
-import Comment from "../../lib/syntax/Comment";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Comment} from "../../lib/syntax/Comment";
 
 describe("Comment", () => {
 

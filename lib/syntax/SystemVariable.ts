@@ -1,9 +1,8 @@
 
-
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
-export default class SystemVariable extends Syntax<SystemVariable> {
+export class SystemVariable extends Syntax<SystemVariable> {
     structure() {
         return {
             name: Types.String
@@ -45,5 +44,3 @@ export default class SystemVariable extends Syntax<SystemVariable> {
         return this.row.name.toLowerCase();
     }
 }
-
-

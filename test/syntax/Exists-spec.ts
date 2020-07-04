@@ -1,7 +1,6 @@
 
-
-import Exists from "../../lib/syntax/Exists";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Exists} from "../../lib/syntax/Exists";
 
 describe("Exists", () => {
 

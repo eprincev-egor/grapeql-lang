@@ -1,5 +1,4 @@
 
-
 /*
  join_type from_item [ ON join_condition | USING ( join_column [, ...] ) ]
 where
@@ -12,12 +11,12 @@ where
  */
 
 import {Syntax, Types} from "lang-coach";
-import Expression from "./Expression";
-import ObjectName from "./ObjectName";
-import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
+import {Expression} from "./Expression";
+import {ObjectName} from "./ObjectName";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 
-export default class Join extends Syntax<Join> {
+export class Join extends Syntax<Join> {
     structure() {
         const FromItem = allSyntax.FromItem as GrapeQLCoach["syntax"]["FromItem"];
         

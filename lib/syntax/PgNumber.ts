@@ -1,5 +1,4 @@
 
-
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
@@ -10,7 +9,7 @@ import {GrapeQLCoach} from "../GrapeQLCoach";
 // 5e2
 // 1.925e-3
 
-export default class PgNumber extends Syntax<PgNumber> {
+export class PgNumber extends Syntax<PgNumber> {
     structure() {
         return {
             number: Types.String

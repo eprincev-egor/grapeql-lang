@@ -1,6 +1,12 @@
 
 import {Syntax, Types} from "lang-coach";
-import {GrapeQLCoach, TableLink, With, ObjectName, FromItem, Expression, Returning} from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
+import {TableLink} from "./TableLink";
+import {With} from "./With";
+import {ObjectName} from "./ObjectName";
+import {FromItem} from "./FromItem";
+import {Expression} from "./Expression";
+import {Returning} from "./Returning";
 
 // true or false
 

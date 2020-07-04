@@ -1,9 +1,8 @@
-
  
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
-export default class DoubleQuotes<Child extends DoubleQuotes = any> extends Syntax<DoubleQuotes & Child> {
+export class DoubleQuotes<Child extends DoubleQuotes = any> extends Syntax<DoubleQuotes & Child> {
     structure() {
         return {
             content: Types.String

@@ -1,7 +1,8 @@
 
 import {Syntax, Types} from "lang-coach";
-import {GrapeQLCoach, Expression} from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
+import {Expression} from "./Expression";
 import {ElseIfStatement} from "./ElseIfStatement";
 
 // if ... then

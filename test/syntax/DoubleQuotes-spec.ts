@@ -1,8 +1,6 @@
 
-
-
-import DoubleQuotes from "../../lib/syntax/DoubleQuotes";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {DoubleQuotes} from "../../lib/syntax/DoubleQuotes";
 
 describe("DoubleQuotes", () => {
 

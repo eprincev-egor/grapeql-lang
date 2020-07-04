@@ -1,10 +1,9 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import FilePathElement from "./FilePathElement";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {FilePathElement} from "./FilePathElement";
 
-export default class File extends Syntax<File> {
+export class File extends Syntax<File> {
     structure() {
         return {
             relative: Types.Boolean,

@@ -1,9 +1,8 @@
 
-
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
-export default class PgNull extends Syntax<PgNull> {
+export class PgNull extends Syntax<PgNull> {
     structure() {
         return {
             null: Types.Boolean({

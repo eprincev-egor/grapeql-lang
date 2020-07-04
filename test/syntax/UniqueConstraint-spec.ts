@@ -1,6 +1,6 @@
 
-import UniqueConstraint from "../../lib/syntax/UniqueConstraint";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {UniqueConstraint} from "../../lib/syntax/UniqueConstraint";
 
 describe("UniqueConstraint", () => {
     

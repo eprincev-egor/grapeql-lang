@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {ReturnStatement} from "../../lib/syntax/ReturnStatement";
-import testSyntax from "../testSyntax";
 
 describe("ReturnStatement", () => {
 

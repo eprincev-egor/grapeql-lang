@@ -1,7 +1,6 @@
 
-
-import In from "../../lib/syntax/In";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {In} from "../../lib/syntax/In";
 
 describe("In", () => {
 

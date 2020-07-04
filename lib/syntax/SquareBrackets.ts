@@ -1,10 +1,9 @@
 
-
 import {Syntax} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
-export default class SquareBrackets extends Syntax<SquareBrackets> {
+export class SquareBrackets extends Syntax<SquareBrackets> {
     structure() {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 

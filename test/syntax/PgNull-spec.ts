@@ -1,7 +1,6 @@
 
-
-import PgNull from "../../lib/syntax/PgNull";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {PgNull} from "../../lib/syntax/PgNull";
 
 describe("PgNull", () => {
 

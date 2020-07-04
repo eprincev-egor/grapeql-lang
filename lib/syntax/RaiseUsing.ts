@@ -1,7 +1,7 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import Expression from "./Expression";
+import {Expression} from "./Expression";
 
 // https://www.postgresql.org/docs/10/plpgsql-errors-and-messages.html
 // option = expression

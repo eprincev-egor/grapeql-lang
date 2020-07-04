@@ -1,7 +1,6 @@
 
-
-import FromItem from "../../lib/syntax/FromItem";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {FromItem} from "../../lib/syntax/FromItem";
 
 describe("FromItem", () => {
 

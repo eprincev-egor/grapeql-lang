@@ -1,10 +1,10 @@
 
 import {Syntax} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import ObjectName from "./ObjectName";
-import Select from "./Select";
+import {ObjectName} from "./ObjectName";
+import {Select} from "./Select";
 
-export default class CreateView extends Syntax<CreateView> {
+export class CreateView extends Syntax<CreateView> {
     structure() {
         return {
             schema: ObjectName,

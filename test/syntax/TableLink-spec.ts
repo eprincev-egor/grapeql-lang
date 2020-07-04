@@ -1,9 +1,8 @@
 
-
-import TableLink from "../../lib/syntax/TableLink";
-import ObjectLink from "../../lib/syntax/ObjectLink";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
+import {TableLink} from "../../lib/syntax/TableLink";
+import {ObjectLink} from "../../lib/syntax/ObjectLink";
 
 describe("TableLink", () => {
 

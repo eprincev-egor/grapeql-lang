@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {IfStatement} from "../../lib/syntax/IfStatement";
-import testSyntax from "../testSyntax";
 
 describe("IfStatement", () => {
 

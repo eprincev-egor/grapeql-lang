@@ -1,11 +1,10 @@
 
-
 import {Syntax} from "lang-coach";
-import ObjectName from "./ObjectName";
-import WindowDefinition from "./WindowDefinition";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {ObjectName} from "./ObjectName";
+import {WindowDefinition} from "./WindowDefinition";
 
-export default class WindowItem extends Syntax<WindowItem> {
+export class WindowItem extends Syntax<WindowItem> {
     structure() {
         return {
             as: ObjectName,

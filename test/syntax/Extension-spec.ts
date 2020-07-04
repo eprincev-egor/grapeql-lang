@@ -1,6 +1,6 @@
 
-import Extension from "../../lib/syntax/Extension";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Extension} from "../../lib/syntax/Extension";
 
 describe("Extension", () => {
 

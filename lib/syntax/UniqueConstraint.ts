@@ -1,10 +1,10 @@
 
 import { Types } from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import Constraint from "./Constraint";
-import ObjectName from "./ObjectName";
+import {Constraint} from "./Constraint";
+import {ObjectName} from "./ObjectName";
 
-export default class UniqueConstraint extends Constraint<UniqueConstraint> {
+export class UniqueConstraint extends Constraint<UniqueConstraint> {
     
     structure() {
         return {

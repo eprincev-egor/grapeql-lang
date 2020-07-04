@@ -1,6 +1,6 @@
 
-import PrimaryKeyConstraint from "../../lib/syntax/PrimaryKeyConstraint";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {PrimaryKeyConstraint} from "../../lib/syntax/PrimaryKeyConstraint";
 
 describe("PrimaryKeyConstraint", () => {
     

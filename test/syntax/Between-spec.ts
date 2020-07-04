@@ -1,6 +1,6 @@
 
-import Between from "../../lib/syntax/Between";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Between} from "../../lib/syntax/Between";
 
 describe("Between", () => {
 

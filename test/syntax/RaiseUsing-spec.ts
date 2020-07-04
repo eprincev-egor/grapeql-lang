@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {RaiseUsing} from "../../lib/syntax/RaiseUsing";
-import testSyntax from "../testSyntax";
 
 describe("RaiseUsing", () => {
 

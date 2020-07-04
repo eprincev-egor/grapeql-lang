@@ -1,11 +1,10 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import ObjectName from "./ObjectName";
-import OrderByElement from "./OrderByElement";
-import WindowDefinitionFrame from "./WindowDefinitionFrame";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
+import {ObjectName} from "./ObjectName";
+import {OrderByElement} from "./OrderByElement";
+import {WindowDefinitionFrame} from "./WindowDefinitionFrame";
 
 /*
 window_definition is
@@ -24,7 +23,7 @@ value FOLLOWING
 UNBOUNDED FOLLOWING
 */
 
-export default class WindowDefinition extends Syntax<WindowDefinition> {
+export class WindowDefinition extends Syntax<WindowDefinition> {
     structure() {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
@@ -123,4 +122,3 @@ export default class WindowDefinition extends Syntax<WindowDefinition> {
         return out;
     }
 }
-

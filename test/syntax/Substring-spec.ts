@@ -1,7 +1,6 @@
 
-
-import Substring from "../../lib/syntax/Substring";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Substring} from "../../lib/syntax/Substring";
 
 describe("Substring", () => {
 

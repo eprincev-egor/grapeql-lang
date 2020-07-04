@@ -1,9 +1,8 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import ObjectName from "./ObjectName";
-import SchemaName from "./SchemaName";
-import PgNumber from "./PgNumber";
+import {ObjectName} from "./ObjectName";
+import {SchemaName} from "./SchemaName";
+import {PgNumber} from "./PgNumber";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
 // TODO: load types from db
@@ -105,7 +104,7 @@ types.forEach((type) => {
     regExps[ type ] = new RegExp(regExp, "i");
 });
 
-export default class DataType extends Syntax<DataType> {
+export class DataType extends Syntax<DataType> {
     structure() {
         return {
             type: Types.String

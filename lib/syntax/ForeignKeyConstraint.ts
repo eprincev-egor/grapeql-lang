@@ -1,11 +1,11 @@
 
 import { Types } from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import Constraint from "./Constraint";
-import ObjectName from "./ObjectName";
-import ObjectLink from "./ObjectLink";
+import {Constraint} from "./Constraint";
+import {ObjectName} from "./ObjectName";
+import {ObjectLink} from "./ObjectLink";
 
-export default class ForeignKeyConstraint extends Constraint<ForeignKeyConstraint> {
+export class ForeignKeyConstraint extends Constraint<ForeignKeyConstraint> {
     
     structure() {
         return {

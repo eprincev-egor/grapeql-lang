@@ -1,10 +1,9 @@
 
-
 import {Syntax} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
-export default class Substring extends Syntax<Substring> {
+export class Substring extends Syntax<Substring> {
     structure() {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
@@ -63,4 +62,3 @@ export default class Substring extends Syntax<Substring> {
         return out;
     }
 }
-

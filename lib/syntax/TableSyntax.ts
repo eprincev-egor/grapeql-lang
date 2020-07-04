@@ -1,17 +1,17 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import CreateTableElement from "./CreateTableElement";
-import ColumnDefinition from "./ColumnDefinition";
-import ObjectName from "./ObjectName";
-import ForeignKeyConstraint from "./ForeignKeyConstraint";
-import CheckConstraint from "./CheckConstraint";
-import UniqueConstraint from "./UniqueConstraint";
-import PrimaryKeyConstraint from "./PrimaryKeyConstraint";
-import Constraint from "./Constraint";
-import ValuesRow from "./ValuesRow";
+import {CreateTableElement} from "./CreateTableElement";
+import {ColumnDefinition} from "./ColumnDefinition";
+import {ObjectName} from "./ObjectName";
+import {ForeignKeyConstraint} from "./ForeignKeyConstraint";
+import {CheckConstraint} from "./CheckConstraint";
+import {UniqueConstraint} from "./UniqueConstraint";
+import {PrimaryKeyConstraint} from "./PrimaryKeyConstraint";
+import {Constraint} from "./Constraint";
+import {ValuesRow} from "./ValuesRow";
 
-export default abstract class TableSyntax<Child extends TableSyntax = any> extends Syntax<TableSyntax & Child> {
+export abstract class TableSyntax<Child extends TableSyntax = any> extends Syntax<TableSyntax & Child> {
     structure() {
         return {
             deprecated: Types.Boolean({

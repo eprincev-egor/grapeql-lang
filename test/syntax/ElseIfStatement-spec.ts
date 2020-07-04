@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {ElseIfStatement} from "../../lib/syntax/ElseIfStatement";
-import testSyntax from "../testSyntax";
 
 describe("ElseIfStatement", () => {
 

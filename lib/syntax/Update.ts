@@ -1,7 +1,12 @@
-import { GrapeQLCoach, With, TableLink, ObjectName, FromItem, Expression } from "../GrapeQLCoach";
-import { Types, Syntax } from "lang-coach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
+import {Types, Syntax} from "lang-coach";
 import {SetItem} from "./SetItem";
 import {Returning} from "./Returning";
+import {With} from "./With";
+import {TableLink} from "./TableLink";
+import {ObjectName} from "./ObjectName";
+import {FromItem} from "./FromItem";
+import {Expression} from "./Expression";
 
 export class Update extends Syntax<Update> {
     structure() {

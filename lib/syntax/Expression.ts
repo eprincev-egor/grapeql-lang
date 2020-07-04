@@ -1,23 +1,22 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import ColumnLink from "./ColumnLink";
-import DataType from "./DataType";
-import ExpressionElement from "./ExpressionElement";
-import Operator from "./Operator";
-import In from "./In";
-import SquareBrackets from "./SquareBrackets";
-import Between from "./Between";
-import PgNull from "./PgNull";
-import PgNumber from "./PgNumber";
-import SingleQuotesString from "./SingleQuotesString";
-import DollarString from "./DollarString";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import Boolean from "./Boolean";
+import {ColumnLink} from "./ColumnLink";
+import {DataType} from "./DataType";
+import {ExpressionElement} from "./ExpressionElement";
+import {Operator} from "./Operator";
+import {In} from "./In";
+import {SquareBrackets} from "./SquareBrackets";
+import {Between} from "./Between";
+import {PgNull} from "./PgNull";
+import {PgNumber} from "./PgNumber";
+import {SingleQuotesString} from "./SingleQuotesString";
+import {DollarString} from "./DollarString";
+import {Boolean} from "./Boolean";
 
 // true or false
 
-export default class Expression extends Syntax<Expression> {
+export class Expression extends Syntax<Expression> {
 
     // ((( expression )))  strip unnecessary brackets
     static extrude(elements) {

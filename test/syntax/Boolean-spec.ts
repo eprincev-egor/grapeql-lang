@@ -1,7 +1,6 @@
 
-
-import Boolean from "../../lib/syntax/Boolean";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Boolean} from "../../lib/syntax/Boolean";
 
 describe("Boolean", () => {
 

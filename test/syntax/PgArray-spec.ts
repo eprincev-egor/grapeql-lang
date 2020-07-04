@@ -1,7 +1,6 @@
 
-
-import PgArray from "../../lib/syntax/PgArray";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {PgArray} from "../../lib/syntax/PgArray";
 
 describe("PgArray", () => {
 

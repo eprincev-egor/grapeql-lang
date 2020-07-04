@@ -1,7 +1,6 @@
 
-
-import Join from "../../lib/syntax/Join";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Join} from "../../lib/syntax/Join";
 
 describe("Join", () => {
 

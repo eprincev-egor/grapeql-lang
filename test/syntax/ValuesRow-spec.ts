@@ -1,7 +1,6 @@
 
-
-import ValuesRow from "../../lib/syntax/ValuesRow";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {ValuesRow} from "../../lib/syntax/ValuesRow";
 
 describe("ValuesRow", () => {
 

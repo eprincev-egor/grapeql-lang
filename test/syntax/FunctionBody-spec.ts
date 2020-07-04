@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {FunctionBody} from "../../lib/syntax/FunctionBody";
-import testSyntax from "../testSyntax";
 
 describe("FunctionBody", () => {
 

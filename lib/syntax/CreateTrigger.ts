@@ -5,14 +5,14 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import FunctionIdentify from "./FunctionIdentify";
-import TriggerIdentify from "./TriggerIdentify";
-import CommentOnTrigger from "./CommentOnTrigger";
-import SchemaName from "./SchemaName";
-import Expression from "./Expression";
-import ObjectName from "./ObjectName";
+import {FunctionIdentify} from "./FunctionIdentify";
+import {TriggerIdentify} from "./TriggerIdentify";
+import {CommentOnTrigger} from "./CommentOnTrigger";
+import {SchemaName} from "./SchemaName";
+import {Expression} from "./Expression";
+import {ObjectName} from "./ObjectName";
 
-export default class CreateTrigger extends Syntax<CreateTrigger> {
+export class CreateTrigger extends Syntax<CreateTrigger> {
     structure() {
         return {
             name: Types.String,

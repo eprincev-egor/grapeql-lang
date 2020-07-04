@@ -1,6 +1,6 @@
 
+import {testSyntax} from "../testSyntax";
 import {Declare} from "../../lib/syntax/Declare";
-import testSyntax from "../testSyntax";
 
 describe("Declare", () => {
 

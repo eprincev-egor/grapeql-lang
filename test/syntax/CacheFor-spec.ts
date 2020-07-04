@@ -1,6 +1,6 @@
 
-import CacheFor from "../../lib/syntax/CacheFor";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {CacheFor} from "../../lib/syntax/CacheFor";
 
 describe("CacheFor", () => {
 

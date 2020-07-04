@@ -3,7 +3,7 @@
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
-export default class SingleQuotesString extends Syntax<SingleQuotesString> {
+export class SingleQuotesString extends Syntax<SingleQuotesString> {
 
     static readSingleQuotes(coach: GrapeQLCoach, withEscape = false) {
         coach.expect("'");

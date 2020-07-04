@@ -1,10 +1,9 @@
 
-
-import DoubleQuotes from "./DoubleQuotes";
 import { Types } from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {DoubleQuotes} from "./DoubleQuotes";
 
-export default class FilePathElement extends DoubleQuotes<FilePathElement> {
+export class FilePathElement extends DoubleQuotes<FilePathElement> {
     structure() {
         return {
             name: Types.String,

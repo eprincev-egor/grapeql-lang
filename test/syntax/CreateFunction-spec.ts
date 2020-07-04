@@ -1,8 +1,8 @@
 
-import CreateFunction from "../../lib/syntax/CreateFunction";
-import testSyntax from "../testSyntax";
 import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
+import {CreateFunction} from "../../lib/syntax/CreateFunction";
 
 describe("CreateFunction", () => {
 

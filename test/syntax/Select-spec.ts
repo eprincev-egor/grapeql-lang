@@ -1,7 +1,6 @@
 
-
-import Select from "../../lib/syntax/Select";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Select} from "../../lib/syntax/Select";
 
 describe("Select", () => {
 

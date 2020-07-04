@@ -1,7 +1,6 @@
 
-
-import SchemaTable from "../../lib/syntax/SchemaTable";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {SchemaTable} from "../../lib/syntax/SchemaTable";
 
 describe("SchemaTable", () => {
 

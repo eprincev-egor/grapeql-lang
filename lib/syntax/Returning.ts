@@ -1,6 +1,6 @@
+
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach, Column} from "../GrapeQLCoach";
-
 
 export class Returning extends Syntax<Returning> {
     structure() {

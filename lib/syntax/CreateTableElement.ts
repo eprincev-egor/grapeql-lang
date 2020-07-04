@@ -1,13 +1,13 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import ColumnDefinition from "./ColumnDefinition";
-import ForeignKeyConstraint from "./ForeignKeyConstraint";
-import CheckConstraint from "./CheckConstraint";
-import UniqueConstraint from "./UniqueConstraint";
-import PrimaryKeyConstraint from "./PrimaryKeyConstraint";
+import {ColumnDefinition} from "./ColumnDefinition";
+import {ForeignKeyConstraint} from "./ForeignKeyConstraint";
+import {CheckConstraint} from "./CheckConstraint";
+import {UniqueConstraint} from "./UniqueConstraint";
+import {PrimaryKeyConstraint} from "./PrimaryKeyConstraint";
 
-export default class CreateTableElement extends Syntax<CreateTableElement> {
+export class CreateTableElement extends Syntax<CreateTableElement> {
     structure() {
         return {
             element: Types.Or({

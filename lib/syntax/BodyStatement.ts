@@ -4,7 +4,7 @@ import {GrapeQLCoach} from "../GrapeQLCoach";
 import {AssignVarStatement} from "./AssignVarStatement";
 import {ReturnStatement} from "./ReturnStatement";
 import {IfStatement} from "./IfStatement";
-import Select from "./Select";
+import {Select} from "./Select";
 import {Insert} from "./Insert";
 import {Update} from "./Update";
 import {Delete} from "./Delete";

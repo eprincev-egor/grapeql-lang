@@ -1,10 +1,9 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import ObjectName from "./ObjectName";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {ObjectName} from "./ObjectName";
 
-export default class ObjectLink extends Syntax<ObjectLink> {
+export class ObjectLink extends Syntax<ObjectLink> {
     structure() {
         return {
             star: Types.Boolean({

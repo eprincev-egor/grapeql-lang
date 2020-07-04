@@ -1,12 +1,11 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import WithQuery from "./WithQuery";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {WithQuery} from "./WithQuery";
 
 // WITH [ RECURSIVE ] with_query [, ...]
 
-export default class With extends Syntax<With> {
+export class With extends Syntax<With> {
     structure() {
         return {
             recursive: Types.Boolean,
@@ -58,4 +57,3 @@ export default class With extends Syntax<With> {
         return sql;
     }
 }
-

@@ -1,6 +1,6 @@
 
-import TriggerIdentify from "../../lib/syntax/TriggerIdentify";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {TriggerIdentify} from "../../lib/syntax/TriggerIdentify";
 
 describe("TriggerIdentify", () => {
 

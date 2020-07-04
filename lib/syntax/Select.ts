@@ -1,16 +1,16 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import With from "./With";
-import Column from "./Column";
-import Expression from "./Expression";
-import FromItem from "./FromItem";
-import GroupByElement from "./GroupByElement";
-import WindowItem from "./WindowItem";
-import OrderByElement from "./OrderByElement";
-import Union from "./Union";
-import SelectFetch from "./SelectFetch";
-import {GrapeQLCoach, ObjectLink} from "../GrapeQLCoach";
+import {GrapeQLCoach} from "../GrapeQLCoach";
+import {With} from "./With";
+import {Column} from "./Column";
+import {Expression} from "./Expression";
+import {FromItem} from "./FromItem";
+import {GroupByElement} from "./GroupByElement";
+import {WindowItem} from "./WindowItem";
+import {OrderByElement} from "./OrderByElement";
+import {Union} from "./Union";
+import {SelectFetch} from "./SelectFetch";
+import {ObjectLink} from "./ObjectLink";
 
 // https://www.postgresql.org/docs/9.5/static/sql-select.html
 /*
@@ -51,7 +51,7 @@ and with_query is:
 TABLE [ ONLY ] table_name [ * ]
  */
 
-export default class Select extends Syntax<Select> {
+export class Select extends Syntax<Select> {
     structure() {
         return {
             with: With,
@@ -541,4 +541,3 @@ function throwFromUniqError(name) {
     "cross",
     "join"
 ];
-

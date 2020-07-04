@@ -1,10 +1,9 @@
 
-
-import SchemaParse from "./SchemaParse";
-import { Types } from "lang-coach";
+import {Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {SchemaParse} from "./SchemaParse";
 
-export default class SchemaTable extends SchemaParse<SchemaTable> {
+export class SchemaTable extends SchemaParse<SchemaTable> {
     structure() {
         return {
             schema: Types.String,
@@ -23,5 +22,3 @@ export default class SchemaTable extends SchemaParse<SchemaTable> {
         return `${this.row.schema}.${this.row.table}`;
     }
 }
-
-

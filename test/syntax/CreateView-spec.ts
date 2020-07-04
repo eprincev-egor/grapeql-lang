@@ -1,8 +1,8 @@
 
-import CreateView from "../../lib/syntax/CreateView";
-import testSyntax from "../testSyntax";
-import assert from "assert";
 import { GrapeQLCoach } from "../../lib/GrapeQLCoach";
+import {testSyntax} from "../testSyntax";
+import assert from "assert";
+import {CreateView} from "../../lib/syntax/CreateView";
 
 describe("CreateView", () => {
 

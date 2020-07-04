@@ -1,7 +1,6 @@
 
-
-import CaseWhenElement from "../../lib/syntax/CaseWhenElement";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {CaseWhenElement} from "../../lib/syntax/CaseWhenElement";
 
 describe("CaseWhenElement", () => {
 

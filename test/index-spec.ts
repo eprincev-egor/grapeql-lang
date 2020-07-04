@@ -1,7 +1,7 @@
 
 import * as index from "../lib/index";
 import assert from "assert";
-import testSyntax from "./testSyntax";
+import {testSyntax} from "./testSyntax";
 
 describe("index tests", () => {
     

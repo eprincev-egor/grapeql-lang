@@ -1,28 +1,27 @@
 
-
 import {Syntax} from "lang-coach";
-import PgNull from "./PgNull";
-import Boolean from "./Boolean";
-import PgNumber from "./PgNumber";
-import ByteString from "./ByteString";
-import DollarString from "./DollarString";
-import SingleQuotesString from "./SingleQuotesString";
-import SystemVariable from "./SystemVariable";
-import Cast from "./Cast";
-import PgArray from "./PgArray";
-import CaseWhen from "./CaseWhen";
-import Extract from "./Extract";
-import Substring from "./Substring";
-import Interval from "./Interval";
-import Exists from "./Exists";
-import Any from "./Any";
-import In from "./In";
-import FunctionCall from "./FunctionCall";
-import ColumnLink from "./ColumnLink";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
+import {PgNull} from "./PgNull";
+import {Boolean} from "./Boolean";
+import {PgNumber} from "./PgNumber";
+import {ByteString} from "./ByteString";
+import {DollarString} from "./DollarString";
+import {SingleQuotesString} from "./SingleQuotesString";
+import {SystemVariable} from "./SystemVariable";
+import {Cast} from "./Cast";
+import {PgArray} from "./PgArray";
+import {CaseWhen} from "./CaseWhen";
+import {Extract} from "./Extract";
+import {Substring} from "./Substring";
+import {Interval} from "./Interval";
+import {Exists} from "./Exists";
+import {Any} from "./Any";
+import {In} from "./In";
+import {FunctionCall} from "./FunctionCall";
+import {ColumnLink} from "./ColumnLink";
 
-export default class ExpressionElement extends Syntax<ExpressionElement> {
+export class ExpressionElement extends Syntax<ExpressionElement> {
 
     structure() {
         return {

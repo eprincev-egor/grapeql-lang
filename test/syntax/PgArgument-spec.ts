@@ -1,6 +1,6 @@
 
-import PgArgument from "../../lib/syntax/PgArgument";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {PgArgument} from "../../lib/syntax/PgArgument";
 
 describe("PgArgument", () => {
 

@@ -1,9 +1,8 @@
 
-
-import ObjectName from "../../lib/syntax/ObjectName";
 import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
 import assert from "assert";
+import {ObjectName} from "../../lib/syntax/ObjectName";
 
 describe("ObjectName", () => {
 

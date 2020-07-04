@@ -1,10 +1,10 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import PgArgument from "./PgArgument";
-import DataType from "./DataType";
+import {PgArgument} from "./PgArgument";
+import {DataType} from "./DataType";
 
-export default class PgReturns extends Syntax<PgReturns> {
+export class PgReturns extends Syntax<PgReturns> {
     structure() {
         return {
             setof: Types.Boolean,

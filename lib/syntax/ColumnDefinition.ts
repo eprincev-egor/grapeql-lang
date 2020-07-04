@@ -1,13 +1,13 @@
 
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import ObjectName from "./ObjectName";
-import DataType from "./DataType";
-import ForeignKeyConstraint from "./ForeignKeyConstraint";
-import CheckConstraint from "./CheckConstraint";
-import UniqueConstraint from "./UniqueConstraint";
-import PrimaryKeyConstraint from "./PrimaryKeyConstraint";
-import Expression from "./Expression";
+import {ObjectName} from "./ObjectName";
+import {DataType} from "./DataType";
+import {ForeignKeyConstraint} from "./ForeignKeyConstraint";
+import {CheckConstraint} from "./CheckConstraint";
+import {UniqueConstraint} from "./UniqueConstraint";
+import {PrimaryKeyConstraint} from "./PrimaryKeyConstraint";
+import {Expression} from "./Expression";
 
 /*
 column_name data_type [ COLLATE collation ] [ column_constraint [ ... ] ]
@@ -26,7 +26,7 @@ where column_constraint is:
 // TODO: index_parameters
 // TODO: collate
 
-export default class ColumnDefinition extends Syntax<ColumnDefinition> {
+export class ColumnDefinition extends Syntax<ColumnDefinition> {
     structure() {
         return {
             name: ObjectName,

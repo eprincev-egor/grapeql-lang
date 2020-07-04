@@ -1,7 +1,7 @@
 
-import CommentOnFunction from "../../lib/syntax/CommentOnFunction";
-import CommentOnTrigger from "../../lib/syntax/CommentOnTrigger";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {CommentOnFunction} from "../../lib/syntax/CommentOnFunction";
+import {CommentOnTrigger} from "../../lib/syntax/CommentOnTrigger";
 
 describe("CommentOn", () => {
 

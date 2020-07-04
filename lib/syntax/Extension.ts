@@ -1,10 +1,10 @@
 
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import TableSyntax from "./TableSyntax";
-import ObjectLink from "./ObjectLink";
-import ObjectName from "./ObjectName";
+import {TableSyntax} from "./TableSyntax";
+import {ObjectLink} from "./ObjectLink";
+import {ObjectName} from "./ObjectName";
 
-export default class Extension extends TableSyntax<Extension> {
+export class Extension extends TableSyntax<Extension> {
     structure() {
         return {
             ...super.structure(),

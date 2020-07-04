@@ -1,10 +1,9 @@
 
-
 import {Syntax, Types} from "lang-coach";
-import Expression from "./Expression";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import {Expression} from "./Expression";
 
-export default class ValueItem extends Syntax<ValueItem> {
+export class ValueItem extends Syntax<ValueItem> {
     structure() {
         return {
             default: Types.Boolean,
@@ -36,4 +35,3 @@ export default class ValueItem extends Syntax<ValueItem> {
         }
     }
 }
-

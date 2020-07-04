@@ -1,6 +1,6 @@
 
-import CheckConstraint from "../../lib/syntax/CheckConstraint";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {CheckConstraint} from "../../lib/syntax/CheckConstraint";
 
 describe("CheckConstraint", () => {
 

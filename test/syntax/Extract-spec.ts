@@ -1,7 +1,6 @@
 
-
-import Extract from "../../lib/syntax/Extract";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {Extract} from "../../lib/syntax/Extract";
 
 describe("Extract", () => {
 

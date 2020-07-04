@@ -1,17 +1,17 @@
 
 import {Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
-import ColumnDefinition from "./ColumnDefinition";
-import TableSyntax from "./TableSyntax";
-import ObjectName from "./ObjectName";
-import ObjectLink from "./ObjectLink";
-import ValuesRow from "./ValuesRow";
-import Constraint from "./Constraint";
-import ValueItem from "./ValueItem";
-import UniqueConstraint from "./UniqueConstraint";
-import PrimaryKeyConstraint from "./PrimaryKeyConstraint";
+import {ColumnDefinition} from "./ColumnDefinition";
+import {TableSyntax} from "./TableSyntax";
+import {ObjectName} from "./ObjectName";
+import {ObjectLink} from "./ObjectLink";
+import {ValuesRow} from "./ValuesRow";
+import {Constraint} from "./Constraint";
+import {ValueItem} from "./ValueItem";
+import {UniqueConstraint} from "./UniqueConstraint";
+import {PrimaryKeyConstraint} from "./PrimaryKeyConstraint";
 
-export default class CreateTable extends TableSyntax<CreateTable> {
+export class CreateTable extends TableSyntax<CreateTable> {
     structure() {
         return {
             ...super.structure(),

@@ -1,6 +1,6 @@
 
 import {BodyStatement} from "../../lib/syntax/BodyStatement";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
 
 describe("BodyStatement", () => {
 

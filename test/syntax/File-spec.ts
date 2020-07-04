@@ -1,7 +1,6 @@
 
-
-import File from "../../lib/syntax/File";
-import testSyntax from "../testSyntax";
+import {testSyntax} from "../testSyntax";
+import {File} from "../../lib/syntax/File";
 
 describe("File", () => {
 
