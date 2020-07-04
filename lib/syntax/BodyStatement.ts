@@ -8,10 +8,12 @@ import Select from "./Select";
 import {Insert} from "./Insert";
 import {Update} from "./Update";
 import {Delete} from "./Delete";
+import {Raise} from "./Raise";
 
 // a = 1;
 // b = a;
 // if ... then ... ;
+// raise 'error';
 // return x;
 
 export class BodyStatement extends Syntax<BodyStatement> {
@@ -36,6 +38,9 @@ export class BodyStatement extends Syntax<BodyStatement> {
             }
             else if ( coach.is(IfStatement) ) {
                 statement = coach.parse(IfStatement);
+            }
+            else if ( coach.is(Raise) ) {
+                statement = coach.parse(Raise);
             }
             else if ( coach.is(Insert) ) {
                 statement = coach.parse(Insert);

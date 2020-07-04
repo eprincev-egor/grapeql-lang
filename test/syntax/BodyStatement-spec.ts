@@ -221,5 +221,39 @@ describe("BodyStatement", () => {
             ]
         }
     });
-   
+
+    testSyntax(BodyStatement, {
+        str: `
+            a = 1;
+            raise notice 'hello %', a;
+        `.trim(),
+        result: {
+            statements: [
+                {
+                    variable: {
+                        star: false, link: [
+                            {word: "a", content: null}
+                        ]
+                    },
+                    assign: {elements: [
+                        {number: "1"}
+                    ]}
+                },
+                {
+                    level: "notice",
+                    conditionName: null,
+                    sqlState: null,
+                    raise: {content: "hello %"},
+                    parameters: [
+                        {elements: [
+                            {star: false, link: [
+                                {word: "a", content: null}
+                            ]}
+                        ]}
+                    ],
+                    using: []
+                }
+            ]
+        }
+    });   
 });

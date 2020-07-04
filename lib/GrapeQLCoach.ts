@@ -85,9 +85,12 @@ import {AssignVarStatement} from "./syntax/AssignVarStatement";
 import {ReturnStatement} from "./syntax/ReturnStatement";
 import {IfStatement} from "./syntax/IfStatement";
 import {ElseIfStatement} from "./syntax/ElseIfStatement";
+import {RaiseUsing} from "./syntax/RaiseUsing";
+import {Raise} from "./syntax/Raise";
 import {BodyStatement} from "./syntax/BodyStatement";
 import {VariableDefinition} from "./syntax/VariableDefinition";
 import {Declare} from "./syntax/Declare";
+import {FunctionBody} from "./syntax/FunctionBody";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -173,9 +176,12 @@ export class GrapeQLCoach extends Coach {
         ReturnStatement,
         IfStatement,
         ElseIfStatement,
+        RaiseUsing,
+        Raise,
         BodyStatement,
         VariableDefinition,
-        Declare
+        Declare,
+        FunctionBody
     };
 
     parseType(): string {
@@ -291,6 +297,9 @@ export {AssignVarStatement};
 export {ReturnStatement};
 export {IfStatement};
 export {ElseIfStatement};
+export {RaiseUsing};
+export {Raise};
 export {BodyStatement};
 export {VariableDefinition};
 export {Declare};
+export {FunctionBody};
