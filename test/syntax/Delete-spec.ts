@@ -6,7 +6,7 @@ describe("Delete", () => {
 
     testSyntax(Delete, {
         str: "delete from companies",
-        result: {
+        shouldBe: {
             only: false,
             star: false,
             table: {star: false, link: [
@@ -22,7 +22,7 @@ describe("Delete", () => {
 
     testSyntax(Delete, {
         str: "delete from only orders",
-        result: {
+        shouldBe: {
             only: true,
             star: false,
             table: {star: false, link: [
@@ -38,7 +38,7 @@ describe("Delete", () => {
 
     testSyntax(Delete, {
         str: "delete from orders *",
-        result: {
+        shouldBe: {
             only: false,
             star: true,
             table: {star: false, link: [
@@ -54,7 +54,7 @@ describe("Delete", () => {
 
     testSyntax(Delete, {
         str: "delete from only orders *",
-        result: {
+        shouldBe: {
             only: true,
             star: true,
             table: {star: false, link: [
@@ -70,7 +70,7 @@ describe("Delete", () => {
 
     testSyntax(Delete, {
         str: "delete from only orders * as Order",
-        result: {
+        shouldBe: {
             only: true,
             star: true,
             table: {star: false, link: [
@@ -91,7 +91,7 @@ describe("Delete", () => {
             orders.id_client = companies.id and
             companies.name ilike '%ooo%'
         `,
-        result: {
+        shouldBe: {
             only: false,
             star: false,
             table: {star: false, link: [
@@ -147,7 +147,7 @@ describe("Delete", () => {
         where
             companies.id = (select id_client from some_orders)
         `,
-        result: {
+        shouldBe: {
             with: {
                 recursive: null,
                 queries: [{

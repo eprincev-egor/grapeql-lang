@@ -6,14 +6,14 @@ describe("ByteString", () => {
 
     testSyntax(ByteString, {
         str: "b'0011'",
-        result: {
+        shouldBe: {
             content: "0011"
         }
     });
 
     testSyntax(ByteString, {
         str: "B'1'",
-        result: {
+        shouldBe: {
             content: "1"
         }
     });
@@ -25,14 +25,14 @@ describe("ByteString", () => {
 
     testSyntax(ByteString, {
         str: "x'33'",
-        result: {
+        shouldBe: {
             content: "00110011"
         }
     });
 
     testSyntax(ByteString, {
         str: "X'33'",
-        result: {
+        shouldBe: {
             content: "00110011"
         }
     });

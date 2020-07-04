@@ -6,7 +6,7 @@ describe("SchemaTable", () => {
 
     testSyntax(SchemaTable, {
         str: "x",
-        result: {
+        shouldBe: {
             schema: "public",
             table: "x"
         }
@@ -14,7 +14,7 @@ describe("SchemaTable", () => {
 
     testSyntax(SchemaTable, {
         str: "x.y",
-        result: {
+        shouldBe: {
             schema: "x",
             table: "y"
         }

@@ -8,7 +8,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "id serial",
-        result: {
+        shouldBe: {
             name: {
                 word: "id",
                 content: null
@@ -27,7 +27,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "id serial primary key",
-        result: {
+        shouldBe: {
             name: {
                 word: "id",
                 content: null
@@ -56,7 +56,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "id serial not null",
-        result: {
+        shouldBe: {
             name: {
                 word: "id",
                 content: null
@@ -83,7 +83,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "profit numeric check(profit>0)",
-        result: {
+        shouldBe: {
             name: {
                 word: "profit",
                 content: null
@@ -118,7 +118,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "profit numeric not null check ( profit>0 )",
-        result: {
+        shouldBe: {
             name: {
                 word: "profit",
                 content: null
@@ -153,7 +153,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "profit numeric check ( profit>0 ) not null",
-        result: {
+        shouldBe: {
             name: {
                 word: "profit",
                 content: null
@@ -222,7 +222,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "name text unique",
-        result: {
+        shouldBe: {
             name: {
                 word: "name",
                 content: null
@@ -251,7 +251,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "name text unique not null",
-        result: {
+        shouldBe: {
             name: {
                 word: "name",
                 content: null
@@ -280,7 +280,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "name text not null unique",
-        result: {
+        shouldBe: {
             name: {
                 word: "name",
                 content: null
@@ -309,7 +309,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "id_company integer references company",
-        result: {
+        shouldBe: {
             name: {
                 word: "id_company",
                 content: null
@@ -345,7 +345,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "id_company integer references company (id)",
-        result: {
+        shouldBe: {
             name: {
                 word: "id_company",
                 content: null
@@ -384,7 +384,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "profit numeric default 0",
-        result: {
+        shouldBe: {
             name: {
                 word: "profit",
                 content: null
@@ -407,7 +407,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "profit numeric default 0 not null",
-        result: {
+        shouldBe: {
             name: {
                 word: "profit",
                 content: null
@@ -430,7 +430,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "profit numeric not null default 0",
-        result: {
+        shouldBe: {
             name: {
                 word: "profit",
                 content: null
@@ -453,7 +453,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "profit numeric not null default 0 unique",
-        result: {
+        shouldBe: {
             name: {
                 word: "profit",
                 content: null
@@ -486,7 +486,7 @@ describe("ColumnDefinition", () => {
 
     testSyntax(ColumnDefinition, {
         str: "id_order_type integer not null default 1 unique references order_type check (id_order_type in (1,2,3))",
-        result: {
+        shouldBe: {
             name: {
                 word: "id_order_type",
                 content: null

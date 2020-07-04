@@ -6,7 +6,7 @@ describe("WindowDefinitionFrame", () => {
 
     testSyntax(WindowDefinitionFrame, {
         str: "unbounded preceding",
-        result: {
+        shouldBe: {
             start: {
                 value: null,
                 currentRow: null,
@@ -20,7 +20,7 @@ describe("WindowDefinitionFrame", () => {
 
     testSyntax(WindowDefinitionFrame, {
         str: "1 preceding",
-        result: {
+        shouldBe: {
             start: {
                 value: {number: "1"},
                 currentRow: null,
@@ -34,7 +34,7 @@ describe("WindowDefinitionFrame", () => {
 
     testSyntax(WindowDefinitionFrame, {
         str: "between 1 preceding and 2 preceding",
-        result: {
+        shouldBe: {
             start: {
                 value: {number: "1"},
                 currentRow: null,

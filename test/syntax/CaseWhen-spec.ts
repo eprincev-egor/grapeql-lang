@@ -6,7 +6,7 @@ describe("CaseWhen", () => {
 
     testSyntax(CaseWhen, {
         str: "case when (true) then 1 else 0 end",
-        result: {
+        shouldBe: {
             case: [
                 {
                     when: {elements: [{boolean: true}]},
@@ -19,7 +19,7 @@ describe("CaseWhen", () => {
 
     testSyntax(CaseWhen, {
         str: "case when (true) then 1 end",
-        result: {
+        shouldBe: {
             case: [
                 {
                     when: {elements: [{boolean: true}]},
@@ -32,7 +32,7 @@ describe("CaseWhen", () => {
 
     testSyntax(CaseWhen, {
         str: "case when 'some' then (1+1) when true or false then (1+1) else -2 end",
-        result: {
+        shouldBe: {
             case: [
                 {
                     when: {elements: [{content: "some"}]},

@@ -16,7 +16,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "file Order",
-        result: {
+        shouldBe: {
             relative: true,
             path: [
                 {name: ".", content: null},
@@ -27,7 +27,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "./Order",
-        result: {
+        shouldBe: {
             relative: true,
             path: [
                 {name: ".", content: null},
@@ -38,7 +38,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "../Order",
-        result: {
+        shouldBe: {
             relative: true,
             path: [
                 {name: "..", content: null},
@@ -49,7 +49,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "file Order.sql",
-        result: {
+        shouldBe: {
             relative: true,
             path: [
                 {name: ".", content: null},
@@ -60,7 +60,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "file \" nice \"",
-        result: {
+        shouldBe: {
             relative: true,
             path: [
                 {name: ".", content: null},
@@ -71,7 +71,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "file some / file on",
-        result: {
+        shouldBe: {
             relative: true,
             path: [
                 {name: ".", content: null},
@@ -83,7 +83,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "file /root.sql",
-        result: {
+        shouldBe: {
             relative: false,
             path: [
                 {name: "root.sql", content: null}
@@ -93,7 +93,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "/root.sql",
-        result: {
+        shouldBe: {
             relative: false,
             path: [
                 {name: "root.sql", content: null}
@@ -103,7 +103,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "file ./company",
-        result: {
+        shouldBe: {
             relative: true,
             path: [
                 {name: ".", content: null},
@@ -114,7 +114,7 @@ describe("File", () => {
 
     testSyntax(File, {
         str: "./Country)",
-        result: {
+        shouldBe: {
             relative: true,
             path: [
                 {name: ".", content: null},

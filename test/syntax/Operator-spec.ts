@@ -6,499 +6,499 @@ describe("Operator", () => {
 
     testSyntax(Operator, {
         str: "-+-",
-        result: {operator: "-"}
+        shouldBe: {operator: "-"}
     });
 
     testSyntax(Operator, {
         str: "+-",
-        result: {operator: "+"}
+        shouldBe: {operator: "+"}
     });
 
     testSyntax(Operator, {
         str: "::",
-        result: {operator: "::"}
+        shouldBe: {operator: "::"}
     });
     
 
 
     testSyntax(Operator, {
         str: "=",
-        result: {operator: "="}
+        shouldBe: {operator: "="}
     });
     
     testSyntax(Operator, {
         str: "<>",
-        result: {operator: "<>"}
+        shouldBe: {operator: "<>"}
     });
     
     testSyntax(Operator, {
         str: "!=",
-        result: {operator: "!="}
+        shouldBe: {operator: "!="}
     });
     
     testSyntax(Operator, {
         str: "<",
-        result: {operator: "<"}
+        shouldBe: {operator: "<"}
     });
     
     testSyntax(Operator, {
         str: ">",
-        result: {operator: ">"}
+        shouldBe: {operator: ">"}
     });
     
     testSyntax(Operator, {
         str: "<=",
-        result: {operator: "<="}
+        shouldBe: {operator: "<="}
     });
     
     testSyntax(Operator, {
         str: ">=",
-        result: {operator: ">="}
+        shouldBe: {operator: ">="}
     });
     
     testSyntax(Operator, {
         str: "||",
-        result: {operator: "||"}
+        shouldBe: {operator: "||"}
     });
     
     testSyntax(Operator, {
         str: "!",
-        result: {operator: "!"}
+        shouldBe: {operator: "!"}
     });
     
     testSyntax(Operator, {
         str: "!!",
-        result: {operator: "!!"}
+        shouldBe: {operator: "!!"}
     });
     
     testSyntax(Operator, {
         str: "%",
-        result: {operator: "%"}
+        shouldBe: {operator: "%"}
     });
     
     testSyntax(Operator, {
         str: "@",
-        result: {operator: "@"}
+        shouldBe: {operator: "@"}
     });
     
     testSyntax(Operator, {
         str: "-",
-        result: {operator: "-"}
+        shouldBe: {operator: "-"}
     });
     
     testSyntax(Operator, {
         str: "<<",
-        result: {operator: "<<"}
+        shouldBe: {operator: "<<"}
     });
     
     testSyntax(Operator, {
         str: "&<",
-        result: {operator: "&<"}
+        shouldBe: {operator: "&<"}
     });
     
     testSyntax(Operator, {
         str: "&>",
-        result: {operator: "&>"}
+        shouldBe: {operator: "&>"}
     });
     
     testSyntax(Operator, {
         str: ">>",
-        result: {operator: ">>"}
+        shouldBe: {operator: ">>"}
     });
     
     testSyntax(Operator, {
         str: "<@",
-        result: {operator: "<@"}
+        shouldBe: {operator: "<@"}
     });
     
     testSyntax(Operator, {
         str: "@>",
-        result: {operator: "@>"}
+        shouldBe: {operator: "@>"}
     });
     
     testSyntax(Operator, {
         str: "~=",
-        result: {operator: "~="}
+        shouldBe: {operator: "~="}
     });
     
     testSyntax(Operator, {
         str: "&&",
-        result: {operator: "&&"}
+        shouldBe: {operator: "&&"}
     });
     
     testSyntax(Operator, {
         str: ">^",
-        result: {operator: ">^"}
+        shouldBe: {operator: ">^"}
     });
     
     testSyntax(Operator, {
         str: "<^",
-        result: {operator: "<^"}
+        shouldBe: {operator: "<^"}
     });
     
     testSyntax(Operator, {
         str: "@@",
-        result: {operator: "@@"}
+        shouldBe: {operator: "@@"}
     });
     
     testSyntax(Operator, {
         str: "*",
-        result: {operator: "*"}
+        shouldBe: {operator: "*"}
     });
     
     testSyntax(Operator, {
         str: "<->",
-        result: {operator: "<->"}
+        shouldBe: {operator: "<->"}
     });
     
     testSyntax(Operator, {
         str: "/",
-        result: {operator: "/"}
+        shouldBe: {operator: "/"}
     });
     
     testSyntax(Operator, {
         str: "+",
-        result: {operator: "+"}
+        shouldBe: {operator: "+"}
     });
     
     testSyntax(Operator, {
         str: "#=",
-        result: {operator: "#="}
+        shouldBe: {operator: "#="}
     });
     
     testSyntax(Operator, {
         str: "#<>",
-        result: {operator: "#<>"}
+        shouldBe: {operator: "#<>"}
     });
     
     testSyntax(Operator, {
         str: "#<",
-        result: {operator: "#<"}
+        shouldBe: {operator: "#<"}
     });
     
     testSyntax(Operator, {
         str: "#>",
-        result: {operator: "#>"}
+        shouldBe: {operator: "#>"}
     });
     
     testSyntax(Operator, {
         str: "#<=",
-        result: {operator: "#<="}
+        shouldBe: {operator: "#<="}
     });
     
     testSyntax(Operator, {
         str: "#>=",
-        result: {operator: "#>="}
+        shouldBe: {operator: "#>="}
     });
     
     testSyntax(Operator, {
         str: "<?>",
-        result: {operator: "<?>"}
+        shouldBe: {operator: "<?>"}
     });
     
     testSyntax(Operator, {
         str: "|/",
-        result: {operator: "|/"}
+        shouldBe: {operator: "|/"}
     });
     
     testSyntax(Operator, {
         str: "||/",
-        result: {operator: "||/"}
+        shouldBe: {operator: "||/"}
     });
     
     testSyntax(Operator, {
         str: "|",
-        result: {operator: "|"}
+        shouldBe: {operator: "|"}
     });
     
     testSyntax(Operator, {
         str: "<#>",
-        result: {operator: "<#>"}
+        shouldBe: {operator: "<#>"}
     });
     
     testSyntax(Operator, {
         str: "~",
-        result: {operator: "~"}
+        shouldBe: {operator: "~"}
     });
     
     testSyntax(Operator, {
         str: "!~",
-        result: {operator: "!~"}
+        shouldBe: {operator: "!~"}
     });
     
     testSyntax(Operator, {
         str: "#",
-        result: {operator: "#"}
+        shouldBe: {operator: "#"}
     });
     
     testSyntax(Operator, {
         str: "?#",
-        result: {operator: "?#"}
+        shouldBe: {operator: "?#"}
     });
     
     testSyntax(Operator, {
         str: "@-@",
-        result: {operator: "@-@"}
+        shouldBe: {operator: "@-@"}
     });
     
     testSyntax(Operator, {
         str: "?-",
-        result: {operator: "?-"}
+        shouldBe: {operator: "?-"}
     });
     
     testSyntax(Operator, {
         str: "?|",
-        result: {operator: "?|"}
+        shouldBe: {operator: "?|"}
     });
     
     testSyntax(Operator, {
         str: "^",
-        result: {operator: "^"}
+        shouldBe: {operator: "^"}
     });
     
     testSyntax(Operator, {
         str: "~~",
-        result: {operator: "~~"}
+        shouldBe: {operator: "~~"}
     });
     
     testSyntax(Operator, {
         str: "!~~",
-        result: {operator: "!~~"}
+        shouldBe: {operator: "!~~"}
     });
     
     testSyntax(Operator, {
         str: "~*",
-        result: {operator: "~*"}
+        shouldBe: {operator: "~*"}
     });
     
     testSyntax(Operator, {
         str: "!~*",
-        result: {operator: "!~*"}
+        shouldBe: {operator: "!~*"}
     });
     
     testSyntax(Operator, {
         str: "|>>",
-        result: {operator: "|>>"}
+        shouldBe: {operator: "|>>"}
     });
     
     testSyntax(Operator, {
         str: "<<|",
-        result: {operator: "<<|"}
+        shouldBe: {operator: "<<|"}
     });
     
     testSyntax(Operator, {
         str: "?||",
-        result: {operator: "?||"}
+        shouldBe: {operator: "?||"}
     });
     
     testSyntax(Operator, {
         str: "?-|",
-        result: {operator: "?-|"}
+        shouldBe: {operator: "?-|"}
     });
     
     testSyntax(Operator, {
         str: "##",
-        result: {operator: "##"}
+        shouldBe: {operator: "##"}
     });
     
     testSyntax(Operator, {
         str: "&",
-        result: {operator: "&"}
+        shouldBe: {operator: "&"}
     });
     
     testSyntax(Operator, {
         str: "<<=",
-        result: {operator: "<<="}
+        shouldBe: {operator: "<<="}
     });
     
     testSyntax(Operator, {
         str: ">>=",
-        result: {operator: ">>="}
+        shouldBe: {operator: ">>="}
     });
     
     testSyntax(Operator, {
         str: "~~*",
-        result: {operator: "~~*"}
+        shouldBe: {operator: "~~*"}
     });
     
     testSyntax(Operator, {
         str: "!~~*",
-        result: {operator: "!~~*"}
+        shouldBe: {operator: "!~~*"}
     });
     
     testSyntax(Operator, {
         str: "~<~",
-        result: {operator: "~<~"}
+        shouldBe: {operator: "~<~"}
     });
     
     testSyntax(Operator, {
         str: "~<=~",
-        result: {operator: "~<=~"}
+        shouldBe: {operator: "~<=~"}
     });
     
     testSyntax(Operator, {
         str: "~>=~",
-        result: {operator: "~>=~"}
+        shouldBe: {operator: "~>=~"}
     });
     
     testSyntax(Operator, {
         str: "~>~",
-        result: {operator: "~>~"}
+        shouldBe: {operator: "~>~"}
     });
     
     testSyntax(Operator, {
         str: "&<|",
-        result: {operator: "&<|"}
+        shouldBe: {operator: "&<|"}
     });
     
     testSyntax(Operator, {
         str: "|&>",
-        result: {operator: "|&>"}
+        shouldBe: {operator: "|&>"}
     });
     
     testSyntax(Operator, {
         str: "@@@",
-        result: {operator: "@@@"}
+        shouldBe: {operator: "@@@"}
     });
     
     testSyntax(Operator, {
         str: "*=",
-        result: {operator: "*="}
+        shouldBe: {operator: "*="}
     });
     
     testSyntax(Operator, {
         str: "*<>",
-        result: {operator: "*<>"}
+        shouldBe: {operator: "*<>"}
     });
     
     testSyntax(Operator, {
         str: "*<",
-        result: {operator: "*<"}
+        shouldBe: {operator: "*<"}
     });
     
     testSyntax(Operator, {
         str: "*>",
-        result: {operator: "*>"}
+        shouldBe: {operator: "*>"}
     });
     
     testSyntax(Operator, {
         str: "*<=",
-        result: {operator: "*<="}
+        shouldBe: {operator: "*<="}
     });
     
     testSyntax(Operator, {
         str: "*>=",
-        result: {operator: "*>="}
+        shouldBe: {operator: "*>="}
     });
     
     testSyntax(Operator, {
         str: "-|-",
-        result: {operator: "-|-"}
+        shouldBe: {operator: "-|-"}
     });
     
     testSyntax(Operator, {
         str: "->",
-        result: {operator: "->"}
+        shouldBe: {operator: "->"}
     });
     
     testSyntax(Operator, {
         str: "->>",
-        result: {operator: "->>"}
+        shouldBe: {operator: "->>"}
     });
     
     testSyntax(Operator, {
         str: "#>>",
-        result: {operator: "#>>"}
+        shouldBe: {operator: "#>>"}
     });
     
     testSyntax(Operator, {
         str: "?",
-        result: {operator: "?"}
+        shouldBe: {operator: "?"}
     });
     
     testSyntax(Operator, {
         str: "?&",
-        result: {operator: "?&"}
+        shouldBe: {operator: "?&"}
     });
     
     testSyntax(Operator, {
         str: "#-",
-        result: {operator: "#-"}
+        shouldBe: {operator: "#-"}
     });
     
     testSyntax(Operator, {
         str: "and",
-        result: {operator: "and"}
+        shouldBe: {operator: "and"}
     });
     
     testSyntax(Operator, {
         str: "or",
-        result: {operator: "or"}
+        shouldBe: {operator: "or"}
     });
     
     testSyntax(Operator, {
         str: "not",
-        result: {operator: "not"}
+        shouldBe: {operator: "not"}
     });
 
     testSyntax(Operator, {
         str: "is",
-        result: {operator: "is"}
+        shouldBe: {operator: "is"}
     });
 
     testSyntax(Operator, {
         str: "is  Not null",
-        result: {operator: "is not"}
+        shouldBe: {operator: "is not"}
     });
 
     testSyntax(Operator, {
         str: "is Distinct from",
-        result: {operator: "is distinct from"}
+        shouldBe: {operator: "is distinct from"}
     });
 
     testSyntax(Operator, {
         str: "operator( pg_catalog.+  )",
-        result: {operator: "operator(pg_catalog.+)"}
+        shouldBe: {operator: "operator(pg_catalog.+)"}
     });
 
     testSyntax(Operator, {
         str: "isnull some",
-        result: {operator: "isnull"}
+        shouldBe: {operator: "isnull"}
     });
 
     testSyntax(Operator, {
         str: "notnull some",
-        result: {operator: "notnull"}
+        shouldBe: {operator: "notnull"}
     });
 
     testSyntax(Operator, {
         str: "is not distinct from",
-        result: {operator: "is not distinct from"}
+        shouldBe: {operator: "is not distinct from"}
     });
 
     testSyntax(Operator, {
         str: "is unknown",
-        result: {operator: "is unknown"}
+        shouldBe: {operator: "is unknown"}
     });
 
     testSyntax(Operator, {
         str: "is not  unknown",
-        result: {operator: "is not unknown"}
+        shouldBe: {operator: "is not unknown"}
     });
 
     testSyntax(Operator, {
         str: "sImilar  To",
-        result: {operator: "similar to"}
+        shouldBe: {operator: "similar to"}
     });
 
     testSyntax(Operator, {
         str: "iLike",
-        result: {operator: "ilike"}
+        shouldBe: {operator: "ilike"}
     });
 
     testSyntax(Operator, {
         str: "likE",
-        result: {operator: "like"}
+        shouldBe: {operator: "like"}
     });
 
 

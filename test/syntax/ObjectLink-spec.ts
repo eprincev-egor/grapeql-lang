@@ -9,7 +9,7 @@ describe("ObjectLink", () => {
 
     testSyntax(ObjectLink, {
         str: "a.B.c",
-        result: {
+        shouldBe: {
             star: false,
             link: [
                 {
@@ -30,7 +30,7 @@ describe("ObjectLink", () => {
 
     testSyntax(ObjectLink, {
         str: "a.b.c.d.e.f",
-        result: {
+        shouldBe: {
             star: false,
             link: [
                 {
@@ -66,7 +66,7 @@ describe("ObjectLink", () => {
             .
             "test"   . X.y."some"
             `,
-        result: {
+        shouldBe: {
             star: false,
             link: [
                 {
@@ -98,7 +98,7 @@ describe("ObjectLink", () => {
         options: {
             availableStar: true
         },
-        result: {
+        shouldBe: {
             star: true,
             link: []
         }
@@ -109,7 +109,7 @@ describe("ObjectLink", () => {
         options: {
             availableStar: true
         },
-        result: {
+        shouldBe: {
             star: true,
             link: [
                 {
@@ -125,7 +125,7 @@ describe("ObjectLink", () => {
         options: {
             availableStar: true
         },
-        result: {
+        shouldBe: {
             star: true,
             link: [
                 {

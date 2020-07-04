@@ -6,7 +6,7 @@ describe("CheckConstraint", () => {
 
     testSyntax(CheckConstraint, {
         str: "constraint test check (profit > 0)",
-        result: {
+        shouldBe: {
             name: {
                 word: "test",
                 content: null
@@ -32,7 +32,7 @@ describe("CheckConstraint", () => {
                 content: null
             }
         },
-        result: {
+        shouldBe: {
             name: null,
             column: {
                 word: "profit",

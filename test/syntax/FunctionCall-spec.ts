@@ -6,7 +6,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "public.get_default_currency()",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -27,7 +27,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "public.get_default_currency( 1, 2 )",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -55,7 +55,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "count( * )",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -82,7 +82,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "row_to_json( company.* )",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -111,7 +111,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "array_agg( all company.id )",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -138,7 +138,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "array_agg( distinct company.id )",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -165,7 +165,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "array_agg( company.id ) filter (where company.name is not null )",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -199,7 +199,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "array_agg( company.id order by id desc )",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -238,7 +238,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "array_agg( company.id order by id desc ) filter (where company.name is not null )",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -284,7 +284,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "UNNEST( ARRAY[ 1, 2 ] ) WITHIN GROUP (ORDER BY val))",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -328,7 +328,7 @@ describe("FunctionCall", () => {
     
     testSyntax(FunctionCall, {
         str: "ntile(4) OVER (ORDER BY val) AS tile",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [
@@ -369,7 +369,7 @@ describe("FunctionCall", () => {
 
     testSyntax(FunctionCall, {
         str: "ntile(4) OVER () AS tile",
-        result: {
+        shouldBe: {
             function: {
                 star: false,
                 link: [

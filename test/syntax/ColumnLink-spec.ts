@@ -12,7 +12,7 @@ describe("ColumnLink", () => {
 
     testSyntax(ColumnLink, {
         str: "public.company.id",
-        result: {
+        shouldBe: {
             star: false,
             link: [
                 {

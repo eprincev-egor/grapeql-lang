@@ -6,7 +6,7 @@ describe("AssignVarStatement", () => {
 
     testSyntax(AssignVarStatement, {
         str: "a = 1",
-        result: {
+        shouldBe: {
             variable: {
                 star: false, link: [
                     {word: "a", content: null}
@@ -20,7 +20,7 @@ describe("AssignVarStatement", () => {
 
     testSyntax(AssignVarStatement, {
         str: "new.x = 1",
-        result: {
+        shouldBe: {
             variable: {
                 star: false, link: [
                     {word: "new", content: null},
@@ -35,7 +35,7 @@ describe("AssignVarStatement", () => {
     
     testSyntax(AssignVarStatement, {
         str: "old.y = new.x",
-        result: {
+        shouldBe: {
             variable: {
                 star: false, link: [
                     {word: "old", content: null},

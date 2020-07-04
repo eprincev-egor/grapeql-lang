@@ -8,7 +8,7 @@ describe("ObjectName", () => {
 
     testSyntax(ObjectName, {
         str: "\"Nice\"",
-        result: {
+        shouldBe: {
             content: "Nice",
             word: null
         }
@@ -16,7 +16,7 @@ describe("ObjectName", () => {
 
     testSyntax(ObjectName, {
         str: "NICE",
-        result: {
+        shouldBe: {
             word: "nice",
             content: null
         }

@@ -6,7 +6,7 @@ describe("IfStatement", () => {
 
     testSyntax(IfStatement, {
         str: "if true then return false; end if;",
-        result: {
+        shouldBe: {
             if: {elements: [
                 {boolean: true}
             ]},
@@ -22,7 +22,7 @@ describe("IfStatement", () => {
 
     testSyntax(IfStatement, {
         str: "if false then return 1; else return 2; end if;",
-        result: {
+        shouldBe: {
             if: {elements: [
                 {boolean: false}
             ]},
@@ -50,7 +50,7 @@ describe("IfStatement", () => {
                 return c;
             end if;
         `.trim(),
-        result: {
+        shouldBe: {
             if: {elements: [
                 {star: false, link: [
                     {word: "a", content: null}
@@ -107,7 +107,7 @@ describe("IfStatement", () => {
                 return c;
             end if;
         `.trim(),
-        result: {
+        shouldBe: {
             if: {elements: [
                 {star: false, link: [
                     {word: "a", content: null}

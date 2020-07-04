@@ -6,7 +6,7 @@ describe("Insert", () => {
 
     testSyntax(Insert, {
         str: "insert into orders default values",
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "orders", content: null}
@@ -23,7 +23,7 @@ describe("Insert", () => {
     
     testSyntax(Insert, {
         str: "insert into orders AS Order default values",
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "orders", content: null}
@@ -40,7 +40,7 @@ describe("Insert", () => {
     
     testSyntax(Insert, {
         str: "insert into orders values (1,2), (3, 4)",
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "orders", content: null}
@@ -74,7 +74,7 @@ describe("Insert", () => {
     
     testSyntax(Insert, {
         str: "insert into orders (id_country) values (default)",
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "orders", content: null}
@@ -95,7 +95,7 @@ describe("Insert", () => {
     
     testSyntax(Insert, {
         str: "insert into orders select 1",
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "orders", content: null}
@@ -136,7 +136,7 @@ describe("Insert", () => {
 
     testSyntax(Insert, {
         str: "with x1 as (select 2) insert into orders select * from x1",
-        result: {
+        shouldBe: {
             with: {
                 recursive: null,
                 queries: [{
@@ -222,7 +222,7 @@ describe("Insert", () => {
 
     testSyntax(Insert, {
         str: "insert into companies (id, name) values (1, 'Test') on conflict (id) do nothing",
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "companies", content: null}
@@ -261,7 +261,7 @@ describe("Insert", () => {
     
     testSyntax(Insert, {
         str: "insert into companies (id, name) values (1, 'Test') on conflict (id) where id > 0 do nothing",
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "companies", content: null}
@@ -312,7 +312,7 @@ describe("Insert", () => {
             on constraint some_constraint_name 
             where id > 0 
         do nothing`,
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "companies", content: null}
@@ -359,7 +359,7 @@ describe("Insert", () => {
         on conflict (inn)
         do update set
             name = excluded.name`,
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "companies", content: null}
@@ -415,7 +415,7 @@ describe("Insert", () => {
         do update set
             name = excluded.name
         where name <> 'x'`,
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "companies", content: null}
@@ -471,7 +471,7 @@ describe("Insert", () => {
 
     testSyntax(Insert, {
         str: "insert into orders default values returning *, id, id_client as client_id",
-        result: {
+        shouldBe: {
             with: null,
             table: {star: false, link: [
                 {word: "orders", content: null}

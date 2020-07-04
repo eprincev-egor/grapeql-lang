@@ -6,7 +6,7 @@ describe("Substring", () => {
 
     testSyntax(Substring, {
         str: "substring('test' from 1)",
-        result: {
+        shouldBe: {
             str: {elements: [{
                 content: "test"
             }]},
@@ -19,7 +19,7 @@ describe("Substring", () => {
 
     testSyntax(Substring, {
         str: "substring('test' for 2)",
-        result: {
+        shouldBe: {
             str: {elements: [{
                 content: "test"
             }]},
@@ -32,7 +32,7 @@ describe("Substring", () => {
 
     testSyntax(Substring, {
         str: "substring('123456' from 2 for 3)",
-        result: {
+        shouldBe: {
             str: {elements: [{
                 content: "123456"
             }]},

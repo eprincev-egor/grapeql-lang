@@ -6,7 +6,7 @@ describe("Declare", () => {
 
     testSyntax(Declare, {
         str: "declare a text, b numeric",
-        result: {
+        shouldBe: {
             variables: [
                 {
                     name: {word: "a", content: null},

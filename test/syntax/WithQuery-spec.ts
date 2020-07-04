@@ -8,7 +8,7 @@ describe("WithQuery", () => {
         str: `items as (
             select
         )`,
-        result: {
+        shouldBe: {
             name: {word: "items", content: null},
             columns: null,
             select: {
@@ -38,7 +38,7 @@ describe("WithQuery", () => {
                 (1, 2),
                 (3, 4)
         )`,
-        result: {
+        shouldBe: {
             name: {word: "items", content: null},
             columns: null,
             select: null,
@@ -81,7 +81,7 @@ describe("WithQuery", () => {
                 (1, 2),
                 (3, 4)
         )`,
-        result: {
+        shouldBe: {
             name: {word: "items", content: null},
             columns: [
                 {word: "id", content: null},

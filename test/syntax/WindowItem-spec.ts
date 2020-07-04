@@ -8,7 +8,7 @@ describe("WindowItem", () => {
 
     testSyntax(WindowItem, {
         str: "x as (order by company.name)",
-        result: {
+        shouldBe: {
             as: {word: "x", content: null},
             body: {
                 windowDefinition: null,

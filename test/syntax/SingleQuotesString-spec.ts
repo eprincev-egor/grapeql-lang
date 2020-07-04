@@ -6,175 +6,175 @@ describe("SingleQuotesString", () => {
 
     testSyntax(SingleQuotesString, {
         str: "'hello ''world'''",
-        result: {
+        shouldBe: {
             content: "hello 'world'"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "'hello'\n'world'",
-        result: {
+        shouldBe: {
             content: "helloworld"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "'hello'\r'world'",
-        result: {
+        shouldBe: {
             content: "helloworld"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "'hello'\n\r'world'",
-        result: {
+        shouldBe: {
             content: "helloworld"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "'hello' \n\r 'world' \n\r 'world'",
-        result: {
+        shouldBe: {
             content: "helloworldworld"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "'hello' \n\r 'world' \n\r 'world'  ",
-        result: {
+        shouldBe: {
             content: "helloworldworld"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "'hello' \n\r 'world' \n\r 'world' \n ",
-        result: {
+        shouldBe: {
             content: "helloworldworld"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "'hello' \n\r 'world' \n\r 'world' \r ",
-        result: {
+        shouldBe: {
             content: "helloworldworld"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "'hello' \n\r 'world' \n\r 'world' \n\r ",
-        result: {
+        shouldBe: {
             content: "helloworldworld"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\\\'",
-        result: {
+        shouldBe: {
             content: "\\"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\n'",
-        result: {
+        shouldBe: {
             content: "\n"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\rT'",
-        result: {
+        shouldBe: {
             content: "\rT"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\b'",
-        result: {
+        shouldBe: {
             content: "\b"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\f'",
-        result: {
+        shouldBe: {
             content: "\f"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\t'",
-        result: {
+        shouldBe: {
             content: "\t"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\U000061b'",
-        result: {
+        shouldBe: {
             content: "ab"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\U00006aa'",
-        result: {
+        shouldBe: {
             content: "ja"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\U00006A'",
-        result: {
+        shouldBe: {
             content: "j"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\u0061'",
-        result: {
+        shouldBe: {
             content: "a"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "E'\\061a'",
-        result: {
+        shouldBe: {
             content: "1a"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "U&'d\\0061t\\+000061 test'",
-        result: {
+        shouldBe: {
             content: "data test"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "u&'d\\0061t\\+000061 test'",
-        result: {
+        shouldBe: {
             content: "data test"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "U&'d!0061t!+000061' UESCAPE '!'",
-        result: {
+        shouldBe: {
             content: "data"
         }
     });
 
     testSyntax(SingleQuotesString, {
         str: "U&'d!0061t!+000061 '\n'd!0061t!+000061' UESCAPE '!'",
-        result: {
+        shouldBe: {
             content: "data data"
         }
     });
     
     testSyntax(SingleQuotesString, {
         str: "U&'\\066'",
-        result: {
+        shouldBe: {
             content: "f"
         }
     });
@@ -191,14 +191,14 @@ describe("SingleQuotesString", () => {
 
     testSyntax(SingleQuotesString, {
         str: "E'\\x66'",
-        result: {
+        shouldBe: {
             content: "f"
         }
     });
 
     testSyntax(SingleQuotesString, {
         str: "E'\\x6'",
-        result: {
+        shouldBe: {
             content: "\u0006"
         }
     });
@@ -220,7 +220,7 @@ describe("SingleQuotesString", () => {
 
     testSyntax(SingleQuotesString, {
         str: "E'\\p'",
-        result: {
+        shouldBe: {
             content: "p"
         }
     });

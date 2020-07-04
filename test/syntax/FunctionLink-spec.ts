@@ -12,7 +12,7 @@ describe("FunctionLink", () => {
 
     testSyntax(FunctionLink, {
         str: "public.get_curs",
-        result: {
+        shouldBe: {
             star: false,
             link: [
                 {

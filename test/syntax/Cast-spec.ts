@@ -6,7 +6,7 @@ describe("Cast", () => {
 
     testSyntax(Cast, {
         str: "cast(1 as numeric( 12, 12 ))",
-        result: {
+        shouldBe: {
             cast: {
                 type: "numeric(12,12)"
             },
@@ -22,7 +22,7 @@ describe("Cast", () => {
 
     testSyntax(Cast, {
         str: "cast('nice' as bigint[][])",
-        result: {
+        shouldBe: {
             cast: {
                 type: "bigint[][]"
             },
@@ -38,7 +38,7 @@ describe("Cast", () => {
 
     testSyntax(Cast, {
         str: "cast( $$nice$$  AS bigint[][])",
-        result: {
+        shouldBe: {
             cast: {
                 type: "bigint[][]"
             },
@@ -54,7 +54,7 @@ describe("Cast", () => {
 
     testSyntax(Cast, {
         str: "cast( 2 * 3 AS bigint[][])",
-        result: {
+        shouldBe: {
             cast: {
                 type: "bigint[][]"
             },

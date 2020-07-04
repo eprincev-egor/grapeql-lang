@@ -6,7 +6,7 @@ describe("Comment", () => {
 
     testSyntax(Comment, {
         str: "--123\n",
-        result: {
+        shouldBe: {
             isLine: true,
             isMulti: false,
             content: "123"
@@ -15,7 +15,7 @@ describe("Comment", () => {
 
     testSyntax(Comment, {
         str: "--123\r",
-        result: {
+        shouldBe: {
             isLine: true,
             isMulti: false,
             content: "123"
@@ -24,7 +24,7 @@ describe("Comment", () => {
 
     testSyntax(Comment, {
         str: "/*123\n456*/",
-        result: {
+        shouldBe: {
             isLine: false,
             isMulti: true,
             content: "123\n456"
@@ -33,7 +33,7 @@ describe("Comment", () => {
 
     testSyntax(Comment, {
         str: "/*123\r456*/",
-        result: {
+        shouldBe: {
             isLine: false,
             isMulti: true,
             content: "123\r456"

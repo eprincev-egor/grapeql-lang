@@ -8,7 +8,7 @@ describe("Any", () => {
 
     testSyntax(Any, {
         str: "any( select )",
-        result: {
+        shouldBe: {
             type: "any",
             array: null,
             select: {
@@ -33,7 +33,7 @@ describe("Any", () => {
 
     testSyntax(Any, {
         str: "some( select )",
-        result: {
+        shouldBe: {
             type: "some",
             array: null,
             select: {
@@ -58,7 +58,7 @@ describe("Any", () => {
 
     testSyntax(Any, {
         str: "all( select )",
-        result: {
+        shouldBe: {
             type: "all",
             array: null,
             select: {
@@ -84,7 +84,7 @@ describe("Any", () => {
     
     testSyntax(Any, {
         str: "any( array[] )",
-        result: {
+        shouldBe: {
             type: "any",
             array: {elements: [
                 {array: []}
@@ -95,7 +95,7 @@ describe("Any", () => {
 
     testSyntax(Any, {
         str: "some( array[] )",
-        result: {
+        shouldBe: {
             type: "some",
             array: {elements: [
                 {array: []}
@@ -106,7 +106,7 @@ describe("Any", () => {
 
     testSyntax(Any, {
         str: "all( array[] )",
-        result: {
+        shouldBe: {
             type: "all",
             array: {elements: [
                 {array: []}

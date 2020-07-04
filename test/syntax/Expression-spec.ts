@@ -8,7 +8,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "1+1",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "1"},
                 {operator: "+"},
@@ -19,7 +19,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "-1",
-        result: {
+        shouldBe: {
             elements: [
                 {operator: "-"},
                 {number: "1"}
@@ -29,7 +29,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "1 + 1",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "1"},
                 {operator: "+"},
@@ -40,7 +40,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "(1+1)",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "1"},
                 {operator: "+"},
@@ -51,7 +51,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "1::text::bigint-2 ",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "1"},
                 {operator: "::"},
@@ -66,7 +66,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "(1)::bigint",
-        result: {
+        shouldBe: {
             elements: [
                 {
                     elements: [
@@ -81,7 +81,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "$user::bigint % 4",
-        result: {
+        shouldBe: {
             elements: [
                 {name: "user"},
                 {operator: "::"},
@@ -94,7 +94,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "$$test$$ || E'str'",
-        result: {
+        shouldBe: {
             elements: [
                 {content: "test"},
                 {operator: "||"},
@@ -105,7 +105,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "true-false*null+1/'test'",
-        result: {
+        shouldBe: {
             elements: [
                 {boolean: true},
                 {operator: "-"},
@@ -122,7 +122,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "((('extrude')))",
-        result: {
+        shouldBe: {
             elements: [
                 {content: "extrude"}
             ]
@@ -131,7 +131,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "(-1+2.1)*''-(('test')+8)",
-        result: {
+        shouldBe: {
             elements: [
                 {
                     elements: [
@@ -159,7 +159,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "order.sum + Company.total",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "order", content: null},
@@ -179,7 +179,7 @@ describe("Expression", () => {
         options: {
             availableStar: true
         },
-        result: {
+        shouldBe: {
             elements: [
                 {star: true, link: []}
             ]
@@ -188,7 +188,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "cast(1 as numeric( 12, 12 )) * 2",
-        result: {
+        shouldBe: {
             elements: [
                 {
                     cast: {
@@ -210,7 +210,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "array[1]",
-        result: {
+        shouldBe: {
             elements: [{array: [
                 {elements: [
                     {number: "1"}
@@ -226,7 +226,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "1 + case when true then 1 else 0 end",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "1"},
                 {operator: "+"},
@@ -251,7 +251,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "extract( day from timestamp '2000-12-16 12:21:13' )",
-        result: {
+        shouldBe: {
             elements: [
                 {
                     field: "day",
@@ -266,7 +266,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "substring( country.id from 1 for 3 ) || ' ' || substring( company.name from 1 )",
-        result: {
+        shouldBe: {
             elements: [
                 {
                     str: {elements: [{
@@ -305,7 +305,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "10 * default_pay()",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "10"},
                 {operator: "*"},
@@ -331,7 +331,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "10 * (get_some_arr())[1]",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "10"},
                 {operator: "*"},
@@ -364,7 +364,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "id = 2 or id = -3",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "id", content: null}
@@ -386,7 +386,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "id = 2 or - -+id = 3",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "id", content: null}
@@ -411,7 +411,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "2::date::text || '120'::char(2) - -8",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "2"},
                 {operator: "::"},
@@ -435,7 +435,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "(-1 + 2.1) * '0'::numeric - ( ('-2')::bigint + 8)",
-        result: {
+        shouldBe: {
             elements: [
                 {elements: [
                     {operator: "-"},
@@ -470,7 +470,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "my_table.my_column_arr[1]",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "my_table", content: null},
@@ -485,7 +485,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "(array[100, 200])[1]",
-        result: {
+        shouldBe: {
             elements: [
                 {elements: [
                     {array: [
@@ -508,7 +508,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "(array[100, 200]::bigint[])[1]",
-        result: {
+        shouldBe: {
             elements: [
                 {elements: [
                     {array: [
@@ -533,7 +533,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "array[]",
-        result: {
+        shouldBe: {
             elements: [
                 {array: []}
             ]
@@ -542,7 +542,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "array[1]",
-        result: {
+        shouldBe: {
             elements: [
                 {array: [
                     {
@@ -557,7 +557,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "array[true, false]",
-        result: {
+        shouldBe: {
             elements: [
                 {array: [
                     {
@@ -577,7 +577,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "array[1]::bigint[]",
-        result: {
+        shouldBe: {
             elements: [
                 {array: [
                     {
@@ -594,7 +594,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "array[null]::bigint[]",
-        result: {
+        shouldBe: {
             elements: [
                 {array: [
                     {
@@ -611,7 +611,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "array[null]::numeric(10, 2)[]",
-        result: {
+        shouldBe: {
             elements: [
                 {array: [
                     {
@@ -628,7 +628,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "company.id between 1 and 2",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "company", content: null},
@@ -649,7 +649,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "company.id between 1 and 2 or company.id between 5 and 6",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "company", content: null},
@@ -684,7 +684,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "company.id between 1 and 2 > true",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "company", content: null},
@@ -707,7 +707,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "company.id between 1 and 2 < true",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "company", content: null},
@@ -730,7 +730,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "company.id between 1 and 2 + 3 <= true",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "company", content: null},
@@ -755,7 +755,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "company.id not between 1 and 2 + 3",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "company", content: null},
@@ -779,7 +779,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "test.id between 1 + 3 and 3 + 1 > test.id between ( 8 * test.id ) and 30 - 8",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "test", content: null},
@@ -827,7 +827,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "company.name not like '%x%'",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "company", content: null},
@@ -842,7 +842,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "now_utc() - interval '1 day'",
-        result: {
+        shouldBe: {
             elements: [
                 {
                     function: {
@@ -872,7 +872,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "exists(select) and not exists(select)",
-        result: {
+        shouldBe: {
             elements: [
                 {
                     exists: {
@@ -920,7 +920,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "1 = any(select) or exists(select)",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "1"},
                 {operator: "="},
@@ -971,7 +971,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "id in( 1, 2 ) or id = any( ARRAY[ 1, 2 ] )",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "id", content: null}
@@ -1012,7 +1012,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "id not in( 1, 2 ) or id = any( ARRAY[ 1, 2 ] )",
-        result: {
+        shouldBe: {
             elements: [
                 {star: false, link: [
                     {word: "id", content: null}
@@ -1054,7 +1054,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "'' not null",
-        result: {
+        shouldBe: {
             elements: [
                 {content: ""}
             ]
@@ -1063,7 +1063,7 @@ describe("Expression", () => {
 
     testSyntax(Expression, {
         str: "0 not null",
-        result: {
+        shouldBe: {
             elements: [
                 {number: "0"}
             ]

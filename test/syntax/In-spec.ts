@@ -6,7 +6,7 @@ describe("In", () => {
 
     testSyntax(In, {
         str: "in( select )",
-        result: {
+        shouldBe: {
             inItems: null,
             inSelect: {
                 with: null,
@@ -30,7 +30,7 @@ describe("In", () => {
 
     testSyntax(In, {
         str: "in( 1, 2 )",
-        result: {
+        shouldBe: {
             inItems: [
                 {elements: [
                     {number: "1"}

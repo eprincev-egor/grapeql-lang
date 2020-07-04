@@ -12,7 +12,7 @@ describe("TableLink", () => {
 
     testSyntax(TableLink, {
         str: "public.company",
-        result: {
+        shouldBe: {
             star: false,
             link: [
                 {

@@ -6,7 +6,7 @@ describe("WindowDefinitionFrameElement", () => {
 
     testSyntax(WindowDefinitionFrameElement, {
         str: "unbounded preceding",
-        result: {
+        shouldBe: {
             value: null,
             currentRow: null,
             unbounded: true,
@@ -17,7 +17,7 @@ describe("WindowDefinitionFrameElement", () => {
 
     testSyntax(WindowDefinitionFrameElement, {
         str: "unbounded following",
-        result: {
+        shouldBe: {
             value: null,
             currentRow: null,
             unbounded: true,
@@ -33,7 +33,7 @@ describe("WindowDefinitionFrameElement", () => {
 
     testSyntax(WindowDefinitionFrameElement, {
         str: "current row",
-        result: {
+        shouldBe: {
             value: null,
             currentRow: true,
             unbounded: null,
@@ -44,7 +44,7 @@ describe("WindowDefinitionFrameElement", () => {
 
     testSyntax(WindowDefinitionFrameElement, {
         str: "1 preceding",
-        result: {
+        shouldBe: {
             value: {number: "1"},
             currentRow: null,
             unbounded: null,
@@ -55,7 +55,7 @@ describe("WindowDefinitionFrameElement", () => {
 
     testSyntax(WindowDefinitionFrameElement, {
         str: "1 following",
-        result: {
+        shouldBe: {
             value: {number: "1"},
             currentRow: null,
             unbounded: null,

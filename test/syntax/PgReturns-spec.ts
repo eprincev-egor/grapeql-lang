@@ -6,7 +6,7 @@ describe("PgReturns", () => {
 
     testSyntax(PgReturns, {
         str: "numerIc( 12 )",
-        result: {
+        shouldBe: {
             setof: null,
             table: null,
             type: "numeric(12)"
@@ -15,7 +15,7 @@ describe("PgReturns", () => {
 
     testSyntax(PgReturns, {
         str: "table ( id integer , name text  )",
-        result: {
+        shouldBe: {
             setof: null,
             type: null,
             table: [
@@ -39,7 +39,7 @@ describe("PgReturns", () => {
 
     testSyntax(PgReturns, {
         str: "public.company",
-        result: {
+        shouldBe: {
             setof: null,
             table: null,
             type: "public.company"
@@ -48,7 +48,7 @@ describe("PgReturns", () => {
 
     testSyntax(PgReturns, {
         str: "company",
-        result: {
+        shouldBe: {
             setof: null,
             table: null,
             type: "public.company"
@@ -57,7 +57,7 @@ describe("PgReturns", () => {
 
     testSyntax(PgReturns, {
         str: "company[]",
-        result: {
+        shouldBe: {
             setof: null,
             table: null,
             type: "public.company[]"
@@ -66,7 +66,7 @@ describe("PgReturns", () => {
 
     testSyntax(PgReturns, {
         str: "setof company",
-        result: {
+        shouldBe: {
             setof: true,
             table: null,
             type: "public.company"

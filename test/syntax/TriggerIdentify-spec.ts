@@ -6,7 +6,7 @@ describe("TriggerIdentify", () => {
 
     testSyntax(TriggerIdentify, {
         str: "some_trigger on public.company",
-        result: {
+        shouldBe: {
             name: "some_trigger",
             schema: "public",
             table: "company"

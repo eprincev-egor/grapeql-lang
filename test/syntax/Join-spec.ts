@@ -6,7 +6,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "JOIN company on true",
-        result: {
+        shouldBe: {
             type: "join",
             from: {
                 lateral: null,
@@ -33,7 +33,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "left join company on true",
-        result: {
+        shouldBe: {
             type: "left join",
             from: {
                 lateral: null,
@@ -60,7 +60,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "right join company on true",
-        result: {
+        shouldBe: {
             type: "right join",
             from: {
                 lateral: null,
@@ -87,7 +87,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "inner join company on true",
-        result: {
+        shouldBe: {
             type: "inner join",
             from: {
                 lateral: null,
@@ -114,7 +114,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "full join company on true",
-        result: {
+        shouldBe: {
             type: "full join",
             from: {
                 lateral: null,
@@ -141,7 +141,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "CROSS  Join company on true",
-        result: {
+        shouldBe: {
             type: "cross join",
             from: {
                 lateral: null,
@@ -168,7 +168,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "full  outer  join  company on true",
-        result: {
+        shouldBe: {
             type: "full outer join",
             from: {
                 lateral: null,
@@ -200,7 +200,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "JOIN lateral get_some_rows( company.id ) as rows on true",
-        result: {
+        shouldBe: {
             type: "join",
             from: {
                 only: null,
@@ -249,7 +249,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "left JOIN lateral get_some_rows( company.id ) as rows on true",
-        result: {
+        shouldBe: {
             type: "left join",
             from: {
                 only: null,
@@ -298,7 +298,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "inner join lateral get_some_rows( company.id ) as rows on true",
-        result: {
+        shouldBe: {
             type: "inner join",
             from: {
                 only: null,
@@ -353,7 +353,7 @@ describe("Join", () => {
     
     testSyntax(Join, {
         str: "JOIN company using(id)",
-        result: {
+        shouldBe: {
             type: "join",
             from: {
                 lateral: null,
@@ -380,7 +380,7 @@ describe("Join", () => {
 
     testSyntax(Join, {
         str: "JOIN company using ( key1, key2 )",
-        result: {
+        shouldBe: {
             type: "join",
             from: {
                 lateral: null,

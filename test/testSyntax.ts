@@ -9,7 +9,7 @@ interface ITestResult<SomeSyntax extends Syntax<any>> {
     // Syntax options
     options?: {[key: string]: any};
     // parsing result
-    result?: SomeSyntax["TInputData"];
+    shouldBe?: SomeSyntax["TInputData"];
     // or expected error on parsing
     error?: RegExp;
 }
@@ -30,8 +30,8 @@ export function testSyntax<
         throw new Error("str should be string");
     }
 
-    if ( !testAny.result && !testAny.error ) {
-        throw new Error("result or error required");
+    if ( !testAny.shouldBe && !testAny.error ) {
+        throw new Error("'shouldBe' or 'error' required");
     }
     
     if ( !SomeSyntax ) {
@@ -62,34 +62,34 @@ export function testSyntax<
     }
     else {
         const test = testAny as ITestResult<InstanceType<TSyntax>>;
-        const shouldBeResult = test.result;
+        const shouldBeResult = test.shouldBe;
 
         it(`testing method coach.is(${ SomeSyntax.name })\n string:\n${str}`, () => {
 
             const coach = new GrapeQLCoach(str);
-            const result = coach.is(SomeSyntax, test.options);
-            assert.ok( result );
+            const actual = coach.is(SomeSyntax, test.options);
+            assert.ok( actual );
         });
 
 
         it(`testing method coach.parse(${ SomeSyntax.name })\n string:\n${str}`, () => {
             
             const coach = new GrapeQLCoach(str);
-            const result = coach.parse(SomeSyntax, test.options);
-            assert.deepEqual(result.toJSON(), shouldBeResult);
+            const actualResult = coach.parse(SomeSyntax, test.options);
+            assert.deepEqual(actualResult.toJSON(), shouldBeResult);
         });
 
 
         it(`testing method ${ SomeSyntax.name }.toString()\n string:\n${str}`, () => {
             
             const coach = new GrapeQLCoach(str);
-            const result = coach.parse(SomeSyntax, test.options);
-            const clone = result.clone();
+            const actualResult = coach.parse(SomeSyntax, test.options);
+            const clone = actualResult.clone();
             const cloneString = clone.toString();
             const cloneCoach = new GrapeQLCoach( cloneString );
             
-            const cloneResult = cloneCoach.parse(SomeSyntax, test.options);
-            assert.deepEqual(cloneResult.toJSON(), shouldBeResult);
+            const cloneActualResult = cloneCoach.parse(SomeSyntax, test.options);
+            assert.deepEqual(cloneActualResult.toJSON(), shouldBeResult);
         });
     }
 

@@ -6,7 +6,7 @@ describe("WindowDefinition", () => {
 
     testSyntax(WindowDefinition, {
         str: "parent_window",
-        result: {
+        shouldBe: {
             windowDefinition: {
                 word: "parent_window",
                 content: null
@@ -20,7 +20,7 @@ describe("WindowDefinition", () => {
 
     testSyntax(WindowDefinition, {
         str: "partition by company.name, company.id",
-        result: {
+        shouldBe: {
             windowDefinition: null,
             partitionBy: [
                 {elements: [
@@ -44,7 +44,7 @@ describe("WindowDefinition", () => {
 
     testSyntax(WindowDefinition, {
         str: "order by company.name asc, company.id desc",
-        result: {
+        shouldBe: {
             windowDefinition: null,
             partitionBy: null,
             orderBy: [
@@ -78,7 +78,7 @@ describe("WindowDefinition", () => {
 
     testSyntax(WindowDefinition, {
         str: "range between 1 following and 2 following",
-        result: {
+        shouldBe: {
             windowDefinition: null,
             partitionBy: null,
             orderBy: null,
@@ -104,7 +104,7 @@ describe("WindowDefinition", () => {
 
     testSyntax(WindowDefinition, {
         str: "rows between 1 preceding and 2 following",
-        result: {
+        shouldBe: {
             windowDefinition: null,
             partitionBy: null,
             orderBy: null,
@@ -130,7 +130,7 @@ describe("WindowDefinition", () => {
 
     testSyntax(WindowDefinition, {
         str: "parent_window partition by company.name, company.id order by company.name desc, company.id asc rows between current row and 100 following",
-        result: {
+        shouldBe: {
             windowDefinition: {word: "parent_window", content: null},
             partitionBy: [
                 {elements: [
@@ -192,7 +192,7 @@ describe("WindowDefinition", () => {
 
     testSyntax(WindowDefinition, {
         str: "parent_window partition by company.name, company.id order by company.name desc, company.id asc range between current row and 100 following",
-        result: {
+        shouldBe: {
             windowDefinition: {word: "parent_window", content: null},
             partitionBy: [
                 {elements: [

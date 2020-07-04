@@ -8,7 +8,7 @@ describe("With", () => {
         str: `with items as (
             select
         )`,
-        result: {
+        shouldBe: {
             recursive: null,
             queries: [
                 {
@@ -41,7 +41,7 @@ describe("With", () => {
         str: `with recursive items as (
             select
         )`,
-        result: {
+        shouldBe: {
             recursive: true,
             queries: [
                 {

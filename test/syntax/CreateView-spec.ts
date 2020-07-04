@@ -8,7 +8,7 @@ describe("CreateView", () => {
 
     testSyntax(CreateView, {
         str: "create view test as select 1",
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "test",
@@ -43,7 +43,7 @@ describe("CreateView", () => {
     
     testSyntax(CreateView, {
         str: "create view public.test as select 1",
-        result: {
+        shouldBe: {
             schema: {
                 word: "public",
                 content: null
@@ -81,7 +81,7 @@ describe("CreateView", () => {
     
     testSyntax(CreateView, {
         str: "view public.test as select 1",
-        result: {
+        shouldBe: {
             schema: {
                 word: "public",
                 content: null
@@ -119,7 +119,7 @@ describe("CreateView", () => {
     
     testSyntax(CreateView, {
         str: "view test as select 1",
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "test",
@@ -154,7 +154,7 @@ describe("CreateView", () => {
     
     testSyntax(CreateView, {
         str: "create or replace view test as select 1",
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "test",
@@ -192,7 +192,7 @@ describe("CreateView", () => {
         -- inline comment
         select /* multi  
         line */ 1`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "test",

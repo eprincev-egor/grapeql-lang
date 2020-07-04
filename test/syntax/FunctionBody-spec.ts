@@ -14,7 +14,7 @@ describe("FunctionBody", () => {
                 return a + b;
             end
         `.trim(),
-        result: {
+        shouldBe: {
             declares: [
                 {
                     variables: [

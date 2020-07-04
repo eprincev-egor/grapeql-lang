@@ -6,7 +6,7 @@ describe("SquareBrackets", () => {
 
     testSyntax(SquareBrackets, {
         str: "[1]",
-        result: {
+        shouldBe: {
             content: {elements: [
                 {number: "1"}
             ]}

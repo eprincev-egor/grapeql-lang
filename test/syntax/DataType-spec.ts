@@ -7,475 +7,475 @@ describe("DataType", () => {
 
     testSyntax(DataType, {
         str: "Timestamp",
-        result: {type: "timestamp"}
+        shouldBe: {type: "timestamp"}
     });
 
     testSyntax(DataType, {
         str: "numeric  ( 10 )",
-        result: {type: "numeric(10)"}
+        shouldBe: {type: "numeric(10)"}
     });
 
     testSyntax(DataType, {
         str: "numeric ( 10, 3 )",
-        result: {type: "numeric(10,3)"}
+        shouldBe: {type: "numeric(10,3)"}
     });
 
     testSyntax(DataType, {
         str: "bigint[ ]",
-        result: {
+        shouldBe: {
             type: "bigint[]"
         }
     });
 
     testSyntax(DataType, {
         str: "bigint [ 1 ]",
-        result: {
+        shouldBe: {
             type: "bigint[1]"
         }
     });
 
     testSyntax(DataType, {
         str: "numeric",
-        result: {type: "numeric"}
+        shouldBe: {type: "numeric"}
     });
 
     testSyntax(DataType, {
         str: "\"char\"",
-        result: {
+        shouldBe: {
             type: "\"char\""
         }
     });
 
     testSyntax(DataType, {
         str: "smallint",
-        result: {
+        shouldBe: {
             type: "smallint"
         }
     });
 
     testSyntax(DataType, {
         str: "integer",
-        result: {
+        shouldBe: {
             type: "integer"
         }
     });
 
     testSyntax(DataType, {
         str: "bigint",
-        result: {
+        shouldBe: {
             type: "bigint"
         }
     });
 
     testSyntax(DataType, {
         str: "decimal",
-        result: {
+        shouldBe: {
             type: "decimal"
         }
     });
 
     testSyntax(DataType, {
         str: "real",
-        result: {
+        shouldBe: {
             type: "real"
         }
     });
 
     testSyntax(DataType, {
         str: "double precision",
-        result: {
+        shouldBe: {
             type: "double precision"
         }
     });
 
     testSyntax(DataType, {
         str: "smallserial",
-        result: {
+        shouldBe: {
             type: "smallserial"
         }
     });
 
     testSyntax(DataType, {
         str: "serial",
-        result: {
+        shouldBe: {
             type: "serial"
         }
     });
 
     testSyntax(DataType, {
         str: "bigserial",
-        result: {
+        shouldBe: {
             type: "bigserial"
         }
     });
 
     testSyntax(DataType, {
         str: "money",
-        result: {
+        shouldBe: {
             type: "money"
         }
     });
 
     testSyntax(DataType, {
         str: "text",
-        result: {
+        shouldBe: {
             type: "text"
         }
     });
 
     testSyntax(DataType, {
         str: "name",
-        result: {
+        shouldBe: {
             type: "name"
         }
     });
 
     testSyntax(DataType, {
         str: "bytea",
-        result: {
+        shouldBe: {
             type: "bytea"
         }
     });
 
     testSyntax(DataType, {
         str: "timestamp without time zone",
-        result: {
+        shouldBe: {
             type: "timestamp without time zone"
         }
     });
 
     testSyntax(DataType, {
         str: "timestamp with time zone",
-        result: {
+        shouldBe: {
             type: "timestamp with time zone"
         }
     });
 
     testSyntax(DataType, {
         str: "timestamp",
-        result: {
+        shouldBe: {
             type: "timestamp"
         }
     });
 
     testSyntax(DataType, {
         str: "time without time zone",
-        result: {
+        shouldBe: {
             type: "time without time zone"
         }
     });
 
     testSyntax(DataType, {
         str: "time with time zone",
-        result: {
+        shouldBe: {
             type: "time with time zone"
         }
     });
 
     testSyntax(DataType, {
         str: "boolean",
-        result: {
+        shouldBe: {
             type: "boolean"
         }
     });
 
     testSyntax(DataType, {
         str: "point",
-        result: {
+        shouldBe: {
             type: "point"
         }
     });
 
     testSyntax(DataType, {
         str: "line",
-        result: {
+        shouldBe: {
             type: "line"
         }
     });
 
     testSyntax(DataType, {
         str: "lseg",
-        result: {
+        shouldBe: {
             type: "lseg"
         }
     });
 
     testSyntax(DataType, {
         str: "box",
-        result: {
+        shouldBe: {
             type: "box"
         }
     });
 
     testSyntax(DataType, {
         str: "path",
-        result: {
+        shouldBe: {
             type: "path"
         }
     });
 
     testSyntax(DataType, {
         str: "polygon",
-        result: {
+        shouldBe: {
             type: "polygon"
         }
     });
 
     testSyntax(DataType, {
         str: "path",
-        result: {
+        shouldBe: {
             type: "path"
         }
     });
 
     testSyntax(DataType, {
         str: "circle",
-        result: {
+        shouldBe: {
             type: "circle"
         }
     });
 
     testSyntax(DataType, {
         str: "cidr",
-        result: {
+        shouldBe: {
             type: "cidr"
         }
     });
 
     testSyntax(DataType, {
         str: "inet",
-        result: {
+        shouldBe: {
             type: "inet"
         }
     });
 
     testSyntax(DataType, {
         str: "macaddr",
-        result: {
+        shouldBe: {
             type: "macaddr"
         }
     });
 
     testSyntax(DataType, {
         str: "macaddr8",
-        result: {
+        shouldBe: {
             type: "macaddr8"
         }
     });
 
     testSyntax(DataType, {
         str: "tsvector",
-        result: {
+        shouldBe: {
             type: "tsvector"
         }
     });
 
     testSyntax(DataType, {
         str: "tsquery",
-        result: {
+        shouldBe: {
             type: "tsquery"
         }
     });
 
     testSyntax(DataType, {
         str: "uuid",
-        result: {
+        shouldBe: {
             type: "uuid"
         }
     });
 
     testSyntax(DataType, {
         str: "xml",
-        result: {
+        shouldBe: {
             type: "xml"
         }
     });
 
     testSyntax(DataType, {
         str: "json",
-        result: {
+        shouldBe: {
             type: "json"
         }
     });
 
     testSyntax(DataType, {
         str: "jsonb",
-        result: {
+        shouldBe: {
             type: "jsonb"
         }
     });
 
     testSyntax(DataType, {
         str: "int",
-        result: {
+        shouldBe: {
             type: "int"
         }
     });
 
     testSyntax(DataType, {
         str: "int4range",
-        result: {
+        shouldBe: {
             type: "int4range"
         }
     });
 
     testSyntax(DataType, {
         str: "int8range",
-        result: {
+        shouldBe: {
             type: "int8range"
         }
     });
 
     testSyntax(DataType, {
         str: "numrange",
-        result: {
+        shouldBe: {
             type: "numrange"
         }
     });
 
     testSyntax(DataType, {
         str: "tsrange",
-        result: {
+        shouldBe: {
             type: "tsrange"
         }
     });
 
     testSyntax(DataType, {
         str: "tstzrange",
-        result: {
+        shouldBe: {
             type: "tstzrange"
         }
     });
 
     testSyntax(DataType, {
         str: "daterange",
-        result: {
+        shouldBe: {
             type: "daterange"
         }
     });
 
     testSyntax(DataType, {
         str: "regclass",
-        result: {
+        shouldBe: {
             type: "regclass"
         }
     });
 
     testSyntax(DataType, {
         str: "regproc",
-        result: {
+        shouldBe: {
             type: "regproc"
         }
     });
 
     testSyntax(DataType, {
         str: "regprocedure",
-        result: {
+        shouldBe: {
             type: "regprocedure"
         }
     });
 
     testSyntax(DataType, {
         str: "regoper",
-        result: {
+        shouldBe: {
             type: "regoper"
         }
     });
 
     testSyntax(DataType, {
         str: "regoperator",
-        result: {
+        shouldBe: {
             type: "regoperator"
         }
     });
 
     testSyntax(DataType, {
         str: "regclass",
-        result: {
+        shouldBe: {
             type: "regclass"
         }
     });
 
     testSyntax(DataType, {
         str: "regtype",
-        result: {
+        shouldBe: {
             type: "regtype"
         }
     });
 
     testSyntax(DataType, {
         str: "regrole",
-        result: {
+        shouldBe: {
             type: "regrole"
         }
     });
 
     testSyntax(DataType, {
         str: "regnamespace",
-        result: {
+        shouldBe: {
             type: "regnamespace"
         }
     });
 
     testSyntax(DataType, {
         str: "regconfig",
-        result: {
+        shouldBe: {
             type: "regconfig"
         }
     });
 
     testSyntax(DataType, {
         str: "regdictionary",
-        result: {
+        shouldBe: {
             type: "regdictionary"
         }
     });
 
     testSyntax(DataType, {
         str: "date",
-        result: {
+        shouldBe: {
             type: "date"
         }
     });
 
     testSyntax(DataType, {
         str: "trigger",
-        result: {
+        shouldBe: {
             type: "trigger"
         }
     });
 
     testSyntax(DataType, {
         str: "void",
-        result: {
+        shouldBe: {
             type: "void"
         }
     });
 
     testSyntax(DataType, {
         str: "public.company",
-        result: {
+        shouldBe: {
             type: "public.company"
         }
     });
 
     testSyntax(DataType, {
         str: "company",
-        result: {
+        shouldBe: {
             type: "public.company"
         }
     });
 
     testSyntax(DataType, {
         str: "public.company[]",
-        result: {
+        shouldBe: {
             type: "public.company[]"
         }
     });
 
     testSyntax(DataType, {
         str: "character varying[]",
-        result: {
+        shouldBe: {
             type: "character varying[]"
         }
     });

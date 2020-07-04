@@ -6,7 +6,7 @@ describe("VariableDefinition", () => {
 
     testSyntax(VariableDefinition, {
         str: "name text",
-        result: {
+        shouldBe: {
             name: {word: "name", content: null},
             type: {type: "text"},
             collate: null,
@@ -17,7 +17,7 @@ describe("VariableDefinition", () => {
 
     testSyntax(VariableDefinition, {
         str: "name text collate \"en_US\"",
-        result: {
+        shouldBe: {
             name: {word: "name", content: null},
             type: {type: "text"},
             collate: {word: null, content: "en_US"},
@@ -28,7 +28,7 @@ describe("VariableDefinition", () => {
 
     testSyntax(VariableDefinition, {
         str: "name text collate \"en_US\" = 'sweet'",
-        result: {
+        shouldBe: {
             name: {word: "name", content: null},
             type: {type: "text"},
             collate: {word: null, content: "en_US"},
@@ -41,7 +41,7 @@ describe("VariableDefinition", () => {
 
     testSyntax(VariableDefinition, {
         str: "total_price numeric(14, 2) not null default 0",
-        result: {
+        shouldBe: {
             name: {word: "total_price", content: null},
             type: {type: "numeric(14,2)"},
             collate: null,
@@ -54,7 +54,7 @@ describe("VariableDefinition", () => {
 
     testSyntax(VariableDefinition, {
         str: "total_price numeric(14, 2) not null = 0",
-        result: {
+        shouldBe: {
             name: {word: "total_price", content: null},
             type: {type: "numeric(14,2)"},
             collate: null,
@@ -67,7 +67,7 @@ describe("VariableDefinition", () => {
 
     testSyntax(VariableDefinition, {
         str: "order_date timestamp without time zone not null",
-        result: {
+        shouldBe: {
             name: {word: "order_date", content: null},
             type: {type: "timestamp without time zone"},
             collate: null,
@@ -79,7 +79,7 @@ describe("VariableDefinition", () => {
 
     testSyntax(VariableDefinition, {
         str: "order_date timestamp without time zone",
-        result: {
+        shouldBe: {
             name: {word: "order_date", content: null},
             type: {type: "timestamp without time zone"},
             collate: null,
@@ -90,7 +90,7 @@ describe("VariableDefinition", () => {
 
     testSyntax(VariableDefinition, {
         str: "total_price numeric = 0",
-        result: {
+        shouldBe: {
             name: {word: "total_price", content: null},
             type: {type: "numeric"},
             collate: null,
@@ -103,7 +103,7 @@ describe("VariableDefinition", () => {
 
     testSyntax(VariableDefinition, {
         str: "total_price numeric := 0",
-        result: {
+        shouldBe: {
             name: {word: "total_price", content: null},
             type: {type: "numeric"},
             collate: null,

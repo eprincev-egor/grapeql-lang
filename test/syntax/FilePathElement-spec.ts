@@ -6,7 +6,7 @@ describe("FilePathElement", () => {
 
     testSyntax(FilePathElement, {
         str: "Order",
-        result: {
+        shouldBe: {
             name: "Order",
             content: null
         }
@@ -14,7 +14,7 @@ describe("FilePathElement", () => {
 
     testSyntax(FilePathElement, {
         str: "\"sOme\"",
-        result: {
+        shouldBe: {
             name: null,
             content: "sOme"
         }

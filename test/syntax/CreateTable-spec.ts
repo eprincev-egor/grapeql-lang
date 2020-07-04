@@ -10,7 +10,7 @@ describe("CreateTable", () => {
         str: `create table company (
             id serial primary key
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "company",
@@ -65,7 +65,7 @@ describe("CreateTable", () => {
             id serial,
             constraint company_pk primary key (id)
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "company",
@@ -149,7 +149,7 @@ describe("CreateTable", () => {
             id serial primary key
         )
         inherits (parent_a, public.parent_b)`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "company",
@@ -208,7 +208,7 @@ describe("CreateTable", () => {
         deprecated (
             name3
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "company",
@@ -290,7 +290,7 @@ describe("CreateTable", () => {
         deprecated (
             name
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "company",
@@ -348,7 +348,7 @@ describe("CreateTable", () => {
             (default, 'FTL'),
             (3, 'LTL')
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "order_type",
@@ -571,7 +571,7 @@ describe("CreateTable", () => {
         ) values (
             (1)
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "order_type",
@@ -617,7 +617,7 @@ describe("CreateTable", () => {
         ) values (
             (1::integer)
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "order_type",
@@ -665,7 +665,7 @@ describe("CreateTable", () => {
         ) values (
             ('1'::integer)
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "order_type",
@@ -755,7 +755,7 @@ describe("CreateTable", () => {
             (1, null),
             (2, null)
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "order_type",
@@ -906,7 +906,7 @@ describe("CreateTable", () => {
             (default),
             (default)
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "order_type",
@@ -991,7 +991,7 @@ describe("CreateTable", () => {
             (default, default),
             (default, default)
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "order_type",
@@ -1136,7 +1136,7 @@ describe("CreateTable", () => {
             (default, -1::numeric),
             (default, -2::integer)
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             name: {
                 word: "order_type",
@@ -1219,7 +1219,7 @@ describe("CreateTable", () => {
         str: `deprecated table company (
             id serial primary key
         )`,
-        result: {
+        shouldBe: {
             schema: null,
             deprecated: true,
             name: {
@@ -1265,7 +1265,7 @@ describe("CreateTable", () => {
         str: `create table operation.unit (
             id serial primary key
         )`,
-        result: {
+        shouldBe: {
             schema: {
                 word: "operation",
                 content: null
@@ -1315,7 +1315,7 @@ describe("CreateTable", () => {
             -- inline comment
             id /* multi line comment */ serial primary key
         )`,
-        result: {
+        shouldBe: {
             schema: {
                 word: "operation",
                 content: null

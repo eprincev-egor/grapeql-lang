@@ -6,7 +6,7 @@ describe("Exists", () => {
 
     testSyntax(Exists, {
         str: "exists( select )",
-        result: {
+        shouldBe: {
             exists: {
                 with: null,
                 columns: null,

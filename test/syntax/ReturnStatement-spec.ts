@@ -6,7 +6,7 @@ describe("ReturnStatement", () => {
 
     testSyntax(ReturnStatement, {
         str: "return 1",
-        result: {
+        shouldBe: {
             return: {elements: [
                 {number: "1"}
             ]}

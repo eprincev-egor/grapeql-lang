@@ -8,32 +8,32 @@ describe("SystemVariable", () => {
 
     testSyntax(SystemVariable, {
         str: "$x",
-        result: {name: "x"}
+        shouldBe: {name: "x"}
     });
 
     testSyntax(SystemVariable, {
         str: "$X",
-        result: {name: "X"}
+        shouldBe: {name: "X"}
     });
 
     testSyntax(SystemVariable, {
         str: "$_",
-        result: {name: "_"}
+        shouldBe: {name: "_"}
     });
 
     testSyntax(SystemVariable, {
         str: "$x1",
-        result: {name: "x1"}
+        shouldBe: {name: "x1"}
     });
 
     testSyntax(SystemVariable, {
         str: "$Ёё",
-        result: {name: "Ёё"}
+        shouldBe: {name: "Ёё"}
     });
 
     testSyntax(SystemVariable, {
         str: "$Привет",
-        result: {name: "Привет"}
+        shouldBe: {name: "Привет"}
     });
 
     testSyntax(SystemVariable, {

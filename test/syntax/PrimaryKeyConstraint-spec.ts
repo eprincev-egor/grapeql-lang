@@ -6,7 +6,7 @@ describe("PrimaryKeyConstraint", () => {
     
     testSyntax(PrimaryKeyConstraint, {
         str: "constraint test primary key (id)",
-        result: {
+        shouldBe: {
             name: {
                 word: "test",
                 content: null
@@ -27,7 +27,7 @@ describe("PrimaryKeyConstraint", () => {
                 content: null
             }
         },
-        result: {
+        shouldBe: {
             name: null,
             column: {
                 word: "id",

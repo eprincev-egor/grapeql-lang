@@ -6,7 +6,7 @@ describe("BodyStatement", () => {
 
     testSyntax(BodyStatement, {
         str: "a = 1;",
-        result: {
+        shouldBe: {
             statements: [
                 {
                     variable: {
@@ -24,7 +24,7 @@ describe("BodyStatement", () => {
     
     testSyntax(BodyStatement, {
         str: "a = 1; b = a;",
-        result: {
+        shouldBe: {
             statements: [
                 {
                     variable: {
@@ -54,7 +54,7 @@ describe("BodyStatement", () => {
 
     testSyntax(BodyStatement, {
         str: "a = 1;return a + 10;",
-        result: {
+        shouldBe: {
             statements: [
                 {
                     variable: {
@@ -81,7 +81,7 @@ describe("BodyStatement", () => {
 
     testSyntax(BodyStatement, {
         str: "if true then return 1; end if;",
-        result: {
+        shouldBe: {
             statements: [
                 {
                     if: {elements: [
@@ -101,7 +101,7 @@ describe("BodyStatement", () => {
 
     testSyntax(BodyStatement, {
         str: "select 1 into a;",
-        result: {
+        shouldBe: {
             statements: [
                 {
                     with: null,
@@ -137,7 +137,7 @@ describe("BodyStatement", () => {
 
     testSyntax(BodyStatement, {
         str: "update companies set name = 'nice';",
-        result: {
+        shouldBe: {
             statements: [
                 {
                     with: null,
@@ -169,7 +169,7 @@ describe("BodyStatement", () => {
     
     testSyntax(BodyStatement, {
         str: "delete from companies where id = 1;",
-        result: {
+        shouldBe: {
             statements: [
                 {
                     only: false,
@@ -195,7 +195,7 @@ describe("BodyStatement", () => {
    
     testSyntax(BodyStatement, {
         str: "insert into companies (name) values ('nice');",
-        result: {
+        shouldBe: {
             statements: [
                 {
                     with: null,
@@ -227,7 +227,7 @@ describe("BodyStatement", () => {
             a = 1;
             raise notice 'hello %', a;
         `.trim(),
-        result: {
+        shouldBe: {
             statements: [
                 {
                     variable: {

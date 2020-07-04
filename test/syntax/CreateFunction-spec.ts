@@ -15,7 +15,7 @@ describe("CreateFunction", () => {
             ) as $body$begin;end$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_name",
             args: [
@@ -112,7 +112,7 @@ describe("CreateFunction", () => {
             as $body$begin;end$body$
             ;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_name",
             args: [
@@ -171,7 +171,7 @@ describe("CreateFunction", () => {
             returns trigger as $body$begin;end$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_name",
             args: [],
@@ -200,7 +200,7 @@ describe("CreateFunction", () => {
             returns trigger as $body$begin;end$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_name",
             args: [],
@@ -229,7 +229,7 @@ describe("CreateFunction", () => {
             returns void as $body$begin;end$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_name",
             args: [],
@@ -260,7 +260,7 @@ describe("CreateFunction", () => {
             returns void as $body$begin;end$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_name",
             args: [
@@ -309,7 +309,7 @@ describe("CreateFunction", () => {
             returns integer as $body$select 1$body$
             language sql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_sql_lang",
             language: "sql",
@@ -339,7 +339,7 @@ describe("CreateFunction", () => {
             language plpgsql
             immutable;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "some_func",
             language: "plpgsql",
@@ -369,7 +369,7 @@ describe("CreateFunction", () => {
             language plpgsql
             stable;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "some_func",
             language: "plpgsql",
@@ -399,7 +399,7 @@ describe("CreateFunction", () => {
             language plpgsql
             volatile;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "some_func",
             language: "plpgsql",
@@ -429,7 +429,7 @@ describe("CreateFunction", () => {
             language plpgsql
             cost 101;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "some_func",
             language: "plpgsql",
@@ -460,7 +460,7 @@ describe("CreateFunction", () => {
             volatile
             cost 101;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "some_func",
             language: "plpgsql",
@@ -491,7 +491,7 @@ describe("CreateFunction", () => {
             stable
             cost 101;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "some_func",
             language: "plpgsql",
@@ -523,7 +523,7 @@ describe("CreateFunction", () => {
             cost 101
             as $body$begin\nend$body$;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "some_func",
             language: "plpgsql",
@@ -553,7 +553,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -583,7 +583,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -613,7 +613,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [
@@ -651,7 +651,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [
@@ -689,7 +689,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [
@@ -735,7 +735,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -766,7 +766,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -797,7 +797,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -829,7 +829,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -860,7 +860,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -891,7 +891,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -922,7 +922,7 @@ describe("CreateFunction", () => {
             as $body$begin\nend$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -954,7 +954,7 @@ describe("CreateFunction", () => {
             ) as $body$begin;end$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_name",
             args: [],
@@ -992,7 +992,7 @@ describe("CreateFunction", () => {
             as 'begin\nend'
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_func",
             args: [],
@@ -1035,7 +1035,7 @@ describe("CreateFunction", () => {
 
             comment on function test_name(integer, text[]) is 'test';
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_name",
             args: [
@@ -1152,7 +1152,7 @@ describe("CreateFunction", () => {
             ) as $body$begin;/* but not here */end$body$
             language plpgsql;
         `,
-        result: {
+        shouldBe: {
             schema: "public",
             name: "test_name",
             args: [

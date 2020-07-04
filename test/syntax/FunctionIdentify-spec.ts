@@ -6,7 +6,7 @@ describe("FunctionIdentify", () => {
 
     testSyntax(FunctionIdentify, {
         str: "public.func()",
-        result: {
+        shouldBe: {
             name: "func",
             schema: "public",
             args: []

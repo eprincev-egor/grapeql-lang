@@ -6,7 +6,7 @@ describe("PgArgument", () => {
 
     testSyntax(PgArgument, {
         str: "ID INTEGER",
-        result: {
+        shouldBe: {
             name: "id",
             type: "integer",
             out: null,
@@ -17,7 +17,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "sum numeric ( 10, 3 )",
-        result: {
+        shouldBe: {
             name: "sum",
             type: "numeric(10,3)",
             out: null,
@@ -28,7 +28,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "sum numeric",
-        result: {
+        shouldBe: {
             name: "sum",
             type: "numeric",
             out: null,
@@ -40,7 +40,7 @@ describe("PgArgument", () => {
     testSyntax(PgArgument, {
         str: "company_id bigint default null",
         options: {default: true},
-        result: {
+        shouldBe: {
             name: "company_id",
             type: "bigint",
             default: "null",
@@ -52,7 +52,7 @@ describe("PgArgument", () => {
     testSyntax(PgArgument, {
         str: "company_id bigint default null",
         options: {default: false},
-        result: {
+        shouldBe: {
             name: "company_id",
             type: "bigint",
             out: null,
@@ -63,7 +63,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "company public.company",
-        result: {
+        shouldBe: {
             name: "company",
             type: "public.company",
             out: null,
@@ -74,7 +74,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "company company",
-        result: {
+        shouldBe: {
             name: "company",
             type: "public.company",
             out: null,
@@ -85,7 +85,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "text",
-        result: {
+        shouldBe: {
             name: null,
             type: "text",
             out: null,
@@ -96,7 +96,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "timestamp without time zone",
-        result: {
+        shouldBe: {
             name: null,
             type: "timestamp without time zone",
             out: null,
@@ -107,7 +107,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "double precision",
-        result: {
+        shouldBe: {
             name: null,
             type: "double precision",
             out: null,
@@ -118,7 +118,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "character varying(2)",
-        result: {
+        shouldBe: {
             name: null,
             type: "character varying(2)",
             out: null,
@@ -129,7 +129,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "time with time zone",
-        result: {
+        shouldBe: {
             name: null,
             type: "time with time zone",
             out: null,
@@ -140,7 +140,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "date_start time with time zone",
-        result: {
+        shouldBe: {
             name: "date_start",
             type: "time with time zone",
             out: null,
@@ -151,7 +151,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "out name text",
-        result: {
+        shouldBe: {
             name: "name",
             type: "text",
             out: true,
@@ -162,7 +162,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "in name text",
-        result: {
+        shouldBe: {
             name: "name",
             type: "text",
             in: true,
@@ -173,7 +173,7 @@ describe("PgArgument", () => {
     
     testSyntax(PgArgument, {
         str: "name character varying[]",
-        result: {
+        shouldBe: {
             name: "name",
             type: "character varying[]",
             out: null,

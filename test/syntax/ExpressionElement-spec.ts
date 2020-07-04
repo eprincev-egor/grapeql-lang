@@ -8,7 +8,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "null",
-        result: {
+        shouldBe: {
             element: {
                 null: true
             }
@@ -17,7 +17,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "true",
-        result: {
+        shouldBe: {
             element: {
                 boolean: true
             }
@@ -26,7 +26,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "1",
-        result: {
+        shouldBe: {
             element: {
                 number: "1"
             }
@@ -35,7 +35,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "b'0011'",
-        result: {
+        shouldBe: {
             element: {
                 content: "0011"
             }
@@ -44,7 +44,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "$body$some code$body$",
-        result: {
+        shouldBe: {
             element: {
                 content: "some code"
             }
@@ -53,7 +53,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "'string'",
-        result: {
+        shouldBe: {
             element: {
                 content: "string"
             }
@@ -62,7 +62,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "$var",
-        result: {
+        shouldBe: {
             element: {
                 name: "var"
             }
@@ -71,7 +71,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "public.table.column",
-        result: {
+        shouldBe: {
             element: {
                 star: false,
                 link: [
@@ -95,7 +95,7 @@ describe("ExpressionElement", () => {
     testSyntax(ExpressionElement, {
         str: "public.table.*",
         options: {availableStar: true},
-        result: {
+        shouldBe: {
             element: {
                 star: true,
                 link: [
@@ -115,7 +115,7 @@ describe("ExpressionElement", () => {
     testSyntax(ExpressionElement, {
         str: "*",
         options: {availableStar: true},
-        result: {
+        shouldBe: {
             element: {
                 star: true,
                 link: []
@@ -125,7 +125,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "cast(1 as numeric( 12, 12 ))",
-        result: {
+        shouldBe: {
             element: {
                 cast: {
                     type: "numeric(12,12)"
@@ -143,7 +143,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "array[1]",
-        result: {
+        shouldBe: {
             element: {array: [
                 {elements: [
                     {number: "1"}
@@ -170,7 +170,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "case when true then 1 else 0 end",
-        result: {
+        shouldBe: {
             element: {
                 case: [
                     {
@@ -191,7 +191,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "extract(week FROM $$2000-12-16 12:21:13$$)",
-        result: {
+        shouldBe: {
             element: {
                 field: "week",
                 type: null,
@@ -204,7 +204,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "substring( company.name from 1 for 5)",
-        result: {
+        shouldBe: {
             element: {
                 str: {elements: [{
                     star: false,
@@ -225,7 +225,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "now()",
-        result: {
+        shouldBe: {
             element: {
                 function: {
                     star: false,
@@ -247,7 +247,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "interval '2 years 13 months'",
-        result: {
+        shouldBe: {
             element: {
                 interval: {
                     content: "2 years 13 months"
@@ -258,7 +258,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "exists(select)",
-        result: {
+        shouldBe: {
             element: {
                 exists: {
                     with: null,
@@ -283,7 +283,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "any(select)",
-        result: {
+        shouldBe: {
             element: {
                 type: "any",
                 array: null,
@@ -310,7 +310,7 @@ describe("ExpressionElement", () => {
 
     testSyntax(ExpressionElement, {
         str: "in( 1 + 1 )",
-        result: {
+        shouldBe: {
             element: {
                 inSelect: null,
                 inItems: [

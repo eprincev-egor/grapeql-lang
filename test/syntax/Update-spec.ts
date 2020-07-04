@@ -6,7 +6,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update companies set name = 'nice'",
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -33,7 +33,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update only companies set name = 'nice'",
-        result: {
+        shouldBe: {
             with: null,
             only: true,
             table: {link: [
@@ -60,7 +60,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update companies * set name = 'nice'",
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -87,7 +87,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update only companies * set name = 'nice'",
-        result: {
+        shouldBe: {
             with: null,
             only: true,
             table: {link: [
@@ -114,7 +114,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update companies set name = 'nice', note = 'hello'",
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -150,7 +150,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update companies set name = 'nice', (x, y) = ('hello', 'world')",
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -203,7 +203,7 @@ describe("Update", () => {
                 limit 1
             )
         `,
-        result: {
+        shouldBe: {
             with: null,
             only: true,
             table: {link: [
@@ -309,7 +309,7 @@ describe("Update", () => {
         where
             companies.id > 100
         `,
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -347,7 +347,7 @@ describe("Update", () => {
         where
             companies.id > 100
         `,
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -388,7 +388,7 @@ describe("Update", () => {
             orders.id_client = companies.id and
             orders.need_update
         `,
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -453,7 +453,7 @@ describe("Update", () => {
             orders.need_update and
             orders.id_country = (select id from x1)
         `,
-        result: {
+        shouldBe: {
             with: {
                 recursive: null,
                 queries: [{
@@ -588,7 +588,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update companies set name = 'nice' returning *",
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -624,7 +624,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update companies set name = 'nice' returning id, id_client",
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -670,7 +670,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update companies set name = 'nice' returning *, id",
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -714,7 +714,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update companies set name = 'nice' returning 1 as x",
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [
@@ -750,7 +750,7 @@ describe("Update", () => {
 
     testSyntax(Update, {
         str: "update companies set name = 'nice' where true returning 1 as x",
-        result: {
+        shouldBe: {
             with: null,
             only: false,
             table: {link: [

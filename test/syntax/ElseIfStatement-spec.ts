@@ -6,7 +6,7 @@ describe("ElseIfStatement", () => {
 
     testSyntax(ElseIfStatement, {
         str: "elsif true then return false;",
-        result: {
+        shouldBe: {
             elsif: {elements: [
                 {boolean: true}
             ]},

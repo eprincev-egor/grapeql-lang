@@ -6,42 +6,42 @@ describe("DollarString", () => {
 
     testSyntax(DollarString, {
         str: "$$hello'world$$",
-        result: {
+        shouldBe: {
             content: "hello'world"
         }
     });
 
     testSyntax(DollarString, {
         str: "$Tag_1$hello'world$Tag_1$",
-        result: {
+        shouldBe: {
             content: "hello'world"
         }
     });
 
     testSyntax(DollarString, {
         str: "$Tag_1$$tag_1$$Tag_1$",
-        result: {
+        shouldBe: {
             content: "$tag_1$"
         }
     });
 
     testSyntax(DollarString, {
         str: "$Tag_1$$tag1$$Tag_1$",
-        result: {
+        shouldBe: {
             content: "$tag1$"
         }
     });
     
     testSyntax(DollarString, {
         str: "$$\n\r$$",
-        result: {
+        shouldBe: {
             content: "\n\r"
         }
     });
     
     testSyntax(DollarString, {
         str: "$q$[\\t\\r\\n\\v\\\\]$q$",
-        result: {
+        shouldBe: {
             content: "[\\t\\r\\n\\v\\\\]"
         }
     });

@@ -11,7 +11,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -49,7 +49,7 @@ describe("CreateTrigger", () => {
             for each STATEMENT
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -87,7 +87,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -124,7 +124,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -161,7 +161,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -198,7 +198,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -235,7 +235,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -272,7 +272,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -309,7 +309,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -346,7 +346,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -384,7 +384,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -422,7 +422,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -459,7 +459,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -497,7 +497,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -536,7 +536,7 @@ describe("CreateTrigger", () => {
             when (pg_trigger_depth() = 0)
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -575,7 +575,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -615,7 +615,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -655,7 +655,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -695,7 +695,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -735,7 +735,7 @@ describe("CreateTrigger", () => {
             for each row
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -775,7 +775,7 @@ describe("CreateTrigger", () => {
 
             comment on trigger Test on company is 'test';
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",
@@ -840,7 +840,7 @@ describe("CreateTrigger", () => {
             -- execute procedure public.test()
             execute procedure public.test()
         `,
-        result: {
+        shouldBe: {
             name: "test",
             table: {
                 schema: "public",

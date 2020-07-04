@@ -6,7 +6,7 @@ describe("GroupByElement", () => {
 
     testSyntax(GroupByElement, {
         str: "id",
-        result: {
+        shouldBe: {
             isEmpty: null,
             rollup: null,
             cube: null,
@@ -22,7 +22,7 @@ describe("GroupByElement", () => {
 
     testSyntax(GroupByElement, {
         str: "GROUPING SETS (brand, size, ( ))",
-        result: {
+        shouldBe: {
             isEmpty: null,
             rollup: null,
             cube: null,
@@ -67,7 +67,7 @@ describe("GroupByElement", () => {
 
     testSyntax(GroupByElement, {
         str: "cube ( brand, (size, 1) )",
-        result: {
+        shouldBe: {
             
             isEmpty: null,
             rollup: null,
@@ -104,7 +104,7 @@ describe("GroupByElement", () => {
 
     testSyntax(GroupByElement, {
         str: "rollup ( brand, (size, 1) )",
-        result: {
+        shouldBe: {
             
             isEmpty: null,
             cube: null,

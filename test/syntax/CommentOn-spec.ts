@@ -7,7 +7,7 @@ describe("CommentOn", () => {
 
     testSyntax(CommentOnTrigger, {
         str: "comment on trigger test on company is $$xxx$$",
-        result: {
+        shouldBe: {
             trigger: {
                 name: "test",
                 schema: "public",
@@ -21,7 +21,7 @@ describe("CommentOn", () => {
     
     testSyntax(CommentOnTrigger, {
         str: "comment on trigger test on company is 'nice'",
-        result: {
+        shouldBe: {
             trigger: {
                 name: "test",
                 schema: "public",
@@ -35,7 +35,7 @@ describe("CommentOn", () => {
     
     testSyntax(CommentOnFunction, {
         str: "comment on function test(integer, text) is $$yyy$$",
-        result: {
+        shouldBe: {
             function: {
                 name: "test",
                 schema: "public",
@@ -52,7 +52,7 @@ describe("CommentOn", () => {
 
     testSyntax(CommentOnFunction, {
         str: "comment on function operation.func() is $$yyy$$",
-        result: {
+        shouldBe: {
             function: {
                 name: "func",
                 schema: "operation",

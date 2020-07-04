@@ -37,7 +37,7 @@ describe("index tests", () => {
                 } as any);
             },
             (err) =>
-                err.message === "result or error required"
+                err.message === "'shouldBe' or 'error' required"
         );
     });
     

@@ -6,7 +6,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,
@@ -23,7 +23,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id asc",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,
@@ -40,7 +40,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id desc",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,
@@ -57,7 +57,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id using >",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,
@@ -74,7 +74,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id using <",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,
@@ -91,7 +91,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id nulls first",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,
@@ -108,7 +108,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id nulls last",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,
@@ -125,7 +125,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id desc nulls first",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,
@@ -142,7 +142,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id desc nulls last",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,
@@ -159,7 +159,7 @@ describe("OrderByElement", () => {
 
     testSyntax(OrderByElement, {
         str: "id using > nulls last",
-        result: {
+        shouldBe: {
             expression: {elements: [
                 {
                     star: false,

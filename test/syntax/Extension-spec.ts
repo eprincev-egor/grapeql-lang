@@ -8,7 +8,7 @@ describe("Extension", () => {
         str: `create extension inn_company for company (
             inn text
         )`,
-        result: {
+        shouldBe: {
             forTable: {
                 star: false,
                 link: [{
@@ -48,7 +48,7 @@ describe("Extension", () => {
         str: `extension inn_company for company (
             inn text
         )`,
-        result: {
+        shouldBe: {
             forTable: {
                 star: false,
                 link: [{
@@ -92,7 +92,7 @@ describe("Extension", () => {
                 profit > 0
             )
         )`,
-        result: {
+        shouldBe: {
             name: {
                 word: "check_order",
                 content: null
@@ -143,7 +143,7 @@ describe("Extension", () => {
         str: `extension orders_values for public.orders values (
             (1, 'FCL')
         )`,
-        result: {
+        shouldBe: {
             name: {
                 word: "orders_values",
                 content: null
@@ -180,7 +180,7 @@ describe("Extension", () => {
         str: `deprecated extension inn_company for company (
             inn text
         )`,
-        result: {
+        shouldBe: {
             name: {
                 word: "inn_company",
                 content: null
@@ -220,7 +220,7 @@ describe("Extension", () => {
         str: `deprecated create extension inn_company for company (
             inn text
         )`,
-        result: {
+        shouldBe: {
             name: {
                 word: "inn_company",
                 content: null
@@ -263,7 +263,7 @@ describe("Extension", () => {
         ) deprecated (
             inn
         )`,
-        result: {
+        shouldBe: {
             forTable: {
                 star: false,
                 link: [{

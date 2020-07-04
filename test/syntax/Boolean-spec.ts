@@ -6,28 +6,28 @@ describe("Boolean", () => {
 
     testSyntax(Boolean, {
         str: "true",
-        result: {
+        shouldBe: {
             boolean: true
         }
     });
 
     testSyntax(Boolean, {
         str: "false",
-        result: {
+        shouldBe: {
             boolean: false
         }
     });
 
     testSyntax(Boolean, {
         str: "fAlse",
-        result: {
+        shouldBe: {
             boolean: false
         }
     });
 
     testSyntax(Boolean, {
         str: "  TRUE ",
-        result: {
+        shouldBe: {
             boolean: true
         }
     });

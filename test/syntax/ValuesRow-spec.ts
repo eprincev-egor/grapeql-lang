@@ -6,7 +6,7 @@ describe("ValuesRow", () => {
 
     testSyntax(ValuesRow, {
         str: "(default)",
-        result: {
+        shouldBe: {
             values: [{
                 default: true,
                 value: null
@@ -16,7 +16,7 @@ describe("ValuesRow", () => {
 
     testSyntax(ValuesRow, {
         str: "(default, 2)",
-        result: {
+        shouldBe: {
             values: [
                 {
                     default: true,

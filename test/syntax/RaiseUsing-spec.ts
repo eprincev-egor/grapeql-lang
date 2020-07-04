@@ -6,7 +6,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "message = 'nice'",
-        result: {
+        shouldBe: {
             option: "message",
             expression: {elements: [
                 {content: "nice"}
@@ -16,7 +16,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "MESSAGE = 'nice'",
-        result: {
+        shouldBe: {
             option: "message",
             expression: {elements: [
                 {content: "nice"}
@@ -26,7 +26,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "detail = 'nice'",
-        result: {
+        shouldBe: {
             option: "detail",
             expression: {elements: [
                 {content: "nice"}
@@ -36,7 +36,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "hint = 'nice'",
-        result: {
+        shouldBe: {
             option: "hint",
             expression: {elements: [
                 {content: "nice"}
@@ -46,7 +46,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "errcode = 'nice'",
-        result: {
+        shouldBe: {
             option: "errcode",
             expression: {elements: [
                 {content: "nice"}
@@ -56,7 +56,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "column = 'nice'",
-        result: {
+        shouldBe: {
             option: "column",
             expression: {elements: [
                 {content: "nice"}
@@ -66,7 +66,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "constraint = 'nice'",
-        result: {
+        shouldBe: {
             option: "constraint",
             expression: {elements: [
                 {content: "nice"}
@@ -76,7 +76,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "datatype = 'nice'",
-        result: {
+        shouldBe: {
             option: "datatype",
             expression: {elements: [
                 {content: "nice"}
@@ -86,7 +86,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "table = 'nice'",
-        result: {
+        shouldBe: {
             option: "table",
             expression: {elements: [
                 {content: "nice"}
@@ -96,7 +96,7 @@ describe("RaiseUsing", () => {
 
     testSyntax(RaiseUsing, {
         str: "schema = 'nice'",
-        result: {
+        shouldBe: {
             option: "schema",
             expression: {elements: [
                 {content: "nice"}

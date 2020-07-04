@@ -6,7 +6,7 @@ describe("Raise", () => {
 
     testSyntax(Raise, {
         str: "raise Notice 'hello %', 'world'",
-        result: {
+        shouldBe: {
             level: "notice",
             conditionName: null,
             sqlState: null,
@@ -22,7 +22,7 @@ describe("Raise", () => {
     
     testSyntax(Raise, {
         str: "raise Notice $$hello %$$, 'world'",
-        result: {
+        shouldBe: {
             level: "notice",
             conditionName: null,
             sqlState: null,
@@ -38,7 +38,7 @@ describe("Raise", () => {
     
     testSyntax(Raise, {
         str: "raise debug 'hello %', 'world'",
-        result: {
+        shouldBe: {
             level: "debug",
             conditionName: null,
             sqlState: null,
@@ -54,7 +54,7 @@ describe("Raise", () => {
     
     testSyntax(Raise, {
         str: "raise log 'hello %', 'world'",
-        result: {
+        shouldBe: {
             level: "log",
             conditionName: null,
             sqlState: null,
@@ -70,7 +70,7 @@ describe("Raise", () => {
     
     testSyntax(Raise, {
         str: "raise warning 'hello %', 'world'",
-        result: {
+        shouldBe: {
             level: "warning",
             conditionName: null,
             sqlState: null,
@@ -86,7 +86,7 @@ describe("Raise", () => {
     
     testSyntax(Raise, {
         str: "raise exception 'hello %', 'world'",
-        result: {
+        shouldBe: {
             level: "exception",
             conditionName: null,
             sqlState: null,
@@ -103,7 +103,7 @@ describe("Raise", () => {
     
     testSyntax(Raise, {
         str: "raise log 'hello %', 'world' using hint = 'a hint', detail = 'a detail'",
-        result: {
+        shouldBe: {
             level: "log",
             conditionName: null,
             sqlState: null,
@@ -132,7 +132,7 @@ describe("Raise", () => {
     
     testSyntax(Raise, {
         str: "raise 'error'",
-        result: {
+        shouldBe: {
             level: null,
             conditionName: null,
             sqlState: null,
@@ -144,7 +144,7 @@ describe("Raise", () => {
 
     testSyntax(Raise, {
         str: "raise division_BY_zero",
-        result: {
+        shouldBe: {
             level: null,
             conditionName: "division_by_zero",
             sqlState: null,
@@ -156,7 +156,7 @@ describe("Raise", () => {
 
     testSyntax(Raise, {
         str: "raise notice division_BY_zero",
-        result: {
+        shouldBe: {
             level: "notice",
             conditionName: "division_by_zero",
             sqlState: null,
@@ -168,7 +168,7 @@ describe("Raise", () => {
 
     testSyntax(Raise, {
         str: "raise debug using hint = 'a hint'",
-        result: {
+        shouldBe: {
             level: "debug",
             conditionName: null,
             sqlState: null,
@@ -185,7 +185,7 @@ describe("Raise", () => {
 
     testSyntax(Raise, {
         str: "raise using hint = 'a hint'",
-        result: {
+        shouldBe: {
             level: null,
             conditionName: null,
             sqlState: null,
@@ -202,7 +202,7 @@ describe("Raise", () => {
 
     testSyntax(Raise, {
         str: "raise sqlState '22012'",
-        result: {
+        shouldBe: {
             level: null,
             conditionName: null,
             sqlState: {content: "22012"},
@@ -214,7 +214,7 @@ describe("Raise", () => {
 
     testSyntax(Raise, {
         str: "raise sqlState $$22012$$",
-        result: {
+        shouldBe: {
             level: null,
             conditionName: null,
             sqlState: {content: "22012"},
@@ -226,7 +226,7 @@ describe("Raise", () => {
 
     testSyntax(Raise, {
         str: "raise sqlState '22012' using detail = 'a detail'",
-        result: {
+        shouldBe: {
             level: null,
             conditionName: null,
             sqlState: {content: "22012"},
@@ -243,7 +243,7 @@ describe("Raise", () => {
 
     testSyntax(Raise, {
         str: "raise notice sqlstate '22012' using detail = 'a detail'",
-        result: {
+        shouldBe: {
             level: "notice",
             conditionName: null,
             sqlState: {content: "22012"},

@@ -12,7 +12,7 @@ describe("CacheFor", () => {
             where
                 gtds.id_order = orders.id
         )`,
-        result: {
+        shouldBe: {
             name: {word: "gtd_totals", content: null},
             for: {star: false, link: [
                 {word: "orders", content: null}
@@ -106,7 +106,7 @@ describe("CacheFor", () => {
             where
                 gtds.id_order = my_order.id
         )`,
-        result: {
+        shouldBe: {
             name: {word: "gtd_totals", content: null},
             for: {star: false, link: [
                 {word: "orders", content: null}

@@ -6,7 +6,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "public.company",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             file: null,
@@ -27,7 +27,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "only company",
-        result: {
+        shouldBe: {
             lateral: null,
             file: null,
             withOrdinality: null,
@@ -47,7 +47,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "only company *",
-        result: {
+        shouldBe: {
             lateral: null,
             file: null,
             withOrdinality: null,
@@ -68,7 +68,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "public.company as Company",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             file: null,
@@ -89,7 +89,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "public.company as Company ( id, inn )",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             file: null,
@@ -113,7 +113,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "public.get_rows(1 + 1) as some_rows",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             file: null,
@@ -154,7 +154,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "lateral get_rows( company.id ) as some_rows",
-        result: {
+        shouldBe: {
             only: null,
             file: null,
             withOrdinality: null,
@@ -196,7 +196,7 @@ describe("FromItem", () => {
     
     testSyntax(FromItem, {
         str: "unnest('{1,2,3}'::int[], '{4,5,6,7}'::int[]) with ordinality as t(a1, a2, num)",
-        result: {
+        shouldBe: {
             only: null,
             file: null,
             table: null,
@@ -247,7 +247,7 @@ describe("FromItem", () => {
     
     testSyntax(FromItem, {
         str: "file Order.sql as orders",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             table: null,
@@ -274,7 +274,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "./Order.sql as orders",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             table: null,
@@ -301,7 +301,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "./Order",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             table: null,
@@ -325,7 +325,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "./Order",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             table: null,
@@ -350,7 +350,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "./Order join country on true",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             table: null,
@@ -399,7 +399,7 @@ describe("FromItem", () => {
     
     testSyntax(FromItem, {
         str: "./Order join country on true inner join public.some on false",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             table: null,
@@ -471,7 +471,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "( select * from public.order ) as Orders",
-        result: {
+        shouldBe: {
             lateral: null,
             only: null,
             file: null,
@@ -528,7 +528,7 @@ describe("FromItem", () => {
 
     testSyntax(FromItem, {
         str: "lateral ( select * from company ) as company (id, inn)",
-        result: {
+        shouldBe: {
             only: null,
             file: null,
             withOrdinality: null,

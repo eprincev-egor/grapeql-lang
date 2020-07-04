@@ -8,7 +8,7 @@ describe("Interval", () => {
 
     testSyntax(Interval, {
         str: "interval '1 day'",
-        result: {
+        shouldBe: {
             interval: {
                 content: "1 day"
             }
@@ -17,7 +17,7 @@ describe("Interval", () => {
 
     testSyntax(Interval, {
         str: "interval $$100 hours$$",
-        result: {
+        shouldBe: {
             interval: {
                 content: "100 hours"
             }

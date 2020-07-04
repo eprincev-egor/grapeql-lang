@@ -6,35 +6,35 @@ describe("DoubleQuotes", () => {
 
     testSyntax(DoubleQuotes, {
         str: "\"hello \"\"world\"\"\"",
-        result: {
+        shouldBe: {
             content: "hello \"world\""
         }
     });
     
     testSyntax(DoubleQuotes, {
         str: "U&\"d\\0061t\\+000061 test\"",
-        result: {
+        shouldBe: {
             content: "data test"
         }
     });
     
     testSyntax(DoubleQuotes, {
         str: "u&\"d\\0061t\\+000061 test\"",
-        result: {
+        shouldBe: {
             content: "data test"
         }
     });
     
     testSyntax(DoubleQuotes, {
         str: "U&\"d!0061t!+000061\" UESCAPE '!'",
-        result: {
+        shouldBe: {
             content: "data"
         }
     });
 
     testSyntax(DoubleQuotes, {
         str: "U&\"\\0066\"",
-        result: {
+        shouldBe: {
             content: "f"
         }
     });

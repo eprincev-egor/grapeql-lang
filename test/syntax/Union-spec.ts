@@ -24,7 +24,7 @@ describe("Union", () => {
 
     testSyntax(Union, {
         str: "union select",
-        result: {
+        shouldBe: {
             union: true,
             except: null,
             intersect: null,
@@ -36,7 +36,7 @@ describe("Union", () => {
 
     testSyntax(Union, {
         str: "except select",
-        result: {
+        shouldBe: {
             union: null,
             except: true,
             intersect: null,
@@ -48,7 +48,7 @@ describe("Union", () => {
 
     testSyntax(Union, {
         str: "intersect select",
-        result: {
+        shouldBe: {
             union: null,
             except: null,
             intersect: true,
@@ -61,7 +61,7 @@ describe("Union", () => {
     
     testSyntax(Union, {
         str: "union all select",
-        result: {
+        shouldBe: {
             union: true,
             except: null,
             intersect: null,
@@ -73,7 +73,7 @@ describe("Union", () => {
 
     testSyntax(Union, {
         str: "except all select",
-        result: {
+        shouldBe: {
             union: null,
             except: true,
             intersect: null,
@@ -85,7 +85,7 @@ describe("Union", () => {
 
     testSyntax(Union, {
         str: "intersect all select",
-        result: {
+        shouldBe: {
             union: null,
             except: null,
             intersect: true,
@@ -98,7 +98,7 @@ describe("Union", () => {
     
     testSyntax(Union, {
         str: "union distinct select",
-        result: {
+        shouldBe: {
             union: true,
             except: null,
             intersect: null,
@@ -110,7 +110,7 @@ describe("Union", () => {
 
     testSyntax(Union, {
         str: "except distinct select",
-        result: {
+        shouldBe: {
             union: null,
             except: true,
             intersect: null,
@@ -122,7 +122,7 @@ describe("Union", () => {
 
     testSyntax(Union, {
         str: "intersect distinct select",
-        result: {
+        shouldBe: {
             union: null,
             except: null,
             intersect: true,

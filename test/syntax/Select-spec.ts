@@ -6,7 +6,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select",
-        result: {
+        shouldBe: {
             with: null,
             columns: null,
             into: null,
@@ -27,7 +27,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select 1, 2 into a, new.b",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -69,7 +69,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select 1, 2, 3",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -109,7 +109,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select 1 where false",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -139,7 +139,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select * from orders order by id",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -195,7 +195,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select sum( payments ) from orders group by orders.client",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -280,7 +280,7 @@ describe("Select", () => {
             having 
                 sum( payments ) is not null
         `,
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -380,7 +380,7 @@ describe("Select", () => {
     
     testSyntax(Select, {
         str: "select * from orders offset 1",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -425,7 +425,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select * from orders offset 1 row",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -471,7 +471,7 @@ describe("Select", () => {
     
     testSyntax(Select, {
         str: "select * from orders offset 10 rows",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -517,7 +517,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select * from orders limit 1",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -562,7 +562,7 @@ describe("Select", () => {
     
     testSyntax(Select, {
         str: "select * from orders limit all",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -607,7 +607,7 @@ describe("Select", () => {
     
     testSyntax(Select, {
         str: "select * from orders offset 1 limit 1",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -652,7 +652,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select * from orders limit 1 offset 1",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -697,7 +697,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select limit 1",
-        result: {
+        shouldBe: {
             with: null,
             columns: null,
             into: null,
@@ -718,7 +718,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select * from orders fetch first row only",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -770,7 +770,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "with recursive x as (select) select * from x",
-        result: {
+        shouldBe: {
             with: {
                 recursive: true,
                 queries: [
@@ -841,7 +841,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select 1 union all select 2",
-        result: {
+        shouldBe: {
             with: null,
             columns: [
                 {
@@ -899,7 +899,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select from company window x as (order by company.name), y as (order by company.id)",
-        result: {
+        shouldBe: {
             with: null,
             columns: null,
             into: null,
@@ -997,7 +997,7 @@ describe("Select", () => {
 
     testSyntax(Select, {
         str: "select from x.a, y.a",
-        result: {
+        shouldBe: {
             with: null,
             columns: null,
             into: null,

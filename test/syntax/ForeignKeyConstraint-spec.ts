@@ -8,7 +8,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company (id)
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -28,7 +28,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -46,7 +46,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company match simple
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -64,7 +64,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company match full
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -82,7 +82,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company match partial
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -100,7 +100,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on delete no action
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -118,7 +118,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on update no action
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -136,7 +136,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on delete cascade
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -154,7 +154,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on delete set null
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -172,7 +172,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on delete set default
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -190,7 +190,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on update set null
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -208,7 +208,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on update set default
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -226,7 +226,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on update cascade
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -244,7 +244,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on update set default on delete set default
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -262,7 +262,7 @@ describe("ForeignKeyConstraint", () => {
         str: `constraint client foreign key (id_client)
             references company on delete set default on update set default 
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [{word: "id_client", content: null}],
@@ -283,7 +283,7 @@ describe("ForeignKeyConstraint", () => {
             on delete set default 
             on update set default 
         `,
-        result: {
+        shouldBe: {
             name: {word: "client", content: null},
             column: null,
             columns: [
@@ -311,7 +311,7 @@ describe("ForeignKeyConstraint", () => {
                 content: null
             }
         },
-        result: {
+        shouldBe: {
             name: null,
             column: {
                 word: "id_company",
@@ -336,7 +336,7 @@ describe("ForeignKeyConstraint", () => {
                 content: null
             }
         },
-        result: {
+        shouldBe: {
             name: null,
             column: {
                 word: "id_company",
@@ -367,7 +367,7 @@ describe("ForeignKeyConstraint", () => {
                 content: null
             }
         },
-        result: {
+        shouldBe: {
             name: null,
             column: {
                 word: "id_company",

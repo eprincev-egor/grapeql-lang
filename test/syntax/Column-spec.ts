@@ -8,7 +8,7 @@ describe("Column", () => {
 
     testSyntax(Column, {
         str: "company.id as id",
-        result: {
+        shouldBe: {
             expression: {
                 elements: [
                     {star: false, link: [
@@ -23,7 +23,7 @@ describe("Column", () => {
 
     testSyntax(Column, {
         str: "company.id id",
-        result: {
+        shouldBe: {
             expression: {
                 elements: [
                     {star: false, link: [
@@ -38,7 +38,7 @@ describe("Column", () => {
 
     testSyntax(Column, {
         str: "company.id \"id\"",
-        result: {
+        shouldBe: {
             expression: {
                 elements: [
                     {star: false, link: [
@@ -53,7 +53,7 @@ describe("Column", () => {
 
     testSyntax(Column, {
         str: "null as nulL1",
-        result: {
+        shouldBe: {
             expression: {
                 elements: [
                     {null: true}
@@ -65,7 +65,7 @@ describe("Column", () => {
 
     testSyntax(Column, {
         str: "*",
-        result: {
+        shouldBe: {
             expression: {
                 elements: [
                     {star: true, link: []}
@@ -106,7 +106,7 @@ describe("Column", () => {
 
         testSyntax(Column, {
             str: "1 " + keyword,
-            result: {
+            shouldBe: {
                 expression: {elements: [
                     {number: "1"}
                 ]},

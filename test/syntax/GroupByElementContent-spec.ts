@@ -6,7 +6,7 @@ describe("GroupByElementContent", () => {
 
     testSyntax(GroupByElementContent, {
         str: "id",
-        result: {
+        shouldBe: {
             single: true,
             expressions: [{elements: [
                 {star: false, link: [
@@ -18,7 +18,7 @@ describe("GroupByElementContent", () => {
 
     testSyntax(GroupByElementContent, {
         str: "(id, name)",
-        result: {
+        shouldBe: {
             single: false,
             expressions: [
                 {elements: [

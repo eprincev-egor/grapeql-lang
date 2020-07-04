@@ -6,7 +6,7 @@ describe("SelectFetch", () => {
 
     testSyntax(SelectFetch, {
         str: "fetch first row only",
-        result: {
+        shouldBe: {
             first: true,
             next: null,
             row: true,
@@ -17,7 +17,7 @@ describe("SelectFetch", () => {
 
     testSyntax(SelectFetch, {
         str: "fetch next row only",
-        result: {
+        shouldBe: {
             first: null,
             next: true,
             row: true,
@@ -28,7 +28,7 @@ describe("SelectFetch", () => {
 
     testSyntax(SelectFetch, {
         str: "fetch next 5 rows only",
-        result: {
+        shouldBe: {
             first: null,
             next: true,
             row: null,

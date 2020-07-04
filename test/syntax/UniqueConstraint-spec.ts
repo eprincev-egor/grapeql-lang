@@ -6,7 +6,7 @@ describe("UniqueConstraint", () => {
     
     testSyntax(UniqueConstraint, {
         str: "constraint test unique (id_unit, id_operation)",
-        result: {
+        shouldBe: {
             name: {
                 word: "test",
                 content: null
@@ -33,7 +33,7 @@ describe("UniqueConstraint", () => {
                 content: null
             }
         },
-        result: {
+        shouldBe: {
             name: null,
             column: {
                 word: "test",

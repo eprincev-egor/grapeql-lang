@@ -6,17 +6,17 @@ describe("PgNull", () => {
 
     testSyntax(PgNull, {
         str: "null",
-        result: {null: true}
+        shouldBe: {null: true}
     });
 
     testSyntax(PgNull, {
         str: "NULL",
-        result: {null: true}
+        shouldBe: {null: true}
     });
 
     testSyntax(PgNull, {
         str: "null ",
-        result: {null: true}
+        shouldBe: {null: true}
     });
 
     testSyntax(PgNull, {
