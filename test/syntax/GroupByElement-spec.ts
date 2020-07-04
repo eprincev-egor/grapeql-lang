@@ -7,10 +7,6 @@ describe("GroupByElement", () => {
     testSyntax(GroupByElement, {
         str: "id",
         shouldBe: {
-            isEmpty: null,
-            rollup: null,
-            cube: null,
-            groupingSets: null,
 
             expression: {elements: [
                 {star: false, link: [
@@ -23,17 +19,9 @@ describe("GroupByElement", () => {
     testSyntax(GroupByElement, {
         str: "GROUPING SETS (brand, size, ( ))",
         shouldBe: {
-            isEmpty: null,
-            rollup: null,
-            cube: null,
-            expression: null,
 
             groupingSets: [
                 {
-                    isEmpty: null,
-                    rollup: null,
-                    cube: null,
-                    groupingSets: null,
 
                     expression: {elements: [
                         {star: false, link: [
@@ -42,10 +30,6 @@ describe("GroupByElement", () => {
                     ]}
                 },
                 {
-                    isEmpty: null,
-                    rollup: null,
-                    cube: null,
-                    groupingSets: null,
 
                     expression: {elements: [
                         {star: false, link: [
@@ -54,10 +38,6 @@ describe("GroupByElement", () => {
                     ]}
                 },
                 {
-                    rollup: null,
-                    cube: null,
-                    groupingSets: null,
-                    expression: null,
 
                     isEmpty: true
                 }
@@ -68,11 +48,6 @@ describe("GroupByElement", () => {
     testSyntax(GroupByElement, {
         str: "cube ( brand, (size, 1) )",
         shouldBe: {
-            
-            isEmpty: null,
-            rollup: null,
-            groupingSets: null,
-            expression: null,
 
             cube: [
                 {
@@ -105,11 +80,6 @@ describe("GroupByElement", () => {
     testSyntax(GroupByElement, {
         str: "rollup ( brand, (size, 1) )",
         shouldBe: {
-            
-            isEmpty: null,
-            cube: null,
-            groupingSets: null,
-            expression: null,
 
             rollup: [
                 {

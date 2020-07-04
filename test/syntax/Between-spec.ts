@@ -7,7 +7,6 @@ describe("Between", () => {
     testSyntax(Between, {
         str: "Between 1 and 2",
         shouldBe: {
-            symmetric: null,
             between: {elements: [
                 {number: "1"}
             ]},

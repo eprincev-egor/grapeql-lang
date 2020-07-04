@@ -10,23 +10,7 @@ describe("Any", () => {
         str: "any( select )",
         shouldBe: {
             type: "any",
-            array: null,
             select: {
-                with: null,
-                columns: null,
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
             }
         }
     });
@@ -35,23 +19,7 @@ describe("Any", () => {
         str: "some( select )",
         shouldBe: {
             type: "some",
-            array: null,
             select: {
-                with: null,
-                columns: null,
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
             }
         }
     });
@@ -60,23 +28,7 @@ describe("Any", () => {
         str: "all( select )",
         shouldBe: {
             type: "all",
-            array: null,
             select: {
-                with: null,
-                columns: null,
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
             }
         }
     });
@@ -88,8 +40,7 @@ describe("Any", () => {
             type: "any",
             array: {elements: [
                 {array: []}
-            ]},
-            select: null
+            ]}
         }
     });
 
@@ -99,8 +50,7 @@ describe("Any", () => {
             type: "some",
             array: {elements: [
                 {array: []}
-            ]},
-            select: null
+            ]}
         }
     });
 
@@ -110,8 +60,7 @@ describe("Any", () => {
             type: "all",
             array: {elements: [
                 {array: []}
-            ]},
-            select: null
+            ]}
         }
     });
 

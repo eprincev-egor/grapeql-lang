@@ -14,9 +14,7 @@ describe("IfStatement", () => {
                 {return: {elements: [
                     {boolean: false}
                 ]}}
-            ]},
-            else: null,
-            elsif: null
+            ]}
         }
     });
 
@@ -35,8 +33,7 @@ describe("IfStatement", () => {
                 {return: {elements: [
                     {number: "2"}
                 ]}}
-            ]},
-            elsif: null
+            ]}
         }
     });
 
@@ -92,8 +89,7 @@ describe("IfStatement", () => {
                         ]}}
                     ]}
                 }
-            ],
-            else: null
+            ]
         }
     });
 

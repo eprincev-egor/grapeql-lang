@@ -16,12 +16,10 @@ describe("TableLink", () => {
             star: false,
             link: [
                 {
-                    word: "public",
-                    content: null
+                    word: "public"
                 },
                 {
-                    word: "company",
-                    content: null
+                    word: "company"
                 }
             ]
         }

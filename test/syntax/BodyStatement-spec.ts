@@ -91,9 +91,7 @@ describe("BodyStatement", () => {
                         {return: {elements: [
                             {number: "1"}
                         ]}}
-                    ]},
-                    elsif: null,
-                    else: null
+                    ]}
                 }
             ]
         }
@@ -104,32 +102,18 @@ describe("BodyStatement", () => {
         shouldBe: {
             statements: [
                 {
-                    with: null,
                     columns: [
                         {
                             expression: {elements: [
                                 {number: "1"}
-                            ]},
-                            as: null
+                            ]}
                         }
                     ],
                     into: [
                         {star: false, link: [
                             {word: "a"}
                         ]}
-                    ],
-                    from: null,
-                    where: null,
-                    groupBy: null,
-                    having: null,
-                    window: null,
-                    orderBy: null,
-                    union: null,
-                    offset: null,
-                    offsetRow: null,
-                    offsetRows: null,
-                    limit: null,
-                    fetch: null
+                    ]
                 }
             ]
         }
@@ -140,27 +124,19 @@ describe("BodyStatement", () => {
         shouldBe: {
             statements: [
                 {
-                    with: null,
                     only: false,
                     table: {link: [
                         {word: "companies"}
                     ], star: false},
-                    as: null,
                     star: false,
                     set: [
                         {
                             column: {word: "name"},
-                            columns: null,
-                            select: null,
-                            values: null,
-                            value: {default: null, value: {elements: [
+                            value: { value: {elements: [
                                 {content: "nice"}
                             ]}}
                         }
-                    ],
-                    from: null,
-                    where: null,
-                    returning: null
+                    ]
                 }
             ]
         }
@@ -177,17 +153,13 @@ describe("BodyStatement", () => {
                     table: {star: false, link: [
                         {word: "companies"}
                     ]},
-                    as: null,
-                    using: null,
-                    with: null,
                     where: {elements: [
                         {star: false, link: [
                             {word: "id"}
                         ]},
                         {operator: "="},
                         {number: "1"}
-                    ]},
-                    returning: null
+                    ]}
                 }
             ]
         }
@@ -198,25 +170,19 @@ describe("BodyStatement", () => {
         shouldBe: {
             statements: [
                 {
-                    with: null,
                     table: {star: false, link: [
                         {word: "companies"}
                     ]},
-                    as: null,
                     columns: [
                         {word: "name"}
                     ],
-                    defaultValues: null,
                     values: [
                         {values: [
-                            {default: null, value: {elements: [
+                            { value: {elements: [
                                 {content: "nice"}
                             ]}}
                         ]}
-                    ],
-                    select: null,
-                    onConflict: null,
-                    returning: null
+                    ]
                 }
             ]
         }
@@ -241,8 +207,6 @@ describe("BodyStatement", () => {
                 },
                 {
                     level: "notice",
-                    conditionName: null,
-                    sqlState: null,
                     raise: {content: "hello %"},
                     parameters: [
                         {elements: [

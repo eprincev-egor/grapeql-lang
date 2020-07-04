@@ -25,19 +25,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            after: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
     
@@ -65,18 +53,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            after: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
 
@@ -101,19 +78,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
 
@@ -138,19 +103,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            after: null,
-            insert: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
 
@@ -175,19 +128,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            insert: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
 
@@ -212,19 +153,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            after: null,
-            insert: null,
-            delete: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
 
@@ -250,18 +179,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            after: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
 
@@ -287,18 +205,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
 
@@ -324,18 +231,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
 
@@ -361,18 +257,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            after: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
     
@@ -400,17 +285,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            after: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
     
@@ -438,17 +313,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
 
@@ -474,18 +339,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            insert: null,
-            delete: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
     
@@ -513,17 +367,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            delete: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
     
@@ -552,18 +396,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            comment: null
+            }
         }
     });
     
@@ -591,18 +424,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
     
@@ -632,17 +454,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
     
@@ -672,17 +484,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
     
@@ -713,16 +515,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            statement: null,
-            when: null,
-            comment: null
+            }
         }
     });
     
@@ -753,16 +546,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            before: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            statement: null,
-            when: null,
-            comment: null
+            }
         }
     });
    
@@ -790,17 +574,6 @@ describe("CreateTrigger", () => {
                 schema: "public",
                 name: "test"
             },
-            
-            after: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
             
             comment: {
                 comment: {
@@ -854,19 +627,7 @@ describe("CreateTrigger", () => {
                 args: [],
                 schema: "public",
                 name: "test"
-            },
-            
-            after: null,
-            delete: null,
-            update: null,
-            updateOf: null,
-            
-            constraint: null,
-            deferrable: null,
-            statement: null,
-            initially: null,
-            when: null,
-            comment: null
+            }
         }
     });
         

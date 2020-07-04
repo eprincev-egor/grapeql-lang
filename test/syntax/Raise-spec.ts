@@ -8,8 +8,6 @@ describe("Raise", () => {
         str: "raise Notice 'hello %', 'world'",
         shouldBe: {
             level: "notice",
-            conditionName: null,
-            sqlState: null,
             raise: {content: "hello %"},
             parameters: [
                 {elements: [
@@ -24,8 +22,6 @@ describe("Raise", () => {
         str: "raise Notice $$hello %$$, 'world'",
         shouldBe: {
             level: "notice",
-            conditionName: null,
-            sqlState: null,
             raise: {content: "hello %"},
             parameters: [
                 {elements: [
@@ -40,8 +36,6 @@ describe("Raise", () => {
         str: "raise debug 'hello %', 'world'",
         shouldBe: {
             level: "debug",
-            conditionName: null,
-            sqlState: null,
             raise: {content: "hello %"},
             parameters: [
                 {elements: [
@@ -56,8 +50,6 @@ describe("Raise", () => {
         str: "raise log 'hello %', 'world'",
         shouldBe: {
             level: "log",
-            conditionName: null,
-            sqlState: null,
             raise: {content: "hello %"},
             parameters: [
                 {elements: [
@@ -72,8 +64,6 @@ describe("Raise", () => {
         str: "raise warning 'hello %', 'world'",
         shouldBe: {
             level: "warning",
-            conditionName: null,
-            sqlState: null,
             raise: {content: "hello %"},
             parameters: [
                 {elements: [
@@ -88,8 +78,6 @@ describe("Raise", () => {
         str: "raise exception 'hello %', 'world'",
         shouldBe: {
             level: "exception",
-            conditionName: null,
-            sqlState: null,
             raise: {content: "hello %"},
             parameters: [
                 {elements: [
@@ -105,8 +93,6 @@ describe("Raise", () => {
         str: "raise log 'hello %', 'world' using hint = 'a hint', detail = 'a detail'",
         shouldBe: {
             level: "log",
-            conditionName: null,
-            sqlState: null,
             raise: {content: "hello %"},
             parameters: [
                 {elements: [
@@ -133,9 +119,6 @@ describe("Raise", () => {
     testSyntax(Raise, {
         str: "raise 'error'",
         shouldBe: {
-            level: null,
-            conditionName: null,
-            sqlState: null,
             raise: {content: "error"},
             parameters: [],
             using: []
@@ -145,10 +128,7 @@ describe("Raise", () => {
     testSyntax(Raise, {
         str: "raise division_BY_zero",
         shouldBe: {
-            level: null,
             conditionName: "division_by_zero",
-            sqlState: null,
-            raise: null,
             parameters: [],
             using: []
         }
@@ -159,8 +139,6 @@ describe("Raise", () => {
         shouldBe: {
             level: "notice",
             conditionName: "division_by_zero",
-            sqlState: null,
-            raise: null,
             parameters: [],
             using: []
         }
@@ -170,9 +148,6 @@ describe("Raise", () => {
         str: "raise debug using hint = 'a hint'",
         shouldBe: {
             level: "debug",
-            conditionName: null,
-            sqlState: null,
-            raise: null,
             parameters: [],
             using: [{
                 option: "hint",
@@ -186,10 +161,6 @@ describe("Raise", () => {
     testSyntax(Raise, {
         str: "raise using hint = 'a hint'",
         shouldBe: {
-            level: null,
-            conditionName: null,
-            sqlState: null,
-            raise: null,
             parameters: [],
             using: [{
                 option: "hint",
@@ -203,10 +174,7 @@ describe("Raise", () => {
     testSyntax(Raise, {
         str: "raise sqlState '22012'",
         shouldBe: {
-            level: null,
-            conditionName: null,
             sqlState: {content: "22012"},
-            raise: null,
             parameters: [],
             using: []
         }
@@ -215,10 +183,7 @@ describe("Raise", () => {
     testSyntax(Raise, {
         str: "raise sqlState $$22012$$",
         shouldBe: {
-            level: null,
-            conditionName: null,
             sqlState: {content: "22012"},
-            raise: null,
             parameters: [],
             using: []
         }
@@ -227,10 +192,7 @@ describe("Raise", () => {
     testSyntax(Raise, {
         str: "raise sqlState '22012' using detail = 'a detail'",
         shouldBe: {
-            level: null,
-            conditionName: null,
             sqlState: {content: "22012"},
-            raise: null,
             parameters: [],
             using: [{
                 option: "detail",
@@ -245,9 +207,7 @@ describe("Raise", () => {
         str: "raise notice sqlstate '22012' using detail = 'a detail'",
         shouldBe: {
             level: "notice",
-            conditionName: null,
             sqlState: {content: "22012"},
-            raise: null,
             parameters: [],
             using: [{
                 option: "detail",

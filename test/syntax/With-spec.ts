@@ -9,29 +9,11 @@ describe("With", () => {
             select
         )`,
         shouldBe: {
-            recursive: null,
             queries: [
                 {
                     name: {word: "items"},
-                    columns: null,
                     select: {
-                        with: null,
-                        columns: null,
-                        into: null,
-                        from: null,
-                        where: null,
-                        groupBy: null,
-                        having: null,
-                        window: null,
-                        orderBy: null,
-                        union: null,
-                        offset: null,
-                        offsetRow: null,
-                        offsetRows: null,
-                        limit: null,
-                        fetch: null
-                    },
-                    values: null
+                    }
                 }
             ]
         }
@@ -46,25 +28,8 @@ describe("With", () => {
             queries: [
                 {
                     name: {word: "items"},
-                    columns: null,
                     select: {
-                        with: null,
-                        columns: null,
-                        into: null,
-                        from: null,
-                        where: null,
-                        groupBy: null,
-                        having: null,
-                        window: null,
-                        orderBy: null,
-                        union: null,
-                        offset: null,
-                        offsetRow: null,
-                        offsetRows: null,
-                        limit: null,
-                        fetch: null
-                    },
-                    values: null
+                    }
                 }
             ]
         }

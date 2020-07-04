@@ -11,16 +11,12 @@ describe("Declare", () => {
                 {
                     name: {word: "a"},
                     type: {type: "text"},
-                    collate: null,
-                    nulls: true,
-                    default: null
+                    nulls: true
                 },
                 {
                     name: {word: "b"},
                     type: {type: "numeric"},
-                    collate: null,
-                    nulls: true,
-                    default: null
+                    nulls: true
                 }
             ]
         }

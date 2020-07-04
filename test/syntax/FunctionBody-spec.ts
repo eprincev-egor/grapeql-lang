@@ -21,9 +21,7 @@ describe("FunctionBody", () => {
                         {
                             name: {word: "a"},
                             type: {type: "integer"},
-                            collate: null,
-                            nulls: true,
-                            default: null
+                            nulls: true
                         }
                     ]
                 },
@@ -32,9 +30,7 @@ describe("FunctionBody", () => {
                         {
                             name: {word: "b"},
                             type: {type: "integer"},
-                            collate: null,
-                            nulls: true,
-                            default: null
+                            nulls: true
                         }
                     ]
                 }

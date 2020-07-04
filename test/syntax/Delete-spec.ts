@@ -11,12 +11,7 @@ describe("Delete", () => {
             star: false,
             table: {star: false, link: [
                 {word: "companies"}
-            ]},
-            as: null,
-            using: null,
-            with: null,
-            where: null,
-            returning: null
+            ]}
         }
     });
 
@@ -27,12 +22,7 @@ describe("Delete", () => {
             star: false,
             table: {star: false, link: [
                 {word: "orders"}
-            ]},
-            as: null,
-            using: null,
-            with: null,
-            where: null,
-            returning: null
+            ]}
         }
     });
 
@@ -43,12 +33,7 @@ describe("Delete", () => {
             star: true,
             table: {star: false, link: [
                 {word: "orders"}
-            ]},
-            as: null,
-            using: null,
-            with: null,
-            where: null,
-            returning: null
+            ]}
         }
     });
 
@@ -59,12 +44,7 @@ describe("Delete", () => {
             star: true,
             table: {star: false, link: [
                 {word: "orders"}
-            ]},
-            as: null,
-            using: null,
-            with: null,
-            where: null,
-            returning: null
+            ]}
         }
     });
 
@@ -76,11 +56,7 @@ describe("Delete", () => {
             table: {star: false, link: [
                 {word: "orders"}
             ]},
-            as: {word: "order"},
-            using: null,
-            with: null,
-            where: null,
-            returning: null
+            as: {word: "order"}
         }
     });
 
@@ -97,24 +73,13 @@ describe("Delete", () => {
             table: {star: false, link: [
                 {word: "orders"}
             ]},
-            as: null,
             using: [{
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                select: null,
-                as: null,
-                columns: null,
                 joins: [],
-                star: null,
 
                 table: {star: false, link: [
                     {word: "companies"}
                 ]}
             }],
-            with: null,
             where: {elements: [
                 {star: false, link: [
                     {word: "orders"},
@@ -134,8 +99,7 @@ describe("Delete", () => {
                 ]},
                 {operator: "ilike"},
                 {content: "%ooo%"}
-            ]},
-            returning: null
+            ]}
         }
     });
 
@@ -149,50 +113,24 @@ describe("Delete", () => {
         `,
         shouldBe: {
             with: {
-                recursive: null,
                 queries: [{
                     name: {word: "some_orders"},
-                    columns: null,
                     select: {
-                        with: null,
                         columns: [
                             {
                                 expression: {elements: [
                                     {star: true, link: []}
-                                ]},
-                                as: null
+                                ]}
                             }
                         ],
-                        into: null,
                         from: [{
-                            lateral: null,
-                            only: null,
-                            file: null,
-                            withOrdinality: null,
-                            functionCall: null,
-                            select: null,
-                            as: null,
-                            columns: null,
                             joins: [],
-                            star: null,
             
                             table: {star: false, link: [
                                 {word: "orders"}
                             ]}
-                        }],
-                        where: null,
-                        groupBy: null,
-                        having: null,
-                        window: null,
-                        orderBy: null,
-                        union: null,
-                        offset: null,
-                        offsetRow: null,
-                        offsetRows: null,
-                        limit: null,
-                        fetch: null
-                    },
-                    values: null
+                        }]
+                    }
                 }]
             },
             only: false,
@@ -200,8 +138,6 @@ describe("Delete", () => {
             table: {star: false, link: [
                 {word: "companies"}
             ]},
-            as: null,
-            using: null,
             where: {elements: [
                 {star: false, link: [
                     {word: "companies"},
@@ -211,48 +147,24 @@ describe("Delete", () => {
                 {operator: "="},
 
                 {elements: [{
-                    with: null,
                     columns: [
                         {
                             expression: {elements: [
                                 {star: false, link: [
                                     {word: "id_client"}
                                 ]}
-                            ]},
-                            as: null
+                            ]}
                         }
                     ],
-                    into: null,
                     from: [{
-                        lateral: null,
-                        only: null,
-                        file: null,
-                        withOrdinality: null,
-                        functionCall: null,
-                        select: null,
-                        as: null,
-                        columns: null,
                         joins: [],
-                        star: null,
         
                         table: {star: false, link: [
                             {word: "some_orders"}
                         ]}
-                    }],
-                    where: null,
-                    groupBy: null,
-                    having: null,
-                    window: null,
-                    orderBy: null,
-                    union: null,
-                    offset: null,
-                    offsetRow: null,
-                    offsetRows: null,
-                    limit: null,
-                    fetch: null
+                    }]
                 }]}
-            ]},
-            returning: null
+            ]}
         }
     });
 

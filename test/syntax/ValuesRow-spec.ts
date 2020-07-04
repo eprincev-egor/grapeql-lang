@@ -8,8 +8,7 @@ describe("ValuesRow", () => {
         str: "(default)",
         shouldBe: {
             values: [{
-                default: true,
-                value: null
+                default: true
             }]
         }
     });
@@ -19,11 +18,9 @@ describe("ValuesRow", () => {
         shouldBe: {
             values: [
                 {
-                    default: true,
-                    value: null
+                    default: true
                 },
                 {
-                    default: null,
                     value: {elements: [
                         {number: "2"}
                     ]}

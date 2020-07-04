@@ -17,7 +17,7 @@ describe("Column", () => {
                     ]}
                 ]
             },
-            as: { word: "id", content: null }
+            as: { word: "id" }
         }
     });
 
@@ -32,7 +32,7 @@ describe("Column", () => {
                     ]}
                 ]
             },
-            as: { word: "id", content: null }
+            as: { word: "id" }
         }
     });
 
@@ -47,7 +47,7 @@ describe("Column", () => {
                     ]}
                 ]
             },
-            as: { word: null, content: "id" }
+            as: { content: "id" }
         }
     });
 
@@ -59,7 +59,7 @@ describe("Column", () => {
                     {null: true}
                 ]
             },
-            as: { word: "null1", content: null }
+            as: { word: "null1" }
         }
     });
 
@@ -70,8 +70,7 @@ describe("Column", () => {
                 elements: [
                     {star: true, link: []}
                 ]
-            },
-            as: null
+            }
         }
     });
 
@@ -109,8 +108,7 @@ describe("Column", () => {
             shouldBe: {
                 expression: {elements: [
                     {number: "1"}
-                ]},
-                as: null
+                ]}
             }
         });
         

@@ -21,36 +21,22 @@ describe("CreateFunction", () => {
             args: [
                 {
                     name: "xid",
-                    type: "integer",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "integer"
                 },
                 {
                     name: "names",
-                    type: "text[]",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "text[]"
                 }
             ],
             returns: {
-                setof: null,
-                type: null,
                 table: [
                     {
                         name: "id",
-                        type: "integer",
-                        out: null,
-                        in: null,
-                        default: null
+                        type: "integer"
                     },
                     {
                         name: "sum",
-                        type: "numeric",
-                        out: null,
-                        in: null,
-                        default: null
+                        type: "numeric"
                     }
                 ]
             },
@@ -58,14 +44,7 @@ describe("CreateFunction", () => {
                 content: "begin;end"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -118,36 +97,22 @@ describe("CreateFunction", () => {
             args: [
                 {
                     name: "xid",
-                    type: "integer",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "integer"
                 },
                 {
                     name: "names",
-                    type: "text[]",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "text[]"
                 }
             ],
             returns: {
-                setof: null,
-                type: null,
                 table: [
                     {
                         name: "id",
-                        type: "integer",
-                        out: null,
-                        in: null,
-                        default: null
+                        type: "integer"
                     },
                     {
                         name: "sum",
-                        type: "numeric",
-                        out: null,
-                        in: null,
-                        default: null
+                        type: "numeric"
                     }
                 ]
             },
@@ -155,14 +120,7 @@ describe("CreateFunction", () => {
                 content: "begin;end"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -176,22 +134,13 @@ describe("CreateFunction", () => {
             name: "test_name",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "trigger"
             },
             body: {
                 content: "begin;end"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -205,22 +154,13 @@ describe("CreateFunction", () => {
             name: "test_name",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "trigger"
             },
             body: {
                 content: "begin;end"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -234,22 +174,13 @@ describe("CreateFunction", () => {
             name: "test_name",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin;end"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -267,28 +198,17 @@ describe("CreateFunction", () => {
                 {
                     name: "a",
                     type: "text",
-                    default: "'hi'",
-                    out: null,
-                    in: null
+                    default: "'hi'"
                 }
             ],
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin;end"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
     
@@ -315,21 +235,11 @@ describe("CreateFunction", () => {
             language: "sql",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "integer"
             },
             body: {
                 content: "select 1"
-            },
-
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            }
         }
     });
 
@@ -345,21 +255,12 @@ describe("CreateFunction", () => {
             language: "plpgsql",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "integer"
             },
             body: {
                 content: "begin\nend"
             },
-            immutable: true,
-
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            immutable: true
         }
     });
 
@@ -375,21 +276,12 @@ describe("CreateFunction", () => {
             language: "plpgsql",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "integer"
             },
             body: {
                 content: "begin\nend"
             },
-            stable: true,
-
-            immutable: null,
-            returnsNullOnNull: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            stable: true
         }
     });
 
@@ -405,21 +297,11 @@ describe("CreateFunction", () => {
             language: "plpgsql",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "integer"
             },
             body: {
                 content: "begin\nend"
-            },
-
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            }
         }
     });
 
@@ -435,21 +317,12 @@ describe("CreateFunction", () => {
             language: "plpgsql",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "integer"
             },
             body: {
                 content: "begin\nend"
             },
-            cost: 101,
-
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            comment: null
+            cost: 101
         }
     });
 
@@ -466,21 +339,12 @@ describe("CreateFunction", () => {
             language: "plpgsql",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "integer"
             },
             body: {
                 content: "begin\nend"
             },
-            cost: 101,
-
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            comment: null
+            cost: 101
         }
     });
 
@@ -497,21 +361,13 @@ describe("CreateFunction", () => {
             language: "plpgsql",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "integer"
             },
             body: {
                 content: "begin\nend"
             },
             stable: true,
-            cost: 101,
-
-            immutable: null,
-            returnsNullOnNull: null,
-            strict: null,
-            parallel: null,
-            comment: null
+            cost: 101
         }
     });
 
@@ -529,21 +385,13 @@ describe("CreateFunction", () => {
             language: "plpgsql",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "integer"
             },
             body: {
                 content: "begin\nend"
             },
             stable: true,
-            cost: 101,
-
-            immutable: null,
-            returnsNullOnNull: null,
-            strict: null,
-            parallel: null,
-            comment: null
+            cost: 101
         }
     });
 
@@ -558,22 +406,13 @@ describe("CreateFunction", () => {
             name: "test_func",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "some_schema.some_table"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -588,7 +427,6 @@ describe("CreateFunction", () => {
             name: "test_func",
             args: [],
             returns: {
-                table: null,
                 setof: true,
                 type: "some_schema.some_table"
             },
@@ -596,14 +434,7 @@ describe("CreateFunction", () => {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -619,14 +450,10 @@ describe("CreateFunction", () => {
             args: [
                 {
                     name: "company",
-                    type: "public.company",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "public.company"
                 }
             ],
             returns: {
-                table: null,
                 setof: true,
                 type: "some_schema.some_table"
             },
@@ -634,14 +461,7 @@ describe("CreateFunction", () => {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -657,29 +477,17 @@ describe("CreateFunction", () => {
             args: [
                 {
                     name: "companies",
-                    type: "public.company[]",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "public.company[]"
                 }
             ],
             returns: {
-                setof: null,
-                table: null,
                 type: "public.company[]"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -694,37 +502,20 @@ describe("CreateFunction", () => {
             name: "test_func",
             args: [
                 {
-                    name: null,
-                    type: "text",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "text"
                 },
                 {
-                    name: null,
-                    type: "integer",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "integer"
                 }
             ],
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -741,21 +532,13 @@ describe("CreateFunction", () => {
             args: [],
             parallel: "safe",
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -772,21 +555,13 @@ describe("CreateFunction", () => {
             args: [],
             parallel: "restricted",
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -803,21 +578,13 @@ describe("CreateFunction", () => {
             args: [],
             parallel: "unsafe",
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -836,20 +603,13 @@ describe("CreateFunction", () => {
             parallel: "safe",
             cost: 12,
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -865,22 +625,13 @@ describe("CreateFunction", () => {
             name: "test_func",
             args: [],
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -897,21 +648,13 @@ describe("CreateFunction", () => {
             args: [],
             returnsNullOnNull: true,
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -928,21 +671,13 @@ describe("CreateFunction", () => {
             args: [],
             strict: true,
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -959,15 +694,10 @@ describe("CreateFunction", () => {
             name: "test_name",
             args: [],
             returns: {
-                setof: null,
-                type: null,
                 table: [
                     {
                         name: "some_arg",
-                        type: "character varying[]",
-                        in: null,
-                        out: null,
-                        default: null
+                        type: "character varying[]"
                     }
                 ]
             },
@@ -975,14 +705,7 @@ describe("CreateFunction", () => {
                 content: "begin;end"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -996,23 +719,14 @@ describe("CreateFunction", () => {
             schema: "public",
             name: "test_func",
             args: [],
-            strict: null,
             returns: {
-                setof: null,
-                table: null,
                 type: "void"
             },
             body: {
                 content: "begin\nend"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 
@@ -1041,36 +755,22 @@ describe("CreateFunction", () => {
             args: [
                 {
                     name: "xid",
-                    type: "integer",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "integer"
                 },
                 {
                     name: "names",
-                    type: "text[]",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "text[]"
                 }
             ],
             returns: {
-                setof: null,
-                type: null,
                 table: [
                     {
                         name: "id",
-                        type: "integer",
-                        out: null,
-                        in: null,
-                        default: null
+                        type: "integer"
                     },
                     {
                         name: "sum",
-                        type: "numeric",
-                        out: null,
-                        in: null,
-                        default: null
+                        type: "numeric"
                     }
                 ]
             },
@@ -1079,12 +779,6 @@ describe("CreateFunction", () => {
             },
 
             language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
             comment: {
                 comment: {
                     content: "test"
@@ -1158,36 +852,22 @@ describe("CreateFunction", () => {
             args: [
                 {
                     name: "xid",
-                    type: "integer",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "integer"
                 },
                 {
                     name: "names",
-                    type: "text[]",
-                    out: null,
-                    in: null,
-                    default: null
+                    type: "text[]"
                 }
             ],
             returns: {
-                setof: null,
-                type: null,
                 table: [
                     {
                         name: "id",
-                        type: "integer",
-                        out: null,
-                        in: null,
-                        default: null
+                        type: "integer"
                     },
                     {
                         name: "sum",
-                        type: "numeric",
-                        out: null,
-                        in: null,
-                        default: null
+                        type: "numeric"
                     }
                 ]
             },
@@ -1195,14 +875,7 @@ describe("CreateFunction", () => {
                 content: "begin;/* but not here */end"
             },
 
-            language: "plpgsql",
-            immutable: null,
-            returnsNullOnNull: null,
-            stable: null,
-            strict: null,
-            parallel: null,
-            cost: null,
-            comment: null
+            language: "plpgsql"
         }
     });
 

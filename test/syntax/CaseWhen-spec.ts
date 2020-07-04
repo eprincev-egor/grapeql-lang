@@ -25,8 +25,7 @@ describe("CaseWhen", () => {
                     when: {elements: [{boolean: true}]},
                     then: {elements: [{number: "1"}]}
                 }
-            ],
-            else: null
+            ]
         }
     });
 

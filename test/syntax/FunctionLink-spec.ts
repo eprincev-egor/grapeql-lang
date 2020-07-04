@@ -16,12 +16,10 @@ describe("FunctionLink", () => {
             star: false,
             link: [
                 {
-                    word: "public",
-                    content: null
+                    word: "public"
                 },
                 {
-                    word: "get_curs",
-                    content: null
+                    word: "get_curs"
                 }
             ]
         }

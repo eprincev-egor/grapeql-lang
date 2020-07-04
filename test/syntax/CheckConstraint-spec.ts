@@ -8,10 +8,8 @@ describe("CheckConstraint", () => {
         str: "constraint test check (profit > 0)",
         shouldBe: {
             name: {
-                word: "test",
-                content: null
+                word: "test"
             },
-            column: null,
             check: {
                 elements: [
                     {star: false, link: [
@@ -28,15 +26,12 @@ describe("CheckConstraint", () => {
         str: "check (profit > 0)",
         options: {
             column: {
-                word: "profit",
-                content: null
+                word: "profit"
             }
         },
         shouldBe: {
-            name: null,
             column: {
-                word: "profit",
-                content: null
+                word: "profit"
             },
             check: {
                 elements: [

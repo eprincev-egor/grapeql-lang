@@ -9,15 +9,6 @@ describe("Join", () => {
         shouldBe: {
             type: "join",
             from: {
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                star: null,
-                as: null,
-                columns: null,
-                select: null,
                 joins: [],
     
                 table: {star: false, link: [
@@ -26,8 +17,7 @@ describe("Join", () => {
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -36,15 +26,6 @@ describe("Join", () => {
         shouldBe: {
             type: "left join",
             from: {
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                star: null,
-                as: null,
-                columns: null,
-                select: null,
                 joins: [],
     
                 table: {star: false, link: [
@@ -53,8 +34,7 @@ describe("Join", () => {
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -63,15 +43,6 @@ describe("Join", () => {
         shouldBe: {
             type: "right join",
             from: {
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                select: null,
-                star: null,
-                as: null,
-                columns: null,
                 joins: [],
     
                 table: {star: false, link: [
@@ -80,8 +51,7 @@ describe("Join", () => {
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -90,15 +60,6 @@ describe("Join", () => {
         shouldBe: {
             type: "inner join",
             from: {
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                select: null,
-                star: null,
-                as: null,
-                columns: null,
                 joins: [],
     
                 table: {star: false, link: [
@@ -107,8 +68,7 @@ describe("Join", () => {
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -117,15 +77,6 @@ describe("Join", () => {
         shouldBe: {
             type: "full join",
             from: {
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                select: null,
-                star: null,
-                as: null,
-                columns: null,
                 joins: [],
     
                 table: {star: false, link: [
@@ -134,8 +85,7 @@ describe("Join", () => {
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -144,15 +94,6 @@ describe("Join", () => {
         shouldBe: {
             type: "cross join",
             from: {
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                select: null,
-                star: null,
-                as: null,
-                columns: null,
                 joins: [],
     
                 table: {star: false, link: [
@@ -161,8 +102,7 @@ describe("Join", () => {
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -171,15 +111,6 @@ describe("Join", () => {
         shouldBe: {
             type: "full outer join",
             from: {
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                select: null,
-                star: null,
-                as: null,
-                columns: null,
                 joins: [],
     
                 table: {star: false, link: [
@@ -188,8 +119,7 @@ describe("Join", () => {
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -203,47 +133,30 @@ describe("Join", () => {
         shouldBe: {
             type: "join",
             from: {
-                only: null,
-                file: null,
-                table: null,
                 joins: [],
-                withOrdinality: null,
-                star: null,
-                select: null,
                 
                 lateral: true,
                 functionCall: {
-                    distinct: null,
-                    emptyOver: null,
-                    orderBy: null,
-                    over: null,
-                    all: null,
-                    within: null,
-                    where: null,
     
                     function: {star: false, link: [
-                        { word: "get_some_rows", content: null }
+                        { word: "get_some_rows" }
                     ]},
                     arguments: [
                         {elements: [
                             {star: false, link: [
-                                { word: "company", content: null },
-                                { word: "id", content: null }
+                                { word: "company" },
+                                { word: "id" }
                             ]}
                         ]}
                     ]
                 },
                 as: {
-                    word: "rows",
-                    content: null
-                },
-                
-                columns: null
+                    word: "rows"
+                }
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -252,47 +165,30 @@ describe("Join", () => {
         shouldBe: {
             type: "left join",
             from: {
-                only: null,
-                file: null,
-                table: null,
                 joins: [],
-                withOrdinality: null,
-                star: null,
-                select: null,
                 
                 lateral: true,
                 functionCall: {
-                    distinct: null,
-                    emptyOver: null,
-                    orderBy: null,
-                    over: null,
-                    all: null,
-                    within: null,
-                    where: null,
     
                     function: {star: false, link: [
-                        { word: "get_some_rows", content: null }
+                        { word: "get_some_rows" }
                     ]},
                     arguments: [
                         {elements: [
                             {star: false, link: [
-                                { word: "company", content: null },
-                                { word: "id", content: null }
+                                { word: "company" },
+                                { word: "id" }
                             ]}
                         ]}
                     ]
                 },
                 as: {
-                    word: "rows",
-                    content: null
-                },
-                
-                columns: null
+                    word: "rows"
+                }
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -301,47 +197,30 @@ describe("Join", () => {
         shouldBe: {
             type: "inner join",
             from: {
-                only: null,
-                file: null,
-                table: null,
                 joins: [],
-                withOrdinality: null,
-                star: null,
-                select: null,
 
                 lateral: true,
                 functionCall: {
-                    distinct: null,
-                    emptyOver: null,
-                    orderBy: null,
-                    over: null,
-                    all: null,
-                    within: null,
-                    where: null,
     
                     function: {star: false, link: [
-                        { word: "get_some_rows", content: null }
+                        { word: "get_some_rows" }
                     ]},
                     arguments: [
                         {elements: [
                             {star: false, link: [
-                                { word: "company", content: null },
-                                { word: "id", content: null }
+                                { word: "company" },
+                                { word: "id" }
                             ]}
                         ]}
                     ]
                 },
                 as: {
-                    word: "rows",
-                    content: null
-                },
-                
-                columns: null
+                    word: "rows"
+                }
             },
             on: {elements: [
                 {boolean: true}
-            ]},
-            using: null
+            ]}
         }
     });
 
@@ -356,22 +235,12 @@ describe("Join", () => {
         shouldBe: {
             type: "join",
             from: {
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                select: null,
-                as: null,
-                columns: null,
                 joins: [],
-                star: null,
     
                 table: {star: false, link: [
                     {word: "company"}
                 ]}
             },
-            on: null,
             using: [
                 {word: "id"}
             ]
@@ -383,22 +252,12 @@ describe("Join", () => {
         shouldBe: {
             type: "join",
             from: {
-                lateral: null,
-                only: null,
-                file: null,
-                withOrdinality: null,
-                functionCall: null,
-                select: null,
-                as: null,
-                columns: null,
                 joins: [],
-                star: null,
     
                 table: {star: false, link: [
                     {word: "company"}
                 ]}
             },
-            on: null,
             using: [
                 {word: "key1"},
                 {word: "key2"}

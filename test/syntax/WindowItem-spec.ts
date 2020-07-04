@@ -11,8 +11,6 @@ describe("WindowItem", () => {
         shouldBe: {
             as: {word: "x"},
             body: {
-                windowDefinition: null,
-                partitionBy: null,
                 orderBy: [
                     {
                         expression: {elements: [
@@ -21,13 +19,9 @@ describe("WindowItem", () => {
                                 {word: "name"}
                             ]}
                         ]},
-                        vector: "asc",
-                        using: null,
-                        nulls: null
+                        vector: "asc"
                     }
-                ],
-                range: null,
-                rows: null
+                ]
             }
         }
     });

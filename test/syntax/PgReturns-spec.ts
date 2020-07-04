@@ -7,8 +7,6 @@ describe("PgReturns", () => {
     testSyntax(PgReturns, {
         str: "numerIc( 12 )",
         shouldBe: {
-            setof: null,
-            table: null,
             type: "numeric(12)"
         }
     });
@@ -16,22 +14,14 @@ describe("PgReturns", () => {
     testSyntax(PgReturns, {
         str: "table ( id integer , name text  )",
         shouldBe: {
-            setof: null,
-            type: null,
             table: [
                 {
                     name: "id",
-                    type: "integer",
-                    in: null,
-                    out: null,
-                    default: null
+                    type: "integer"
                 },
                 {
                     name: "name",
-                    type: "text",
-                    in: null,
-                    out: null,
-                    default: null
+                    type: "text"
                 }
             ]
         }
@@ -40,8 +30,6 @@ describe("PgReturns", () => {
     testSyntax(PgReturns, {
         str: "public.company",
         shouldBe: {
-            setof: null,
-            table: null,
             type: "public.company"
         }
     });
@@ -49,8 +37,6 @@ describe("PgReturns", () => {
     testSyntax(PgReturns, {
         str: "company",
         shouldBe: {
-            setof: null,
-            table: null,
             type: "public.company"
         }
     });
@@ -58,8 +44,6 @@ describe("PgReturns", () => {
     testSyntax(PgReturns, {
         str: "company[]",
         shouldBe: {
-            setof: null,
-            table: null,
             type: "public.company[]"
         }
     });
@@ -68,7 +52,6 @@ describe("PgReturns", () => {
         str: "setof company",
         shouldBe: {
             setof: true,
-            table: null,
             type: "public.company"
         }
     });

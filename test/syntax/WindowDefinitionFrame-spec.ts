@@ -8,13 +8,9 @@ describe("WindowDefinitionFrame", () => {
         str: "unbounded preceding",
         shouldBe: {
             start: {
-                value: null,
-                currentRow: null,
                 unbounded: true,
-                preceding: true,
-                following: null
-            },
-            end: null
+                preceding: true
+            }
         }
     });
 
@@ -23,12 +19,8 @@ describe("WindowDefinitionFrame", () => {
         shouldBe: {
             start: {
                 value: {number: "1"},
-                currentRow: null,
-                unbounded: null,
-                preceding: true,
-                following: null
-            },
-            end: null
+                preceding: true
+            }
         }
     });
 
@@ -37,17 +29,11 @@ describe("WindowDefinitionFrame", () => {
         shouldBe: {
             start: {
                 value: {number: "1"},
-                currentRow: null,
-                unbounded: null,
-                preceding: true,
-                following: null
+                preceding: true
             },
             end: {
                 value: {number: "2"},
-                currentRow: null,
-                unbounded: null,
-                preceding: true,
-                following: null
+                preceding: true
             }
         }
     });

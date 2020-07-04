@@ -9,9 +9,7 @@ describe("VariableDefinition", () => {
         shouldBe: {
             name: {word: "name"},
             type: {type: "text"},
-            collate: null,
-            nulls: true,
-            default: null
+            nulls: true
         }
     });
 
@@ -20,9 +18,8 @@ describe("VariableDefinition", () => {
         shouldBe: {
             name: {word: "name"},
             type: {type: "text"},
-            collate: {word: null, content: "en_US"},
-            nulls: true,
-            default: null
+            collate: { content: "en_US"},
+            nulls: true
         }
     });
 
@@ -31,7 +28,7 @@ describe("VariableDefinition", () => {
         shouldBe: {
             name: {word: "name"},
             type: {type: "text"},
-            collate: {word: null, content: "en_US"},
+            collate: { content: "en_US"},
             nulls: true,
             default: {elements: [
                 {content: "sweet"}
@@ -44,7 +41,6 @@ describe("VariableDefinition", () => {
         shouldBe: {
             name: {word: "total_price"},
             type: {type: "numeric(14,2)"},
-            collate: null,
             nulls: false,
             default: {elements: [
                 {number: "0"}
@@ -57,7 +53,6 @@ describe("VariableDefinition", () => {
         shouldBe: {
             name: {word: "total_price"},
             type: {type: "numeric(14,2)"},
-            collate: null,
             nulls: false,
             default: {elements: [
                 {number: "0"}
@@ -70,9 +65,7 @@ describe("VariableDefinition", () => {
         shouldBe: {
             name: {word: "order_date"},
             type: {type: "timestamp without time zone"},
-            collate: null,
-            nulls: false,
-            default: null
+            nulls: false
         }
     });
 
@@ -82,9 +75,7 @@ describe("VariableDefinition", () => {
         shouldBe: {
             name: {word: "order_date"},
             type: {type: "timestamp without time zone"},
-            collate: null,
-            nulls: true,
-            default: null
+            nulls: true
         }
     });
 
@@ -93,7 +84,6 @@ describe("VariableDefinition", () => {
         shouldBe: {
             name: {word: "total_price"},
             type: {type: "numeric"},
-            collate: null,
             nulls: true,
             default: {elements: [
                 {number: "0"}
@@ -106,7 +96,6 @@ describe("VariableDefinition", () => {
         shouldBe: {
             name: {word: "total_price"},
             type: {type: "numeric"},
-            collate: null,
             nulls: true,
             default: {elements: [
                 {number: "0"}

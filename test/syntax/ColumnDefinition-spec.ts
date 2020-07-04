@@ -10,18 +10,12 @@ describe("ColumnDefinition", () => {
         str: "id serial",
         shouldBe: {
             name: {
-                word: "id",
-                content: null
+                word: "id"
             },
             type: {
                 type: "serial"
             },
-            nulls: true,
-            primaryKey: null,
-            unique: null,
-            foreignKey: null,
-            check: null,
-            default: null
+            nulls: true
         }
     });
 
@@ -29,28 +23,20 @@ describe("ColumnDefinition", () => {
         str: "id serial primary key",
         shouldBe: {
             name: {
-                word: "id",
-                content: null
+                word: "id"
             },
             type: {
                 type: "serial"
             },
             nulls: false,
             primaryKey: {
-                name: null,
                 column: {
-                    word: "id",
-                    content: null
+                    word: "id"
                 },
                 primaryKey: [{
-                    word: "id",
-                    content: null
+                    word: "id"
                 }]
-            },
-            unique: null,
-            foreignKey: null,
-            check: null,
-            default: null
+            }
         }
     });
 
@@ -58,18 +44,12 @@ describe("ColumnDefinition", () => {
         str: "id serial not null",
         shouldBe: {
             name: {
-                word: "id",
-                content: null
+                word: "id"
             },
             type: {
                 type: "serial"
             },
-            nulls: false,
-            primaryKey: null,
-            unique: null,
-            foreignKey: null,
-            check: null,
-            default: null
+            nulls: false
         }
     });
 
@@ -85,21 +65,15 @@ describe("ColumnDefinition", () => {
         str: "profit numeric check(profit>0)",
         shouldBe: {
             name: {
-                word: "profit",
-                content: null
+                word: "profit"
             },
             type: {
                 type: "numeric"
             },
             nulls: true,
-            primaryKey: null,
-            unique: null,
-            foreignKey: null,
             check: {
-                name: null,
                 column: {
-                    word: "profit",
-                    content: null
+                    word: "profit"
                 },
                 check: {
                     elements: [
@@ -110,8 +84,7 @@ describe("ColumnDefinition", () => {
                         {number: "0"}
                     ]
                 }
-            },
-            default: null
+            }
         }
     });
 
@@ -120,21 +93,15 @@ describe("ColumnDefinition", () => {
         str: "profit numeric not null check ( profit>0 )",
         shouldBe: {
             name: {
-                word: "profit",
-                content: null
+                word: "profit"
             },
             type: {
                 type: "numeric"
             },
             nulls: false,
-            primaryKey: null,
-            unique: null,
-            foreignKey: null,
             check: {
-                name: null,
                 column: {
-                    word: "profit",
-                    content: null
+                    word: "profit"
                 },
                 check: {
                     elements: [
@@ -145,8 +112,7 @@ describe("ColumnDefinition", () => {
                         {number: "0"}
                     ]
                 }
-            },
-            default: null
+            }
         }
     });
 
@@ -155,21 +121,15 @@ describe("ColumnDefinition", () => {
         str: "profit numeric check ( profit>0 ) not null",
         shouldBe: {
             name: {
-                word: "profit",
-                content: null
+                word: "profit"
             },
             type: {
                 type: "numeric"
             },
             nulls: false,
-            primaryKey: null,
-            unique: null,
-            foreignKey: null,
             check: {
-                name: null,
                 column: {
-                    word: "profit",
-                    content: null
+                    word: "profit"
                 },
                 check: {
                     elements: [
@@ -180,8 +140,7 @@ describe("ColumnDefinition", () => {
                         {number: "0"}
                     ]
                 }
-            },
-            default: null
+            }
         }
     });
 
@@ -224,28 +183,20 @@ describe("ColumnDefinition", () => {
         str: "name text unique",
         shouldBe: {
             name: {
-                word: "name",
-                content: null
+                word: "name"
             },
             type: {
                 type: "text"
             },
             nulls: true,
-            primaryKey: null,
             unique: {
-                name: null,
                 column: {
-                    word: "name",
-                    content: null
+                    word: "name"
                 },
                 unique: [{
-                    word: "name",
-                    content: null
+                    word: "name"
                 }]
-            },
-            foreignKey: null,
-            check: null,
-            default: null
+            }
         }
     });
 
@@ -253,28 +204,20 @@ describe("ColumnDefinition", () => {
         str: "name text unique not null",
         shouldBe: {
             name: {
-                word: "name",
-                content: null
+                word: "name"
             },
             type: {
                 type: "text"
             },
             nulls: false,
-            primaryKey: null,
             unique: {
-                name: null,
                 column: {
-                    word: "name",
-                    content: null
+                    word: "name"
                 },
                 unique: [{
-                    word: "name",
-                    content: null
+                    word: "name"
                 }]
-            },
-            foreignKey: null,
-            check: null,
-            default: null
+            }
         }
     });
 
@@ -282,28 +225,20 @@ describe("ColumnDefinition", () => {
         str: "name text not null unique",
         shouldBe: {
             name: {
-                word: "name",
-                content: null
+                word: "name"
             },
             type: {
                 type: "text"
             },
             nulls: false,
-            primaryKey: null,
             unique: {
-                name: null,
                 column: {
-                    word: "name",
-                    content: null
+                    word: "name"
                 },
                 unique: [{
-                    word: "name",
-                    content: null
+                    word: "name"
                 }]
-            },
-            foreignKey: null,
-            check: null,
-            default: null
+            }
         }
     });
 
@@ -311,35 +246,23 @@ describe("ColumnDefinition", () => {
         str: "id_company integer references company",
         shouldBe: {
             name: {
-                word: "id_company",
-                content: null
+                word: "id_company"
             },
             type: {
                 type: "integer"
             },
             nulls: true,
-            primaryKey: null,
-            unique: null,
             foreignKey: {
-                name: null,
                 column: {
-                    word: "id_company",
-                    content: null
+                    word: "id_company"
                 },
                 columns: [{
-                    word: "id_company", 
-                    content: null
+                    word: "id_company"
                 }],
                 referenceTable: {star: false, link: [
                     {word: "company"}
-                ]},
-                referenceColumns: null,
-                match: null,
-                onDelete: null,
-                onUpdate: null
-            },
-            check: null,
-            default: null
+                ]}
+            }
         }
     });
 
@@ -347,38 +270,26 @@ describe("ColumnDefinition", () => {
         str: "id_company integer references company (id)",
         shouldBe: {
             name: {
-                word: "id_company",
-                content: null
+                word: "id_company"
             },
             type: {
                 type: "integer"
             },
             nulls: true,
-            primaryKey: null,
-            unique: null,
             foreignKey: {
-                name: null,
                 column: {
-                    word: "id_company",
-                    content: null
+                    word: "id_company"
                 },
                 columns: [{
-                    word: "id_company", 
-                    content: null
+                    word: "id_company"
                 }],
                 referenceTable: {star: false, link: [
                     {word: "company"}
                 ]},
                 referenceColumns: [{
-                    word: "id",
-                    content: null
-                }],
-                match: null,
-                onDelete: null,
-                onUpdate: null
-            },
-            check: null,
-            default: null
+                    word: "id"
+                }]
+            }
         }
     });
 
@@ -386,17 +297,12 @@ describe("ColumnDefinition", () => {
         str: "profit numeric default 0",
         shouldBe: {
             name: {
-                word: "profit",
-                content: null
+                word: "profit"
             },
             type: {
                 type: "numeric"
             },
             nulls: true,
-            primaryKey: null,
-            unique: null,
-            foreignKey: null,
-            check: null,
             default: {
                 elements: [
                     {number: "0"}
@@ -409,17 +315,12 @@ describe("ColumnDefinition", () => {
         str: "profit numeric default 0 not null",
         shouldBe: {
             name: {
-                word: "profit",
-                content: null
+                word: "profit"
             },
             type: {
                 type: "numeric"
             },
             nulls: false,
-            primaryKey: null,
-            unique: null,
-            foreignKey: null,
-            check: null,
             default: {
                 elements: [
                     {number: "0"}
@@ -432,17 +333,12 @@ describe("ColumnDefinition", () => {
         str: "profit numeric not null default 0",
         shouldBe: {
             name: {
-                word: "profit",
-                content: null
+                word: "profit"
             },
             type: {
                 type: "numeric"
             },
             nulls: false,
-            primaryKey: null,
-            unique: null,
-            foreignKey: null,
-            check: null,
             default: {
                 elements: [
                     {number: "0"}
@@ -455,27 +351,20 @@ describe("ColumnDefinition", () => {
         str: "profit numeric not null default 0 unique",
         shouldBe: {
             name: {
-                word: "profit",
-                content: null
+                word: "profit"
             },
             type: {
                 type: "numeric"
             },
             nulls: false,
-            primaryKey: null,
             unique: {
-                name: null,
                 column: {
-                    word: "profit",
-                    content: null
+                    word: "profit"
                 },
                 unique: [{
-                    word: "profit",
-                    content: null
+                    word: "profit"
                 }]
             },
-            foreignKey: null,
-            check: null,
             default: {
                 elements: [
                     {number: "0"}
@@ -488,48 +377,34 @@ describe("ColumnDefinition", () => {
         str: "id_order_type integer not null default 1 unique references order_type check (id_order_type in (1,2,3))",
         shouldBe: {
             name: {
-                word: "id_order_type",
-                content: null
+                word: "id_order_type"
             },
             type: {
                 type: "integer"
             },
             nulls: false,
-            primaryKey: null,
             unique: {
-                name: null,
                 column: {
-                    word: "id_order_type",
-                    content: null
+                    word: "id_order_type"
                 },
                 unique: [{
-                    word: "id_order_type",
-                    content: null
+                    word: "id_order_type"
                 }]
             },
             foreignKey: {
-                name: null,
                 column: {
-                    word: "id_order_type",
-                    content: null
+                    word: "id_order_type"
                 },
                 columns: [{
-                    word: "id_order_type", 
-                    content: null
+                    word: "id_order_type"
                 }],
                 referenceTable: {star: false, link: [
                     {word: "order_type"}
-                ]},
-                referenceColumns: null,
-                match: null,
-                onDelete: null,
-                onUpdate: null
+                ]}
             },
             check: {
-                name: null,
                 column: {
-                    word: "id_order_type",
-                    content: null
+                    word: "id_order_type"
                 },
                 check: {
                     elements: [
@@ -537,7 +412,6 @@ describe("ColumnDefinition", () => {
                             {word: "id_order_type"}
                         ]},
                         {
-                            inSelect: null,
                             inItems: [
                                 {elements: [
                                     {number: "1"}

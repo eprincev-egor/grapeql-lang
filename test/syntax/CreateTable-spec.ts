@@ -11,36 +11,26 @@ describe("CreateTable", () => {
             id serial primary key
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "company",
-                content: null
+                word: "company"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 }
             ],
             constraints: [],
@@ -66,38 +56,27 @@ describe("CreateTable", () => {
             constraint company_pk primary key (id)
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "company",
-                content: null
+                word: "company"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [
                 {
                     name: {
-                        word: "company_pk",
-                        content: null
+                        word: "company_pk"
                     },
-                    column: null,
                     primaryKey: [{
-                        word: "id",
-                        content: null
+                        word: "id"
                     }]
                 }
             ],
@@ -150,36 +129,26 @@ describe("CreateTable", () => {
         )
         inherits (parent_a, public.parent_b)`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "company",
-                content: null
+                word: "company"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 }
             ],
             constraints: [],
@@ -209,66 +178,44 @@ describe("CreateTable", () => {
             name3
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "company",
-                content: null
+                word: "company"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 },
                 {
                     name: {
-                        word: "name1",
-                        content: null
+                        word: "name1"
                     },
                     type: {
                         type: "text"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 },
                 {
                     name: {
-                        word: "name2",
-                        content: null
+                        word: "name2"
                     },
                     type: {
                         type: "text"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -291,36 +238,26 @@ describe("CreateTable", () => {
             name
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "company",
-                content: null
+                word: "company"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 }
             ],
             constraints: [],
@@ -349,76 +286,52 @@ describe("CreateTable", () => {
             (3, 'LTL')
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "order_type",
-                content: null
+                word: "order_type"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 },
                 {
                     name: {
-                        word: "name",
-                        content: null
+                        word: "name"
                     },
                     type: {
                         type: "text"
                     },
                     nulls: true,
-                    primaryKey: null,
                     unique: {
-                        name: null,
                         column: {
-                            word: "name",
-                            content: null
+                            word: "name"
                         },
                         unique: [{
-                            word: "name",
-                            content: null
+                            word: "name"
                         }]
-                    },
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 },
                 {
                     name: {
-                        word: "note",
-                        content: null
+                        word: "note"
                     },
                     type: {
                         type: "text"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -426,35 +339,35 @@ describe("CreateTable", () => {
             deprecated: false,
             deprecatedColumns: [],
             values: [
-                {id: 1, name: "FCL", note: null},
-                {id: 2, name: "FTL", note: null},
-                {id: 3, name: "LTL", note: null}
+                {id: 1, name: "FCL"},
+                {id: 2, name: "FTL"},
+                {id: 3, name: "LTL"}
             ],
             valuesRows: [
                 {values: [
                     {value: {elements: [
                         {number: "1"}
-                    ]}, default: null},
+                    ]}},
 
                     {value: {elements: [
                         {content: "FCL"}
-                    ]}, default: null}
+                    ]}}
                 ]},
                 {values: [
-                    {value: null, default: true},
+                    { default: true},
 
                     {value: {elements: [
                         {content: "FTL"}
-                    ]}, default: null}
+                    ]}}
                 ]},
                 {values: [
                     {value: {elements: [
                         {number: "3"}
-                    ]}, default: null},
+                    ]}},
 
                     {value: {elements: [
                         {content: "LTL"}
-                    ]}, default: null}
+                    ]}}
                 ]}
             ]
         }
@@ -572,26 +485,18 @@ describe("CreateTable", () => {
             (1)
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "order_type",
-                content: null
+                word: "order_type"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -605,7 +510,7 @@ describe("CreateTable", () => {
                 {values: [
                     {value: {elements: [
                         {number: "1"}
-                    ]}, default: null}
+                    ]}}
                 ]}
             ]
         }
@@ -618,26 +523,18 @@ describe("CreateTable", () => {
             (1::integer)
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "order_type",
-                content: null
+                word: "order_type"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -653,7 +550,7 @@ describe("CreateTable", () => {
                         {number: "1"},
                         {operator: "::"},
                         {type: "integer"}
-                    ]}, default: null}
+                    ]}}
                 ]}
             ]
         }
@@ -666,26 +563,18 @@ describe("CreateTable", () => {
             ('1'::integer)
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "order_type",
-                content: null
+                word: "order_type"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -701,7 +590,7 @@ describe("CreateTable", () => {
                         {content: "1"},
                         {operator: "::"},
                         {type: "integer"}
-                    ]}, default: null}
+                    ]}}
                 ]}
             ]
         }
@@ -756,61 +645,43 @@ describe("CreateTable", () => {
             (2, null)
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "order_type",
-                content: null
+                word: "order_type"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 },
                 {
                     name: {
-                        word: "name",
-                        content: null
+                        word: "name"
                     },
                     type: {
                         type: "text"
                     },
                     nulls: true,
-                    primaryKey: null,
                     unique: {
-                        name: null,
                         column: {
-                            word: "name",
-                            content: null
+                            word: "name"
                         },
                         unique: [{
-                            word: "name",
-                            content: null
+                            word: "name"
                         }]
-                    },
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 }
             ],
             constraints: [],
@@ -818,27 +689,27 @@ describe("CreateTable", () => {
             deprecated: false,
             deprecatedColumns: [],
             values: [
-                {id: 1, name: null},
-                {id: 2, name: null}
+                {id: 1},
+                {id: 2}
             ],
             valuesRows: [
                 {values: [
                     {value: {elements: [
                         {number: "1"}
-                    ]}, default: null},
+                    ]}},
 
                     {value: {elements: [
                         {null: true}
-                    ]}, default: null}
+                    ]}}
                 ]},
                 {values: [
                     {value: {elements: [
                         {number: "2"}
-                    ]}, default: null},
+                    ]}},
 
                     {value: {elements: [
                         {null: true}
-                    ]}, default: null}
+                    ]}}
                 ]}
             ]
         }
@@ -907,61 +778,43 @@ describe("CreateTable", () => {
             (default)
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "order_type",
-                content: null
+                word: "order_type"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 },
                 {
                     name: {
-                        word: "name",
-                        content: null
+                        word: "name"
                     },
                     type: {
                         type: "text"
                     },
                     nulls: true,
-                    primaryKey: null,
                     unique: {
-                        name: null,
                         column: {
-                            word: "name",
-                            content: null
+                            word: "name"
                         },
                         unique: [{
-                            word: "name",
-                            content: null
+                            word: "name"
                         }]
-                    },
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 }
             ],
             constraints: [],
@@ -969,15 +822,15 @@ describe("CreateTable", () => {
             deprecated: false,
             deprecatedColumns: [],
             values: [
-                {id: 1, name: null},
-                {id: 2, name: null}
+                {id: 1},
+                {id: 2}
             ],
             valuesRows: [
                 {values: [
-                    {value: null, default: true}
+                    { default: true}
                 ]},
                 {values: [
-                    {value: null, default: true}
+                    { default: true}
                 ]}
             ]
         }
@@ -992,61 +845,43 @@ describe("CreateTable", () => {
             (default, default)
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "order_type",
-                content: null
+                word: "order_type"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 },
                 {
                     name: {
-                        word: "name",
-                        content: null
+                        word: "name"
                     },
                     type: {
                         type: "text"
                     },
                     nulls: true,
-                    primaryKey: null,
                     unique: {
-                        name: null,
                         column: {
-                            word: "name",
-                            content: null
+                            word: "name"
                         },
                         unique: [{
-                            word: "name",
-                            content: null
+                            word: "name"
                         }]
-                    },
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 }
             ],
             constraints: [],
@@ -1054,17 +889,17 @@ describe("CreateTable", () => {
             deprecated: false,
             deprecatedColumns: [],
             values: [
-                {id: 1, name: null},
-                {id: 2, name: null}
+                {id: 1},
+                {id: 2}
             ],
             valuesRows: [
                 {values: [
-                    {value: null, default: true},
-                    {value: null, default: true}
+                    { default: true},
+                    { default: true}
                 ]},
                 {values: [
-                    {value: null, default: true},
-                    {value: null, default: true}
+                    { default: true},
+                    { default: true}
                 ]}
             ]
         }
@@ -1137,51 +972,35 @@ describe("CreateTable", () => {
             (default, -2::integer)
         )`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "order_type",
-                content: null
+                word: "order_type"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 },
                 {
                     name: {
-                        word: "profit",
-                        content: null
+                        word: "profit"
                     },
                     type: {
                         type: "numeric"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -1194,22 +1013,22 @@ describe("CreateTable", () => {
             ],
             valuesRows: [
                 {values: [
-                    {value: null, default: true},
+                    { default: true},
                     {value: {elements: [
                         {operator: "-"},
                         {number: "1"},
                         {operator: "::"},
                         {type: "numeric"}
-                    ]}, default: null}
+                    ]}}
                 ]},
                 {values: [
-                    {value: null, default: true},
+                    { default: true},
                     {value: {elements: [
                         {operator: "-"},
                         {number: "2"},
                         {operator: "::"},
                         {type: "integer"}
-                    ]}, default: null}
+                    ]}}
                 ]}
             ]
         }
@@ -1220,37 +1039,27 @@ describe("CreateTable", () => {
             id serial primary key
         )`,
         shouldBe: {
-            schema: null,
             deprecated: true,
             name: {
-                word: "company",
-                content: null
+                word: "company"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 }
             ],
             constraints: [],
@@ -1267,38 +1076,28 @@ describe("CreateTable", () => {
         )`,
         shouldBe: {
             schema: {
-                word: "operation",
-                content: null
+                word: "operation"
             },
             name: {
-                word: "unit",
-                content: null
+                word: "unit"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 }
             ],
             constraints: [],
@@ -1317,38 +1116,28 @@ describe("CreateTable", () => {
         )`,
         shouldBe: {
             schema: {
-                word: "operation",
-                content: null
+                word: "operation"
             },
             name: {
-                word: "unit",
-                content: null
+                word: "unit"
             },
             columns: [
                 {
                     name: {
-                        word: "id",
-                        content: null
+                        word: "id"
                     },
                     type: {
                         type: "serial"
                     },
                     nulls: false,
                     primaryKey: {
-                        name: null,
                         column: {
-                            word: "id",
-                            content: null
+                            word: "id"
                         },
                         primaryKey: [{
-                            word: "id",
-                            content: null
+                            word: "id"
                         }]
-                    },
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    }
                 }
             ],
             constraints: [],

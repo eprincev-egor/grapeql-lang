@@ -15,9 +15,7 @@ describe("OrderByElement", () => {
                     ]
                 }
             ]},
-            vector: "asc",
-            using: null,
-            nulls: null
+            vector: "asc"
         }
     });
 
@@ -32,9 +30,7 @@ describe("OrderByElement", () => {
                     ]
                 }
             ]},
-            vector: "asc",
-            using: null,
-            nulls: null
+            vector: "asc"
         }
     });
 
@@ -49,9 +45,7 @@ describe("OrderByElement", () => {
                     ]
                 }
             ]},
-            vector: "desc",
-            using: null,
-            nulls: null
+            vector: "desc"
         }
     });
 
@@ -66,9 +60,7 @@ describe("OrderByElement", () => {
                     ]
                 }
             ]},
-            vector: null,
-            using: {operator: ">"},
-            nulls: null
+            using: {operator: ">"}
         }
     });
 
@@ -83,9 +75,7 @@ describe("OrderByElement", () => {
                     ]
                 }
             ]},
-            vector: null,
-            using: {operator: "<"},
-            nulls: null
+            using: {operator: "<"}
         }
     });
 
@@ -101,7 +91,6 @@ describe("OrderByElement", () => {
                 }
             ]},
             vector: "asc",
-            using: null,
             nulls: "first"
         }
     });
@@ -118,7 +107,6 @@ describe("OrderByElement", () => {
                 }
             ]},
             vector: "asc",
-            using: null,
             nulls: "last"
         }
     });
@@ -135,7 +123,6 @@ describe("OrderByElement", () => {
                 }
             ]},
             vector: "desc",
-            using: null,
             nulls: "first"
         }
     });
@@ -152,7 +139,6 @@ describe("OrderByElement", () => {
                 }
             ]},
             vector: "desc",
-            using: null,
             nulls: "last"
         }
     });
@@ -168,7 +154,6 @@ describe("OrderByElement", () => {
                     ]
                 }
             ]},
-            vector: null,
             using: {operator: ">"},
             nulls: "last"
         }

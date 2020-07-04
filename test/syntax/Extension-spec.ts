@@ -12,29 +12,21 @@ describe("Extension", () => {
             forTable: {
                 star: false,
                 link: [{
-                    word: "company",
-                    content: null
+                    word: "company"
                 }]
             },
             name: {
-                word: "inn_company",
-                content: null
+                word: "inn_company"
             },
             columns: [
                 {
                     name: {
-                        word: "inn",
-                        content: null
+                        word: "inn"
                     },
                     type: {
                         type: "text"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -52,29 +44,21 @@ describe("Extension", () => {
             forTable: {
                 star: false,
                 link: [{
-                    word: "company",
-                    content: null
+                    word: "company"
                 }]
             },
             name: {
-                word: "inn_company",
-                content: null
+                word: "inn_company"
             },
             columns: [
                 {
                     name: {
-                        word: "inn",
-                        content: null
+                        word: "inn"
                     },
                     type: {
                         type: "text"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -94,26 +78,21 @@ describe("Extension", () => {
         )`,
         shouldBe: {
             name: {
-                word: "check_order",
-                content: null
+                word: "check_order"
             },
             forTable: {
                 star: false,
                 link: [{
-                    word: "public",
-                    content: null
+                    word: "public"
                 }, {
-                    word: "orders",
-                    content: null
+                    word: "orders"
                 }]
             },
             columns: [],
             constraints: [{
                 name: {
-                    word: "has_profit",
-                    content: null
+                    word: "has_profit"
                 },
-                column: null,
                 check: {
                     elements: [
                         {star: false, link: [
@@ -145,17 +124,14 @@ describe("Extension", () => {
         )`,
         shouldBe: {
             name: {
-                word: "orders_values",
-                content: null
+                word: "orders_values"
             },
             forTable: {
                 star: false,
                 link: [{
-                    word: "public",
-                    content: null
+                    word: "public"
                 }, {
-                    word: "orders",
-                    content: null
+                    word: "orders"
                 }]
             },
             columns: [],
@@ -164,11 +140,11 @@ describe("Extension", () => {
                 {values: [
                     {value: {elements: [
                         {number: "1"}
-                    ]}, default: null},
+                    ]}},
 
                     {value: {elements: [
                         {content: "FCL"}
-                    ]}, default: null}
+                    ]}}
                 ]}
             ],
             deprecated: false,
@@ -182,31 +158,23 @@ describe("Extension", () => {
         )`,
         shouldBe: {
             name: {
-                word: "inn_company",
-                content: null
+                word: "inn_company"
             },
             forTable: {
                 star: false,
                 link: [{
-                    word: "company",
-                    content: null
+                    word: "company"
                 }]
             },
             columns: [
                 {
                     name: {
-                        word: "inn",
-                        content: null
+                        word: "inn"
                     },
                     type: {
                         type: "text"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -222,31 +190,23 @@ describe("Extension", () => {
         )`,
         shouldBe: {
             name: {
-                word: "inn_company",
-                content: null
+                word: "inn_company"
             },
             forTable: {
                 star: false,
                 link: [{
-                    word: "company",
-                    content: null
+                    word: "company"
                 }]
             },
             columns: [
                 {
                     name: {
-                        word: "inn",
-                        content: null
+                        word: "inn"
                     },
                     type: {
                         type: "text"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],
@@ -267,29 +227,21 @@ describe("Extension", () => {
             forTable: {
                 star: false,
                 link: [{
-                    word: "company",
-                    content: null
+                    word: "company"
                 }]
             },
             name: {
-                word: "test",
-                content: null
+                word: "test"
             },
             columns: [
                 {
                     name: {
-                        word: "name",
-                        content: null
+                        word: "name"
                     },
                     type: {
                         type: "text"
                     },
-                    nulls: true,
-                    primaryKey: null,
-                    unique: null,
-                    foreignKey: null,
-                    check: null,
-                    default: null
+                    nulls: true
                 }
             ],
             constraints: [],

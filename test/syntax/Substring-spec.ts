@@ -12,8 +12,7 @@ describe("Substring", () => {
             }]},
             from: {elements: [{
                 number: "1"
-            }]},
-            for: null
+            }]}
         }
     });
 
@@ -25,8 +24,7 @@ describe("Substring", () => {
             }]},
             for: {elements: [{
                 number: "2"
-            }]},
-            from: null
+            }]}
         }
     });
 

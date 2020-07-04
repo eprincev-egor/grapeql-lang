@@ -7,10 +7,8 @@ describe("Constraint", () => {
     testSyntax(Constraint, {
         str: "constraint test",
         shouldBe: {
-            column: null,
             name: {
-                word: "test",
-                content: null
+                word: "test"
             }
         }
     });

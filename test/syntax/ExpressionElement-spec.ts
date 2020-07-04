@@ -76,16 +76,13 @@ describe("ExpressionElement", () => {
                 star: false,
                 link: [
                     {
-                        word: "public",
-                        content: null
+                        word: "public"
                     },
                     {
-                        word: "table",
-                        content: null
+                        word: "table"
                     },
                     {
-                        word: "column",
-                        content: null
+                        word: "column"
                     }
                 ]
             }
@@ -100,12 +97,10 @@ describe("ExpressionElement", () => {
                 star: true,
                 link: [
                     {
-                        word: "public",
-                        content: null
+                        word: "public"
                     },
                     {
-                        word: "table",
-                        content: null
+                        word: "table"
                     }
                 ]
             }
@@ -194,7 +189,6 @@ describe("ExpressionElement", () => {
         shouldBe: {
             element: {
                 field: "week",
-                type: null,
                 source: {elements: [
                     {content: "2000-12-16 12:21:13"}
                 ]}
@@ -233,14 +227,7 @@ describe("ExpressionElement", () => {
                         {word: "now"}
                     ]
                 },
-                all: null,
-                distinct: null,
-                arguments: [],
-                where: null,
-                orderBy: null,
-                within: null,
-                over: null,
-                emptyOver: null
+                arguments: []
             }
         }
     });
@@ -261,21 +248,6 @@ describe("ExpressionElement", () => {
         shouldBe: {
             element: {
                 exists: {
-                    with: null,
-                    columns: null,
-                    into: null,
-                    from: null,
-                    where: null,
-                    groupBy: null,
-                    having: null,
-                    window: null,
-                    orderBy: null,
-                    union: null,
-                    offset: null,
-                    offsetRow: null,
-                    offsetRows: null,
-                    limit: null,
-                    fetch: null
                 }
             }
         }
@@ -286,23 +258,7 @@ describe("ExpressionElement", () => {
         shouldBe: {
             element: {
                 type: "any",
-                array: null,
                 select: {
-                    with: null,
-                    columns: null,
-                    into: null,
-                    from: null,
-                    where: null,
-                    groupBy: null,
-                    having: null,
-                    window: null,
-                    orderBy: null,
-                    union: null,
-                    offset: null,
-                    offsetRow: null,
-                    offsetRows: null,
-                    limit: null,
-                    fetch: null
                 }
             }
         }
@@ -312,7 +268,6 @@ describe("ExpressionElement", () => {
         str: "in( 1 + 1 )",
         shouldBe: {
             element: {
-                inSelect: null,
                 inItems: [
                     {elements: [
                         {number: "1"},

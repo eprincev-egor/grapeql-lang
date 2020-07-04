@@ -14,14 +14,7 @@ describe("FunctionCall", () => {
                     {word: "get_default_currency"}
                 ]
             },
-            all: null,
-            distinct: null,
-            arguments: [],
-            where: null,
-            orderBy: null,
-            within: null,
-            over: null,
-            emptyOver: null
+            arguments: []
         }
     });
 
@@ -35,8 +28,6 @@ describe("FunctionCall", () => {
                     {word: "get_default_currency"}
                 ]
             },
-            all: null,
-            distinct: null,
             arguments: [
                 {elements: [
                     {number: "1"}
@@ -44,12 +35,7 @@ describe("FunctionCall", () => {
                 {elements: [
                     {number: "2"}
                 ]}
-            ],
-            where: null,
-            orderBy: null,
-            within: null,
-            over: null,
-            emptyOver: null
+            ]
         }
     });
 
@@ -62,8 +48,6 @@ describe("FunctionCall", () => {
                     {word: "count"}
                 ]
             },
-            all: null,
-            distinct: null,
             arguments: [
                 {elements: [
                     {
@@ -71,12 +55,7 @@ describe("FunctionCall", () => {
                         link: []
                     }
                 ]}
-            ],
-            where: null,
-            orderBy: null,
-            within: null,
-            over: null,
-            emptyOver: null
+            ]
         }
     });
 
@@ -89,8 +68,6 @@ describe("FunctionCall", () => {
                     {word: "row_to_json"}
                 ]
             },
-            all: null,
-            distinct: null,
             arguments: [
                 {elements: [
                     {
@@ -100,12 +77,7 @@ describe("FunctionCall", () => {
                         ]
                     }
                 ]}
-            ],
-            where: null,
-            orderBy: null,
-            within: null,
-            over: null,
-            emptyOver: null
+            ]
         }
     });
 
@@ -119,7 +91,6 @@ describe("FunctionCall", () => {
                 ]
             },
             all: true,
-            distinct: null,
             arguments: [
                 {elements: [
                     {star: false, link: [
@@ -127,12 +98,7 @@ describe("FunctionCall", () => {
                         {word: "id"}
                     ]}
                 ]}
-            ],
-            where: null,
-            orderBy: null,
-            within: null,
-            over: null,
-            emptyOver: null
+            ]
         }
     });
 
@@ -145,7 +111,6 @@ describe("FunctionCall", () => {
                     {word: "array_agg"}
                 ]
             },
-            all: null,
             distinct: true,
             arguments: [
                 {elements: [
@@ -154,12 +119,7 @@ describe("FunctionCall", () => {
                         {word: "id"}
                     ]}
                 ]}
-            ],
-            where: null,
-            orderBy: null,
-            within: null,
-            over: null,
-            emptyOver: null
+            ]
         }
     });
 
@@ -172,8 +132,6 @@ describe("FunctionCall", () => {
                     {word: "array_agg"}
                 ]
             },
-            all: null,
-            distinct: null,
             arguments: [
                 {elements: [
                     {star: false, link: [
@@ -189,11 +147,7 @@ describe("FunctionCall", () => {
                 ]},
                 {operator: "is not"},
                 {null: true}
-            ]},
-            orderBy: null,
-            within: null,
-            over: null,
-            emptyOver: null
+            ]}
         }
     });
 
@@ -206,8 +160,6 @@ describe("FunctionCall", () => {
                     {word: "array_agg"}
                 ]
             },
-            all: null,
-            distinct: null,
             arguments: [
                 {elements: [
                     {star: false, link: [
@@ -216,7 +168,6 @@ describe("FunctionCall", () => {
                     ]}
                 ]}
             ],
-            where: null,
             orderBy: [{
                 expression: {elements: [
                     {
@@ -226,13 +177,8 @@ describe("FunctionCall", () => {
                         ]
                     }
                 ]},
-                vector: "desc",
-                using: null,
-                nulls: null
-            }],
-            within: null,
-            over: null,
-            emptyOver: null
+                vector: "desc"
+            }]
         }
     });
 
@@ -245,8 +191,6 @@ describe("FunctionCall", () => {
                     {word: "array_agg"}
                 ]
             },
-            all: null,
-            distinct: null,
             arguments: [
                 {elements: [
                     {star: false, link: [
@@ -272,13 +216,8 @@ describe("FunctionCall", () => {
                         ]
                     }
                 ]},
-                vector: "desc",
-                using: null,
-                nulls: null
-            }],
-            within: null,
-            over: null,
-            emptyOver: null
+                vector: "desc"
+            }]
         }
     });
 
@@ -291,8 +230,6 @@ describe("FunctionCall", () => {
                     {word: "unnest"}
                 ]
             },
-            all: null,
-            distinct: null,
             arguments: [
                 {elements: [
                     {array: [
@@ -305,8 +242,6 @@ describe("FunctionCall", () => {
                     ]}
                 ]}
             ],
-            where: null,
-            orderBy: null,
             within: [{
                 expression: {elements: [
                     {
@@ -316,38 +251,27 @@ describe("FunctionCall", () => {
                         ]
                     }
                 ]},
-                vector: "asc",
-                using: null,
-                nulls: null
-            }],
-            over: null,
-            emptyOver: null
+                vector: "asc"
+            }]
         }
     });
 
     
     testSyntax(FunctionCall, {
-        str: "ntile(4) OVER (ORDER BY val) AS tile",
+        str: "nTile(4) OVER (ORDER BY val) AS tile",
         shouldBe: {
             function: {
                 star: false,
                 link: [
-                    {word: "ntile"}
+                    {word: "nTile"}
                 ]
             },
-            distinct: null,
-            all: null,
             arguments: [
                 {elements: [
                     {number: "4"}
                 ]}
             ],
-            where: null,
-            orderBy: null,
-            within: null,
             over: {
-                windowDefinition: null,
-                partitionBy: null,
                 orderBy: [
                     {
                         expression: {elements: [
@@ -355,38 +279,27 @@ describe("FunctionCall", () => {
                                 {word: "val"}
                             ]}
                         ]},
-                        vector: "asc",
-                        using: null,
-                        nulls: null
+                        vector: "asc"
                     }
-                ],
-                range: null,
-                rows: null
-            },
-            emptyOver: null
+                ]
+            }
         }
     });
 
     testSyntax(FunctionCall, {
-        str: "ntile(4) OVER () AS tile",
+        str: "nTile(4) OVER () AS tile",
         shouldBe: {
             function: {
                 star: false,
                 link: [
-                    {word: "ntile"}
+                    {word: "nTile"}
                 ]
             },
-            distinct: null,
-            all: null,
             arguments: [
                 {elements: [
                     {number: "4"}
                 ]}
             ],
-            where: null,
-            orderBy: null,
-            within: null,
-            over: null,
             emptyOver: true
         }
     });

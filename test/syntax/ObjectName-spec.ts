@@ -9,16 +9,14 @@ describe("ObjectName", () => {
     testSyntax(ObjectName, {
         str: "\"Nice\"",
         shouldBe: {
-            content: "Nice",
-            word: null
+            content: "Nice"
         }
     });
 
     testSyntax(ObjectName, {
         str: "NICE",
         shouldBe: {
-            word: "nice",
-            content: null
+            word: "nice"
         }
     });
 

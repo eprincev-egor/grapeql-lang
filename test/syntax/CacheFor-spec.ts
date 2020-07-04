@@ -17,9 +17,7 @@ describe("CacheFor", () => {
             for: {star: false, link: [
                 {word: "orders"}
             ]},
-            as: null,
             cache: {
-                with: null,
                 columns: [
                     {
                         expression: {elements: [
@@ -30,7 +28,6 @@ describe("CacheFor", () => {
                                         {word: "string_agg"}
                                     ]
                                 },
-                                all: null,
                                 distinct: true,
                                 arguments: [
                                     {elements: [
@@ -42,31 +39,15 @@ describe("CacheFor", () => {
                                     {elements: [
                                         {content: ", "}
                                     ]}
-                                ],
-                                where: null,
-                                orderBy: null,
-                                within: null,
-                                over: null,
-                                emptyOver: null
+                                ]
                             }
                         ]},
                         as: {word: "gtds_numbers"}
                     }
                 ],
-                into: null,
                 from: [
                     {
-                        lateral: null,
-                        only: null,
-                        file: null,
-                        withOrdinality: null,
-                        functionCall: null,
-                        select: null,
-                        as: null,
-                        columns: null,
                         joins: [],
-                        star: null,
-    
                         table: {star: false, link: [
                             {word: "gtds"}
                         ]}
@@ -82,17 +63,7 @@ describe("CacheFor", () => {
                         {word: "orders"},
                         {word: "id"}
                     ]}
-                ]},
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
+                ]}
             }
         }
     });
@@ -113,7 +84,6 @@ describe("CacheFor", () => {
             ]},
             as: {word: "my_order"},
             cache: {
-                with: null,
                 columns: [
                     {
                         expression: {elements: [
@@ -124,7 +94,6 @@ describe("CacheFor", () => {
                                         {word: "string_agg"}
                                     ]
                                 },
-                                all: null,
                                 distinct: true,
                                 arguments: [
                                     {elements: [
@@ -136,12 +105,7 @@ describe("CacheFor", () => {
                                     {elements: [
                                         {content: ", "}
                                     ]}
-                                ],
-                                where: null,
-                                orderBy: null,
-                                within: null,
-                                over: null,
-                                emptyOver: null
+                                ]
                             }
                         ]},
                         as: {word: "gtds_numbers"}
@@ -155,8 +119,6 @@ describe("CacheFor", () => {
                                         {word: "array_agg"}
                                     ]
                                 },
-                                all: null,
-                                distinct: null,
                                 arguments: [
                                     {elements: [
                                         {star: false, link: [
@@ -164,31 +126,15 @@ describe("CacheFor", () => {
                                             {word: "id"}
                                         ]}
                                     ]}
-                                ],
-                                where: null,
-                                orderBy: null,
-                                within: null,
-                                over: null,
-                                emptyOver: null
+                                ]
                             }
                         ]},
                         as: {word: "gtds_ids"}
                     }
                 ],
-                into: null,
                 from: [
                     {
-                        lateral: null,
-                        only: null,
-                        file: null,
-                        withOrdinality: null,
-                        functionCall: null,
-                        select: null,
-                        as: null,
-                        columns: null,
                         joins: [],
-                        star: null,
-    
                         table: {star: false, link: [
                             {word: "gtds"}
                         ]}
@@ -204,17 +150,7 @@ describe("CacheFor", () => {
                         {word: "my_order"},
                         {word: "id"}
                     ]}
-                ]},
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
+                ]}
             }
         }
     });

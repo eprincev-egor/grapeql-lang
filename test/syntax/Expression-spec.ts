@@ -296,8 +296,7 @@ describe("Expression", () => {
                     }]},
                     from: {elements: [{
                         number: "1"
-                    }]},
-                    for: null
+                    }]}
                 }
             ]
         }
@@ -316,14 +315,7 @@ describe("Expression", () => {
                             {word: "default_pay"}
                         ]
                     },
-                    all: null,
-                    distinct: null,
-                    arguments: [],
-                    where: null,
-                    orderBy: null,
-                    within: null,
-                    over: null,
-                    emptyOver: null
+                    arguments: []
                 }
             ]
         }
@@ -343,14 +335,7 @@ describe("Expression", () => {
                                 {word: "get_some_arr"}
                             ]
                         },
-                        all: null,
-                        distinct: null,
-                        arguments: [],
-                        where: null,
-                        orderBy: null,
-                        within: null,
-                        over: null,
-                        emptyOver: null
+                        arguments: []
                     }
                 ]},
                 {
@@ -635,7 +620,6 @@ describe("Expression", () => {
                     {word: "id"}
                 ]},
                 {
-                    symmetric: null,
                     between: {elements: [
                         {number: "1"}
                     ]},
@@ -656,7 +640,6 @@ describe("Expression", () => {
                     {word: "id"}
                 ]},
                 {
-                    symmetric: null,
                     between: {elements: [
                         {number: "1"}
                     ]},
@@ -670,7 +653,6 @@ describe("Expression", () => {
                     {word: "id"}
                 ]},
                 {
-                    symmetric: null,
                     between: {elements: [
                         {number: "5"}
                     ]},
@@ -691,7 +673,6 @@ describe("Expression", () => {
                     {word: "id"}
                 ]},
                 {
-                    symmetric: null,
                     between: {elements: [
                         {number: "1"}
                     ]},
@@ -714,7 +695,6 @@ describe("Expression", () => {
                     {word: "id"}
                 ]},
                 {
-                    symmetric: null,
                     between: {elements: [
                         {number: "1"}
                     ]},
@@ -737,7 +717,6 @@ describe("Expression", () => {
                     {word: "id"}
                 ]},
                 {
-                    symmetric: null,
                     between: {elements: [
                         {number: "1"}
                     ]},
@@ -763,7 +742,6 @@ describe("Expression", () => {
                 ]},
                 {operator: "not"},
                 {
-                    symmetric: null,
                     between: {elements: [
                         {number: "1"}
                     ]},
@@ -786,7 +764,6 @@ describe("Expression", () => {
                     {word: "id"}
                 ]},
                 {
-                    symmetric: null,
                     between: {elements: [
                         {number: "1"},
                         {operator: "+"},
@@ -806,7 +783,6 @@ describe("Expression", () => {
                     {word: "id"}
                 ]},
                 {
-                    symmetric: null,
                     between: {elements: [
                         {number: "8"},
                         {operator: "*"},
@@ -851,14 +827,7 @@ describe("Expression", () => {
                             {word: "now_utc"}
                         ]
                     },
-                    all: null,
-                    distinct: null,
-                    arguments: [],
-                    where: null,
-                    orderBy: null,
-                    within: null,
-                    over: null,
-                    emptyOver: null
+                    arguments: []
                 },
                 {operator: "-"},
                 {
@@ -876,42 +845,12 @@ describe("Expression", () => {
             elements: [
                 {
                     exists: {
-                        with: null,
-                        columns: null,
-                        into: null,
-                        from: null,
-                        where: null,
-                        groupBy: null,
-                        having: null,
-                        window: null,
-                        orderBy: null,
-                        union: null,
-                        offset: null,
-                        offsetRow: null,
-                        offsetRows: null,
-                        limit: null,
-                        fetch: null
                     }
                 },
                 {operator: "and"},
                 {operator: "not"},
                 {
                     exists: {
-                        with: null,
-                        columns: null,
-                        into: null,
-                        from: null,
-                        where: null,
-                        groupBy: null,
-                        having: null,
-                        window: null,
-                        orderBy: null,
-                        union: null,
-                        offset: null,
-                        offsetRow: null,
-                        offsetRows: null,
-                        limit: null,
-                        fetch: null
                     }
                 }
             ]
@@ -926,43 +865,12 @@ describe("Expression", () => {
                 {operator: "="},
                 {
                     type: "any",
-                    array: null,
                     select: {
-                        with: null,
-                        columns: null,
-                        into: null,
-                        from: null,
-                        where: null,
-                        groupBy: null,
-                        having: null,
-                        window: null,
-                        orderBy: null,
-                        union: null,
-                        offset: null,
-                        offsetRow: null,
-                        offsetRows: null,
-                        limit: null,
-                        fetch: null
                     }
                 },
                 {operator: "or"},
                 {
                     exists: {
-                        with: null,
-                        columns: null,
-                        into: null,
-                        from: null,
-                        where: null,
-                        groupBy: null,
-                        having: null,
-                        window: null,
-                        orderBy: null,
-                        union: null,
-                        offset: null,
-                        offsetRow: null,
-                        offsetRows: null,
-                        limit: null,
-                        fetch: null
                     }
                 }
             ]
@@ -977,7 +885,6 @@ describe("Expression", () => {
                     {word: "id"}
                 ]},
                 {
-                    inSelect: null,
                     inItems: [
                         {elements: [
                             {number: "1"}
@@ -1003,8 +910,7 @@ describe("Expression", () => {
                                 {number: "2"}
                             ]}
                         ]}
-                    ]},
-                    select: null
+                    ]}
                 }
             ]
         }
@@ -1019,7 +925,6 @@ describe("Expression", () => {
                 ]},
                 {operator: "not"},
                 {
-                    inSelect: null,
                     inItems: [
                         {elements: [
                             {number: "1"}
@@ -1045,8 +950,7 @@ describe("Expression", () => {
                                 {number: "2"}
                             ]}
                         ]}
-                    ]},
-                    select: null
+                    ]}
                 }
             ]
         }
@@ -1075,7 +979,7 @@ describe("Expression", () => {
             {expressionString: "1", primitiveValue: 1},
             {expressionString: "'1'", primitiveValue: "1"},
             {expressionString: "$_$$_$", primitiveValue: ""},
-            {expressionString: "null", primitiveValue: null},
+            {expressionString: "null"},
             {expressionString: "true", primitiveValue: true},
             {expressionString: "false", primitiveValue: false},
             {expressionString: "-4", primitiveValue: -4},

@@ -8,13 +8,10 @@ describe("PrimaryKeyConstraint", () => {
         str: "constraint test primary key (id)",
         shouldBe: {
             name: {
-                word: "test",
-                content: null
+                word: "test"
             },
-            column: null,
             primaryKey: [{
-                word: "id",
-                content: null
+                word: "id"
             }]
         }
     });
@@ -23,19 +20,15 @@ describe("PrimaryKeyConstraint", () => {
         str: "primary key",
         options: {
             column: {
-                word: "id",
-                content: null
+                word: "id"
             }
         },
         shouldBe: {
-            name: null,
             column: {
-                word: "id",
-                content: null
+                word: "id"
             },
             primaryKey: [{
-                word: "id",
-                content: null
+                word: "id"
             }]
         }
     });

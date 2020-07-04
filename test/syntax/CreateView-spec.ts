@@ -9,34 +9,17 @@ describe("CreateView", () => {
     testSyntax(CreateView, {
         str: "create view test as select 1",
         shouldBe: {
-            schema: null,
             name: {
-                word: "test",
-                content: null
+                word: "test"
             },
             select: {
-                with: null,
                 columns: [
                     {
                         expression: {elements: [
                             {number: "1"}
-                        ]},
-                        as: null
+                        ]}
                     }
-                ],
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
+                ]
             }
         }
     });
@@ -45,36 +28,19 @@ describe("CreateView", () => {
         str: "create view public.test as select 1",
         shouldBe: {
             schema: {
-                word: "public",
-                content: null
+                word: "public"
             },
             name: {
-                word: "test",
-                content: null
+                word: "test"
             },
             select: {
-                with: null,
                 columns: [
                     {
                         expression: {elements: [
                             {number: "1"}
-                        ]},
-                        as: null
+                        ]}
                     }
-                ],
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
+                ]
             }
         }
     });
@@ -83,36 +49,19 @@ describe("CreateView", () => {
         str: "view public.test as select 1",
         shouldBe: {
             schema: {
-                word: "public",
-                content: null
+                word: "public"
             },
             name: {
-                word: "test",
-                content: null
+                word: "test"
             },
             select: {
-                with: null,
                 columns: [
                     {
                         expression: {elements: [
                             {number: "1"}
-                        ]},
-                        as: null
+                        ]}
                     }
-                ],
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
+                ]
             }
         }
     });
@@ -120,34 +69,17 @@ describe("CreateView", () => {
     testSyntax(CreateView, {
         str: "view test as select 1",
         shouldBe: {
-            schema: null,
             name: {
-                word: "test",
-                content: null
+                word: "test"
             },
             select: {
-                with: null,
                 columns: [
                     {
                         expression: {elements: [
                             {number: "1"}
-                        ]},
-                        as: null
+                        ]}
                     }
-                ],
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
+                ]
             }
         }
     });
@@ -155,34 +87,17 @@ describe("CreateView", () => {
     testSyntax(CreateView, {
         str: "create or replace view test as select 1",
         shouldBe: {
-            schema: null,
             name: {
-                word: "test",
-                content: null
+                word: "test"
             },
             select: {
-                with: null,
                 columns: [
                     {
                         expression: {elements: [
                             {number: "1"}
-                        ]},
-                        as: null
+                        ]}
                     }
-                ],
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
+                ]
             }
         }
     });
@@ -193,34 +108,17 @@ describe("CreateView", () => {
         select /* multi  
         line */ 1`,
         shouldBe: {
-            schema: null,
             name: {
-                word: "test",
-                content: null
+                word: "test"
             },
             select: {
-                with: null,
                 columns: [
                     {
                         expression: {elements: [
                             {number: "1"}
-                        ]},
-                        as: null
+                        ]}
                     }
-                ],
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
+                ]
             }
         }
     });

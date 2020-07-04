@@ -64,7 +64,7 @@ describe("File", () => {
             relative: true,
             path: [
                 {name: "."},
-                {content: " nice ", name: null}
+                {content: " nice "}
             ]
         }
     });

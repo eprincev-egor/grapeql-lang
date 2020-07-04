@@ -13,16 +13,13 @@ describe("ObjectLink", () => {
             star: false,
             link: [
                 {
-                    word: "a",
-                    content: null
+                    word: "a"
                 },
                 {
-                    word: "b",
-                    content: null
+                    word: "b"
                 },
                 {
-                    word: "c",
-                    content: null
+                    word: "c"
                 }
             ]
         }
@@ -34,28 +31,22 @@ describe("ObjectLink", () => {
             star: false,
             link: [
                 {
-                    word: "a",
-                    content: null
+                    word: "a"
                 },
                 {
-                    word: "b",
-                    content: null
+                    word: "b"
                 },
                 {
-                    word: "c",
-                    content: null
+                    word: "c"
                 },
                 {
-                    word: "d",
-                    content: null
+                    word: "d"
                 },
                 {
-                    word: "e",
-                    content: null
+                    word: "e"
                 },
                 {
-                    word: "f",
-                    content: null
+                    word: "f"
                 }
             ]
         }
@@ -70,23 +61,18 @@ describe("ObjectLink", () => {
             star: false,
             link: [
                 {
-                    word: null,
                     content: "Nice"
                 },
                 {
-                    word: null,
                     content: "test"
                 },
                 {
-                    word: "x",
-                    content: null
+                    word: "x"
                 },
                 {
-                    word: "y",
-                    content: null
+                    word: "y"
                 },
                 {
-                    word: null,
                     content: "some"
                 }
             ]
@@ -113,7 +99,6 @@ describe("ObjectLink", () => {
             star: true,
             link: [
                 {
-                    content: null,
                     word: "some"
                 }
             ]
@@ -129,7 +114,6 @@ describe("ObjectLink", () => {
             star: true,
             link: [
                 {
-                    content: null,
                     word: "some"
                 }
             ]
@@ -159,13 +143,11 @@ describe("ObjectLink", () => {
 
 
         assert.deepEqual( objectLink.first().toJSON(), {
-            word: "schema",
-            content: null
+            word: "schema"
         });
 
         assert.deepEqual( objectLink.last().toJSON(), {
-            word: "table",
-            content: null
+            word: "table"
         });
     });
     

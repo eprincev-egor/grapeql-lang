@@ -16,16 +16,13 @@ describe("ColumnLink", () => {
             star: false,
             link: [
                 {
-                    word: "public",
-                    content: null
+                    word: "public"
                 },
                 {
-                    word: "company",
-                    content: null
+                    word: "company"
                 },
                 {
-                    word: "id",
-                    content: null
+                    word: "id"
                 }
             ]
         }

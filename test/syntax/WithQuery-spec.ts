@@ -10,25 +10,8 @@ describe("WithQuery", () => {
         )`,
         shouldBe: {
             name: {word: "items"},
-            columns: null,
             select: {
-                with: null,
-                columns: null,
-                into: null,
-                from: null,
-                where: null,
-                groupBy: null,
-                having: null,
-                window: null,
-                orderBy: null,
-                union: null,
-                offset: null,
-                offsetRow: null,
-                offsetRows: null,
-                limit: null,
-                fetch: null
-            },
-            values: null
+            }
         }
     });
 
@@ -40,18 +23,14 @@ describe("WithQuery", () => {
         )`,
         shouldBe: {
             name: {word: "items"},
-            columns: null,
-            select: null,
             values: [
                 {values: [
                     {
-                        default: null,
                         value: {elements: [
                             {number: "1"}
                         ]}
                     },
                     {
-                        default: null,
                         value: {elements: [
                             {number: "2"}
                         ]}
@@ -59,13 +38,11 @@ describe("WithQuery", () => {
                 ]},
                 {values: [
                     {
-                        default: null,
                         value: {elements: [
                             {number: "3"}
                         ]}
                     },
                     {
-                        default: null,
                         value: {elements: [
                             {number: "4"}
                         ]}
@@ -87,17 +64,14 @@ describe("WithQuery", () => {
                 {word: "id"},
                 {word: "code"}
             ],
-            select: null,
             values: [
                 {values: [
                     {
-                        default: null,
                         value: {elements: [
                             {number: "1"}
                         ]}
                     },
                     {
-                        default: null,
                         value: {elements: [
                             {number: "2"}
                         ]}
@@ -105,13 +79,11 @@ describe("WithQuery", () => {
                 ]},
                 {values: [
                     {
-                        default: null,
                         value: {elements: [
                             {number: "3"}
                         ]}
                     },
                     {
-                        default: null,
                         value: {elements: [
                             {number: "4"}
                         ]}
