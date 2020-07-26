@@ -225,7 +225,7 @@ describe("ForeignKeyConstraint", () => {
             on update set default 
         `,
         shouldBe: {
-            name: {word: "client"}
+            name: {word: "client"},
             columns: [
                 {word: "id_client"},
                 {word: "x"}
