@@ -1,6 +1,8 @@
 
 import {testSyntax} from "../testSyntax";
 import {SingleQuotesString} from "../../lib/syntax/SingleQuotesString";
+import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
+import assert from "assert";
 
 describe("SingleQuotesString", () => {
 
@@ -225,4 +227,18 @@ describe("SingleQuotesString", () => {
         }
     });
 
+    const bigString = new Array(100000).join(" ");
+
+    it("big separator between two single quoates", () => {
+        const timeStart = Date.now();
+        const coach = new GrapeQLCoach(`'hello'\n${bigString}\n`);
+        const parsed = coach.parse(SingleQuotesString);
+
+        assert.ok( /hello/.test(parsed.toString()), "contain hello");
+
+        const timeEnd = Date.now();
+        const timeDelta = timeEnd - timeStart;
+
+        assert.ok(timeDelta < 1000, "valid time");
+    });    
 });

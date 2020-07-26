@@ -32,9 +32,19 @@ export class SingleQuotesString extends Syntax<SingleQuotesString> {
             content += symbol;
         }
 
-        if ( coach.is(/(\s*[\n\r]+\s*)+'/) ) {
-            coach.skipSpace();
-            content += SingleQuotesString.readSingleQuotes( coach );
+        const i = coach.i;
+        coach.skipSpace();
+        const hasNextSingleQuotes = coach.is("'");
+
+        if ( hasNextSingleQuotes ) {
+            const skippedSpaces = coach.str.slice(i, coach.i);
+
+            if ( /[\n\r]/.test(skippedSpaces) ) {
+                content += SingleQuotesString.readSingleQuotes(coach);
+            }
+        }
+        else {
+            coach.i = i;
         }
 
         return content;
