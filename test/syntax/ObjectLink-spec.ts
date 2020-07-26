@@ -143,11 +143,13 @@ describe("ObjectLink", () => {
 
 
         assert.deepEqual( objectLink.first().toJSON(), {
-            word: "schema"
+            word: "schema",
+            content: null
         });
 
         assert.deepEqual( objectLink.last().toJSON(), {
-            word: "table"
+            word: "table",
+            content: null
         });
     });
     

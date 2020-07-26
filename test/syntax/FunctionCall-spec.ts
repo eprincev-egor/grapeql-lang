@@ -263,7 +263,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "nTile"}
+                    {word: "ntile"}
                 ]
             },
             arguments: [
@@ -292,7 +292,7 @@ describe("FunctionCall", () => {
             function: {
                 star: false,
                 link: [
-                    {word: "nTile"}
+                    {word: "ntile"}
                 ]
             },
             arguments: [

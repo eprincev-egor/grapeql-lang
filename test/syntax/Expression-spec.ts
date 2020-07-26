@@ -979,7 +979,7 @@ describe("Expression", () => {
             {expressionString: "1", primitiveValue: 1},
             {expressionString: "'1'", primitiveValue: "1"},
             {expressionString: "$_$$_$", primitiveValue: ""},
-            {expressionString: "null"},
+            {expressionString: "null", primitiveValue: null},
             {expressionString: "true", primitiveValue: true},
             {expressionString: "false", primitiveValue: false},
             {expressionString: "-4", primitiveValue: -4},
