@@ -15,7 +15,7 @@ describe("WindowDefinitionFrameElement", () => {
     testSyntax(WindowDefinitionFrameElement, {
         str: "unbounded following",
         shouldBe: {
-            unbounded: true
+            unbounded: true,
             following: true
         }
     });
@@ -35,7 +35,7 @@ describe("WindowDefinitionFrameElement", () => {
     testSyntax(WindowDefinitionFrameElement, {
         str: "1 preceding",
         shouldBe: {
-            value: {number: "1"}
+            value: {number: "1"},
             preceding: true
         }
     });
@@ -43,7 +43,7 @@ describe("WindowDefinitionFrameElement", () => {
     testSyntax(WindowDefinitionFrameElement, {
         str: "1 following",
         shouldBe: {
-            value: {number: "1"}
+            value: {number: "1"},
             following: true
         }
     });
