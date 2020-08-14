@@ -59,7 +59,7 @@ export class Expression extends Syntax<Expression> {
 
         // count(*)
         if ( options.availableStar ) {
-            if ( coach.is("*") ) {
+            if ( coach.is("*") && data.elements.length === 0 ) {
                 const elemStar = coach.parse(ColumnLink, {
                     availableStar: options.availableStar
                 });

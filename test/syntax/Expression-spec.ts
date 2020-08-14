@@ -1041,4 +1041,21 @@ describe("Expression", () => {
         coach.expectWord("then");
     });
 
+    testSyntax(Expression, {
+        str: "(country.id*2)",
+        options: {
+            availableStar: true
+        },
+        shouldBe: {
+            elements: [
+                {star: false, link: [
+                    {word: "country"},
+                    {word: "id"}
+                ]},
+                {operator: "*"},
+                {number: "2"}
+            ]
+        }
+    });
+
 });
