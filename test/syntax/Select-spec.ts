@@ -569,6 +569,17 @@ describe("Select", () => {
         }
     });
 
+    testSyntax(Select, {
+        str: `select 
+                distinct on (a, b)
+                a, b, c
+            from table
+        `,
+        shouldBe: {
+            
+        }
+    });
+
     it("sub selects should be inside brackets", () => {
         const coach = new GrapeQLCoach("select (select 1)");
         const select = coach.parse(Select);

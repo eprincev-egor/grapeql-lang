@@ -55,6 +55,10 @@ export class Select extends Syntax<Select> {
     structure() {
         return {
             with: With,
+            distinct: Types.Boolean,
+            distinctOn: Types.Array({
+                element: Expression
+            }),
             columns: Types.Array({
                 element: Column
             }),
@@ -107,6 +111,27 @@ export class Select extends Syntax<Select> {
         //         this.returningValue = true;
         //     }
         // }
+
+        if ( coach.isWord("distinct") ) {
+            coach.expectWord("distinct");
+            
+            if ( coach.isWord("on") ) {
+                coach.expectWord("on");
+                
+                coach.skipSpace();
+                coach.expect("(");
+                coach.skipSpace();
+
+                data.distinctOn = coach.parseComma(Expression);
+
+                coach.skipSpace();
+                coach.expect(")");
+                coach.skipSpace();
+            }
+            else {
+                data.distinct = true;
+            }
+        }
         
         this.parseColumns(coach, data);
 
@@ -361,7 +386,16 @@ export class Select extends Syntax<Select> {
         //         out += " value ";
         //     }
         // }
-        
+
+        if ( data.distinctOn ) {
+            out += " distinct on (";
+            out += data.distinctOn.map((item) => item.toString()).join(", ");
+            out += ")";
+        }
+        else if ( data.distinct ) {
+            out += " distinct";
+        }
+
         if ( data.columns ) {
             out += "\n";
             out += data.columns.map((item) => 
