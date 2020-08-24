@@ -352,7 +352,7 @@ export class Select extends Syntax<Select> {
             out += " ";
         }
 
-        out += "select ";
+        out += "select";
         // if ( !options.pg ) {
         //     if ( this.returningObject ) {
         //         out += " row ";
@@ -363,54 +363,55 @@ export class Select extends Syntax<Select> {
         // }
         
         if ( data.columns ) {
-            out += data.columns.map((item) => item.toString()).join(", ");
-            out += " ";
+            out += "\n";
+            out += data.columns.map((item) => 
+                "    " + item.toString()
+            ).join(",\n");
         }
 
         if ( data.into ) {
-            out += "into ";
+            out += "\ninto ";
             out += data.into.map((item) => item.toString()).join(", ");
-            out += " ";
         }
 
         if ( data.from ) {
-            out += "from ";
+            out += "\nfrom ";
             out += data.from.map((item) => item.toString()).join(", ");
-            out += " ";
         }
 
         if ( data.where ) {
-            out += "where ";
-            out += data.where.toString();
-            out += " ";
+            out += "\nwhere\n";
+            out += data.where.toString({
+                parentSpace: "    "
+            });
         }
 
         if ( data.window ) {
-            out += "window ";
+            out += "\nwindow ";
             out += data.window.map((item) => item.toString()).join(", ");
             out += " ";
         }
 
         if ( data.groupBy ) {
-            out += "group by ";
+            out += "\ngroup by ";
             out += data.groupBy.map((item) => item.toString()).join(", ");
             out += " ";
         }
 
         if ( data.having ) {
-            out += "having ";
+            out += "\nhaving ";
             out += data.having.toString();
             out += " ";
         }
 
         if ( data.orderBy ) {
-            out += "order by ";
+            out += "\norder by ";
             out += data.orderBy.map((item) => item.toString()).join(", ");
             out += " ";
         }
 
         if ( data.offset !== null ) {
-            out += "offset " + data.offset;
+            out += "\noffset " + data.offset;
 
             if ( data.offsetRows ) {
                 out += " rows";
@@ -423,17 +424,18 @@ export class Select extends Syntax<Select> {
         }
 
         if ( data.limit !== null ) {
-            out += "limit " + data.limit;
+            out += "\nlimit " + data.limit;
             out += " ";
         }
 
         if ( data.fetch ) {
+            out += "\n";
             out += data.fetch;
             out += " ";
         }
 
         if ( data.union ) {
-            out += " ";
+            out += "\n";
             out += data.union.toString();
         }
 

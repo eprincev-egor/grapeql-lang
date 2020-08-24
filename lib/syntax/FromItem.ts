@@ -193,7 +193,7 @@ export class FromItem extends Syntax<FromItem> {
 
         if ( data.joins.length ) {
             data.joins.forEach((join) => {
-                out += " ";
+                out += "\n\n";
                 out += join.toString();
             });
         }

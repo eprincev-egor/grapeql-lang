@@ -356,11 +356,24 @@ export class Expression extends Syntax<Expression> {
         }
     }
     
-    toString() {
+    toString(options = {parentSpace: ""}) {
         const Select = allSyntax.Select as  GrapeQLCoach["syntax"]["Select"];
-        let out = "";
+        let out = options.parentSpace;
 
         this.row.elements.forEach((elem, i) => {
+            if ( elem instanceof Operator ) {
+                const isConditionalOperator = (
+                    elem.get("operator") === "and" ||
+                    elem.get("operator") === "or" 
+                );
+                if ( isConditionalOperator ) {
+                    out += "\n";
+                    out += options.parentSpace + elem.toString();
+                    out += "\n";
+                    out += options.parentSpace.slice(0, -1);
+                    return;
+                }
+            }
             if ( i > 0 ) {
                 out += " ";
             }

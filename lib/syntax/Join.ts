@@ -86,7 +86,10 @@ export class Join extends Syntax<Join> {
         out += this.row.from.toString();
 
         if ( this.row.on ) {
-            out += " on " + this.row.on.toString();
+            out += " on\n" + this.row.on.toString({
+                parentSpace: "    "
+            });
+            out += "\n";
         } else {
             out += " using (" + this.row.using.map((elem) => elem.toString()).join(", ") + ")";
         }
