@@ -1,6 +1,7 @@
-
 import {testSyntax} from "../testSyntax";
 import {Select} from "../../lib/syntax/Select";
+import {GrapeQLCoach} from "../../lib/GrapeQLCoach";
+import assert from "assert";
 
 describe("Select", () => {
 
@@ -566,6 +567,17 @@ describe("Select", () => {
                 }
             ]
         }
+    });
+
+    it("sub selects should be inside brackets", () => {
+        const coach = new GrapeQLCoach("select (select 1)");
+        const select = coach.parse(Select);
+        const actualSQL = select.toString();
+
+        assert.ok(
+            /^\s*select\s+\(\s*select\s+1\s*\)\s*$/i.test(actualSQL),
+            "actual: " + actualSQL
+        );
     });
 
 });

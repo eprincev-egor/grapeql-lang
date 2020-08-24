@@ -1,5 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
+import allSyntax from "../allSyntax";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import {ColumnLink} from "./ColumnLink";
 import {DataType} from "./DataType";
@@ -356,6 +357,7 @@ export class Expression extends Syntax<Expression> {
     }
     
     toString() {
+        const Select = allSyntax.Select as  GrapeQLCoach["syntax"]["Select"];
         let out = "";
 
         this.row.elements.forEach((elem, i) => {
@@ -363,7 +365,7 @@ export class Expression extends Syntax<Expression> {
                 out += " ";
             }
 
-            if ( elem instanceof Expression ) {
+            if ( elem instanceof Expression || elem instanceof Select ) {
                 out += "( ";
                 out += elem.toString();
                 out += " )";
