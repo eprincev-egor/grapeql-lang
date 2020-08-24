@@ -32,11 +32,10 @@ export class Extract extends Syntax<Extract> {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
         
         return {
-            field: Types.String({
+            extract: Types.String({
                 enum: extractFields
             }),
-            type: DataType,
-            source: Expression
+            from: Expression
         };
     }
 
@@ -47,20 +46,15 @@ export class Extract extends Syntax<Extract> {
         coach.expect("(");
         coach.skipSpace();
         
-        data.field = coach.readWord();
+        data.extract = coach.readWord();
         
-        if ( !extractFields.includes(data.field) ) {
-            coach.throwError("unrecognized extract field: " + data.field);
+        if ( !extractFields.includes(data.extract) ) {
+            coach.throwError("unrecognized extract field: " + data.extract);
         }
 
         coach.expectWord("from");
         
-        if ( coach.is(DataType) ) {
-            data.type = coach.parse(DataType);
-            coach.skipSpace();
-        }
-
-        data.source = coach.parse(Expression);
+        data.from = coach.parse(Expression);
         
         coach.expect(")");
     }
@@ -70,14 +64,9 @@ export class Extract extends Syntax<Extract> {
     }
     
     toString() {
-        let out = `extract( ${this.row.field} from `;
+        let out = `extract( ${this.row.extract} from `;
 
-        if ( this.row.type ) {
-            out += this.row.type.toString();
-            out += " ";
-        }
-
-        out += this.row.source.toString();
+        out += this.row.from.toString();
 
         out += ")";
         return out;

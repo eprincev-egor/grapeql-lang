@@ -188,8 +188,8 @@ describe("ExpressionElement", () => {
         str: "extract(week FROM $$2000-12-16 12:21:13$$)",
         shouldBe: {
             element: {
-                field: "week",
-                source: {elements: [
+                extract: "week",
+                from: {elements: [
                     {content: "2000-12-16 12:21:13"}
                 ]}
             }

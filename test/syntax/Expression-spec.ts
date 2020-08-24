@@ -250,14 +250,15 @@ describe("Expression", () => {
     });
 
     testSyntax(Expression, {
-        str: "extract( day from timestamp '2000-12-16 12:21:13' )",
+        str: "extract( day from '2000-12-16 12:21:13'::timestamp )",
         shouldBe: {
             elements: [
                 {
-                    field: "day",
-                    type: {type: "timestamp"},
-                    source: {elements: [
-                        {content: "2000-12-16 12:21:13"}
+                    extract: "day",
+                    from: {elements: [
+                        {content: "2000-12-16 12:21:13"},
+                        {operator: "::"},
+                        {type: "timestamp"}
                     ]}
                 }
             ]
@@ -1054,6 +1055,53 @@ describe("Expression", () => {
                 ]},
                 {operator: "*"},
                 {number: "2"}
+            ]
+        }
+    });
+    
+    testSyntax(Expression, {
+        str: `extract( epoch from
+                coalesce(
+                    to_sea_port_arrival_point.actual_departure_date,
+                    now_utc()
+                ) - from_sea_port_arrival_point.actual_date
+            )`,
+        options: {
+            availableStar: true
+        },
+        shouldBe: {
+            elements: [
+                {
+                    extract: "epoch",
+                    from: {elements: [
+                        {
+                            function: {link: [
+                                {word: "coalesce"}
+                            ]},
+                            arguments: [
+                                {elements: [
+                                    {link: [
+                                        {word: "to_sea_port_arrival_point"},
+                                        {word: "actual_departure_date"}
+                                    ]}
+                                ]},
+                                {elements: [
+                                    {
+                                        function: {link: [
+                                            {word: "now_utc"}
+                                        ]},
+                                        arguments: []
+                                    }
+                                ]}
+                            ]
+                        },
+                        {operator: "-"},
+                        {link: [
+                            {word: "from_sea_port_arrival_point"},
+                            {word: "actual_date"}
+                        ]}
+                    ]}
+                }
             ]
         }
     });
