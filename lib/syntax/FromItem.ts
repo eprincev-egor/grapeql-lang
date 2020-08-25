@@ -98,11 +98,43 @@ export class FromItem extends Syntax<FromItem> {
             }
         }
 
-        if ( needAs || coach.isWord("as") ) {
+        if ( coach.isWord("as") ) {
             coach.expectWord("as");
 
             data.as = coach.parse(ObjectName);
         }
+        else if ( coach.is(ObjectName) ) {
+            const i = coach.i;
+            const nextWord = coach.readWord();
+            coach.i = i;
+
+            const isKeyword = [
+                "left",
+                "right",
+                "inner",
+                "full",
+                "join",
+                "on",
+                "using",
+                "order",
+                "where",
+                "having",
+                "limit",
+                "offset",
+                "group",
+                "fetch",
+                "window"
+            ].includes(nextWord);
+
+            if ( !isKeyword ) {
+                data.as = coach.parse(ObjectName);
+            }
+        }
+
+        if ( needAs && !data.as ) {
+            coach.throwError("expected alias for from item");
+        }
+
         
         coach.skipSpace();
 

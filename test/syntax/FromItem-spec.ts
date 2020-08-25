@@ -356,4 +356,308 @@ describe("FromItem", () => {
             }
         }
     });
+
+    testSyntax(FromItem, {
+        str: "public.companies company",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]},
+            as: {word: "company"}
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company left join countries on true",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]},
+            as: {word: "company"},
+            joins: [
+                {
+                    type: "left join",
+                    from: {
+                        joins: [],
+    
+                        table: {star: false, link: [
+                            {word: "countries"}
+                        ]}
+                    },
+                    on: {elements: [
+                        {boolean: true}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company right join countries on true",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]},
+            as: {word: "company"},
+            joins: [
+                {
+                    type: "right join",
+                    from: {
+                        joins: [],
+    
+                        table: {star: false, link: [
+                            {word: "countries"}
+                        ]}
+                    },
+                    on: {elements: [
+                        {boolean: true}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company join countries on true",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]},
+            as: {word: "company"},
+            joins: [
+                {
+                    type: "join",
+                    from: {
+                        joins: [],
+    
+                        table: {star: false, link: [
+                            {word: "countries"}
+                        ]}
+                    },
+                    on: {elements: [
+                        {boolean: true}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company full join countries on true",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]},
+            as: {word: "company"},
+            joins: [
+                {
+                    type: "full join",
+                    from: {
+                        joins: [],
+    
+                        table: {star: false, link: [
+                            {word: "countries"}
+                        ]}
+                    },
+                    on: {elements: [
+                        {boolean: true}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company inner join countries on true",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]},
+            as: {word: "company"},
+            joins: [
+                {
+                    type: "inner join",
+                    from: {
+                        joins: [],
+    
+                        table: {star: false, link: [
+                            {word: "countries"}
+                        ]}
+                    },
+                    on: {elements: [
+                        {boolean: true}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company left join countries country on true",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]},
+            as: {word: "company"},
+            joins: [
+                {
+                    type: "left join",
+                    from: {
+                        joins: [],
+    
+                        table: {star: false, link: [
+                            {word: "countries"}
+                        ]},
+
+                        as: {word: "country"}
+                    },
+                    on: {elements: [
+                        {boolean: true}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company cross join countries country on true",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]},
+            as: {word: "company"},
+            joins: [
+                {
+                    type: "cross join",
+                    from: {
+                        joins: [],
+    
+                        table: {star: false, link: [
+                            {word: "countries"}
+                        ]},
+
+                        as: {word: "country"}
+                    },
+                    on: {elements: [
+                        {boolean: true}
+                    ]}
+                }
+            ]
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company left join countries country using (id)",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]},
+            as: {word: "company"},
+            joins: [
+                {
+                    type: "left join",
+                    from: {
+                        joins: [],
+    
+                        table: {star: false, link: [
+                            {word: "countries"}
+                        ]},
+
+                        as: {word: "country"}
+                    },
+                    using: [{word: "id"}]
+                }
+            ]
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies order by id",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]}
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company where id > 3",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]}
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company having id > 3",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]}
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company limit 1",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]}
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies company offset 3",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]}
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies union select 1",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]}
+        }
+    });
+
+    testSyntax(FromItem, {
+        str: "public.companies intersect select 1",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]}
+        }
+    });
+    
+    testSyntax(FromItem, {
+        str: "public.companies except select 1",
+        shouldBe: {
+            table: {star: false, link: [
+                {word: "public"},
+                {word: "companies"}
+            ]}
+        }
+    });
+
 });
