@@ -23,16 +23,29 @@ export class Substring extends Syntax<Substring> {
         coach.skipSpace();
 
         data.str = coach.parse(Expression);
+        coach.skipSpace();
         
         if ( coach.isWord("from") ) {
             coach.expectWord("from");
             
             data.from = coach.parse(Expression);
         }
+        else if ( coach.is(",") ) {
+            coach.expect(",");
+            coach.skipSpace();
+
+            data.from = coach.parse(Expression);
+        }
 
         if ( coach.isWord("for") ) {
             coach.expectWord("for");
             
+            data.for = coach.parse(Expression);
+        }
+        else if ( coach.is(",") ) {
+            coach.expect(",");
+            coach.skipSpace();
+
             data.for = coach.parse(Expression);
         }
 

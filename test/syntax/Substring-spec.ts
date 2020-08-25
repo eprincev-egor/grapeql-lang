@@ -43,4 +43,31 @@ describe("Substring", () => {
         }
     });
 
+    testSyntax(Substring, {
+        str: "substring('123456', 2, 3)",
+        shouldBe: {
+            str: {elements: [{
+                content: "123456"
+            }]},
+            from: {elements: [{
+                number: "2"
+            }]},
+            for: {elements: [{
+                number: "3"
+            }]}
+        }
+    });
+
+    testSyntax(Substring, {
+        str: "substring('123456', 2)",
+        shouldBe: {
+            str: {elements: [{
+                content: "123456"
+            }]},
+            from: {elements: [{
+                number: "2"
+            }]}
+        }
+    });
+
 });
