@@ -3,7 +3,6 @@
 import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
-import {DataType} from "./DataType";
 
 const extractFields = [
     "century",
@@ -13,9 +12,9 @@ const extractFields = [
     "doy",
     "epoch",
     "hour",
-    "microseconds",
+    "microsecond",
     "millennium",
-    "milliseconds",
+    "millisecond",
     "minute",
     "month",
     "quarter",
@@ -26,6 +25,20 @@ const extractFields = [
     "week",
     "year"
 ];
+const extractFieldsAliases = {
+    centuries: "century",
+    days: "day",
+    decades: "decade",
+    hours: "hour",
+    microseconds: "microsecond",
+    millenniums: "millennium",
+    milliseconds: "millisecond",
+    minutes: "minute",
+    months: "month",
+    seconds: "second",
+    weeks: "week",
+    years: "year"
+};
 
 export class Extract extends Syntax<Extract> {
     structure() {
@@ -47,6 +60,11 @@ export class Extract extends Syntax<Extract> {
         coach.skipSpace();
         
         data.extract = coach.readWord();
+
+        // centuries => century
+        if ( data.extract in extractFieldsAliases ) {
+            data.extract = extractFieldsAliases[data.extract];
+        }
         
         if ( !extractFields.includes(data.extract) ) {
             coach.throwError("unrecognized extract field: " + data.extract);

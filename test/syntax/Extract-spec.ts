@@ -109,7 +109,17 @@ describe("Extract", () => {
     testSyntax(Extract, {
         str: "extract(microseconds FROM '2000-12-16 12:21:13')",
         shouldBe: {
-            extract: "microseconds",
+            extract: "microsecond",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(microsecond FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "microsecond",
             from: {elements: [
                 {content: "2000-12-16 12:21:13"}
             ]}
@@ -129,7 +139,17 @@ describe("Extract", () => {
     testSyntax(Extract, {
         str: "extract(milliseconds FROM '2000-12-16 12:21:13')",
         shouldBe: {
-            extract: "milliseconds",
+            extract: "millisecond",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(millisecond FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "millisecond",
             from: {elements: [
                 {content: "2000-12-16 12:21:13"}
             ]}
@@ -230,4 +250,95 @@ describe("Extract", () => {
         str: "extract(wrong FROM '2000-12-16 12:21:13')",
         error: /unrecognized extract field/
     });
+
+    testSyntax(Extract, {
+        str: "extract(days FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "day",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(weeks FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "week",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(hours FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "hour",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(seconds FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "second",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(minutes FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "minute",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(months FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "month",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(decades FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "decade",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(centuries FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "century",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
+    testSyntax(Extract, {
+        str: "extract(millenniums FROM '2000-12-16 12:21:13')",
+        shouldBe: {
+            extract: "millennium",
+            from: {elements: [
+                {content: "2000-12-16 12:21:13"}
+            ]}
+        }
+    });
+
 });
