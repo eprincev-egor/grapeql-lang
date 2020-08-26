@@ -61,4 +61,38 @@ describe("CaseWhen", () => {
         }
     });
 
+    testSyntax(CaseWhen, {
+        str: `case
+            when
+                some_field ISNULL
+                or
+                other_field isnull
+            then 1
+            else 0
+        end`,
+        shouldBe: {
+            case: [
+                {
+                    when: {elements: [
+                        {link: [
+                            {word: "some_field"}
+                        ]},
+                        {operator: "isnull"},
+                        {operator: "or"},
+                        {link: [
+                            {word: "other_field"}
+                        ]},
+                        {operator: "isnull"}
+                    ]},
+                    then: {elements: [
+                        {number: "1"}
+                    ]}
+                }
+            ],
+            else: {elements: [
+                {number: "0"}
+            ]}
+        }
+    });
+
 });

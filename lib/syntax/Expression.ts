@@ -81,8 +81,18 @@ export class Expression extends Syntax<Expression> {
         data.elements = data.elements.concat( operators );
 
 
-        // 1::bigint
         const lastOperator = operators.slice(-1)[0];
+        
+        const lastOperatorIsPostOperator = (
+            lastOperator &&
+            lastOperator.get("operator") === "isnull"
+        );
+        if ( lastOperatorIsPostOperator ) {
+            return;
+        }
+
+
+        // 1::bigint
         const isToType = (
             lastOperator &&
             lastOperator.get("operator") === "::"
