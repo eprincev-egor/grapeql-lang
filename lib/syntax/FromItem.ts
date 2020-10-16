@@ -123,7 +123,10 @@ export class FromItem extends Syntax<FromItem> {
                 "offset",
                 "group",
                 "fetch",
-                "window"
+                "window",
+                "union",
+                "except",
+                "intersect"
             ].includes(nextWord);
 
             if ( !isKeyword ) {

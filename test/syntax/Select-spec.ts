@@ -576,7 +576,177 @@ describe("Select", () => {
             from table
         `,
         shouldBe: {
-            
+            distinctOn: [
+                {elements: [
+                    {link: [{word: "a"}]}
+                ]},
+                {elements: [
+                    {link: [{word: "b"}]}
+                ]}
+            ],
+            columns: [
+                {expression: {elements: [
+                    {link: [{word: "a"}]}
+                ]}},
+                {expression: {elements: [
+                    {link: [{word: "b"}]}
+                ]}},
+                {expression: {elements: [
+                    {link: [{word: "c"}]}
+                ]}}
+            ],
+            from: [{
+                table: {link: [
+                    {word: "table"}
+                ]}
+            }]
+        }
+    });
+
+    testSyntax(Select, {
+        str: `select first( union_query.name )
+        from (
+            select companies.name
+            from companies
+
+            union
+
+            select companies.note
+            from companies
+        ) as union_query
+        `,
+        shouldBe: {
+            from: [{
+                as: {word: "union_query"},
+                select: {
+                    columns: [{
+                        expression: {elements: [
+                            {link: [
+                                {word: "companies"},
+                                {word: "name"}
+                            ]}
+                        ]}
+                    }],
+                    from: [{
+                        table: {link: [
+                            {word: "companies"}
+                        ]}
+                    }],
+                    union: {union: true, select: {
+                        columns: [{
+                            expression: {elements: [
+                                {link: [
+                                    {word: "companies"},
+                                    {word: "note"}
+                                ]}
+                            ]}
+                        }],
+                        from: [{
+                            table: {link: [
+                                {word: "companies"}
+                            ]}
+                        }]
+                    }}
+                }
+            }]
+        }
+    });
+
+    testSyntax(Select, {
+        str: `select first( union_query.name )
+        from (
+            select companies.name
+            from companies
+
+            intersect
+
+            select companies.note
+            from companies
+        ) as union_query
+        `,
+        shouldBe: {
+            from: [{
+                as: {word: "union_query"},
+                select: {
+                    columns: [{
+                        expression: {elements: [
+                            {link: [
+                                {word: "companies"},
+                                {word: "name"}
+                            ]}
+                        ]}
+                    }],
+                    from: [{
+                        table: {link: [
+                            {word: "companies"}
+                        ]}
+                    }],
+                    union: {intersect: true, select: {
+                        columns: [{
+                            expression: {elements: [
+                                {link: [
+                                    {word: "companies"},
+                                    {word: "note"}
+                                ]}
+                            ]}
+                        }],
+                        from: [{
+                            table: {link: [
+                                {word: "companies"}
+                            ]}
+                        }]
+                    }}
+                }
+            }]
+        }
+    });
+
+    testSyntax(Select, {
+        str: `select first( union_query.name )
+        from (
+            select companies.name
+            from companies
+
+            except
+
+            select companies.note
+            from companies
+        ) as union_query
+        `,
+        shouldBe: {
+            from: [{
+                as: {word: "union_query"},
+                select: {
+                    columns: [{
+                        expression: {elements: [
+                            {link: [
+                                {word: "companies"},
+                                {word: "name"}
+                            ]}
+                        ]}
+                    }],
+                    from: [{
+                        table: {link: [
+                            {word: "companies"}
+                        ]}
+                    }],
+                    union: {except: true, select: {
+                        columns: [{
+                            expression: {elements: [
+                                {link: [
+                                    {word: "companies"},
+                                    {word: "note"}
+                                ]}
+                            ]}
+                        }],
+                        from: [{
+                            table: {link: [
+                                {word: "companies"}
+                            ]}
+                        }]
+                    }}
+                }
+            }]
         }
     });
 
