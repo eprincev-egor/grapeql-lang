@@ -480,6 +480,11 @@ describe("DataType", () => {
         }
     });
 
+    testSyntax(DataType, {
+        str: "record",
+        shouldBe: {type: "record"}
+    });
+
     it("dataType.isNumber()", () => {
         const numberTypes = [
             "real",

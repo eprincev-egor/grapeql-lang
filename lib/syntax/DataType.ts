@@ -81,7 +81,8 @@ const types = [
     "regdictionary",
     "date",
     "trigger",
-    "void"
+    "void",
+    "record"
 ];
 
 const firstWords = {};
