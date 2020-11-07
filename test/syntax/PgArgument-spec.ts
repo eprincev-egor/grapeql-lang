@@ -56,6 +56,14 @@ describe("PgArgument", () => {
     });
     
     testSyntax(PgArgument, {
+        str: "order_row \"order\"",
+        shouldBe: {
+            name: "order_row",
+            type: "public.order"
+        }
+    });
+    
+    testSyntax(PgArgument, {
         str: "company company",
         shouldBe: {
             name: "company",

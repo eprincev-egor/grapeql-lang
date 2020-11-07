@@ -38,7 +38,7 @@ export class PgArgument extends Syntax<PgArgument> {
         data.name = null;
         data.type = coach.parseType();
 
-        if ( coach.is(/\s*\w+/i) ) {
+        if ( coach.is(/\s*"?\w+/i) ) {
             data.name = data.type;
             
             // if dataType unknown type

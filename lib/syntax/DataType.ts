@@ -113,14 +113,6 @@ export class DataType extends Syntax<DataType> {
     }
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
-        if ( coach.is("\"") ) {
-            coach.i++;
-            coach.expectWord("char");
-            coach.expect("\"");
-            data.type = "\"char\"";
-            return;
-        }
-        
         const position = coach.i;
         const word = coach.readWord().toLowerCase();
         const availableTypes = firstWords[ word ] || [];
@@ -147,7 +139,13 @@ export class DataType extends Syntax<DataType> {
         
         if ( !data.type ) {
             const schemaName = coach.parse(SchemaName);
-            data.type = schemaName.toString();
+
+            if ( schemaName.toString() === "public.char" ) {
+                data.type = "\"char\"";
+            }
+            else {
+                data.type = schemaName.toString();
+            }
         }
         
         this.parseArrayType(coach, data);
