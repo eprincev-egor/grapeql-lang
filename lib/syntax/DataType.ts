@@ -82,7 +82,9 @@ const types = [
     "date",
     "trigger",
     "void",
-    "record"
+    "record",
+    "anyarray",
+    "anyelement"
 ];
 
 const firstWords = {};

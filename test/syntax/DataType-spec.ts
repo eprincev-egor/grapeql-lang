@@ -485,6 +485,20 @@ describe("DataType", () => {
         shouldBe: {type: "record"}
     });
 
+    testSyntax(DataType, {
+        str: "anyarray",
+        shouldBe: {
+            type: "anyarray"
+        }
+    });
+
+    testSyntax(DataType, {
+        str: "anyelement",
+        shouldBe: {
+            type: "anyelement"
+        }
+    });
+
     it("dataType.isNumber()", () => {
         const numberTypes = [
             "real",
