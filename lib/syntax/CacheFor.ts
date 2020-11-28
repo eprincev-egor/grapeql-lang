@@ -3,6 +3,7 @@ import {Syntax, Types} from "lang-coach";
 import {TableLink} from "./TableLink";
 import {ObjectName} from "./ObjectName";
 import {Select} from "./Select";
+import {WithoutTriggersOn} from "./WithoutTriggersOn";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 
 /*
@@ -13,6 +14,7 @@ cache totals for company (
     where
         orders.id_client = company.id
 )
+[without triggers on TABLE] [ *]
  */
 
 export class CacheFor extends Syntax<CacheFor> {
@@ -21,7 +23,10 @@ export class CacheFor extends Syntax<CacheFor> {
             for: TableLink,
             name: ObjectName,
             as: ObjectName,
-            cache: Select
+            cache: Select,
+            withoutTriggers: Types.Array({
+                element: TableLink
+            })
         };
     }
 
@@ -50,6 +55,15 @@ export class CacheFor extends Syntax<CacheFor> {
 
         coach.skipSpace();
         coach.expect(")");
+
+        coach.skipSpace();
+        if ( coach.isWord("without") ) {
+            const withoutTriggers = coach.parseChain(WithoutTriggersOn);
+            const withoutTriggersOnTables = withoutTriggers.map((withoutTrigger) =>
+                withoutTrigger.get("onTable")
+            );
+            data.withoutTriggers = withoutTriggersOnTables;
+        }
     }
 
     is(coach: GrapeQLCoach) {
@@ -74,6 +88,13 @@ export class CacheFor extends Syntax<CacheFor> {
         out += " ( ";
         out += data.cache.toString();
         out += " )";
+
+        if ( data.withoutTriggers ) {
+            out += " ";
+            out += data.withoutTriggers.map((onTable) =>
+                `without triggers on ${onTable}`
+            ).join(" ");
+        }
 
         return out;
     }

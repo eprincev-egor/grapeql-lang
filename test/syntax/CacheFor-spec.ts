@@ -155,4 +155,142 @@ describe("CacheFor", () => {
         }
     });
 
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+            select
+
+              string_agg(distinct order_type.name, ', ') as orders_types_names,
+              string_agg(distinct country.name, ', ') as orders_countries_names
+
+            from orders
+
+            left join order_type on
+              order_type.id = orders.id_order_type
+            
+            left join countries as country on
+                country.id = orders.id_country
+          )
+          without triggers on order_type
+          without triggers on country`,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            cache: {
+                columns: [
+                    {
+                        expression: {elements: [
+                            {
+                                function: {
+                                    star: false,
+                                    link: [
+                                        {word: "string_agg"}
+                                    ]
+                                },
+                                distinct: true,
+                                arguments: [
+                                    {elements: [
+                                        {star: false, link: [
+                                            {word: "order_type"},
+                                            {word: "name"}
+                                        ]}
+                                    ]},
+                                    {elements: [
+                                        {content: ", "}
+                                    ]}
+                                ]
+                            }
+                        ]},
+                        as: {word: "orders_types_names"}
+                    },
+                    {
+                        expression: {elements: [
+                            {
+                                function: {
+                                    star: false,
+                                    link: [
+                                        {word: "string_agg"}
+                                    ]
+                                },
+                                distinct: true,
+                                arguments: [
+                                    {elements: [
+                                        {star: false, link: [
+                                            {word: "country"},
+                                            {word: "name"}
+                                        ]}
+                                    ]},
+                                    {elements: [
+                                        {content: ", "}
+                                    ]}
+                                ]
+                            }
+                        ]},
+                        as: {word: "orders_countries_names"}
+                    }
+                ],
+                from: [
+                    {
+                        table: {star: false, link: [
+                            {word: "orders"}
+                        ]},
+                        joins: [
+                            {
+                                type: "left join",
+                                from: {
+                                    joins: [],
+                
+                                    table: {star: false, link: [
+                                        {word: "order_type"}
+                                    ]}
+                                },
+                                on: {elements: [
+                                    {link: [
+                                        {word: "order_type"},
+                                        {word: "id"}
+                                    ]},
+                                    {operator: "="},
+                                    {link: [
+                                        {word: "orders"},
+                                        {word: "id_order_type"}
+                                    ]}
+                                ]}
+                            },
+                            {
+                                type: "left join",
+                                from: {
+                                    joins: [],
+                
+                                    table: {star: false, link: [
+                                        {word: "countries"}
+                                    ]},
+                                    as: {word: "country"}
+                                },
+                                on: {elements: [
+                                    {link: [
+                                        {word: "country"},
+                                        {word: "id"}
+                                    ]},
+                                    {operator: "="},
+                                    {link: [
+                                        {word: "orders"},
+                                        {word: "id_country"}
+                                    ]}
+                                ]}
+                            }
+                        ]
+                    }
+                ]
+            },
+            withoutTriggers: [
+                {link: [
+                    {word: "order_type"}
+                ]},
+                {link: [
+                    {word: "country"}
+                ]}
+            ]
+        }
+    });
 });
