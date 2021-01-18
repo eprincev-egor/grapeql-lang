@@ -169,7 +169,7 @@ export class CreateTrigger extends Syntax<CreateTrigger> {
         }
 
         coach.expectWord("execute");
-        coach.expect(/function|procedure/);
+        coach.expect(/function|procedure/i);
 
         data.procedure = coach.parse(FunctionIdentify);
 

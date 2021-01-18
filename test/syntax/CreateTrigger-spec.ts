@@ -59,6 +59,56 @@ describe("CreateTrigger", () => {
         str: `create trigger test 
             before insert
             on public.company
+            for each row
+            execute FUNCTION public.test()
+        `,
+        shouldBe: {
+            name: "test",
+            table: {
+                schema: "public",
+                name: "company"
+            },
+            
+            before: true,
+            insert: true,
+
+            procedure: {
+                args: [],
+                schema: "public",
+                name: "test"
+            }
+        }
+    });
+
+    testSyntax(CreateTrigger, {
+        str: `create trigger test 
+            before insert
+            on public.company
+            for each row
+            execute PROcedure public.test()
+        `,
+        shouldBe: {
+            name: "test",
+            table: {
+                schema: "public",
+                name: "company"
+            },
+            
+            before: true,
+            insert: true,
+
+            procedure: {
+                args: [],
+                schema: "public",
+                name: "test"
+            }
+        }
+    });
+
+    testSyntax(CreateTrigger, {
+        str: `create trigger test 
+            before insert
+            on public.company
             for each STATEMENT
             execute procedure public.test()
         `,
