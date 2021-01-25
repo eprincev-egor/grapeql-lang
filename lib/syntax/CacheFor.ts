@@ -5,6 +5,7 @@ import {ObjectName} from "./ObjectName";
 import {Select} from "./Select";
 import {WithoutTriggersOn} from "./WithoutTriggersOn";
 import {GrapeQLCoach} from "../GrapeQLCoach";
+import { CacheIndex } from "./CacheIndex";
 
 /*
 cache totals for company (
@@ -15,6 +16,7 @@ cache totals for company (
         orders.id_client = company.id
 )
 [without triggers on TABLE] [ *]
+[index INDEX_TYPE on ( { COLUMN_NAME | ( EXPRESSION ) } [, ...] ) ] [ *]
  */
 
 export class CacheFor extends Syntax<CacheFor> {
@@ -26,6 +28,9 @@ export class CacheFor extends Syntax<CacheFor> {
             cache: Select,
             withoutTriggers: Types.Array({
                 element: TableLink
+            }),
+            indexes: Types.Array({
+                element: CacheIndex
             })
         };
     }
@@ -64,6 +69,10 @@ export class CacheFor extends Syntax<CacheFor> {
             );
             data.withoutTriggers = withoutTriggersOnTables;
         }
+
+        if ( coach.is(CacheIndex) ) {
+            data.indexes = coach.parseChain(CacheIndex);
+        }
     }
 
     is(coach: GrapeQLCoach) {
@@ -94,6 +103,11 @@ export class CacheFor extends Syntax<CacheFor> {
             out += data.withoutTriggers.map((onTable) =>
                 `without triggers on ${onTable}`
             ).join(" ");
+        }
+
+        if ( data.indexes ) {
+            out += " ";
+            out += data.indexes.map(cacheIndex => cacheIndex.toString()).join(" ");
         }
 
         return out;

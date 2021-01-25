@@ -293,4 +293,140 @@ describe("CacheFor", () => {
             ]
         }
     });
+
+
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+                select
+                    min( orders.id ) as min_order_id,
+                    max( orders.id ) as max_order_id,
+                    array_agg( orders.id ) as orders_ids
+                from orders
+                where
+                    orders.id_client = companies.id
+          )
+          index gin on (orders_ids)
+          index btree on (min_order_id, max_order_id)
+          index gin on ((ARRAY[min_order_id, max_order_id]::integer[]))`,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            cache: {
+                columns: [
+                    {
+                        expression: {elements: [
+                            {
+                                function: {
+                                    star: false,
+                                    link: [
+                                        {word: "min"}
+                                    ]
+                                },
+                                arguments: [
+                                    {elements: [
+                                        {star: false, link: [
+                                            {word: "orders"},
+                                            {word: "id"}
+                                        ]}
+                                    ]}
+                                ]
+                            }
+                        ]},
+                        as: {word: "min_order_id"}
+                    },
+                    {
+                        expression: {elements: [
+                            {
+                                function: {
+                                    star: false,
+                                    link: [
+                                        {word: "max"}
+                                    ]
+                                },
+                                arguments: [
+                                    {elements: [
+                                        {star: false, link: [
+                                            {word: "orders"},
+                                            {word: "id"}
+                                        ]}
+                                    ]}
+                                ]
+                            }
+                        ]},
+                        as: {word: "max_order_id"}
+                    },
+                    {
+                        expression: {elements: [
+                            {
+                                function: {
+                                    star: false,
+                                    link: [
+                                        {word: "array_agg"}
+                                    ]
+                                },
+                                arguments: [
+                                    {elements: [
+                                        {star: false, link: [
+                                            {word: "orders"},
+                                            {word: "id"}
+                                        ]}
+                                    ]}
+                                ]
+                            }
+                        ]},
+                        as: {word: "orders_ids"}
+                    }
+                ],
+                from: [
+                    {
+                        table: {star: false, link: [
+                            {word: "orders"}
+                        ]}
+                    }
+                ],
+                where: {elements: [
+                    {star: false, link: [
+                        {word: "orders"},
+                        {word: "id_client"}
+                    ]},
+                    {operator: "="},
+                    {star: false, link: [
+                        {word: "companies"},
+                        {word: "id"}
+                    ]}
+                ]}
+            },
+            indexes: [
+                {
+                    index: "gin",
+                    on: [{word: "orders_ids"}]
+                },
+                {
+                    index: "btree",
+                    on: [{word: "min_order_id"}, {word: "max_order_id"}]
+                },
+                {
+                    index: "gin",
+                    on: [{elements: [
+                        {array: [
+                            {elements: [
+                                {star: false, link: [
+                                    {word: "min_order_id"}
+                                ]}
+                            ]},
+                            {elements: [
+                                {star: false, link: [
+                                    {word: "max_order_id"}
+                                ]}
+                            ]}
+                        ]},
+                        {operator: "::"},
+                        {type: "integer[]"}
+                    ]}]
+                }
+            ]
+        }
+    });
 });
