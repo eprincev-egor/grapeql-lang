@@ -36,6 +36,18 @@ export class CacheIndex extends Syntax<CacheIndex> {
             if ( coach.is(ObjectName) ) {
                 const name = coach.parse(ObjectName);
                 on.push( name );
+
+                coach.skipSpace();
+                if ( coach.isWord("desc") || coach.isWord("asc") ) {
+                    coach.readWord();
+                    coach.skipSpace();
+                    
+                    if ( coach.isWord("nulls") ) {
+                        coach.readWord();
+                        coach.skipSpace();
+                        coach.readWord();
+                    }
+                }
             }
             else if ( coach.is("(") ) {
                 coach.expect("(");
