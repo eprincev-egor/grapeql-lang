@@ -455,4 +455,29 @@ describe("CacheFor", () => {
             ]
         }
     });
+
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+                select
+                    min( orders.id ) as min_order_id,
+                    max( orders.id ) as max_order_id,
+                    array_agg( orders.id ) as orders_ids
+                from orders
+                where
+                    orders.id_client = companies.id
+          )
+          index btree on (max_order_id NULLS FIRST)`,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            indexes: [
+                {
+                    index: "btree",
+                    on: [{word: "max_order_id"}]
+                }
+            ]
+        }
+    });
 });

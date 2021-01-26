@@ -41,12 +41,12 @@ export class CacheIndex extends Syntax<CacheIndex> {
                 if ( coach.isWord("desc") || coach.isWord("asc") ) {
                     coach.readWord();
                     coach.skipSpace();
-                    
-                    if ( coach.isWord("nulls") ) {
-                        coach.readWord();
-                        coach.skipSpace();
-                        coach.readWord();
-                    }
+                }
+
+                if ( coach.isWord("nulls") ) {
+                    coach.readWord();
+                    coach.skipSpace();
+                    coach.readWord();
                 }
             }
             else if ( coach.is("(") ) {
