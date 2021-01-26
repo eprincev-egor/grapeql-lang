@@ -480,4 +480,68 @@ describe("CacheFor", () => {
             ]
         }
     });
+
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+                select
+                    array_agg( orders.id )::json as orders_ids
+                from orders
+                where
+                    orders.id_client = companies.id
+          )
+          index btree on (orders_ids jsonb_path_ops)`,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            indexes: [
+                {
+                    index: "btree",
+                    on: [{word: "orders_ids"}]
+                }
+            ]
+        }
+    });
+
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+                select
+                    last( orders.name )::json as last_order_name
+                from orders
+                where
+                    orders.id_client = companies.id
+          )
+          index btree on (lower(last_order_name))`,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            indexes: [
+                {
+                    index: "btree",
+                    on: [{elements: [
+                        {
+                            function: {
+                                star: false,
+                                link: [
+                                    {word: "lower"}
+                                ]
+                            },
+                            arguments: [
+                                {elements: [
+                                    {
+                                        link: [
+                                            {word: "last_order_name"}
+                                        ]
+                                    }
+                                ]}
+                            ]
+                        }
+                    ]}]
+                }
+            ]
+        }
+    });
 });

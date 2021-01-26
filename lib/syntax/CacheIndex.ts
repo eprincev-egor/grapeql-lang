@@ -1,6 +1,7 @@
 import { Syntax, Types } from "lang-coach";
 import { GrapeQLCoach } from "../GrapeQLCoach";
 import { ObjectName } from "./ObjectName";
+import { ObjectLink } from "./ObjectLink";
 import { Expression } from "./Expression";
 
 // index INDEX_TYPE on ( { COLUMN_NAME | ( EXPRESSION ) } [, ...] ) 
@@ -32,32 +33,37 @@ export class CacheIndex extends Syntax<CacheIndex> {
         const on: any[] = [];
         do {
             coach.skipSpace();
+            const expression = coach.parse(Expression);
+            const elements = expression.get("elements") || [];
 
-            if ( coach.is(ObjectName) ) {
-                const name = coach.parse(ObjectName);
-                on.push( name );
-
-                coach.skipSpace();
-                if ( coach.isWord("desc") || coach.isWord("asc") ) {
-                    coach.readWord();
-                    coach.skipSpace();
-                }
-
-                if ( coach.isWord("nulls") ) {
-                    coach.readWord();
-                    coach.skipSpace();
-                    coach.readWord();
-                }
-            }
-            else if ( coach.is("(") ) {
-                coach.expect("(");
-                coach.skipSpace();
-
-                const expression = coach.parse(Expression);
-                on.push( expression );
+            const link = elements[0];
+            if (
+                elements.length === 1 && 
+                link instanceof ObjectLink
+            ) {
+                const columnName = link.last();
+                on.push(columnName);
             }
             else {
-                coach.throwError("expected column name or (expression)")
+                on.push(expression);
+            }
+
+
+            coach.skipSpace();
+            if ( coach.isWord("desc") || coach.isWord("asc") ) {
+                coach.readWord();
+                coach.skipSpace();
+            }
+
+            if ( coach.isWord("nulls") ) {
+                coach.readWord();
+                coach.skipSpace();
+                coach.readWord();
+            }
+
+            if ( coach.isWord("jsonb_path_ops") || coach.isWord("json_path_ops") ) {
+                coach.readWord();
+                coach.skipSpace();
             }
 
             coach.skipSpace();
@@ -69,7 +75,7 @@ export class CacheIndex extends Syntax<CacheIndex> {
                 break;
             }
         }
-        while ( coach.is(ObjectName) || coach.is("(") );
+        while ( coach.is(Expression) );
 
         coach.expect(")");
 
@@ -84,14 +90,9 @@ export class CacheIndex extends Syntax<CacheIndex> {
         let sql = "index " + this.row.index + " on (";
 
         const on = (this.row.on || []);
-        sql += on.map(elem => {
-            if ( elem instanceof ObjectName ) {
-                return elem.toString();
-            }
-            else {
-                return `(${ elem.toString() })`;
-            }
-        }).join(", ");
+        sql += on.map(elem => 
+            elem.toString()
+        ).join(", ");
 
         sql += ")";
         return sql;
