@@ -61,7 +61,17 @@ export class CacheIndex extends Syntax<CacheIndex> {
                 coach.readWord();
             }
 
-            if ( coach.isWord("jsonb_path_ops") || coach.isWord("json_path_ops") ) {
+            // TODO: store operator class
+            // operator class:
+            //   jsonb_path_ops
+            //   json_path_ops
+            //   gist_trgm_ops
+            //   ...
+            // -- select all class operators:
+            //   SELECT distinct opc.opcname AS opclass_name
+            //   FROM pg_am am, pg_opclass opc
+            //   WHERE opc.opcmethod = am.oid
+            if ( coach.isWord() ) {
                 coach.readWord();
                 coach.skipSpace();
             }

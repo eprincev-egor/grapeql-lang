@@ -544,4 +544,31 @@ describe("CacheFor", () => {
             ]
         }
     });
+
+    // SELECT distinct opc.opcname AS opclass_name
+    // FROM pg_am am, pg_opclass opc
+    // WHERE opc.opcmethod = am.oid
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+                select
+                    string_agg( orders.name )::json as orders_names
+                from orders
+                where
+                    orders.id_client = companies.id
+          )
+          index gist on (orders_names gist_trgm_ops)`,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            indexes: [
+                {
+                    index: "gist",
+                    on: [{word: "orders_names"}]
+                }
+            ]
+        }
+    });
+
 });
