@@ -92,6 +92,7 @@ import {VariableDefinition} from "./syntax/VariableDefinition";
 import {Declare} from "./syntax/Declare";
 import {FunctionBody} from "./syntax/FunctionBody";
 import {CacheIndex} from "./syntax/CacheIndex";
+import {Collate} from "./syntax/Collate";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -183,7 +184,8 @@ export class GrapeQLCoach extends Coach {
         VariableDefinition,
         Declare,
         FunctionBody,
-        CacheIndex
+        CacheIndex,
+        Collate
     };
 
     parseType(): string {
@@ -306,3 +308,4 @@ export {VariableDefinition};
 export {Declare};
 export {FunctionBody};
 export {CacheIndex};
+export {Collate};

@@ -294,6 +294,88 @@ describe("CacheFor", () => {
         }
     });
 
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+            select
+              string_agg(distinct order_type.name, ', ') as orders_types_names
+            from orders
+
+            left join order_type on
+              order_type.id = orders.id_order_type
+          )
+          without trigger on order_type`,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            cache: {
+                columns: [
+                    {
+                        expression: {elements: [
+                            {
+                                function: {
+                                    star: false,
+                                    link: [
+                                        {word: "string_agg"}
+                                    ]
+                                },
+                                distinct: true,
+                                arguments: [
+                                    {elements: [
+                                        {star: false, link: [
+                                            {word: "order_type"},
+                                            {word: "name"}
+                                        ]}
+                                    ]},
+                                    {elements: [
+                                        {content: ", "}
+                                    ]}
+                                ]
+                            }
+                        ]},
+                        as: {word: "orders_types_names"}
+                    }
+                ],
+                from: [
+                    {
+                        table: {star: false, link: [
+                            {word: "orders"}
+                        ]},
+                        joins: [
+                            {
+                                type: "left join",
+                                from: {
+                                    joins: [],
+                
+                                    table: {star: false, link: [
+                                        {word: "order_type"}
+                                    ]}
+                                },
+                                on: {elements: [
+                                    {link: [
+                                        {word: "order_type"},
+                                        {word: "id"}
+                                    ]},
+                                    {operator: "="},
+                                    {link: [
+                                        {word: "orders"},
+                                        {word: "id_order_type"}
+                                    ]}
+                                ]}
+                            }
+                        ]
+                    }
+                ]
+            },
+            withoutTriggers: [
+                {link: [
+                    {word: "order_type"}
+                ]}
+            ]
+        }
+    });
+
 
     testSyntax(CacheFor, {
         str: `cache totals for companies (

@@ -14,6 +14,7 @@ import {PgNumber} from "./PgNumber";
 import {SingleQuotesString} from "./SingleQuotesString";
 import {DollarString} from "./DollarString";
 import {Boolean} from "./Boolean";
+import {Collate} from "./Collate";
 
 // true or false
 
@@ -173,6 +174,13 @@ export class Expression extends Syntax<Expression> {
             elem = coach.parse(In);
             data.elements.push( elem );
 
+            coach.skipSpace();
+        }
+        
+        if ( coach.is(Collate) ) {
+            elem = coach.parse(Collate);
+            data.elements.push( elem );
+    
             coach.skipSpace();
         }
 

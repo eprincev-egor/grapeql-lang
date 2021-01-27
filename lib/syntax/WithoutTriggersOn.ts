@@ -11,9 +11,9 @@ export class WithoutTriggersOn extends Syntax<WithoutTriggersOn> {
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("without");
-        coach.expectWord("triggers");
+        coach.expect(/trigger(s?)/);
         coach.expectWord("on");
-        
+
         data.onTable = coach.parse(TableLink);
     }
     

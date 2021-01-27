@@ -1106,4 +1106,14 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "'' Collate \"POSIX\"",
+        shouldBe: {
+            elements: [
+                {content: ""},
+                {collate: {content: "POSIX"}}
+            ]
+        }
+    });
+
 });
