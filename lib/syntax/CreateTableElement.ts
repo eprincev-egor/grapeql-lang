@@ -51,7 +51,7 @@ export class CreateTableElement extends Syntax<CreateTableElement> {
     }
     
     toString() {
-        return this.row.element.toString();
+        return this.row.element!.toString();
     }
 }
 

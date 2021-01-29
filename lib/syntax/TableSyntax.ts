@@ -67,9 +67,9 @@ export abstract class TableSyntax<Child extends TableSyntax = any> extends Synta
 
 
         // validate columns names
-        const existsColumnNames = {};
+        const existsColumnNames: {[key: string]: boolean} = {};
         for (const column of columns) {
-            const name = column.get("name").toString();
+            const name = column.get("name")!.toString();
 
             if ( name in existsColumnNames ) {
                 coach.throwError("duplicate column name: " + name);
@@ -79,9 +79,9 @@ export abstract class TableSyntax<Child extends TableSyntax = any> extends Synta
         }
 
         // validate constraints names
-        const existsConstraintNames = {};
+        const existsConstraintNames: {[key: string]: boolean} = {};
         for (const constraint of constraints) {
-            const name = constraint.get("name").toString();
+            const name = constraint.get("name")!.toString();
 
             if ( name in existsConstraintNames ) {
                 coach.throwError("duplicate constraint name: " + name);
@@ -141,15 +141,15 @@ export abstract class TableSyntax<Child extends TableSyntax = any> extends Synta
     bodyToString() {
         let out = "(";
 
-        const columns = this.row.columns.map((item) => 
+        const columns = this.row.columns!.map((item) => 
             item.toString()
         ).join(", ");
 
         out += columns;
 
 
-        if ( this.row.constraints.length ) {
-            const constraints = this.row.constraints.map((item) => 
+        if ( this.row.constraints!.length ) {
+            const constraints = this.row.constraints!.map((item) => 
                 item.toString()
             ).join(", ");
 
@@ -169,9 +169,9 @@ export abstract class TableSyntax<Child extends TableSyntax = any> extends Synta
     valuesToString() {
         let out = "";
 
-        if ( this.row.valuesRows.length ) {
+        if ( this.row.valuesRows!.length ) {
             out += " values (";
-            out += this.row.valuesRows.map((item) => 
+            out += this.row.valuesRows!.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";

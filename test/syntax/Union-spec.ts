@@ -18,7 +18,7 @@ const EMPTY_SELECT = {
     offsetRows: null,
     limit: null,
     fetch: null
-};
+} as any;
 
 describe("Union", () => {
 

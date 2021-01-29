@@ -81,14 +81,14 @@ export class SetItem extends Syntax<SetItem> {
             if ( row.select ) {
                 out += row.select.toString();
             } else {
-                out += row.values.map((valueItem) => valueItem.toString()).join(", ");
+                out += row.values!.map((valueItem) => valueItem.toString()).join(", ");
             }
 
             out += ")";
         } else {
-            out += row.column.toString();
+            out += row.column!.toString();
             out += " = ";
-            out += row.value.toString();
+            out += row.value!.toString();
         }
 
         return out;

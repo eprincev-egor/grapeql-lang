@@ -72,7 +72,7 @@ export class Union extends Syntax<Union> {
             out += "distinct ";
         }
 
-        out += this.row.select.toString();
+        out += this.row.select!.toString();
 
         return out;
     }

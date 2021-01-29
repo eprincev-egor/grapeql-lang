@@ -41,13 +41,13 @@ export class GroupByElementContent extends Syntax<GroupByElementContent> {
     
     toString() {
         if ( this.row.single ) {
-            const expression = this.row.expressions[0];
+            const expression = this.row.expressions![0];
             return expression.toString();
         } 
         else {
             let out = "(";
 
-            out += this.row.expressions.map((expression) => 
+            out += this.row.expressions!.map((expression) => 
                 expression.toString()
             ).join(", ");
             

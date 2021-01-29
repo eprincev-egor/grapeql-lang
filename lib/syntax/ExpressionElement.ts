@@ -29,7 +29,7 @@ export class ExpressionElement extends Syntax<ExpressionElement> {
         };
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"], options) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"], options: any) {
         const Select = allSyntax.Select as  GrapeQLCoach["syntax"]["Select"];
         options = options || {availableStar: false};
 
@@ -118,7 +118,7 @@ export class ExpressionElement extends Syntax<ExpressionElement> {
         }
     }
 
-    is(coach: GrapeQLCoach, str: string, options) {
+    is(coach: GrapeQLCoach, str: string, options: any) {
         return (
             coach.is(PgNull) ||
             coach.is(Boolean) ||
@@ -137,7 +137,7 @@ export class ExpressionElement extends Syntax<ExpressionElement> {
     }
 
     toString() {
-        return this.row.element.toString();
+        return this.row.element!.toString();
     }
 }
 

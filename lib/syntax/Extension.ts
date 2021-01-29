@@ -81,22 +81,22 @@ export class Extension extends TableSyntax<Extension> {
         }
 
         out += "extension ";
-        out += this.row.name.toString();
+        out += this.row.name!.toString();
 
         out += " for ";
-        out += this.row.forTable.toString();
+        out += this.row.forTable!.toString();
 
         const hasBody = (
-            this.row.columns.length || 
-            this.row.constraints.length
+            this.row.columns!.length || 
+            this.row.constraints!.length
         );
         if ( hasBody ) {
             out += super.bodyToString();
         }
 
-        if ( this.row.deprecatedColumns.length ) {
+        if ( this.row.deprecatedColumns!.length ) {
             out += " deprecated (";
-            out += this.row.deprecatedColumns.map((item) => 
+            out += this.row.deprecatedColumns!.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";

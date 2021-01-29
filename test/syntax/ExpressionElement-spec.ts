@@ -158,7 +158,7 @@ describe("ExpressionElement", () => {
                 const coach = new GrapeQLCoach("");
                 coach.parse(ExpressionElement);
             },
-            (err) =>
+            (err: Error) =>
                 /expected any expression element/.test( err.message )
         );
     });

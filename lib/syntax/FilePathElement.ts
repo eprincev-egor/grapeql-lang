@@ -17,7 +17,7 @@ export class FilePathElement extends DoubleQuotes<FilePathElement> {
             data.content = quotes.get("content");
         }
         else {
-            data.name = coach.read(/[^\s/)]+/);
+            data.name = coach.read(/[^\s/)]+/) as string;
             
             if ( !data.name ) {
                 coach.throwError("expected file path");

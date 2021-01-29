@@ -75,7 +75,7 @@ export class BodyStatement extends Syntax<BodyStatement> {
     
     toString() {
         const row = this.row;
-        const lines = row.statements.map((elem) => 
+        const lines = row.statements!.map((elem) => 
             elem.toString()
         );
         const sql = lines.join(";\n") + ";";

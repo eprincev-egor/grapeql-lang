@@ -14,7 +14,7 @@ export class DollarString extends Syntax<DollarString> {
 
         coach.expect("$");
         if ( coach.is(/\w/) ) {
-            tag = coach.read(/\w+/);
+            tag = coach.read(/\w+/)!;
         }
         coach.expect("$");
 
@@ -44,7 +44,7 @@ export class DollarString extends Syntax<DollarString> {
     toString() {
         let tag = "tag";
         let index = 1;
-        while ( this.row.content.indexOf("$tag" + index + "$") !== -1 ) {
+        while ( this.row.content!.indexOf("$tag" + index + "$") !== -1 ) {
             index++;
         }
         tag += index;

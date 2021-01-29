@@ -16,7 +16,7 @@ export abstract class CommentOn<Child extends CommentOn = any> extends Syntax<Co
         };
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.isWord("comment");
     }
 

@@ -1022,7 +1022,7 @@ describe("Expression", () => {
                 () => {
                     expression.toPrimitiveValue();
                 },
-                (err) =>
+                (err: Error) =>
                     /cannot convert to primitive value/.test(err.message)
             );
         });

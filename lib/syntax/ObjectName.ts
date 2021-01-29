@@ -32,10 +32,10 @@ export class ObjectName extends DoubleQuotes<ObjectName> {
         }
     }
     
-    toLowerCase() {
+    toLowerCase(): string {
         return (
-            this.row.word || 
-            this.row.content
+            this.row.word! || 
+            this.row.content!
         );
     }
 }

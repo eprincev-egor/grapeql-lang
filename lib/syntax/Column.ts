@@ -81,7 +81,7 @@ export class Column extends Syntax<Column> {
     }
 
     toString() {
-        let out = this.row.expression.toString();
+        let out = this.row.expression!.toString();
 
         if ( this.row.as ) {
             out += " as " + this.row.as.toString();

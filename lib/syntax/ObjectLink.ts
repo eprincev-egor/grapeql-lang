@@ -15,14 +15,14 @@ export class ObjectLink extends Syntax<ObjectLink> {
         };
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"], options) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"], options: any) {
         options = options || {availableStar: false};
         data.link = [];
 
         this.parseLink(coach, data, options);
     }
 
-    parseLink(coach: GrapeQLCoach, data: this["TInputData"], options) {
+    parseLink(coach: GrapeQLCoach, data: this["TInputData"], options: any) {
 
         if ( options.availableStar && coach.is(/\s*\*/) ) {
             coach.skipSpace();
@@ -34,7 +34,7 @@ export class ObjectLink extends Syntax<ObjectLink> {
 
 
         const elem = coach.parse(ObjectName);
-        data.link.push( elem );
+        data.link!.push( elem );
 
         if ( coach.is(/\s*\./) ) {
             coach.skipSpace();
@@ -45,7 +45,7 @@ export class ObjectLink extends Syntax<ObjectLink> {
         }
     }
 
-    is(coach: GrapeQLCoach, str: string, options) {
+    is(coach: GrapeQLCoach, str: string, options: any) {
         options = options || {availableStar: false};
 
         return (
@@ -57,7 +57,7 @@ export class ObjectLink extends Syntax<ObjectLink> {
     }
 
     toString() {
-        const elems = this.row.link.map((elem) =>
+        const elems = this.row.link!.map((elem) =>
             elem.toString()
         );
         let str = elems.join(".");
@@ -77,11 +77,11 @@ export class ObjectLink extends Syntax<ObjectLink> {
     }
 
     first() {
-        return this.row.link[0];
+        return this.row.link![0];
     }
 
     last() {
-        return this.row.link[ this.row.link.length - 1 ];
+        return this.row.link![ this.row.link!.length - 1 ];
     }
     
     clear() {
@@ -90,14 +90,14 @@ export class ObjectLink extends Syntax<ObjectLink> {
         });
     }
 
-    push(objectName) {
+    push(objectName: string | ObjectName) {
         if ( typeof objectName === "string" ) {
             objectName = new ObjectName({
                 word: objectName
             });
         }
 
-        const link = this.row.link.slice();
+        const link = this.row.link!.slice();
         link.push( objectName );
 
         this.set({

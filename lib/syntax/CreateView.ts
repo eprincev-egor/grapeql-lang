@@ -68,10 +68,10 @@ export class CreateView extends Syntax<CreateView> {
             out += this.row.schema.toString();
             out += ".";
         }
-        out += this.row.name.toString();
+        out += this.row.name!.toString();
 
         out += " as ";
-        out += this.row.select.toString();
+        out += this.row.select!.toString();
 
         return out;
     }

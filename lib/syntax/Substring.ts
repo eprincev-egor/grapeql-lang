@@ -59,7 +59,7 @@ export class Substring extends Syntax<Substring> {
     toString() {
         let out = "substring(";
 
-        out += this.row.str.toString();
+        out += this.row.str!.toString();
 
         if ( this.row.from ) {
             out += " from ";

@@ -33,7 +33,7 @@ export class OrderByElement extends Syntax<OrderByElement> {
             coach.expectWord("using");
             
             data.using = coach.parse(Operator);
-            data.vector = null;
+            data.vector = null as any;
         }
         
         if ( coach.isWord("nulls") ) {
@@ -56,14 +56,14 @@ export class OrderByElement extends Syntax<OrderByElement> {
     }
     
     toString() {
-        let out = this.row.expression.toString();
+        let out = this.row.expression!.toString();
         
         if ( this.row.vector ) {
             // asc or desc
             out += " " + this.row.vector;
         } 
         else {
-            out += " using " + this.row.using.toString();
+            out += " using " + this.row.using!.toString();
         }
         
         if ( this.row.nulls ) {

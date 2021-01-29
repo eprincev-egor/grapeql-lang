@@ -188,9 +188,9 @@ export class ColumnDefinition extends Syntax<ColumnDefinition> {
         const data = this.row;
         let out = "";
 
-        out += data.name.toString();
+        out += data.name!.toString();
         out += " ";
-        out += data.type.toString();
+        out += data.type!.toString();
 
         if ( data.primaryKey ) {
             out += " ";

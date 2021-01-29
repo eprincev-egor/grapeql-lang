@@ -24,7 +24,7 @@ const OPERATORS_SYMBOLS = (
         }, "")
 );
 
-const OPERATORS_MAP = {};
+const OPERATORS_MAP: {[key: string]: boolean} = {};
 OPERATORS.forEach((operator) => {
     for (let i = 0, n = operator.length; i < n; i++) {
         const sequence = operator.slice(0, i + 1);
@@ -155,7 +155,7 @@ export class Operator extends Syntax<Operator> {
     }
     
     toString() {
-        return this.row.operator;
+        return this.row.operator!;
     }
 }
 

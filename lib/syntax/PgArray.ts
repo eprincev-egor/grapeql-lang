@@ -38,7 +38,7 @@ export class PgArray extends Syntax<PgArray> {
     toString() {
         let out = "array[";
         
-        out += this.row.array.map((item) => item.toString()).join(", ");
+        out += this.row.array!.map((item) => item.toString()).join(", ");
 
         out += "]";
         return out;

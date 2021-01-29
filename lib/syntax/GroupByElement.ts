@@ -1,5 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
+import {IBooleanType, IArrayType} from "model-layer";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import {GroupByElementContent} from "./GroupByElementContent";
 import {Expression} from "./Expression";
@@ -12,7 +13,13 @@ import {Expression} from "./Expression";
     GROUPING SETS ( grouping_element [, ...] )
  */
 export class GroupByElement extends Syntax<GroupByElement> {
-    structure() {
+    structure(): {
+        isEmpty: IBooleanType;
+        rollup: IArrayType<GroupByElementContent>;
+        cube: IArrayType<GroupByElementContent>;
+        groupingSets: IArrayType<GroupByElement>;
+        expression: typeof Expression;
+    } {
         return {
             isEmpty: Types.Boolean,
             rollup: Types.Array({
@@ -28,7 +35,7 @@ export class GroupByElement extends Syntax<GroupByElement> {
         };
     }
 
-    parse(coach: GrapeQLCoach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         
         if ( coach.is(/\(\s*\)/) ) {
             coach.expect(/\(\s*\)/);
@@ -110,7 +117,7 @@ export class GroupByElement extends Syntax<GroupByElement> {
             out += ")";
         }
         else {
-            out += data.expression.toString();
+            out += data.expression!.toString();
         }
         
         return out;

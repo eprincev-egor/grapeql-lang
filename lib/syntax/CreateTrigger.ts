@@ -44,7 +44,7 @@ export class CreateTrigger extends Syntax<CreateTrigger> {
         };
     }
 
-    toIdentify(data) {
+    toIdentify(data: any) {
         return new TriggerIdentify({
             name: data.name,
             schema: data.table.get("schema"),
@@ -187,12 +187,12 @@ export class CreateTrigger extends Syntax<CreateTrigger> {
                 data.comment = coach.parse(CommentOnTrigger);
     
                 const identify = this.toIdentify( data );
-                const isSameIdentify = data.comment.get("trigger").equal( identify );
+                const isSameIdentify = data.comment.get("trigger")!.equal( identify );
     
                 if ( !isSameIdentify ) {
                     coach.throwError(
                         "comment after trigger has wrong identify: " + 
-                        data.comment.get("trigger").toString()
+                        data.comment.get("trigger")!.toString()
                     );
                 }
             }
@@ -223,7 +223,7 @@ export class CreateTrigger extends Syntax<CreateTrigger> {
                 coach.expectWord("of");
 
                 const columns = coach.parseComma(ObjectName).map((objectName) =>
-                    objectName.toLowerCase()
+                    objectName.toLowerCase()!
                 );
 
                 data.updateOf = columns.sort();

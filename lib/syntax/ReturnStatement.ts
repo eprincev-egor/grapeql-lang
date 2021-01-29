@@ -22,7 +22,7 @@ export class ReturnStatement extends Syntax<ReturnStatement> {
     }
     
     toString() {
-        const sql = "return " + this.row.return.toString();
+        const sql = "return " + this.row.return!.toString();
         return sql;
     }
 }

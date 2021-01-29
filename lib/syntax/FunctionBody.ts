@@ -47,7 +47,7 @@ export class FunctionBody extends Syntax<FunctionBody> {
     
     toString() {
         const row = this.row;
-        const declares = row.declares.map((declare) =>
+        const declares = row.declares!.map((declare) =>
             declare.toString()
         );
         let sql = "";
@@ -57,7 +57,7 @@ export class FunctionBody extends Syntax<FunctionBody> {
         }
 
         sql += "begin\n";
-        sql += row.body.toString();
+        sql += row.body!.toString();
         sql += "\nend";
 
         return sql;

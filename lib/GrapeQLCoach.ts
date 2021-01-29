@@ -93,6 +93,7 @@ import {Declare} from "./syntax/Declare";
 import {FunctionBody} from "./syntax/FunctionBody";
 import {CacheIndex} from "./syntax/CacheIndex";
 import {Collate} from "./syntax/Collate";
+import {WithoutTriggersOn} from "./syntax/WithoutTriggersOn";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -185,12 +186,13 @@ export class GrapeQLCoach extends Coach {
         Declare,
         FunctionBody,
         CacheIndex,
-        Collate
+        Collate,
+        WithoutTriggersOn
     };
 
     parseType(): string {
         const dataType = this.parse(DataType as this["syntax"]["DataType"]);
-        return dataType.get("type");
+        return dataType.get("type")!;
     }
 
     skipSpace(): void {
@@ -215,7 +217,7 @@ export class GrapeQLCoach extends Coach {
 // need for cycle recursion structure inside some syntaxes
 const coach = new GrapeQLCoach("");
 for (const key in coach.syntax) {
-    allSyntax[ key ] = coach.syntax[ key ];
+    allSyntax[ key ] = (coach.syntax as any)[ key ];
 }
 
 export {Any};
@@ -309,3 +311,4 @@ export {Declare};
 export {FunctionBody};
 export {CacheIndex};
 export {Collate};
+export {WithoutTriggersOn};

@@ -33,7 +33,7 @@ describe("Interval", () => {
                     interval: wrongSyntax
                 });
             },
-            (err) =>
+            (err: Error) =>
                 /invalid/.test(err.message) &&
                 /interval/.test(err.message)
         );

@@ -29,7 +29,7 @@ export class ValuesRow extends Syntax<ValuesRow> {
     toString() {
         let out = "(";
 
-        out += this.row.values.map((valueItem) => valueItem.toString()).join(", ");
+        out += this.row.values!.map((valueItem) => valueItem.toString()).join(", ");
 
         out += ")";
         return out;

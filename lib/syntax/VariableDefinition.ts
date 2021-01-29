@@ -63,9 +63,9 @@ export class VariableDefinition extends Syntax<VariableDefinition> {
         const row = this.row;
         let sql = "";
 
-        sql += row.name.toString();
+        sql += row.name!.toString();
         sql += " ";
-        sql += row.type.toString();
+        sql += row.type!.toString();
 
         if ( row.collate ) {
             sql += " collate ";
@@ -85,7 +85,7 @@ export class VariableDefinition extends Syntax<VariableDefinition> {
     }
 
     toLowerCase() {
-        return this.row.name.toLowerCase();
+        return this.row.name!.toLowerCase();
     }
 }
 

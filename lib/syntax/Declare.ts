@@ -25,7 +25,7 @@ export class Declare extends Syntax<Declare> {
     
     toString() {
         const row = this.row;
-        const variables = row.variables.map((variable) =>
+        const variables = row.variables!.map((variable) =>
             variable.toString()
         );
 

@@ -64,7 +64,7 @@ export class Update extends Syntax<Update> {
 
             coach.skipSpace();
 
-            if ( data.as.toLowerCase()[0] === "$" ) {
+            if ( data.as!.toLowerCase()[0] === "$" ) {
                 coach.i = i;
                 coach.throwError("$ is reserved symbol for alias");
             }
@@ -126,7 +126,7 @@ export class Update extends Syntax<Update> {
             out += "only ";
         }
 
-        out += row.table.toString();
+        out += row.table!.toString();
 
         if ( row.star ) {
             out += " *";
@@ -138,7 +138,7 @@ export class Update extends Syntax<Update> {
         }
 
         out += " set ";
-        out += row.set.map((setItem) => setItem.toString()).join(", ");
+        out += row.set!.map((setItem) => setItem.toString()).join(", ");
 
         if ( row.from ) {
             out += " from ";

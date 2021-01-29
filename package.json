@@ -31,7 +31,7 @@
   "author": "Eprincev Egor",
   "license": "ISC",
   "dependencies": {
-    "lang-coach": "^2.4.19"
+    "lang-coach": "^2.5.1"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",

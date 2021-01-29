@@ -146,7 +146,7 @@ export class FunctionCall extends Syntax<FunctionCall> {
         const data = this.row;
         let out = "";
 
-        out += data.function.toString();
+        out += data.function!.toString();
         out += "(";
 
         if ( data.all ) {
@@ -156,7 +156,7 @@ export class FunctionCall extends Syntax<FunctionCall> {
             out += " distinct ";
         }
 
-        out += data.arguments.map((arg) => arg.toString()).join(", ");
+        out += data.arguments!.map((arg) => arg.toString()).join(", ");
 
         if ( data.orderBy ) {
             out += " order by ";

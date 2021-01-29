@@ -21,7 +21,7 @@ import {Collate} from "./Collate";
 export class Expression extends Syntax<Expression> {
 
     // ((( expression )))  strip unnecessary brackets
-    static extrude(elements) {
+    static extrude(elements: any[]): any[] {
         if ( elements.length === 1 ) {
             const firstElement = elements[0];
             const isExpression = firstElement instanceof Expression;
@@ -35,6 +35,7 @@ export class Expression extends Syntax<Expression> {
         
         return elements;
     }
+
     structure() {
         return {
             elements: Types.Array({
@@ -43,7 +44,7 @@ export class Expression extends Syntax<Expression> {
         };
     }
 
-    parse(coach: GrapeQLCoach, data: this["TInputData"], options) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"], options: any) {
         options = options || {
             // @see Between
             excludeOperators: false
@@ -56,16 +57,16 @@ export class Expression extends Syntax<Expression> {
         data.elements = Expression.extrude( data.elements );
     }
     
-    parseElements(coach: GrapeQLCoach, data: this["TInputData"], options) {
+    parseElements(coach: GrapeQLCoach, data: this["TInputData"], options: any) {
         let elem;
 
         // count(*)
         if ( options.availableStar ) {
-            if ( coach.is("*") && data.elements.length === 0 ) {
+            if ( coach.is("*") && data.elements!.length === 0 ) {
                 const elemStar = coach.parse(ColumnLink, {
                     availableStar: options.availableStar
                 });
-                data.elements.push( elemStar );
+                data.elements!.push( elemStar );
 
                 coach.skipSpace();
                 return;
@@ -79,10 +80,10 @@ export class Expression extends Syntax<Expression> {
             return;
         }
         
-        data.elements = data.elements.concat( operators );
+        data.elements = data.elements!.concat( operators );
 
 
-        const lastOperator = operators.slice(-1)[0];
+        const lastOperator = operators.slice(-1)[0]!;
         
         const lastOperatorIsPostOperator = (
             lastOperator &&
@@ -131,7 +132,7 @@ export class Expression extends Syntax<Expression> {
             }
         }
         
-        data.elements.push( elem );
+        data.elements.push( elem! );
 
         coach.skipSpace();
         if ( coach.is(SquareBrackets) ) {
@@ -190,7 +191,11 @@ export class Expression extends Syntax<Expression> {
         }
     }
 
-    parseOperators(coach: GrapeQLCoach, excludeOperators: string[], outOperators = []) {
+    parseOperators(
+        coach: GrapeQLCoach,
+        excludeOperators: string[],
+        outOperators: Operator[] = []
+    ): Operator[] | false {
 
         if ( coach.is(Operator) ) {
             const i = coach.i;
@@ -198,7 +203,7 @@ export class Expression extends Syntax<Expression> {
 
             // fix for between: stop on operator AND
             if ( excludeOperators ) {
-                if ( excludeOperators.includes(operator.get("operator")) ) {
+                if ( excludeOperators.includes(operator.get("operator")!) ) {
                     coach.i = i;
                     return false;
                 }
@@ -208,7 +213,7 @@ export class Expression extends Syntax<Expression> {
             //    :: :: 
             const isCastOperator = operator.get("operator") === "::";
             if ( isCastOperator ) {
-                const prevOperator = outOperators.slice(-1)[0];
+                const prevOperator = outOperators.slice(-1)[0]!;
                 const isCastPrevOperator = (
                     prevOperator && 
                     prevOperator.get("operator") === "::"
@@ -228,7 +233,7 @@ export class Expression extends Syntax<Expression> {
         return outOperators;
     }
     
-    is(coach: GrapeQLCoach, str: string, options) {
+    is(coach: GrapeQLCoach, str: string, options: any) {
         return (
             // for stopping parseComma
             !coach.isEnd() &&
@@ -239,8 +244,8 @@ export class Expression extends Syntax<Expression> {
         );
     }
 
-    toPrimitiveValue(): (number | string | boolean) {
-        const elements = this.row.elements;
+    toPrimitiveValue(): (number | string | boolean | null) {
+        const elements = this.row.elements!;
         const firstElem = elements[0];
         const secondElem = elements[1];
         const thirdElem = elements[2];
@@ -332,7 +337,7 @@ export class Expression extends Syntax<Expression> {
             let value;
 
             if ( firstElem instanceof PgNumber ) {
-                value = +firstElem.get("number");
+                value = +firstElem.get("number")!;
             }
 
             else if ( firstElem instanceof Boolean ) {
@@ -372,13 +377,15 @@ export class Expression extends Syntax<Expression> {
 
             return value;
         }
+
+        return null;
     }
     
     toString(options = {parentSpace: ""}) {
         const Select = allSyntax.Select as  GrapeQLCoach["syntax"]["Select"];
         let out = options.parentSpace;
 
-        this.row.elements.forEach((elem, i) => {
+        this.row.elements!.forEach((elem, i) => {
             if ( elem instanceof Operator ) {
                 const isConditionalOperator = (
                     elem.get("operator") === "and" ||

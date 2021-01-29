@@ -85,7 +85,7 @@ export class WindowDefinitionFrameElement extends Syntax<WindowDefinitionFrameEl
         }
         else {
             return (
-                this.row.value.toString() + " " +
+                this.row.value!.toString() + " " +
                 (this.row.preceding ? 
                     "preceding" : 
                     "following")

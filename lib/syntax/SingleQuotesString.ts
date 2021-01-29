@@ -216,7 +216,7 @@ export class SingleQuotesString extends Syntax<SingleQuotesString> {
     }
 
     toString() {
-        let content = this.row.content;
+        let content = this.row.content!;
         // escape single quotes
         content = content.replace(/'/g, "''");
 

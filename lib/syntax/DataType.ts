@@ -87,7 +87,7 @@ const types = [
     "anyelement"
 ];
 
-const firstWords = {};
+const firstWords: any = {};
 types.forEach((type) => {
     let firstWord = type.split(" ")[0];
     firstWord = firstWord.split("(")[0];
@@ -98,7 +98,7 @@ types.forEach((type) => {
     firstWords[ firstWord ].push( type );
 });
 
-const regExps = {};
+const regExps: any = {};
 types.forEach((type) => {
     let regExp = type.replace(/ /g, "\\s+");
     regExp = regExp.replace("(n)", "\\s*\\(\\s*\\d+\\s*\\)");
@@ -128,9 +128,9 @@ export class DataType extends Syntax<DataType> {
             
             if ( coach.is(regExp) ) {
                 data.type = regExp.exec( coach.str.slice(coach.i) )[0];
-                coach.i += data.type.length;
+                coach.i += data.type!.length;
                 
-                data.type = data.type.replace(/\s+/g, " ");
+                data.type = data.type!.replace(/\s+/g, " ");
                 data.type = data.type.replace(/\s*\(\s*/g, "(");
                 data.type = data.type.replace(/\s*\)\s*/g, ")");
                 data.type = data.type.replace(/\s*,\s*/g, ",");
@@ -153,7 +153,7 @@ export class DataType extends Syntax<DataType> {
         this.parseArrayType(coach, data);
     }
     
-    parseArrayType(coach: GrapeQLCoach, data) {
+    parseArrayType(coach: GrapeQLCoach, data: any) {
         if ( coach.is(/\s*\[/) ) {
             coach.skipSpace();
             coach.i++;
@@ -189,7 +189,7 @@ export class DataType extends Syntax<DataType> {
             type === "serial"            ||
             type === "double precision"  ||
             type === "bigserial"         ||
-            /^numeric/.test(this.row.type)
+            /^numeric/.test(this.row.type!)
         );
     }
 
@@ -219,9 +219,9 @@ export class DataType extends Syntax<DataType> {
         const type = this.row.type;
         return (
             type === "text" ||
-            /^char/.test(this.row.type) ||
-            /^character/.test(this.row.type) ||
-            /^varchar/.test(this.row.type)
+            /^char/.test(this.row.type!) ||
+            /^character/.test(this.row.type!) ||
+            /^varchar/.test(this.row.type!)
         );
     }
 
@@ -234,7 +234,7 @@ export class DataType extends Syntax<DataType> {
     }
     
     toString() {
-        return this.row.type;
+        return this.row.type!;
     }
 }
 

@@ -41,6 +41,6 @@ export class SystemVariable extends Syntax<SystemVariable> {
     }
 
     toLowerCase() {
-        return this.row.name.toLowerCase();
+        return this.row.name!.toLowerCase();
     }
 }

@@ -80,10 +80,10 @@ export class Join extends Syntax<Join> {
     }
 
     toString() {
-        let out = this.row.type;
+        let out = this.row.type!;
 
         out += " ";
-        out += this.row.from.toString();
+        out += this.row.from!.toString();
 
         if ( this.row.on ) {
             out += " on\n" + this.row.on.toString({
@@ -91,7 +91,7 @@ export class Join extends Syntax<Join> {
             });
             out += "\n";
         } else {
-            out += " using (" + this.row.using.map((elem) => elem.toString()).join(", ") + ")";
+            out += " using (" + this.row.using!.map((elem) => elem.toString()).join(", ") + ")";
         }
 
         return out;

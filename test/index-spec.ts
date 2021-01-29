@@ -24,7 +24,7 @@ describe("index tests", () => {
                     
                 } as any);
             },
-            (err) =>
+            (err: Error) =>
                 err.message === "str required"
         );
     });
@@ -36,7 +36,7 @@ describe("index tests", () => {
                     str: "null"
                 } as any);
             },
-            (err) =>
+            (err: Error) =>
                 err.message === "'shouldBe' or 'error' required"
         );
     });

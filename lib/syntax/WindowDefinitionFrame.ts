@@ -42,13 +42,13 @@ export class WindowDefinitionFrame extends Syntax<WindowDefinitionFrame> {
         if ( this.row.end ) {
             return (
                 "between " +
-                this.row.start.toString() +
+                this.row.start!.toString() +
                 " and " +
                 this.row.end.toString()
             );
         }
         else {
-            return this.row.start.toString();
+            return this.row.start!.toString();
         }
     }
 }

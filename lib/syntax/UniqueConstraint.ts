@@ -74,7 +74,7 @@ export class UniqueConstraint extends Constraint<UniqueConstraint> {
         else {
             out = super.toString();
             out += " unique (";
-            out += unique.map((name) => name.toString()).join(", ");
+            out += unique!.map((name) => name.toString()).join(", ");
             out += ")";  
         }
 

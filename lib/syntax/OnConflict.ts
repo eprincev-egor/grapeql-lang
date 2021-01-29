@@ -98,7 +98,7 @@ export class OnConflict extends Syntax<OnConflict> {
             out += "do nothing";
         } else {
             out += "do update set ";
-            out += row.updateSet.map((setItem) => setItem.toString()).join(", ");
+            out += row.updateSet!.map((setItem) => setItem.toString()).join(", ");
 
             if ( row.updateWhere ) {
                 out += " where ";

@@ -103,7 +103,7 @@ export class CreateTable extends TableSyntax<CreateTable> {
         const outputRows: object[] = [];
 
         const firstRow = rows[0];
-        const firstRowValues = firstRow.get("values");
+        const firstRowValues = firstRow.get("values")!;
 
         // to much values!
         if ( firstRowValues.length > columns.length ) {
@@ -112,11 +112,11 @@ export class CreateTable extends TableSyntax<CreateTable> {
 
         
         rows.forEach((row, rowIndex) => {
-            const dataLine = [];
+            const dataLine: any[] = [];
             prevDataLines.push(dataLine);
-            const outputRow = {};
+            const outputRow: any = {};
 
-            const rowValues = row.get("values");
+            const rowValues = row.get("values")!;
 
             // every values row should have same length
             if ( rowValues.length !== firstRowValues.length ) {
@@ -132,7 +132,7 @@ export class CreateTable extends TableSyntax<CreateTable> {
                     value = this.valueItem2value(column, valueItem, rowIndex);
                 } catch (err) {
                     if ( /cannot convert/.test(err.message) ) {
-                        const type = column.get("type");
+                        const type = column.get("type")!;
                         const typeName = (
                             type.isNumber() ? 
                                 "number" :
@@ -159,7 +159,7 @@ export class CreateTable extends TableSyntax<CreateTable> {
 
                 dataLine[columnIndex] = value;
 
-                const key = column.get("name").toString();
+                const key = column.get("name")!.toString();
                 outputRow[ key ]  = value;
             });
 
@@ -167,7 +167,7 @@ export class CreateTable extends TableSyntax<CreateTable> {
             uniqueness.forEach((uniqueKeys) => {
                 const columnsIndexes = uniqueKeys.map((key) => 
                     columns.findIndex((column) =>
-                        column.get("name").equal(key)
+                        column.get("name")!.equal(key)
                     )
                 );
 
@@ -202,7 +202,7 @@ export class CreateTable extends TableSyntax<CreateTable> {
             return;
         }
 
-        const type = column.get("type");
+        const type = column.get("type")!;
         if ( type.isNumber() ) {
             if ( typeof value !== "number" ) {
                 coach.throwError(`values for column ${column.get("name")} should be number`);
@@ -238,10 +238,10 @@ export class CreateTable extends TableSyntax<CreateTable> {
 
         constraints.forEach((constraint) => {
             if ( constraint instanceof UniqueConstraint ) {
-                uniqueness.push( constraint.get("unique") );
+                uniqueness.push( constraint.get("unique")! );
             }
             else if ( constraint instanceof PrimaryKeyConstraint ) {
-                uniqueness.push( constraint.get("primaryKey") );
+                uniqueness.push( constraint.get("primaryKey")! );
             }
         });
 
@@ -251,7 +251,7 @@ export class CreateTable extends TableSyntax<CreateTable> {
                 !!column.get("primaryKey")
             );
             if ( isUniqueColumn ) {
-                uniqueness.push( [column.get("name")] );
+                uniqueness.push( [column.get("name")!] );
             }
         });
 
@@ -260,7 +260,7 @@ export class CreateTable extends TableSyntax<CreateTable> {
 
     // Syntax ValueItem => primitive value
     valueItem2value(column: ColumnDefinition, valueItem: ValueItem, rowIndex: number) {
-        const type = column.get("type");
+        const type = column.get("type")!;
         let value;
         
         const isDefault = (
@@ -292,7 +292,7 @@ export class CreateTable extends TableSyntax<CreateTable> {
                 value = null;
             }
         } else {
-            value = valueItem.get("value").toPrimitiveValue();
+            value = valueItem.get("value")!.toPrimitiveValue();
         }
         
         return value;
@@ -333,22 +333,22 @@ export class CreateTable extends TableSyntax<CreateTable> {
             out += this.row.schema.toString();
             out += ".";
         }
-        out += this.row.name.toString();
+        out += this.row.name!.toString();
 
         out += super.bodyToString();
 
-        if ( this.row.inherits.length ) {
+        if ( this.row.inherits!.length ) {
             out += " inherits (";
-            out += this.row.inherits.map((item) => 
+            out += this.row.inherits!.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";
         }
 
         
-        if ( this.row.deprecatedColumns.length ) {
+        if ( this.row.deprecatedColumns!.length ) {
             out += " deprecated (";
-            out += this.row.deprecatedColumns.map((item) => 
+            out += this.row.deprecatedColumns!.map((item) => 
                 item.toString()
             ).join(", ");
             out += ")";

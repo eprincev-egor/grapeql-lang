@@ -38,7 +38,7 @@ export class CaseWhen extends Syntax<CaseWhen> {
     
     parseElement(coach: GrapeQLCoach, data: this["TInputData"]) {
         const elem = coach.parse(CaseWhenElement);
-        data.case.push(elem);
+        data.case!.push(elem);
         
         coach.skipSpace();
         if ( coach.is(CaseWhenElement) ) {
@@ -53,7 +53,7 @@ export class CaseWhen extends Syntax<CaseWhen> {
     toString() {
         let out = "case ";
         
-        const cases = this.row.case.map((elem) => elem.toString()).join(" ");
+        const cases = this.row.case!.map((elem) => elem.toString()).join(" ");
         out += cases;
         
         if ( this.row.else ) {

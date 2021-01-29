@@ -5,8 +5,8 @@ import {ObjectName} from "./ObjectName";
 
 export class Constraint<Child extends Constraint = any> extends Syntax<Constraint & Child> {
     
-    IOptions: {
-        column: ObjectName["TInput"]
+    IOptions!: {
+        column?: ObjectName["TInput"] | null
     };
 
     structure() {
@@ -32,6 +32,6 @@ export class Constraint<Child extends Constraint = any> extends Syntax<Constrain
     }
 
     toString() {
-        return "constraint " + this.row.name.toString();
+        return "constraint " + this.row.name!.toString();
     }
 }

@@ -63,10 +63,10 @@ export class Extract extends Syntax<Extract> {
 
         // centuries => century
         if ( data.extract in extractFieldsAliases ) {
-            data.extract = extractFieldsAliases[data.extract];
+            data.extract = (extractFieldsAliases as any)[ data.extract ];
         }
         
-        if ( !extractFields.includes(data.extract) ) {
+        if ( !extractFields.includes(data.extract!) ) {
             coach.throwError("unrecognized extract field: " + data.extract);
         }
 
@@ -84,7 +84,7 @@ export class Extract extends Syntax<Extract> {
     toString() {
         let out = `extract( ${this.row.extract} from `;
 
-        out += this.row.from.toString();
+        out += this.row.from!.toString();
 
         out += ")";
         return out;

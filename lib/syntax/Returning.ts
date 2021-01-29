@@ -21,7 +21,7 @@ export class Returning extends Syntax<Returning> {
     }
     
     toString() {
-        return "returning " + this.row.returningColumns.map((column) => 
+        return "returning " + this.row.returningColumns!.map((column) => 
             column.toString()
         ).join(", ");
     }

@@ -113,7 +113,7 @@ export class Delete extends Syntax<Delete> {
             out += "only ";
         }
 
-        out += row.table.toString();
+        out += row.table!.toString();
 
         if ( row.star ) {
             out += " *";

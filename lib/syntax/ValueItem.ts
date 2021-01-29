@@ -31,7 +31,7 @@ export class ValueItem extends Syntax<ValueItem> {
         if ( this.row.default ) {
             return "default";
         } else {
-            return this.row.value.toString();
+            return this.row.value!.toString();
         }
     }
 }

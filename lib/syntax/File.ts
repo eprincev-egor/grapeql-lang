@@ -35,12 +35,12 @@ export class File extends Syntax<File> {
         this.parsePath(coach, data);
 
         // ./relative  or  /root
-        data.relative = isRelativePath( data.path );
+        data.relative = isRelativePath( data.path as any );
     }
 
     parsePath(coach: GrapeQLCoach, data: this["TInputData"]) {
         const elem = coach.parse(FilePathElement);
-        data.path.push(elem);
+        data.path!.push(elem);
 
         if ( coach.is(/\s*\//) ) {
             coach.read(/\s*\/+\s*/);
@@ -57,7 +57,7 @@ export class File extends Syntax<File> {
     }
 
     toString() {
-        let out = this.row.path.map((elem) => elem.toString()).join("/");
+        let out = this.row.path!.map((elem) => elem.toString()).join("/");
         
         if ( !this.row.relative ) {
             out = "/" + out;
@@ -67,7 +67,7 @@ export class File extends Syntax<File> {
     }
 }
 
-function isRelativePath(path) {
+function isRelativePath(path: FilePathElement[]) {
     const firstPathElem = path[0];
     const firstName = firstPathElem.get("name");
 

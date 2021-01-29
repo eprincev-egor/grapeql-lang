@@ -66,7 +66,7 @@ export class CheckConstraint extends Constraint<CheckConstraint> {
             out += " ";
         }
         
-        out += `check( ${ check.toString() } )`;
+        out += `check( ${ check!.toString() } )`;
 
         return out;
     }

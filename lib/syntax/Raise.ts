@@ -96,7 +96,7 @@ export class Raise extends Syntax<Raise> {
             sql += " ";
             sql += row.raise.toString();
 
-            const parameters = row.parameters.map((param) =>
+            const parameters = row.parameters!.map((param) =>
                 param.toString()
             );
             if ( parameters.length ) {
@@ -114,7 +114,7 @@ export class Raise extends Syntax<Raise> {
         }
         
 
-        const using = row.using.map((usingOption) =>
+        const using = row.using!.map((usingOption) =>
             usingOption.toString()
         );
         if ( using.length ) {

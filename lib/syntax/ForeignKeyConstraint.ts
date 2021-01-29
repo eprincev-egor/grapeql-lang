@@ -197,12 +197,12 @@ export class ForeignKeyConstraint extends Constraint<ForeignKeyConstraint> {
             out += super.toString();
 
             out += " foreign key ( ";
-            out += columns.map((name) => name.toString()).join(", ");
+            out += columns!.map((name) => name.toString()).join(", ");
             out += " ) ";
         }
         
         out += "references ";
-        out += referenceTable.toString();
+        out += referenceTable!.toString();
 
         if ( referenceColumns ) {
             out += " ( ";

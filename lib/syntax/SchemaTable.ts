@@ -11,11 +11,11 @@ export class SchemaTable extends SchemaParse<SchemaTable> {
         };
     }
 
-    parse(coach: GrapeQLCoach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         super.parse(coach, data);
         
-        data.table = data.name;
-        delete data.name;
+        data.table = (data as any).name;
+        delete (data as any).name;
     }
 
     toString() {

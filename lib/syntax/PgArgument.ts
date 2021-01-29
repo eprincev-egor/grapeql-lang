@@ -21,7 +21,7 @@ export class PgArgument extends Syntax<PgArgument> {
     // func(id integer, name text)
     // or
     // func(integer, text)
-    parse(coach: GrapeQLCoach, data: this["TInputData"], options) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"], options: any) {
         options = options || {default: false};
 
         if ( coach.isWord("out") ) {
@@ -35,7 +35,7 @@ export class PgArgument extends Syntax<PgArgument> {
             data.in = true;
         }
 
-        data.name = null;
+        data.name = null as any;
         data.type = coach.parseType();
 
         if ( coach.is(/\s*"?\w+/i) ) {

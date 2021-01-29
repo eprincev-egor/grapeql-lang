@@ -1,12 +1,16 @@
 
 import {Syntax, Types} from "lang-coach";
+import {IBooleanType, IArrayType} from "model-layer";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import {WithQuery} from "./WithQuery";
 
 // WITH [ RECURSIVE ] with_query [, ...]
 
 export class With extends Syntax<With> {
-    structure() {
+    structure(): {
+        recursive: IBooleanType;
+        queries: IArrayType<WithQuery>;
+    } {
         return {
             recursive: Types.Boolean,
             queries: Types.Array({
@@ -27,9 +31,9 @@ export class With extends Syntax<With> {
         data.queries = queries;
 
         // query name must be unique
-        const existsName = {};
+        const existsName: {[key: string]: boolean} = {};
         queries.forEach((query) => {
-            const name = query.get("name").toLowerCase();
+            const name = query.get("name")!.toLowerCase()!;
 
             if ( name in existsName ) {
                 throw new Error(`WITH query name "${ name }" specified more than once`);
@@ -50,7 +54,7 @@ export class With extends Syntax<With> {
             sql += "recursive ";
         }
 
-        sql += this.row.queries.map((query) =>
+        sql += this.row.queries!.map((query: any) =>
             query.toString()
         ).join(", ");
 

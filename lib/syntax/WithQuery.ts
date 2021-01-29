@@ -50,12 +50,12 @@ export class WithQuery extends Syntax<WithQuery> {
             data.values = values;
 
             const firstRow = values[0];
-            const firstRowValues = firstRow.get("values");
+            const firstRowValues = firstRow.get("values")!;
             const columnsLength = firstRowValues.length;
 
             for (let i = 0, n = values.length; i < n; i++) {
                 const valuesRow = values[ i ];
-                const rowValues = valuesRow.get("values");
+                const rowValues = valuesRow.get("values")!;
                 
                 if ( rowValues.length !== columnsLength ) {
                     coach.throwError("VALUES lists must all be the same length");
@@ -96,7 +96,7 @@ export class WithQuery extends Syntax<WithQuery> {
         const data = this.row;
         let out = "";
 
-        out += data.name.toString() + " ";
+        out += data.name!.toString() + " ";
 
         if ( data.columns ) {
             out += "(";
@@ -118,7 +118,7 @@ export class WithQuery extends Syntax<WithQuery> {
         //     out += this.delete.toString();
         // }
         else {
-            out += data.select.toString();
+            out += data.select!.toString();
         }
 
         out += ")";

@@ -42,10 +42,10 @@ export class CreateFunction extends Syntax<CreateFunction> {
     }
 
     toIdentify(data: this["TInputData"] = this.row) {
-        const inputArgs = (data.args || []).filter((arg: PgArgument) =>
+        const inputArgs = (data.args || []).filter((arg: any) =>
             !arg.row.out
         ) as PgArgument[];
-        const types = inputArgs.map((arg) => arg.row.type);
+        const types = inputArgs.map((arg) => arg.row.type!);
 
         return new FunctionIdentify({
             schema: data.schema,
@@ -153,26 +153,26 @@ export class CreateFunction extends Syntax<CreateFunction> {
 
         // validate arguments,
         // error on duplicate name
-        const existsName = {};
+        const existsName: {[name: string]: boolean} = {};
         args.forEach((arg) => {
             if ( arg.row.name === null ) {
                 return;
             }
             
-            if ( arg.row.name in existsName ) {
+            if ( arg.row.name! in existsName ) {
                 throw new Error(`parameter name "${ arg.row.name }" used more than once`);
             }
 
-            existsName[ arg.row.name ] = true;
+            existsName[ arg.row.name! ] = true;
         });
 
         if ( data.returns.get("table") ) {
-            data.returns.get("table").forEach((arg) => {
-                if ( arg.row.name in existsName ) {
+            data.returns.get("table")!.forEach((arg) => {
+                if ( arg.row.name! in existsName ) {
                     throw new Error(`parameter name "${ arg.row.name }" used more than once`);
                 }
 
-                existsName[ arg.row.name ] = true;
+                existsName[ arg.row.name! ] = true;
             });
         }
 
@@ -190,12 +190,12 @@ export class CreateFunction extends Syntax<CreateFunction> {
                 data.comment = coach.parse(CommentOnFunction);
     
                 const identify = this.toIdentify( data );
-                const isSameIdentify = data.comment.get("function").equal( identify );
+                const isSameIdentify = data.comment.get("function")!.equal( identify );
     
                 if ( !isSameIdentify ) {
                     coach.throwError(
                         "comment after function has wrong identify: " + 
-                        data.comment.get("function").toString()
+                        data.comment.get("function")!.toString()
                     );
                 }
             }
@@ -307,13 +307,13 @@ export class CreateFunction extends Syntax<CreateFunction> {
         }
 
         
-        const returnsSql = func.returns.toString();
+        const returnsSql = func.returns!.toString();
 
-        let argsSql = func.args.map((arg) => 
+        let argsSql = func.args!.map((arg) => 
             "    " + arg.toString()
         ).join(",\n");
 
-        if ( func.args.length ) {
+        if ( func.args!.length ) {
             argsSql = "\n" + argsSql + "\n";
         }
 
@@ -322,7 +322,7 @@ export class CreateFunction extends Syntax<CreateFunction> {
             comment = "\n" + func.comment.toString() + ";";
         }
 
-        const body = func.body.toString();
+        const body = func.body!.toString();
 
         // отступов не должно быть!
         // иначе DDLManager.dump будет писать некрасивый код

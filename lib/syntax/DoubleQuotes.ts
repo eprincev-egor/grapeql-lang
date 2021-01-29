@@ -95,7 +95,7 @@ export class DoubleQuotes<Child extends DoubleQuotes = any> extends Syntax<Doubl
     }
 
     toString() {
-        let content = this.row.content;
+        let content = this.row.content!;
         // escape double quotes
         content = content.replace(/"/g, "\"\"");
 

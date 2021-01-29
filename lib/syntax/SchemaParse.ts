@@ -19,7 +19,7 @@ export abstract class SchemaParse<Child extends SchemaParse = any> extends Synta
         // name
         const i = coach.i;
         const objectLink = coach.parse(ObjectLink);
-        const link = objectLink.get("link");
+        const link = objectLink.get("link")!;
 
         if ( 
             link.length !== 2 &&
@@ -32,7 +32,7 @@ export abstract class SchemaParse<Child extends SchemaParse = any> extends Synta
         let schema = "public";
         let name = link[0].toLowerCase();
         if ( link.length === 2 ) {
-            schema = name;
+            schema = name!;
             name = link[1].toLowerCase();
         }
         

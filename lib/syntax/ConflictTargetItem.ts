@@ -26,7 +26,7 @@ export class ConflictTargetItem extends Syntax<ConflictTargetItem> {
         }
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(Expression);
     }
 
@@ -34,7 +34,7 @@ export class ConflictTargetItem extends Syntax<ConflictTargetItem> {
         if ( this.row.expression ) {
             return "(" + this.row.expression.toString() + ")";
         } else {
-            return this.row.column.toString();
+            return this.row.column!.toString();
         }
     }
 }

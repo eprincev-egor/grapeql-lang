@@ -76,7 +76,7 @@ export class PrimaryKeyConstraint extends Constraint<PrimaryKeyConstraint> {
         else {
             out += super.toString();
             out += " primary key (";
-            out += primaryKey.map((name) => name.toString()).join(", ");
+            out += primaryKey!.map((name) => name.toString()).join(", ");
             out += ")";
         }
 

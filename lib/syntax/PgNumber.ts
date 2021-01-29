@@ -69,7 +69,7 @@ export class PgNumber extends Syntax<PgNumber> {
     }
     
     toString() {
-        return this.row.number;
+        return this.row.number!;
     }
 }
 

@@ -1,5 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
+import {IBooleanType, IArrayType} from "model-layer";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 import {File} from "./File";
@@ -10,7 +11,19 @@ import {Join} from "./Join";
 import {DoubleQuotes} from "./DoubleQuotes";
 
 export class FromItem extends Syntax<FromItem> {
-    structure() {
+    structure(): {
+        only: IBooleanType,
+        table: typeof TableLink,
+        star: IBooleanType,
+        file: typeof File,
+        lateral: IBooleanType,
+        withOrdinality: IBooleanType,
+        functionCall: typeof FunctionCall,
+        as: typeof ObjectName,
+        columns: IArrayType<ObjectName>,
+        select: typeof Select,
+        joins: IArrayType<Join>
+    } {
         const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
         
         return {
@@ -33,7 +46,7 @@ export class FromItem extends Syntax<FromItem> {
         };
     }
 
-    parse(coach: GrapeQLCoach, data) {
+    parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         const Select = allSyntax.Select as GrapeQLCoach["syntax"]["Select"];
 
         let needAs = false;
@@ -208,7 +221,7 @@ export class FromItem extends Syntax<FromItem> {
                 out += "only ";
             }
 
-            out += data.table.toString();
+            out += data.table!.toString();
 
             if ( data.star ) {
                 out += " *";
@@ -226,8 +239,8 @@ export class FromItem extends Syntax<FromItem> {
             out += ")";
         }
 
-        if ( data.joins.length ) {
-            data.joins.forEach((join) => {
+        if ( data.joins!.length ) {
+            data.joins!.forEach((join) => {
                 out += "\n\n";
                 out += join.toString();
             });

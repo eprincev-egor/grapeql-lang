@@ -27,11 +27,11 @@ export class FunctionIdentify extends Syntax<FunctionIdentify> {
         coach.expect("(");
         coach.skipSpace();
 
-        let args = [];
+        let args: string[] = [];
         if ( coach.is(DataType) ) {
-            args = coach.parseComma(DataType);
-            args = args.map((arg) =>
-                arg.get("type")
+            const parsedArgs = coach.parseComma(DataType);
+            args = parsedArgs.map((arg) =>
+                arg.get("type")!
             );
         }
         
@@ -47,6 +47,6 @@ export class FunctionIdentify extends Syntax<FunctionIdentify> {
     toString() {
         const {schema, name, args} = this.row;
 
-        return `${schema}.${name}(${ args.join(", ") })`;
+        return `${schema}.${name}(${ args!.join(", ") })`;
     }
 }

@@ -32,7 +32,7 @@ export class Interval extends Syntax<Interval> {
     }
 
     toString() {
-        return "interval " + this.row.interval.toString();
+        return "interval " + this.row.interval!.toString();
     }
 }
 

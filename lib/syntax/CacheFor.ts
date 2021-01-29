@@ -65,7 +65,7 @@ export class CacheFor extends Syntax<CacheFor> {
         if ( coach.isWord("without") ) {
             const withoutTriggers = coach.parseChain(WithoutTriggersOn);
             const withoutTriggersOnTables = withoutTriggers.map((withoutTrigger) =>
-                withoutTrigger.get("onTable")
+                withoutTrigger.get("onTable")!
             );
             data.withoutTriggers = withoutTriggersOnTables;
         }
@@ -84,10 +84,10 @@ export class CacheFor extends Syntax<CacheFor> {
         let out = "";
 
         out += "cache ";
-        out += data.name.toString();
+        out += data.name!.toString();
         
         out += " for ";
-        out += data.for.toString();
+        out += data.for!.toString();
 
         if ( data.as ) {
             out += " as ";
@@ -95,7 +95,7 @@ export class CacheFor extends Syntax<CacheFor> {
         }
 
         out += " ( ";
-        out += data.cache.toString();
+        out += data.cache!.toString();
         out += " )";
 
         if ( data.withoutTriggers ) {

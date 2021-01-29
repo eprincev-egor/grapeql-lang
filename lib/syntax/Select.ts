@@ -1,5 +1,6 @@
 
 import {Syntax, Types} from "lang-coach";
+import {IBooleanType, IStringType, IArrayType} from "model-layer";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import {With} from "./With";
 import {Column} from "./Column";
@@ -52,7 +53,25 @@ TABLE [ ONLY ] table_name [ * ]
  */
 
 export class Select extends Syntax<Select> {
-    structure() {
+    structure(): {
+        with: typeof With,
+        distinct: IBooleanType,
+        distinctOn: IArrayType<Expression>,
+        columns: IArrayType<Column>,
+        into: IArrayType<ObjectLink>,
+        from: IArrayType<FromItem>,
+        where: typeof Expression,
+        groupBy: IArrayType<GroupByElement>,
+        having: typeof Expression,
+        window: IArrayType<WindowItem>,
+        orderBy: IArrayType<OrderByElement>,
+        union: typeof Union,
+        offset: IStringType,
+        offsetRow: IBooleanType,
+        offsetRows: IBooleanType,
+        limit: IStringType,
+        fetch: typeof SelectFetch
+    } {
         return {
             with: With,
             distinct: Types.Boolean,
@@ -208,7 +227,7 @@ export class Select extends Syntax<Select> {
     }
 
     parseWhere(coach: GrapeQLCoach, data: this["TInputData"]) {
-        data.where = null;
+        data.where = null as any;
 
         if ( coach.isWord("where") ) {
             coach.expectWord("where");
@@ -487,13 +506,13 @@ function validate(data: Select["TInputData"]) {
     // validate from items
     const fromMap = {};
 
-    data.from.forEach((fromItem: FromItem) => {
+    data.from.forEach((fromItem: any) => {
         validateFromItem( fromMap, fromItem );
     });
 }
 
 function validateFromItem(fromMap: any, fromItem: FromItem) {
-    let name;
+    let name: any;
 
     if ( fromItem.get("as") ) {
         name = fromItem.get("as");
@@ -507,8 +526,8 @@ function validateFromItem(fromMap: any, fromItem: FromItem) {
     } else {
         // from schema1.company, schema2.company
 
-        const tableLink = fromItem.get("table");
-        const link = tableLink.get("link");
+        const tableLink = fromItem.get("table")!;
+        const link = tableLink.get("link")!;
 
         name = tableLink.last();
         name = name.toLowerCase();
@@ -521,13 +540,13 @@ function validateFromItem(fromMap: any, fromItem: FromItem) {
                 throwFromUniqError(name);
             }
 
-            let schema = null;
+            let schema: any = null;
             if ( link.length > 1 ) {
                 schema = link[ 0 ];
                 schema = schema.toLowerCase();
             }
 
-            items.forEach((item) => {
+            items.forEach((item: any) => {
                 let itemSchema = null;
                 if ( item.get("table").get("link").length > 1 ) {
                     itemSchema = item.get("table").first();
@@ -544,7 +563,7 @@ function validateFromItem(fromMap: any, fromItem: FromItem) {
     }
 }
 
-function throwFromUniqError(name) {
+function throwFromUniqError(name: string) {
     throw new Error(`table name "${ name }" specified more than once`);
 }
 

@@ -93,11 +93,11 @@ export class Insert extends Syntax<Insert> {
             const values: ValuesRow[] = coach.parseComma(ValuesRow);
             data.values = values;
             
-            const length = values[0].get("values").length;
+            const length = values[0].get("values")!.length;
             for (let i = 0, n = values.length; i < n; i++) {
                 const valuesRow = values[ i ];
                 
-                if ( valuesRow.get("values").length !== length ) {
+                if ( valuesRow.get("values")!.length !== length ) {
                     coach.throwError("VALUES lists must all be the same length");
                 }
             }
@@ -144,7 +144,7 @@ export class Insert extends Syntax<Insert> {
         }
         
         out += "insert into ";
-        out += row.table.toString();
+        out += row.table!.toString();
 
         if ( row.as ) {
             out += " as ";
@@ -166,7 +166,7 @@ export class Insert extends Syntax<Insert> {
         }
         else {
             out += " ";
-            out += row.select.toString();
+            out += row.select!.toString();
         }
 
         if ( row.onConflict ) {

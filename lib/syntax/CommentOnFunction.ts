@@ -12,7 +12,7 @@ export class CommentOnFunction extends CommentOn<CommentOnFunction> {
         };
     }
 
-    is(coach) {
+    is(coach: GrapeQLCoach) {
         return coach.is(/comment\s+on\s+function/i);
     }
 
