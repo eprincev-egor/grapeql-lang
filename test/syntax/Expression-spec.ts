@@ -1116,4 +1116,37 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "overlay('Txxxxas' placing 'hom' from 1)",
+        shouldBe: {
+            elements: [
+                {str: {elements: [{
+                    content: "Txxxxas"
+                }]},
+                placing: {elements: [{
+                    content: "hom"
+                }]},
+                from: {elements: [{
+                    number: "1"
+                }]}}
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: "position('test' in 'test test')",
+        shouldBe: {
+            elements: [
+                {
+                    substring: {elements: [{
+                        content: "test"
+                    }]},
+                    in: {elements: [{
+                        content: "test test"
+                    }]}
+                }
+            ]
+        }
+    });
+
 });

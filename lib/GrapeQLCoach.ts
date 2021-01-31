@@ -94,6 +94,8 @@ import {FunctionBody} from "./syntax/FunctionBody";
 import {CacheIndex} from "./syntax/CacheIndex";
 import {Collate} from "./syntax/Collate";
 import {WithoutTriggersOn} from "./syntax/WithoutTriggersOn";
+import {Position} from "./syntax/Position";
+import {Overlay} from "./syntax/Overlay";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -187,7 +189,9 @@ export class GrapeQLCoach extends Coach {
         FunctionBody,
         CacheIndex,
         Collate,
-        WithoutTriggersOn
+        WithoutTriggersOn,
+        Position,
+        Overlay
     };
 
     parseType(): string {
@@ -312,3 +316,5 @@ export {FunctionBody};
 export {CacheIndex};
 export {Collate};
 export {WithoutTriggersOn};
+export {Position};
+export {Overlay};

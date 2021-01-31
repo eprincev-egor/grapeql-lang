@@ -171,7 +171,11 @@ export class Expression extends Syntax<Expression> {
         }
 
         // in
-        if ( coach.is(In) ) {
+        const canParseIn = (
+            !options.excludeOperators ||
+            !options.excludeOperators.includes("in")
+        );
+        if ( canParseIn && coach.is(In) ) {
             elem = coach.parse(In);
             data.elements.push( elem );
 

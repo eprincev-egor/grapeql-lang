@@ -14,6 +14,8 @@ import {PgArray} from "./PgArray";
 import {CaseWhen} from "./CaseWhen";
 import {Extract} from "./Extract";
 import {Substring} from "./Substring";
+import {Position} from "./Position";
+import {Overlay} from "./Overlay";
 import {Interval} from "./Interval";
 import {Exists} from "./Exists";
 import {Any} from "./Any";
@@ -79,6 +81,14 @@ export class ExpressionElement extends Syntax<ExpressionElement> {
 
         else if ( coach.is(Substring) ) {
             data.element = coach.parse(Substring);
+        }
+
+        else if ( coach.is(Position) ) {
+            data.element = coach.parse(Position);
+        }
+
+        else if ( coach.is(Overlay) ) {
+            data.element = coach.parse(Overlay);
         }
 
         else if ( coach.is(Interval) ) {
