@@ -349,6 +349,90 @@ describe("Expression", () => {
     });
 
     testSyntax(Expression, {
+        str: "(list_gtd.additional_check_doc_present_date + coalesce( list_gtd.additional_check_total_days_for_present, 0 )* INTERVAL '1 day')",
+        shouldBe: {
+            elements: [
+                {link: [
+                    {word: "list_gtd"},
+                    {word: "additional_check_doc_present_date"}
+                ]},
+                {operator: "+"},
+                {
+                    function: {
+                        link: [
+                            {word: "coalesce"}
+                        ]
+                    },
+                    arguments: [
+                        {elements: [
+                            {link: [
+                                {word: "list_gtd"},
+                                {word: "additional_check_total_days_for_present"}
+                            ]},
+                        ]},
+                        {elements: [
+                            {number: "0"}
+                        ]}
+                    ]
+                },
+                {operator: "*"},
+                {
+                    interval: {
+                        content: "1 day"
+                    }
+                }
+            ]
+        }
+    });
+
+    testSyntax(Expression, {
+        str: `array_remove(
+            array_append(
+                contractor_linked_companies.linked_companies,
+                list_user.id_list_company
+            ),
+            NULL
+        )`,
+        shouldBe: {elements: [
+            {
+                function: {
+                    link: [
+                        {word: "array_remove"}
+                    ]
+                },
+                arguments: [
+                    {elements: [
+                        {
+                            function: {
+                                link: [
+                                    {word: "array_append"}
+                                ]
+                            },
+                            arguments: [
+                                {elements: [
+                                    {link: [
+                                        {word: "contractor_linked_companies"},
+                                        {word: "linked_companies"}
+                                    ]},
+                                ]},
+                                {elements: [
+                                    {link: [
+                                        {word: "list_user"},
+                                        {word: "id_list_company"}
+                                    ]},
+                                ]}
+                            ]
+                        }
+                    ]},
+                    {elements: [
+                        {null: true}
+                    ]}
+                ]
+            }
+        ]}
+    });
+
+    testSyntax(Expression, {
         str: "id = 2 or id = -3",
         shouldBe: {
             elements: [
