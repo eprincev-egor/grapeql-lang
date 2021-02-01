@@ -1,6 +1,6 @@
 {
   "name": "grapeql-lang",
-  "version": "2.11.8",
+  "version": "2.12.0",
   "description": "GrapeQL parser",
   "main": "dist/index.js",
   "types": "lib/index.ts",
@@ -31,7 +31,7 @@
   "author": "Eprincev Egor",
   "license": "ISC",
   "dependencies": {
-    "lang-coach": "^2.5.1"
+    "lang-coach": "^2.6.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
