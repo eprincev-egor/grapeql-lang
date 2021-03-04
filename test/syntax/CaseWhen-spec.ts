@@ -95,4 +95,27 @@ describe("CaseWhen", () => {
         }
     });
 
+    testSyntax(CaseWhen, {
+        str: "case colors.name when 'red' then 1 when 'green' then 2 else 0 end",
+        shouldBe: {
+            value: {elements: [
+                {link: [
+                    {word: "colors"},
+                    {word: "name"}
+                ]}
+            ]},
+            case: [
+                {
+                    when: {elements: [{content: "red"}]},
+                    then: {elements: [{number: "1"}]}
+                },
+                {
+                    when: {elements: [{content: "green"}]},
+                    then: {elements: [{number: "2"}]}
+                }
+            ],
+            else: {elements: [{number: "0"}]}
+        }
+    });
+
 });

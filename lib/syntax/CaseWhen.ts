@@ -9,6 +9,7 @@ export class CaseWhen extends Syntax<CaseWhen> {
         const Expression = allSyntax.Expression as GrapeQLCoach["syntax"]["Expression"];
 
         return {
+            value: Expression,
             case: Types.Array({
                 element: CaseWhenElement
             }),
@@ -22,6 +23,10 @@ export class CaseWhen extends Syntax<CaseWhen> {
         coach.expectWord("case");
         
         data.case = [];
+        if ( !coach.is(CaseWhenElement) && coach.is(Expression) ) {
+            data.value = coach.parse(Expression);
+        }
+
         this.parseElement(coach, data);
         
         coach.skipSpace();
@@ -52,6 +57,11 @@ export class CaseWhen extends Syntax<CaseWhen> {
     
     toString() {
         let out = "case ";
+
+        if ( this.row.value ) {
+            out += this.row.value.toString();
+            out += " ";
+        }
         
         const cases = this.row.case!.map((elem) => elem.toString()).join(" ");
         out += cases;

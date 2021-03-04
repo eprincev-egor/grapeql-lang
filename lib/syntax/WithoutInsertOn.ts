@@ -1,8 +1,7 @@
-
 import {Syntax} from "lang-coach";
 import {GrapeQLCoach, TableLink} from "../GrapeQLCoach";
 
-export class WithoutTriggersOn extends Syntax<WithoutTriggersOn> {
+export class WithoutInsertOn extends Syntax<WithoutInsertOn> {
     structure() {
         return {
             onTable: TableLink
@@ -11,17 +10,18 @@ export class WithoutTriggersOn extends Syntax<WithoutTriggersOn> {
 
     parse(coach: GrapeQLCoach, data: this["TInputData"]) {
         coach.expectWord("without");
-        coach.expect(/trigger(s?)/);
+        coach.expectWord("insert");
+        coach.expectWord("case");
         coach.expectWord("on");
 
         data.onTable = coach.parse(TableLink);
     }
     
     is(coach: GrapeQLCoach) {
-        return coach.is(/without\s+trigger/i);
+        return coach.is(/without\s+insert/i);
     }
     
     toString() {
-        return `without triggers on ${this.row.onTable}`;
+        return `without insert case on ${this.row.onTable}`;
     }
 }

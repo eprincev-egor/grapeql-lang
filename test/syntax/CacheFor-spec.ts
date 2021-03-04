@@ -653,4 +653,59 @@ describe("CacheFor", () => {
         }
     });
 
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+            select
+                string_agg(distinct order_type.name, ', ') as orders_types_names
+            from orders
+          )
+          without insert case on orders`,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            cache: {
+                columns: [
+                    {
+                        expression: {elements: [
+                            {
+                                function: {
+                                    star: false,
+                                    link: [
+                                        {word: "string_agg"}
+                                    ]
+                                },
+                                distinct: true,
+                                arguments: [
+                                    {elements: [
+                                        {star: false, link: [
+                                            {word: "order_type"},
+                                            {word: "name"}
+                                        ]}
+                                    ]},
+                                    {elements: [
+                                        {content: ", "}
+                                    ]}
+                                ]
+                            }
+                        ]},
+                        as: {word: "orders_types_names"}
+                    }
+                ],
+                from: [
+                    {
+                        table: {star: false, link: [
+                            {word: "orders"}
+                        ]}
+                    }
+                ]
+            },
+            withoutInsertOn: [
+                {link: [
+                    {word: "orders"}
+                ]}
+            ]
+        }
+    });
 });

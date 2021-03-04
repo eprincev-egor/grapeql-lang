@@ -6,6 +6,7 @@ import {Select} from "./Select";
 import {WithoutTriggersOn} from "./WithoutTriggersOn";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import { CacheIndex } from "./CacheIndex";
+import { WithoutInsertOn } from "./WithoutInsertOn";
 
 /*
 cache totals for company (
@@ -27,6 +28,9 @@ export class CacheFor extends Syntax<CacheFor> {
             as: ObjectName,
             cache: Select,
             withoutTriggers: Types.Array({
+                element: TableLink
+            }),
+            withoutInsertOn: Types.Array({
                 element: TableLink
             }),
             indexes: Types.Array({
@@ -62,12 +66,19 @@ export class CacheFor extends Syntax<CacheFor> {
         coach.expect(")");
 
         coach.skipSpace();
-        if ( coach.isWord("without") ) {
+        if ( coach.is(WithoutTriggersOn) ) {
             const withoutTriggers = coach.parseChain(WithoutTriggersOn);
             const withoutTriggersOnTables = withoutTriggers.map((withoutTrigger) =>
                 withoutTrigger.get("onTable")!
             );
             data.withoutTriggers = withoutTriggersOnTables;
+        }
+        if ( coach.is(WithoutInsertOn) ) {
+            const withoutInserts = coach.parseChain(WithoutInsertOn);
+            const withoutInsertOnTables = withoutInserts.map((withoutTrigger) =>
+                withoutTrigger.get("onTable")!
+            );
+            data.withoutInsertOn = withoutInsertOnTables;
         }
 
         if ( coach.is(CacheIndex) ) {
@@ -102,6 +113,13 @@ export class CacheFor extends Syntax<CacheFor> {
             out += " ";
             out += data.withoutTriggers.map((onTable) =>
                 `without triggers on ${onTable}`
+            ).join(" ");
+        }
+
+        if ( data.withoutInsertOn ) {
+            out += " ";
+            out += data.withoutInsertOn.map((onTable) =>
+                `without insert case on ${onTable}`
             ).join(" ");
         }
 
