@@ -7,6 +7,7 @@ import {WithoutTriggersOn} from "./WithoutTriggersOn";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import { CacheIndex } from "./CacheIndex";
 import { WithoutInsertOn } from "./WithoutInsertOn";
+import { CacheForOption } from "./CacheForOption";
 
 /*
 cache totals for company (
@@ -66,23 +67,29 @@ export class CacheFor extends Syntax<CacheFor> {
         coach.expect(")");
 
         coach.skipSpace();
-        if ( coach.is(WithoutTriggersOn) ) {
-            const withoutTriggers = coach.parseChain(WithoutTriggersOn);
+        if ( coach.is(CacheForOption) ) {
+            const optionsSyntaxes = coach.parseChain(CacheForOption);
+            const options = optionsSyntaxes.map(option => option.row.element!);
+
+            const withoutTriggers = options.filter(option => 
+                option instanceof WithoutTriggersOn
+            ) as WithoutTriggersOn[];
             const withoutTriggersOnTables = withoutTriggers.map((withoutTrigger) =>
                 withoutTrigger.get("onTable")!
             );
             data.withoutTriggers = withoutTriggersOnTables;
-        }
-        if ( coach.is(WithoutInsertOn) ) {
-            const withoutInserts = coach.parseChain(WithoutInsertOn);
+
+            const withoutInserts = options.filter(option => 
+                option instanceof WithoutInsertOn
+            ) as WithoutInsertOn[];
             const withoutInsertOnTables = withoutInserts.map((withoutTrigger) =>
                 withoutTrigger.get("onTable")!
             );
             data.withoutInsertOn = withoutInsertOnTables;
-        }
-
-        if ( coach.is(CacheIndex) ) {
-            data.indexes = coach.parseChain(CacheIndex);
+            
+            data.indexes = options.filter(option => 
+                option instanceof CacheIndex
+            ) as CacheIndex[];
         }
     }
 

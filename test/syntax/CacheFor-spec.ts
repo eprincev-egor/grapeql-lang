@@ -656,10 +656,12 @@ describe("CacheFor", () => {
     testSyntax(CacheFor, {
         str: `cache totals for companies (
             select
-                string_agg(distinct order_type.name, ', ') as orders_types_names
-            from orders
+                companies.id + 1 as my_id
           )
-          without insert case on orders`,
+          index btree on (my_id)
+          without triggers on companies
+          without insert case on companies
+        `,
         shouldBe: {
             name: {word: "totals"},
             for: {star: false, link: [
@@ -669,41 +671,247 @@ describe("CacheFor", () => {
                 columns: [
                     {
                         expression: {elements: [
-                            {
-                                function: {
-                                    star: false,
-                                    link: [
-                                        {word: "string_agg"}
-                                    ]
-                                },
-                                distinct: true,
-                                arguments: [
-                                    {elements: [
-                                        {star: false, link: [
-                                            {word: "order_type"},
-                                            {word: "name"}
-                                        ]}
-                                    ]},
-                                    {elements: [
-                                        {content: ", "}
-                                    ]}
-                                ]
-                            }
+                            {link: [
+                                {word: "companies"},
+                                {word: "id"}
+                            ]},
+                            {operator: "+"},
+                            {number: "1"}
                         ]},
-                        as: {word: "orders_types_names"}
-                    }
-                ],
-                from: [
-                    {
-                        table: {star: false, link: [
-                            {word: "orders"}
-                        ]}
+                        as: {word: "my_id"}
                     }
                 ]
             },
+            indexes: [{
+                index: "btree",
+                on: [{word: "my_id"}]
+            }],
+            withoutTriggers: [
+                {link: [
+                    {word: "companies"}
+                ]}
+            ],
             withoutInsertOn: [
                 {link: [
-                    {word: "orders"}
+                    {word: "companies"}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+            select
+                companies.id + 1 as my_id
+          )
+          index btree on (my_id)
+          without trigger on companies
+          without insert case on companies
+        `,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            cache: {
+                columns: [
+                    {
+                        expression: {elements: [
+                            {link: [
+                                {word: "companies"},
+                                {word: "id"}
+                            ]},
+                            {operator: "+"},
+                            {number: "1"}
+                        ]},
+                        as: {word: "my_id"}
+                    }
+                ]
+            },
+            indexes: [{
+                index: "btree",
+                on: [{word: "my_id"}]
+            }],
+            withoutTriggers: [
+                {link: [
+                    {word: "companies"}
+                ]}
+            ],
+            withoutInsertOn: [
+                {link: [
+                    {word: "companies"}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+            select
+                companies.id + 1 as my_id
+          )
+          without trigger on companies
+          index btree on (my_id)
+          without insert case on companies
+        `,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            cache: {
+                columns: [
+                    {
+                        expression: {elements: [
+                            {link: [
+                                {word: "companies"},
+                                {word: "id"}
+                            ]},
+                            {operator: "+"},
+                            {number: "1"}
+                        ]},
+                        as: {word: "my_id"}
+                    }
+                ]
+            },
+            indexes: [{
+                index: "btree",
+                on: [{word: "my_id"}]
+            }],
+            withoutTriggers: [
+                {link: [
+                    {word: "companies"}
+                ]}
+            ],
+            withoutInsertOn: [
+                {link: [
+                    {word: "companies"}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+            select
+                companies.id + 1 as my_id
+          )
+          without insert case on companies
+          without trigger on companies
+          index btree on (my_id)
+        `,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            cache: {
+                columns: [
+                    {
+                        expression: {elements: [
+                            {link: [
+                                {word: "companies"},
+                                {word: "id"}
+                            ]},
+                            {operator: "+"},
+                            {number: "1"}
+                        ]},
+                        as: {word: "my_id"}
+                    }
+                ]
+            },
+            indexes: [{
+                index: "btree",
+                on: [{word: "my_id"}]
+            }],
+            withoutTriggers: [
+                {link: [
+                    {word: "companies"}
+                ]}
+            ],
+            withoutInsertOn: [
+                {link: [
+                    {word: "companies"}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+            select
+                companies.id + 1 as my_id
+          )
+          without insert case on companies
+          index btree on (my_id)
+        `,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            cache: {
+                columns: [
+                    {
+                        expression: {elements: [
+                            {link: [
+                                {word: "companies"},
+                                {word: "id"}
+                            ]},
+                            {operator: "+"},
+                            {number: "1"}
+                        ]},
+                        as: {word: "my_id"}
+                    }
+                ]
+            },
+            indexes: [{
+                index: "btree",
+                on: [{word: "my_id"}]
+            }],
+            withoutInsertOn: [
+                {link: [
+                    {word: "companies"}
+                ]}
+            ]
+        }
+    });
+
+    testSyntax(CacheFor, {
+        str: `cache totals for companies (
+            select
+                companies.id + 1 as my_id
+          )
+          index btree on (my_id)
+          without insert case on companies
+        `,
+        shouldBe: {
+            name: {word: "totals"},
+            for: {star: false, link: [
+                {word: "companies"}
+            ]},
+            cache: {
+                columns: [
+                    {
+                        expression: {elements: [
+                            {link: [
+                                {word: "companies"},
+                                {word: "id"}
+                            ]},
+                            {operator: "+"},
+                            {number: "1"}
+                        ]},
+                        as: {word: "my_id"}
+                    }
+                ]
+            },
+            indexes: [{
+                index: "btree",
+                on: [{word: "my_id"}]
+            }],
+            withoutInsertOn: [
+                {link: [
+                    {word: "companies"}
                 ]}
             ]
         }

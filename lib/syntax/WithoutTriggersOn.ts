@@ -18,7 +18,7 @@ export class WithoutTriggersOn extends Syntax<WithoutTriggersOn> {
     }
     
     is(coach: GrapeQLCoach) {
-        return coach.is(/without\s+trigger/i);
+        return coach.is(/without\s+trigger(s?)/i);
     }
     
     toString() {
