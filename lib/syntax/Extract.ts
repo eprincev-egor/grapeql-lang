@@ -4,7 +4,7 @@ import {Syntax, Types} from "lang-coach";
 import {GrapeQLCoach} from "../GrapeQLCoach";
 import allSyntax from "../allSyntax";
 
-const extractFields = [
+export const extractFields = [
     "century",
     "day",
     "decade",
@@ -25,7 +25,7 @@ const extractFields = [
     "week",
     "year"
 ];
-const extractFieldsAliases = {
+export const extractFieldsAliases = {
     centuries: "century",
     days: "day",
     decades: "decade",

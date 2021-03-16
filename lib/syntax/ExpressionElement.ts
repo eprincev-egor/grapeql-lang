@@ -13,6 +13,7 @@ import {Cast} from "./Cast";
 import {PgArray} from "./PgArray";
 import {CaseWhen} from "./CaseWhen";
 import {Extract} from "./Extract";
+import {MakeInterval} from "./MakeInterval";
 import {Substring} from "./Substring";
 import {Position} from "./Position";
 import {Overlay} from "./Overlay";
@@ -79,6 +80,10 @@ export class ExpressionElement extends Syntax<ExpressionElement> {
             data.element = coach.parse(Extract);
         }
 
+        else if ( coach.is(MakeInterval) ) {
+            data.element = coach.parse(MakeInterval);
+        }
+
         else if ( coach.is(Substring) ) {
             data.element = coach.parse(Substring);
         }
@@ -141,6 +146,7 @@ export class ExpressionElement extends Syntax<ExpressionElement> {
             coach.is(PgArray) ||
             coach.is(CaseWhen) ||
             coach.is(Extract) ||
+            coach.is(MakeInterval) ||
             coach.is(Substring) ||
             coach.is( ColumnLink, options )
         );

@@ -1233,4 +1233,19 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: `make_interval(weeks:=1)`,
+        shouldBe: {
+            elements: [
+                {
+                    intervalArgs: [
+                        {type: "weeks", value: {elements: [
+                            {number: "1"}
+                        ]}}
+                    ]
+                }
+            ]
+        }
+    });
+
 });
