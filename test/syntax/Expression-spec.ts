@@ -121,10 +121,21 @@ describe("Expression", () => {
     });
 
     testSyntax(Expression, {
-        str: "((('extrude')))",
+        str: "((('no extrude')))",
         shouldBe: {
+            brackets: true,
             elements: [
-                {content: "extrude"}
+                {
+                    brackets: true,
+                    elements: [
+                        {
+                            brackets: true,
+                            elements: [
+                                {content: "no extrude"}
+                            ]
+                        }
+                    ]
+                }
             ]
         }
     });
@@ -134,6 +145,7 @@ describe("Expression", () => {
         shouldBe: {
             elements: [
                 {
+                    brackets: true,
                     elements: [
                         {operator: "-"},
                         {number: "1"},
@@ -145,10 +157,14 @@ describe("Expression", () => {
                 {content: ""},
                 {operator: "-"},
                 {
+                    brackets: true,
                     elements: [
-                        {elements: [
-                            {content: "test"}
-                        ]},
+                        {
+                            brackets: true,
+                                elements: [
+                                {content: "test"}
+                            ]
+                        },
                         {operator: "+"},
                         {number: "8"}
                     ]
@@ -328,7 +344,7 @@ describe("Expression", () => {
             elements: [
                 {number: "10"},
                 {operator: "*"},
-                {elements: [
+                {brackets: true, elements: [
                     {
                         function: {
                             star: false,
@@ -351,6 +367,7 @@ describe("Expression", () => {
     testSyntax(Expression, {
         str: "(list_gtd.additional_check_doc_present_date + coalesce( list_gtd.additional_check_total_days_for_present, 0 )* INTERVAL '1 day')",
         shouldBe: {
+            brackets: true,
             elements: [
                 {link: [
                     {word: "list_gtd"},
@@ -507,7 +524,7 @@ describe("Expression", () => {
         str: "(-1 + 2.1) * '0'::numeric - ( ('-2')::bigint + 8)",
         shouldBe: {
             elements: [
-                {elements: [
+                {brackets: true, elements: [
                     {operator: "-"},
                     {number: "1"},
                     {operator: "+"},
@@ -522,8 +539,8 @@ describe("Expression", () => {
 
                 {operator: "-"},
 
-                {elements: [
-                    {elements: [
+                {brackets: true, elements: [
+                    {brackets: true, elements: [
                         {content: "-2"}
                     ]},
 
@@ -557,7 +574,7 @@ describe("Expression", () => {
         str: "(array[100, 200])[1]",
         shouldBe: {
             elements: [
-                {elements: [
+                {brackets: true, elements: [
                     {array: [
                         {elements: [
                             {number: "100"}
@@ -580,7 +597,7 @@ describe("Expression", () => {
         str: "(array[100, 200]::bigint[])[1]",
         shouldBe: {
             elements: [
-                {elements: [
+                {brackets: true, elements: [
                     {array: [
                         {elements: [
                             {number: "100"}
@@ -1117,6 +1134,7 @@ describe("Expression", () => {
         const expression = coach.parse(Expression);
 
         assert.deepEqual(expression.toJSON(), {
+            brackets: null,
             elements: [
                 {boolean: false}
             ]
@@ -1132,6 +1150,7 @@ describe("Expression", () => {
             availableStar: true
         },
         shouldBe: {
+            brackets: true,
             elements: [
                 {star: false, link: [
                     {word: "country"},

@@ -20,24 +20,9 @@ import {Collate} from "./Collate";
 
 export class Expression extends Syntax<Expression> {
 
-    // ((( expression )))  strip unnecessary brackets
-    static extrude(elements: any[]): any[] {
-        if ( elements.length === 1 ) {
-            const firstElement = elements[0];
-            const isExpression = firstElement instanceof Expression;
-
-            if ( isExpression ) {
-                return Expression.extrude(
-                    firstElement.get("elements")
-                );
-            }
-        }
-        
-        return elements;
-    }
-
     structure() {
         return {
+            brackets: Types.Boolean,
             elements: Types.Array({
                 element: Syntax as any as (new (...args: any) => Syntax<any>)
             })
@@ -49,12 +34,30 @@ export class Expression extends Syntax<Expression> {
             // @see Between
             excludeOperators: false
         };
+
         data.elements = [];
+        this.parseElements(coach, data, options); 
 
-        this.parseElements(coach, data, options);
+        let firstElem = data.elements![0]!;
 
-        // (((elem))) => elem
-        data.elements = Expression.extrude( data.elements );
+        const isSubExpression = (
+            data.elements!.length === 1 &&
+            firstElem.constructor.name === "Expression"
+        );
+        if ( isSubExpression && (!firstElem.row.brackets || !options.brackets) ) {
+            data.brackets = data.brackets || firstElem.row.brackets;
+            data.elements = firstElem.row.elements;
+            firstElem = data.elements![0];
+        }
+
+        const isSubQuery = (
+            data.elements!.length === 1 &&
+            firstElem.constructor.name === "Select"
+        );
+        if ( options.brackets && !isSubQuery ) {
+            data.brackets = true;
+        }
+
     }
     
     parseElements(coach: GrapeQLCoach, data: this["TInputData"], options: any) {
@@ -109,7 +112,10 @@ export class Expression extends Syntax<Expression> {
             coach.expect("(");
             coach.skipSpace();
 
-            elem = coach.parse(Expression, options);
+            elem = coach.parse(Expression, {
+                ...options,
+                brackets: true
+            });
 
             coach.skipSpace();
             coach.expect(")");
@@ -407,7 +413,7 @@ export class Expression extends Syntax<Expression> {
                 out += " ";
             }
 
-            if ( elem instanceof Expression || elem instanceof Select ) {
+            if ( elem instanceof Select ) {
                 out += "( ";
                 out += elem.toString();
                 out += " )";
@@ -416,6 +422,9 @@ export class Expression extends Syntax<Expression> {
             }
         });
 
+        if ( this.row.brackets ) {
+            return "(" + out + ")";
+        }
         return out;
     }
 }
