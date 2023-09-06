@@ -1267,4 +1267,14 @@ describe("Expression", () => {
         }
     });
 
+    testSyntax(Expression, {
+        str: "trim(both from 'test')",
+        shouldBe: {
+            elements: [
+                {trim: "both", from: {elements: [
+                    {content: "test"}
+                ]}}
+            ]
+        }
+    });
 });

@@ -99,6 +99,7 @@ import {Position} from "./syntax/Position";
 import {Overlay} from "./syntax/Overlay";
 import {MakeIntervalArg} from "./syntax/MakeIntervalArg";
 import {MakeInterval} from "./syntax/MakeInterval";
+import { Trim } from "./syntax/Trim";
 
 export class GrapeQLCoach extends Coach {
     syntax = {
@@ -110,6 +111,7 @@ export class GrapeQLCoach extends Coach {
         CaseWhen,
         CaseWhenElement,
         Cast,
+        Trim,
         Column,
         ColumnLink,
         Comment,
@@ -238,6 +240,7 @@ export {CacheFor};
 export {CaseWhen};
 export {CaseWhenElement};
 export {Cast};
+export {Trim};
 export {Column};
 export {ColumnLink};
 export {Comment};

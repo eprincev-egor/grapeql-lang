@@ -23,6 +23,7 @@ import {Any} from "./Any";
 import {In} from "./In";
 import {FunctionCall} from "./FunctionCall";
 import {ColumnLink} from "./ColumnLink";
+import { Trim } from "./Trim";
 
 export class ExpressionElement extends Syntax<ExpressionElement> {
 
@@ -62,6 +63,10 @@ export class ExpressionElement extends Syntax<ExpressionElement> {
 
         else if ( coach.is(SystemVariable) ) {
             data.element = coach.parse(SystemVariable);
+        }
+
+        else if ( coach.is(Trim) ) {
+            data.element = coach.parse(Trim);
         }
 
         else if ( coach.is(Cast) ) {
@@ -133,7 +138,7 @@ export class ExpressionElement extends Syntax<ExpressionElement> {
         }
     }
 
-    is(coach: GrapeQLCoach, str: string, options: any) {
+    is(coach: GrapeQLCoach, str: string, options: any): boolean {
         return (
             coach.is(PgNull) ||
             coach.is(Boolean) ||
@@ -143,6 +148,7 @@ export class ExpressionElement extends Syntax<ExpressionElement> {
             coach.is(DollarString) ||
             coach.is(SingleQuotesString) ||
             coach.is(Cast) ||
+            coach.is(Trim) ||
             coach.is(PgArray) ||
             coach.is(CaseWhen) ||
             coach.is(Extract) ||
