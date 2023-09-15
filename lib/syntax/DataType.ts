@@ -84,7 +84,8 @@ const types = [
     "void",
     "record",
     "anyarray",
-    "anyelement"
+    "anyelement",
+    "float"
 ];
 
 const firstWords: any = {};

@@ -89,6 +89,13 @@ describe("DataType", () => {
     });
 
     testSyntax(DataType, {
+        str: "float",
+        shouldBe: {
+            type: "float"
+        }
+    });
+
+    testSyntax(DataType, {
         str: "smallserial",
         shouldBe: {
             type: "smallserial"
